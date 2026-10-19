@@ -1,0 +1,63 @@
+{
+  "trades": 21,
+  "winners": 7,
+  "losers": 14,
+  "breakeven": 0,
+  "win_rate": 0.3333333333333333,
+  "win_rate_wilson_95": [
+    0.171947526050838,
+    0.5462654802574419
+  ],
+  "profit_factor": 1.625879088913711,
+  "profit_factor_status": "defined",
+  "net_pnl": 809.5818822222305,
+  "net_return_pct": 0.8095818822222305,
+  "expectancy_r": 0.23632304126301903,
+  "average_win_r": 2.9196288849251504,
+  "average_loss_r": -1.1053298805680465,
+  "win_loss_ratio": 2.641409534160704,
+  "max_drawdown_usd": 442.53652166668326,
+  "max_drawdown_pct": 0.43836513567079866,
+  "longest_loss_streak": 3,
+  "longest_win_streak": 2,
+  "actual_risk_mean_usd": 90.9604761904757,
+  "actual_risk_max_usd": 180.67000000000877,
+  "actual_risk_mean_pct": 0.09085258454313774,
+  "planned_loss_max_usd": 186.8006000000051,
+  "max_exposure_usd": 100602.87999999999,
+  "max_exposure_pct": 99.98922237855076,
+  "average_duration_minutes": 12.619047619047619,
+  "total_fees": 65.16811777777777,
+  "valid_sessions": 63,
+  "trades_per_five_sessions": 1.6666666666666665,
+  "pnl_excluding_best_3_trades": -401.3299844444492,
+  "label": "QQQ_WF441_B",
+  "first_session": "2024-10-04",
+  "last_session": "2025-01-03",
+  "bootstrap_iid": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 1,
+    "expectancy_r_ci95": [
+      -0.5513458720179848,
+      1.0374844686996105
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.701,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "bootstrap_block5": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 5,
+    "expectancy_r_ci95": [
+      -0.5005549764055198,
+      0.9092234330924652
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.738,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "trades_per_calendar_week": 1.5,
+  "pnl_excluding_best_3_sessions": -401.3299844444492
+}

@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "auditor_sha256": "2966a9f3b5b892d68b208f7de923f88c0650826893867ed724aa933a9db085de",
+  "trades_checked": 872,
+  "source_receipts": [
+    {
+      "instrument": "SPY",
+      "pages_verified": 78,
+      "bars_verified_against_raw_response": 773977,
+      "retained_sessions": 930,
+      "csv_sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc"
+    },
+    {
+      "instrument": "QQQ",
+      "pages_verified": 81,
+      "bars_verified_against_raw_response": 807421,
+      "retained_sessions": 931,
+      "csv_sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97"
+    }
+  ],
+  "reconciliations": [
+    {
+      "label": "SPY_IS_A_slip1_principal",
+      "trades": 154,
+      "net_pnl": -2212.1853366665737,
+      "final_capital": 97787.81466333335
+    },
+    {
+      "label": "SPY_IS_B_slip1_principal",
+      "trades": 146,
+      "net_pnl": 282.90704333347696,
+      "final_capital": 100282.90704333338
+    },
+    {
+      "label": "SPY_OOS_A_slip1_principal",
+      "trades": 75,
+      "net_pnl": -1325.9789213888848,
+      "final_capital": 98674.0210786111
+    },
+    {
+      "label": "SPY_OOS_B_slip1_principal",
+      "trades": 73,
+      "net_pnl": -2429.868863333338,
+      "final_capital": 97570.13113666669
+    },
+    {
+      "label": "QQQ_IS_A_slip1_principal",
+      "trades": 158,
+      "net_pnl": -1376.684441666584,
+      "final_capital": 98623.31555833343
+    },
+    {
+      "label": "QQQ_IS_B_slip1_principal",
+      "trades": 152,
+      "net_pnl": -1629.272400833292,
+      "final_capital": 98370.72759916674
+    },
+    {
+      "label": "QQQ_OOS_A_slip1_principal",
+      "trades": 58,
+      "net_pnl": -246.61956666669505,
+      "final_capital": 99753.3804333333
+    },
+    {
+      "label": "QQQ_OOS_B_slip1_principal",
+      "trades": 56,
+      "net_pnl": -1096.5496672222482,
+      "final_capital": 98903.45033277778
+    }
+  ],
+  "scope": "All IS/OOS principal trades for ['SPY', 'QQQ'], stop A/B, slippage 1; not all sensitivity/WF signal paths",
+  "limits": "OHLC cannot establish subminute sequencing, actual fills, borrow availability, or omitted signals"
+}

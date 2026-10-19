@@ -1,0 +1,63 @@
+{
+  "trades": 40,
+  "winners": 9,
+  "losers": 31,
+  "breakeven": 0,
+  "win_rate": 0.225,
+  "win_rate_wilson_95": [
+    0.12316091323540954,
+    0.3750309674230957
+  ],
+  "profit_factor": 0.6083287670094886,
+  "profit_factor_status": "defined",
+  "net_pnl": -845.5088988888892,
+  "net_return_pct": -0.8455088988888892,
+  "expectancy_r": -0.25987606491127,
+  "average_win_r": 2.8004643831873275,
+  "average_loss_r": -1.148362001456024,
+  "win_loss_ratio": 2.438659917026669,
+  "max_drawdown_usd": 1089.373382500009,
+  "max_drawdown_pct": 1.0880763965234295,
+  "longest_loss_streak": 9,
+  "longest_win_streak": 3,
+  "actual_risk_mean_usd": 59.91450000000127,
+  "actual_risk_max_usd": 183.33000000000516,
+  "actual_risk_mean_pct": 0.0602549041807395,
+  "planned_loss_max_usd": 189.14780000000172,
+  "max_exposure_usd": 99767.48000000001,
+  "max_exposure_pct": 99.99639115926814,
+  "average_duration_minutes": 6.075,
+  "total_fees": 135.2488988888889,
+  "valid_sessions": 651,
+  "trades_per_five_sessions": 0.30721966205837176,
+  "pnl_excluding_best_3_trades": -1647.1602724999948,
+  "label": "SPY_IS_A_slip1_confirmation0",
+  "first_session": "2023-01-03",
+  "last_session": "2025-08-08",
+  "bootstrap_iid": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 1,
+    "expectancy_r_ci95": [
+      -0.7513112021026641,
+      0.2827545485834691
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.1688,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "bootstrap_block5": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 5,
+    "expectancy_r_ci95": [
+      -0.7527148732306809,
+      0.273643710839507
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.1602,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "trades_per_calendar_week": 0.29411764705882354,
+  "pnl_excluding_best_3_sessions": -1647.1602724999946
+}

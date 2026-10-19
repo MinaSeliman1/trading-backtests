@@ -1,0 +1,3 @@
+# Conserver les octets exacts : les empreintes scientifiques incluent les fins de ligne.
+* -text
+*.png binary

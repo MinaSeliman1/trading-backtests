@@ -1,0 +1,6 @@
+date,signal_time,reason
+2023-02-09,2023-02-09 09:59:00-05:00,invalid_stop_at_order
+2023-10-06,2023-10-06 10:01:00-04:00,invalid_stop_at_order
+2024-02-05,2024-02-05 09:41:00-05:00,broker_capital_or_exposure_rejection_after_gap
+2024-02-29,2024-02-29 10:51:00-05:00,invalid_stop_at_order
+2025-06-03,2025-06-03 10:10:00-04:00,invalid_stop_at_order

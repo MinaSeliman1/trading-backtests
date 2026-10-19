@@ -1,0 +1,170 @@
+{
+  "generated_utc": "2026-10-19T17:27:30.867136+00:00",
+  "command": [
+    "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\fvg_backtest\\__main__.py",
+    "--data",
+    "SPY=data/yahoo_28d/SPY_1m.csv",
+    "--data",
+    "QQQ=data/yahoo_28d/QQQ_1m.csv",
+    "--data",
+    "ES=data/yahoo_contracts/ES_1m.csv",
+    "--data",
+    "NQ=data/yahoo_contracts/NQ_1m.csv",
+    "--rolls",
+    "data/yahoo_contracts/rolls.csv",
+    "--sensitivity",
+    "--out",
+    "results/etude_2026-10-19"
+  ],
+  "python": "3.14.6",
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "exchange-calendars": "4.13.2",
+    "pytest": "9.1.1",
+    "yfinance": "1.7.0"
+  },
+  "config": {
+    "initial_capital": 100000.0,
+    "risk_fraction": 0.005,
+    "stop_variant": "A",
+    "slippage_ticks": 1,
+    "spread_ticks": null,
+    "retest_minutes": 15,
+    "confirmation_bars": 2,
+    "extra_fee_per_unit": 0.0001,
+    "annual_borrow_rate": 0.01,
+    "max_volume_fraction": 0.01
+  },
+  "instruments": {
+    "SPY": {
+      "symbol": "SPY",
+      "tick": 0.01,
+      "point_value": 1.0,
+      "commission": 0.005,
+      "min_commission": 1.0,
+      "margin": 1.0,
+      "max_leverage": 1.0,
+      "futures": false
+    },
+    "QQQ": {
+      "symbol": "QQQ",
+      "tick": 0.01,
+      "point_value": 1.0,
+      "commission": 0.005,
+      "min_commission": 1.0,
+      "margin": 1.0,
+      "max_leverage": 1.0,
+      "futures": false
+    },
+    "ES": {
+      "symbol": "ES",
+      "tick": 0.25,
+      "point_value": 50.0,
+      "commission": 2.5,
+      "min_commission": 0.0,
+      "margin": 25000.0,
+      "max_leverage": 10.0,
+      "futures": true
+    },
+    "NQ": {
+      "symbol": "NQ",
+      "tick": 0.25,
+      "point_value": 20.0,
+      "commission": 2.5,
+      "min_commission": 0.0,
+      "margin": 40000.0,
+      "max_leverage": 10.0,
+      "futures": true
+    }
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\yahoo_28d\\SPY_1m.csv",
+      "sha256": "8bb00f074776589acef9a62c4cfc759d22a637740f3286e430bb0866ca0f18e2",
+      "instrument": "SPY",
+      "first_timestamp": "2026-09-21 09:30:00-04:00",
+      "last_timestamp": "2026-10-16 15:59:00-04:00",
+      "raw_rows": 7800,
+      "identical_duplicates_removed": 0,
+      "valid_sessions": 20,
+      "calendar": "XNYS",
+      "timestamp_at": "open",
+      "source_timezone": "offset_or_epoch_in_file",
+      "continuous_unverified": false,
+      "strict_futures": false,
+      "rolls": {
+        "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\yahoo_contracts\\rolls.csv",
+        "sha256": "42ea60fd1da5528c4f8c37dac0ce929c1f9cdcdc23a8310440b5c3c53650cb2f"
+      }
+    },
+    {
+      "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\yahoo_28d\\QQQ_1m.csv",
+      "sha256": "54772653176fd9c3be9899c69f418a0a6acfd53bdabf202010c621cf6127eef5",
+      "instrument": "QQQ",
+      "first_timestamp": "2026-09-21 09:30:00-04:00",
+      "last_timestamp": "2026-10-16 15:59:00-04:00",
+      "raw_rows": 7800,
+      "identical_duplicates_removed": 0,
+      "valid_sessions": 19,
+      "calendar": "XNYS",
+      "timestamp_at": "open",
+      "source_timezone": "offset_or_epoch_in_file",
+      "continuous_unverified": false,
+      "strict_futures": false,
+      "rolls": {
+        "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\yahoo_contracts\\rolls.csv",
+        "sha256": "42ea60fd1da5528c4f8c37dac0ce929c1f9cdcdc23a8310440b5c3c53650cb2f"
+      }
+    },
+    {
+      "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\yahoo_contracts\\ES_1m.csv",
+      "sha256": "a9fb22fcded549b285ee94665284fb935f0d3725f9ded44f9588f413e5a62b3b",
+      "instrument": "ES",
+      "first_timestamp": "2026-09-20 20:00:00-04:00",
+      "last_timestamp": "2026-10-18 19:59:00-04:00",
+      "raw_rows": 34536,
+      "identical_duplicates_removed": 0,
+      "valid_sessions": 20,
+      "calendar": "XNYS",
+      "timestamp_at": "open",
+      "source_timezone": "offset_or_epoch_in_file",
+      "continuous_unverified": false,
+      "strict_futures": false,
+      "rolls": {
+        "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\yahoo_contracts\\rolls.csv",
+        "sha256": "42ea60fd1da5528c4f8c37dac0ce929c1f9cdcdc23a8310440b5c3c53650cb2f"
+      }
+    },
+    {
+      "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\yahoo_contracts\\NQ_1m.csv",
+      "sha256": "422f860a47baa1decb0c0f088d54a6c8a76fb2c109ae5a3fc78052b41246a1aa",
+      "instrument": "NQ",
+      "first_timestamp": "2026-09-20 20:00:00-04:00",
+      "last_timestamp": "2026-10-18 19:59:00-04:00",
+      "raw_rows": 34536,
+      "identical_duplicates_removed": 0,
+      "valid_sessions": 20,
+      "calendar": "XNYS",
+      "timestamp_at": "open",
+      "source_timezone": "offset_or_epoch_in_file",
+      "continuous_unverified": false,
+      "strict_futures": false,
+      "rolls": {
+        "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\yahoo_contracts\\rolls.csv",
+        "sha256": "42ea60fd1da5528c4f8c37dac0ce929c1f9cdcdc23a8310440b5c3c53650cb2f"
+      }
+    }
+  ],
+  "source_hashes": {
+    "fvg_backtest\\cli.py": "cd80854ec0d0b765c4fc05433f3942d1aa581dee9d72eb82fcf0f59e2b460113",
+    "fvg_backtest\\data.py": "60d2c42dd5cfe8a2a41b4c3520ad72d4f80550652565601a3fb5d748064e2fa8",
+    "fvg_backtest\\engine.py": "8a4c61ab6cf356274bbedbf28bdb7b81765e762c332b88cccb5aee2582599fd6",
+    "fvg_backtest\\report.py": "3e8b40b87d58938da932f114ceac9ecb9200231fcd44c1140421879f9bb68f40",
+    "fvg_backtest\\__init__.py": "6143479bb5cd17c6e6b2b077810035be3cbe2fe36af482cacdbfbec5b681626d",
+    "fvg_backtest\\__main__.py": "cf7390a2508a0fcad4777a4a629fc5212ab655cb45845975995f835676a834e3"
+  },
+  "bootstrap_reps": 5000,
+  "seed": 20261019
+}

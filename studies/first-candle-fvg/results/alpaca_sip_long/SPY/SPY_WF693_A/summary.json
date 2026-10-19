@@ -1,0 +1,63 @@
+{
+  "trades": 20,
+  "winners": 4,
+  "losers": 16,
+  "breakeven": 0,
+  "win_rate": 0.2,
+  "win_rate_wilson_95": [
+    0.08065766257979998,
+    0.41601743225188714
+  ],
+  "profit_factor": 0.6263906477370038,
+  "profit_factor_status": "defined",
+  "net_pnl": -503.6579844444523,
+  "net_return_pct": -0.5036579844444523,
+  "expectancy_r": -0.302827137847135,
+  "average_win_r": 2.9078095024248025,
+  "average_loss_r": -1.1054862979151194,
+  "win_loss_ratio": 2.6303442276116455,
+  "max_drawdown_usd": 573.2670116666268,
+  "max_drawdown_pct": 0.5728759076883522,
+  "longest_loss_streak": 4,
+  "longest_win_streak": 2,
+  "actual_risk_mean_usd": 76.63400000000163,
+  "actual_risk_max_usd": 165.68000000000484,
+  "actual_risk_mean_pct": 0.07683102828183036,
+  "planned_loss_max_usd": 173.51380222222429,
+  "max_exposure_usd": 99774.94,
+  "max_exposure_pct": 99.99198758425135,
+  "average_duration_minutes": 9.15,
+  "total_fees": 68.21798444444444,
+  "valid_sessions": 63,
+  "trades_per_five_sessions": 1.5873015873015872,
+  "pnl_excluding_best_3_trades": -1227.929584444459,
+  "label": "SPY_WF693_A",
+  "first_session": "2025-10-09",
+  "last_session": "2026-01-08",
+  "bootstrap_iid": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 1,
+    "expectancy_r_ci95": [
+      -0.9238828707656987,
+      0.49758460732866383
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.2118,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "bootstrap_block5": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 5,
+    "expectancy_r_ci95": [
+      -0.9005189554016326,
+      0.3742877257669271
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.169,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "trades_per_calendar_week": 1.4285714285714286,
+  "pnl_excluding_best_3_sessions": -1227.929584444459
+}

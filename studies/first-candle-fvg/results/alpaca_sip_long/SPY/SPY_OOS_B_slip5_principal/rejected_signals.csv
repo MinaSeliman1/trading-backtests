@@ -1,0 +1,5 @@
+date,signal_time,reason
+2025-11-24,2025-11-24 10:32:00-05:00,broker_capital_or_exposure_rejection_after_gap
+2025-12-08,2025-12-08 09:46:00-05:00,invalid_stop_at_order
+2026-01-02,2026-01-02 09:55:00-05:00,invalid_stop_at_order
+2026-07-10,2026-07-10 09:57:00-04:00,invalid_stop_at_order

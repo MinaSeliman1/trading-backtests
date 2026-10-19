@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "historique-minute",
+      "title": "Historique minute réellement acquis",
+      "queries": [
+        {
+          "id": "alpaca-sip-coverage",
+          "source": {
+            "label": "Alpaca SIP",
+            "files": [
+              {
+                "label": "SPY_manifest.json"
+              },
+              {
+                "label": "QQQ_manifest.json"
+              },
+              {
+                "label": "audit_validation.json"
+              }
+            ],
+            "links": [
+              {
+                "label": "FAQ Alpaca",
+                "href": "https://docs.alpaca.markets/us/docs/market-data-faq"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Couverture",
+                "definition": "Les bougies acquises sont des OHLCV SIP de 1 minute non ajustés ; les séances retenues contiennent toutes les minutes régulières attendues."
+              }
+            ],
+            "filters": [
+              "feed=sip ; timeframe=1Min ; adjustment=raw",
+              "Séances 09:30 à clôture XNYS, America/New_York",
+              "Séance entière exclue si une minute manque ; aucun remplissage"
+            ],
+            "caveats": [
+              "Une clé API personnelle est nécessaire ; la FAQ permet le SIP historique sans abonnement si la fin de requête a plus de quinze minutes."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Rapprochement des acquisitions",
+                "detail": "Toutes les bougies des CSV ont été rapprochées des pages JSON brutes ; les SHA-256 des CSV et des pages concordent."
+              }
+            ]
+          },
+          "reportingPeriod": "3 janvier 2023 au 18 septembre 2026",
+          "columns": [
+            "instrument",
+            "bougies",
+            "seances"
+          ],
+          "rows": [
+            {
+              "instrument": "SPY",
+              "bougies": 773977,
+              "seances": 930
+            },
+            {
+              "instrument": "QQQ",
+              "bougies": 807421,
+              "seances": 931
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "validation-oos",
+      "title": "Validation hors échantillon SPY / QQQ",
+      "queries": [
+        {
+          "id": "principal-oos-results",
+          "source": {
+            "label": "Backtest Python sur Alpaca",
+            "files": [
+              {
+                "label": "comparison_all.csv"
+              },
+              {
+                "label": "audit_validation.json"
+              },
+              {
+                "label": "OUTPUT_VALIDATION.json"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "P&L",
+                "definition": "Le P&L net soustrait les commissions et l’emprunt hypothétique aux gains et pertes des prix simulés avec slippage."
+              },
+              {
+                "label": "Espérance",
+                "definition": "L’espérance en R est la moyenne du résultat net de chaque trade rapporté à son risque initial au fill, hors frais."
+              }
+            ],
+            "filters": [
+              "30 % chronologiques finaux, dates de chaque instrument affichées",
+              "Stops A et B séparés ; 100 000 USD par scénario",
+              "Slippage nominal 1 tick par exécution et spread total 1 tick",
+              "Retest 15 minutes ; confirmation 0 à 2 minutes après retest ; TP 3R ; entrée avant 11:00 NY"
+            ],
+            "caveats": [
+              "Validation historique rétrospective ; une correction numérique symétrique a été appliquée après examen partiel, sans choix de paramètres économiques.",
+              "Les variantes partagent des trades et ne constituent pas des observations indépendantes. Les fills et la disponibilité d’emprunt réels restent inconnus."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "validation",
+                "title": "Contrôles exécutés",
+                "detail": "872 lignes de trades principaux IS/OOS rapprochées des bougies et recalculées indépendamment ; 116 exports rapprochés pour leurs totaux et invariants. Le découpage initial est inchangé."
+              }
+            ]
+          },
+          "reportingPeriod": "SPY : 11 août 2025–18 septembre 2026 ; QQQ : 8 août 2025–18 septembre 2026",
+          "columns": [
+            "instrument",
+            "stop",
+            "debut",
+            "fin",
+            "trades",
+            "PnL_net_USD",
+            "PF",
+            "esperance_R",
+            "IC95_R_bloc5"
+          ],
+          "rows": [
+            {
+              "instrument": "SPY",
+              "stop": "A",
+              "debut": "2025-08-11",
+              "fin": "2026-09-18",
+              "trades": 75,
+              "PnL_net_USD": -1325.9789213888848,
+              "PF": 0.7223597568612163,
+              "esperance_R": -0.256108076799832,
+              "IC95_R_bloc5": "[-0.6136450597743713, 0.14691152877293825]"
+            },
+            {
+              "instrument": "SPY",
+              "stop": "B",
+              "debut": "2025-08-11",
+              "fin": "2026-09-18",
+              "trades": 73,
+              "PnL_net_USD": -2429.868863333338,
+              "PF": 0.5406531866648975,
+              "esperance_R": -0.2652931136321194,
+              "IC95_R_bloc5": "[-0.6557435926046952, 0.18856170184608753]"
+            },
+            {
+              "instrument": "QQQ",
+              "stop": "A",
+              "debut": "2025-08-08",
+              "fin": "2026-09-18",
+              "trades": 58,
+              "PnL_net_USD": -246.61956666669505,
+              "PF": 0.9483769227088928,
+              "esperance_R": -0.2468777639119361,
+              "IC95_R_bloc5": "[-0.6399029833287847, 0.1778273961537506]"
+            },
+            {
+              "instrument": "QQQ",
+              "stop": "B",
+              "debut": "2025-08-08",
+              "fin": "2026-09-18",
+              "trades": 56,
+              "PnL_net_USD": -1096.5496672222484,
+              "PF": 0.7962382262284528,
+              "esperance_R": -0.3729195235396671,
+              "IC95_R_bloc5": "[-0.7502726331608618, 0.007956685848665664]"
+            }
+          ],
+          "methods": [
+            {
+              "language": "calculation",
+              "code": "P&L net = (prix de sortie − prix d’entrée) × sens × quantité − frais.\nR net = P&L net / (|prix d’entrée − stop| × quantité).\nIC95 : percentiles 2,5 % et 97,5 % de 5 000 bootstraps de blocs de cinq séances."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

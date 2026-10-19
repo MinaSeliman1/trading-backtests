@@ -1,0 +1,29 @@
+{
+  "checked_utc": "2026-10-19T20:21:30.097074+00:00",
+  "scope": "Repository import validation; original market backtests were not rerun",
+  "source_files_copied_byte_for_byte": 1977,
+  "snapshot_verification": "passed",
+  "unit_tests": {
+    "command": "python -m pytest -q --basetemp=.test_tmp_github_import",
+    "passed": 41,
+    "failed": 0,
+    "elapsed_seconds": 5.56,
+    "python": "3.14.6",
+    "dependencies": "studies/first-candle-fvg/requirements-lock.txt"
+  },
+  "content_review": {
+    "files_reviewed": 1988,
+    "largest_file_bytes": 335303,
+    "raw_minute_datasets_included": false,
+    "zip_archives_included": false,
+    "credential_pattern_findings": 0
+  },
+  "original_validation": {
+    "reference": "studies/first-candle-fvg/results/alpaca_sip_long/OUTPUT_VALIDATION.json",
+    "source_audit": "studies/first-candle-fvg/results/alpaca_sip_long/audit_validation.json",
+    "scenarios": 116,
+    "png_figures": 122,
+    "primary_trade_rows_audited": 872
+  },
+  "noise_area_status": "mission only; not implemented or backtested"
+}

@@ -1,0 +1,493 @@
+{
+  "provider": "Alpaca Market Data",
+  "symbol": "SPY",
+  "parameters": {
+    "timeframe": "1Min",
+    "start": "2023-01-01T00:00:00Z",
+    "end": "2026-09-21T00:00:00Z",
+    "limit": 10000,
+    "adjustment": "raw",
+    "feed": "sip",
+    "sort": "asc"
+  },
+  "retrieved_utc": "2026-10-19T17:56:58.215307+00:00",
+  "pages": [
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0001.json.gz",
+      "rows": 10000,
+      "sha256": "05bba3b8e01959393c866d2d19c03bed3a752b3b4a15ebedbbe5e32696370bcb"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY3NDE3MTk2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0002.json.gz",
+      "rows": 10000,
+      "sha256": "3c25714b9246c156ad6a654ea1ef336203e467833a16ca07e62f4286b0a5a9ab"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY3NTcxMDk2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0003.json.gz",
+      "rows": 10000,
+      "sha256": "dc3666b55c38b733d94fd34cada134b0cdce348da5c1eff0fd798546df234ba1"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY3NzE3NDMwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0004.json.gz",
+      "rows": 10000,
+      "sha256": "d84768fab61aa3abfa5c24bd98086bec69c89f22da9cf7dde48df5e416ef9d5f"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY3ODcyMzQ0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0005.json.gz",
+      "rows": 10000,
+      "sha256": "61682e574b3a7783a5d6f02c92e0002d5204cd999e358786bd15253b9ba8bcb9"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY4MDA3NzE2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0006.json.gz",
+      "rows": 10000,
+      "sha256": "79126ff6fad9c014dc1b336afd12193943dd4a75acc1ab4a752456995b714199"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY4MTc0MTkyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0007.json.gz",
+      "rows": 10000,
+      "sha256": "5d259303e658d916383ac76ccef6855e5532f07f9e420669cc8232da012dada4"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY4MzEzNjMyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0008.json.gz",
+      "rows": 10000,
+      "sha256": "7ce445b1f92cb0d58dbba6dc482dc28d934a5804c0ea16edd6e91fbb5e7c9f4b"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY4NDc1NDc2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0009.json.gz",
+      "rows": 10000,
+      "sha256": "7e87f96745d5ee8fda87c20f4511ef210570a0eaacaa60dc467a1f925db0e051"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY4NjI0MjQ2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0010.json.gz",
+      "rows": 10000,
+      "sha256": "193f99aad6676db0011a53bad01ec043a0e786025267086d0e7c0f699f243abe"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY4Nzg5ODI4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0011.json.gz",
+      "rows": 10000,
+      "sha256": "423e540f842b888915638b0f60f6e212c75e83ab03597c5acbce58d8ece39013"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY4OTYxOTI2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0012.json.gz",
+      "rows": 10000,
+      "sha256": "6b17cf5a77c36e08eee0a4435e451eba6434e642a39d264fdc00367f33dfed9f"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY5MTA2ODM4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0013.json.gz",
+      "rows": 10000,
+      "sha256": "0572e01585da66ff76a866597920b4327e1ab921fa46dacda9f6333f250f3ad3"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY5MjYzNDc0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0014.json.gz",
+      "rows": 10000,
+      "sha256": "a3211f3f1f3b53dbe785c986a24f1e8f6ef29861c4d9c7bd1b33a1fc9c9878a1"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY5NDE3NTEyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0015.json.gz",
+      "rows": 10000,
+      "sha256": "1f148471f7b9e1af418c28427822bbef9dbd22efad14cd9deaa0bf201eb9aee3"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY5NTc1OTQ4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0016.json.gz",
+      "rows": 10000,
+      "sha256": "a59c76eb39a99f4d05bec13b6d57fa71d192d64ef6d11e366d71c054f61ddbc8"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY5NzE0NzA0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0017.json.gz",
+      "rows": 10000,
+      "sha256": "a21af6785a2c76c90faf1ac5b8d96de015c417a510dbde6e99750b3f43bc1a4b"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTY5ODY5MTYyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0018.json.gz",
+      "rows": 10000,
+      "sha256": "63a30ecdf108e80e0669e8f13571a8c4d9c7792ab15c0470f9b76f9bc2c8a025"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcwMDEzNDY4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0019.json.gz",
+      "rows": 10000,
+      "sha256": "0b6ec1d18d9fdc8799a48bbdbfa5b02bfa50b7cd9dffcb83bf04f011a851b933"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcwMTg3ODIyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0020.json.gz",
+      "rows": 10000,
+      "sha256": "19f7b6cf06bf87d021958b4b29c2df1a144912a17a9ac68577378a1e2c505512"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcwMzYwMjE0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0021.json.gz",
+      "rows": 10000,
+      "sha256": "05ed9ce4881e2fe7965984104781a7038ebb0c816403dad28ff69a31d1dfccd5"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcwNTQxMzM2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0022.json.gz",
+      "rows": 10000,
+      "sha256": "155539835a16ef946bd926117e01b51fb61d064eb22a362bec195b0040df9312"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcwNjgyMTkyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0023.json.gz",
+      "rows": 10000,
+      "sha256": "2c6db39ccb6d4e9d2937645a62e58c37f74750700782714fa462dc7d38abf01b"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcwODU0MjY2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0024.json.gz",
+      "rows": 10000,
+      "sha256": "57dbd178e30d54673e6085e4c2c84b769188132f573c21c988a9e1199cd66693"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcxMDE2MzYyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0025.json.gz",
+      "rows": 10000,
+      "sha256": "17f4c334a8a810d2f3978104484f2aa6846237d770672978cb10cb8adef833fb"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcxMTU4MjQ0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0026.json.gz",
+      "rows": 10000,
+      "sha256": "a027e52db6d41dfad7641dbc414531ad4068d79d61b8a2f047795a18dc823427"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcxMzI5ODc0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0027.json.gz",
+      "rows": 10000,
+      "sha256": "fb25a690abdedbf8acdb033531b53278559ed135fac954c4f9fbac670b3f1277"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcxNDY4NTQwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0028.json.gz",
+      "rows": 10000,
+      "sha256": "caa1242b705d5a2a405450b609ed2e3706c9acf91dacfadc9e54895846862b1e"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcxNjM4NzM2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0029.json.gz",
+      "rows": 10000,
+      "sha256": "12575718ec6a8855193afa6aebb0e69f6ef8b22cc9e4a9294f104456ade52f00"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcxODExNTM2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0030.json.gz",
+      "rows": 10000,
+      "sha256": "ee89b46bdcfcf062acb5773d41151979d87522b2477562be4817aef27f3c7955"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcxOTg1MzA4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0031.json.gz",
+      "rows": 10000,
+      "sha256": "c289350c4fda6399ce329e337bcbbac4b5a3a12a7aa040fe72edb1e4f3024020"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcyMTY0MDYwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0032.json.gz",
+      "rows": 10000,
+      "sha256": "cb5f26bf045115dae1f9bfc99aeec07b35e32ca90d50cc76d2112708a91aae62"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcyMjk3OTkyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0033.json.gz",
+      "rows": 10000,
+      "sha256": "bae191f033adf11aa62122d659200c0ab3c9e61496174d43b7ada22e7b4837d7"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcyNDQzMDYwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0034.json.gz",
+      "rows": 10000,
+      "sha256": "3054ab32da062dbf7fa1e0472a42c9af6909051d8d9b64eb249a07e6e3de5a2a"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcyNjE0MTc0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0035.json.gz",
+      "rows": 10000,
+      "sha256": "5e75332979fdffa5550990fda05dbc9b7d8ac6ee5a4aad744b62cfb42c3b098a"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcyNzc3MTcwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0036.json.gz",
+      "rows": 10000,
+      "sha256": "c7a0977b86222ca3f5a3404049760bbaf3c1db615b047694ff0cb8fac721bff6"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTcyOTE5MTY2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0037.json.gz",
+      "rows": 10000,
+      "sha256": "a82ba711d051291e3ac67198d36cb687319adbc80812a02026e8effe08042cbf"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTczMDgyNzMyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0038.json.gz",
+      "rows": 10000,
+      "sha256": "a096fc60034c8408f8d11ca22cfc1bd10519da2f8c60f023e4adc650e71abaaa"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTczMjIyMDI4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0039.json.gz",
+      "rows": 10000,
+      "sha256": "5776dccdb5cca2bf7790b49c1e49275abfce426151efb5de46b101cf33b9ddad"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTczNDAxNjMyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0040.json.gz",
+      "rows": 10000,
+      "sha256": "aaced0bae459444019b9a1a2a7dfa7a00c9f6fc0c17a75497f00fcf5981dd15e"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTczNTgzMzcyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0041.json.gz",
+      "rows": 10000,
+      "sha256": "f75b5c0122a7a7af9eee6c2877635f2a001260de26484769616b694fea6cefb7"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTczNzU4MzA4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0042.json.gz",
+      "rows": 10000,
+      "sha256": "d4c67acbe46c08cc000e9d1cec0b08fcf7a890607658d98021c9762bec7adf56"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTczOTIwMzU2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0043.json.gz",
+      "rows": 10000,
+      "sha256": "0ffce7c7d9593d55f79a5b7c36d324fb839bf02a01fa01ecb9bb0866218edaa7"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc0MDc0OTUyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0044.json.gz",
+      "rows": 10000,
+      "sha256": "70140d9a1c93706fdf044a5cd5d0a8d900de209ac3959de4b55226920ced18a4"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc0MjIzNTU0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0045.json.gz",
+      "rows": 10000,
+      "sha256": "20f145ea9b5276a9d616f12e258657144d609c87eef16d27265adf934851ac11"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc0MzYxNDc2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0046.json.gz",
+      "rows": 10000,
+      "sha256": "d566bafd29b32bb0a64ea78f6fcca753c1d96de12ac2e40b6bbcf2c9ab308f3d"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc0NDg5NDgwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0047.json.gz",
+      "rows": 10000,
+      "sha256": "fa5f11c73e44c34a5a2d0a8e8ce290fbcb9f19288b8801aa40de59834f598fb1"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc0NjQ4MTA4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0048.json.gz",
+      "rows": 10000,
+      "sha256": "4a27e29722db4961b70434810212bfc36c4a375db72dc04db477977590f07bf1"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc0NzgzOTkwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0049.json.gz",
+      "rows": 10000,
+      "sha256": "c15ebacc788af3529df236eb880c59afbd51462ab1ef3d8500ba8cacbdcb6cda"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc0OTQ3MDUyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0050.json.gz",
+      "rows": 10000,
+      "sha256": "e2e77772711a81c98fca90be615473d81673abef7000ed08b8aeb0c509e83ffc"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc1MDg3Nzk0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0051.json.gz",
+      "rows": 10000,
+      "sha256": "54bbd173cc296aa13269d684572f279ad7750ac8747d9f1b5492127499100f62"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc1MjUzMzg4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0052.json.gz",
+      "rows": 10000,
+      "sha256": "974083bc52004329d3a6862edd7e6502435314357bef09ae5d40bf33c21a02f4"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc1Mzk1OTk2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0053.json.gz",
+      "rows": 10000,
+      "sha256": "a2f2159112193695a1b9f692d0c8dbc5874e264c1ba782e81d9e55949dafd5f9"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc1NTI5Njg4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0054.json.gz",
+      "rows": 10000,
+      "sha256": "d653001b1df1f45b2e41be220bf42a4158452c6a1074334edd466e05ca434ae9"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc1Njk4ODUyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0055.json.gz",
+      "rows": 10000,
+      "sha256": "e1ab412fc5537004a4da3bfdedf58e2f402a3422043c5fe82327768e14c85449"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc1ODU2MDk0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0056.json.gz",
+      "rows": 10000,
+      "sha256": "90c40bed558d097abed11910ab3144db23fcce149fc8d4acfd9f4f8ad1076161"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc2MDAwMjY4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0057.json.gz",
+      "rows": 10000,
+      "sha256": "865c666e79e8c3540f608b52a6a6797c0966ad70f9b274debbb16ffed0851165"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc2MTMzNjAwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0058.json.gz",
+      "rows": 10000,
+      "sha256": "0d06086c5de2a7d7ff98ee11c980709c9cfc3e672ad8cd37b2f3955075fec902"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc2MjgyMjQ0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0059.json.gz",
+      "rows": 10000,
+      "sha256": "dad469bdd27e958c2ce1be0decf893ef77667caf3d855728ac3e3871ebc09c90"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc2NDEwNjk4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0060.json.gz",
+      "rows": 10000,
+      "sha256": "c71bdf9a0d8f1e355507f60694702c3c80bdcad9bfe4add0c4e243dd94c35c1c"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc2NTUzNDgwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0061.json.gz",
+      "rows": 10000,
+      "sha256": "104013f553fab83c2c9f9eadf20fb3b1b4f354521599ea5cbee86736b3013845"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc2NzExNTUwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0062.json.gz",
+      "rows": 10000,
+      "sha256": "2c73650fe41cc573fdac74750b7971697303eadb111d7b666a86af697ba3ee46"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc2ODQ5OTEwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0063.json.gz",
+      "rows": 10000,
+      "sha256": "55434f520c231b6de83fb2e4e3a6b64531dd3234260e3b78c577b67f8edda911"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc3MDA0Mjg0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0064.json.gz",
+      "rows": 10000,
+      "sha256": "9802bc61a5b3fa215f7a22452cff0026e9fa5f0823eec2e08eef169159228518"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc3MTQxMzI0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0065.json.gz",
+      "rows": 10000,
+      "sha256": "d5f0095c7e39dd28e63e0e423e5d4905261ca84c37c9e0add62eb154edfd3b25"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc3MjY2Nzc4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0066.json.gz",
+      "rows": 10000,
+      "sha256": "da876b7ef9070d4a788bee1d8a1ecd733517ebd8a3615df88043230e5b8e9efd"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc3Mzk0MjYwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0067.json.gz",
+      "rows": 10000,
+      "sha256": "35718b9e0ee7efab48a1224e79c42698a24f33fb058965dd64f4f21058e1d2b7"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc3NTQ3NDA0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0068.json.gz",
+      "rows": 10000,
+      "sha256": "51ebe3bcd7e3f5617a0b15cad6873ead7014838703e1cedfd4161940ade44253"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc3NjcyOTM2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0069.json.gz",
+      "rows": 10000,
+      "sha256": "ce9f2811a568777587cb72ca74be3062ef3c4e4d329bbeb6361ad756ceb0b6e4"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc3ODA1ODYwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0070.json.gz",
+      "rows": 10000,
+      "sha256": "cfb820996872dce59fb977912faf53374d1115d32ee69e655295786d9fba5be7"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc3OTM1MTY2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0071.json.gz",
+      "rows": 10000,
+      "sha256": "51e23d88b961f976107a64760ba88d2a72c420d4d5a26d9481bd7188a9c41eaa"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc4MDkwNTcyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0072.json.gz",
+      "rows": 10000,
+      "sha256": "93c5f35d01fda46e57f502823319aa23665d22c6eceed2d563971e867df61023"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc4MjI1NDM0MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0073.json.gz",
+      "rows": 10000,
+      "sha256": "dd46019131708a4c58e50523dd3a1301fdcd2fd1c78598c3f02286dfbd7a52aa"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc4MzY3Mzc2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0074.json.gz",
+      "rows": 10000,
+      "sha256": "d152f830e5513e559084e0f868cc061ea2b6fb603ac3187de158d6b9c46a7086"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc4NTE1MTIwMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0075.json.gz",
+      "rows": 10000,
+      "sha256": "d1095788881282060685df68fcd51fb5e051869db0acb859fa8dde490ebd702f"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc4NjQ1MjE4MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0076.json.gz",
+      "rows": 10000,
+      "sha256": "5495b6057553d93186cb28c00fa288b8d30da97beff6ac4bd927160149e79d4c"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc4Nzc4MTA2MDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0077.json.gz",
+      "rows": 10000,
+      "sha256": "e2faa2c0b3d827d067d0e1c441d12b8fcc9980e796f112818c146785e3245e3a"
+    },
+    {
+      "url": "https://data.alpaca.markets/v2/stocks/SPY/bars?timeframe=1Min&start=2023-01-01T00%3A00%3A00Z&end=2026-09-21T00%3A00%3A00Z&limit=10000&adjustment=raw&feed=sip&sort=asc&page_token=U1BZfE18MTc4OTQwMjYyMDAwMDAwMDAwMA%3D%3D",
+      "path": "data\\alpaca_sip_2023_2026\\SPY_raw_pages\\0078.json.gz",
+      "rows": 3977,
+      "sha256": "c0ff896561e8405ada057d85910dbf51b04e35f8f712905c76e3a7c02b4eef1a"
+    }
+  ],
+  "rows": 773977,
+  "credential_storage": "none",
+  "account_endpoints_used": false,
+  "order_endpoints_used": false,
+  "status": "complete",
+  "path": "data\\alpaca_sip_2023_2026\\SPY_1m.csv",
+  "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+  "first_timestamp": "2023-01-03T09:00:00Z",
+  "last_timestamp": "2026-09-18T23:59:00Z"
+}

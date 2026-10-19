@@ -1,0 +1,63 @@
+{
+  "trades": 58,
+  "winners": 12,
+  "losers": 46,
+  "breakeven": 0,
+  "win_rate": 0.20689655172413793,
+  "win_rate_wilson_95": [
+    0.12251483969490735,
+    0.3276921792148304
+  ],
+  "profit_factor": 0.9483769227088928,
+  "profit_factor_status": "defined",
+  "net_pnl": -246.61956666669505,
+  "net_return_pct": -0.24661956666669504,
+  "expectancy_r": -0.24687776391193614,
+  "average_win_r": 2.932852184907997,
+  "average_loss_r": -1.07637253316931,
+  "win_loss_ratio": 2.724755690552974,
+  "max_drawdown_usd": 1989.5796397222584,
+  "max_drawdown_pct": 1.9847162837569698,
+  "longest_loss_streak": 11,
+  "longest_win_streak": 3,
+  "actual_risk_mean_usd": 104.03620689655091,
+  "actual_risk_max_usd": 249.6599999999887,
+  "actual_risk_mean_pct": 0.10475793728094422,
+  "planned_loss_max_usd": 257.3333166666693,
+  "max_exposure_usd": 100054.56,
+  "max_exposure_pct": 99.99517172954322,
+  "average_duration_minutes": 11.258620689655173,
+  "total_fees": 189.39956666666666,
+  "valid_sessions": 280,
+  "trades_per_five_sessions": 1.0357142857142858,
+  "pnl_excluding_best_3_trades": -2048.4392950000124,
+  "label": "QQQ_OOS_A_slip1_principal",
+  "first_session": "2025-08-08",
+  "last_session": "2026-09-18",
+  "bootstrap_iid": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 1,
+    "expectancy_r_ci95": [
+      -0.6450374248267063,
+      0.21041554267066176
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.1326,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "bootstrap_block5": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 5,
+    "expectancy_r_ci95": [
+      -0.6399029833287847,
+      0.1778273961537506
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.1104,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "trades_per_calendar_week": 0.9830508474576272,
+  "pnl_excluding_best_3_sessions": -2048.4392950000124
+}

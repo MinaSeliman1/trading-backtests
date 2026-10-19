@@ -1,0 +1,26 @@
+[
+  {
+    "instrument": "SPY",
+    "status": "exploratoire",
+    "valid_sessions": 20,
+    "span_days": 26
+  },
+  {
+    "instrument": "QQQ",
+    "status": "exploratoire",
+    "valid_sessions": 19,
+    "span_days": 26
+  },
+  {
+    "instrument": "ES",
+    "status": "exploratoire",
+    "valid_sessions": 20,
+    "span_days": 26
+  },
+  {
+    "instrument": "NQ",
+    "status": "exploratoire",
+    "valid_sessions": 20,
+    "span_days": 26
+  }
+]

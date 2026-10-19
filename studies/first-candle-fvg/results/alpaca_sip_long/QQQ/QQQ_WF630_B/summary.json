@@ -1,0 +1,63 @@
+{
+  "trades": 20,
+  "winners": 5,
+  "losers": 15,
+  "breakeven": 0,
+  "win_rate": 0.25,
+  "win_rate_wilson_95": [
+    0.11186170140766816,
+    0.4687008776187378
+  ],
+  "profit_factor": 0.5797343525251866,
+  "profit_factor_status": "defined",
+  "net_pnl": -728.5639463889513,
+  "net_return_pct": -0.7285639463889513,
+  "expectancy_r": -0.10537027357306764,
+  "average_win_r": 2.8516268619966403,
+  "average_loss_r": -1.091035985429637,
+  "win_loss_ratio": 2.6136872661204693,
+  "max_drawdown_usd": 1206.3531011111918,
+  "max_drawdown_pct": 1.200616684801425,
+  "longest_loss_streak": 7,
+  "longest_win_streak": 2,
+  "actual_risk_mean_usd": 98.71350000000004,
+  "actual_risk_max_usd": 229.67999999998892,
+  "actual_risk_mean_pct": 0.09879938539276388,
+  "planned_loss_max_usd": 237.9653633333389,
+  "max_exposure_usd": 100155.26,
+  "max_exposure_pct": 99.936,
+  "average_duration_minutes": 17.45,
+  "total_fees": 76.6739463888889,
+  "valid_sessions": 63,
+  "trades_per_five_sessions": 1.5873015873015872,
+  "pnl_excluding_best_3_trades": -1536.7981547222812,
+  "label": "QQQ_WF630_B",
+  "first_session": "2025-07-10",
+  "last_session": "2025-10-07",
+  "bootstrap_iid": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 1,
+    "expectancy_r_ci95": [
+      -0.8557479765046213,
+      0.6932700727087588
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.367,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "bootstrap_block5": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 5,
+    "expectancy_r_ci95": [
+      -0.7711145278245229,
+      0.6635121267473129
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.37,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "trades_per_calendar_week": 1.4285714285714286,
+  "pnl_excluding_best_3_sessions": -1536.7981547222812
+}

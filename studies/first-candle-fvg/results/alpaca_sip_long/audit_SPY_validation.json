@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "trades_checked": 448,
+  "source_receipts": [
+    {
+      "instrument": "SPY",
+      "pages_verified": 78,
+      "bars_verified_against_raw_response": 773977,
+      "retained_sessions": 930,
+      "csv_sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc"
+    }
+  ],
+  "reconciliations": [
+    {
+      "label": "SPY_IS_A_slip1_principal",
+      "trades": 154,
+      "net_pnl": -2212.1853366665737,
+      "final_capital": 97787.81466333335
+    },
+    {
+      "label": "SPY_IS_B_slip1_principal",
+      "trades": 146,
+      "net_pnl": 282.90704333347696,
+      "final_capital": 100282.90704333338
+    },
+    {
+      "label": "SPY_OOS_A_slip1_principal",
+      "trades": 75,
+      "net_pnl": -1325.9789213888848,
+      "final_capital": 98674.0210786111
+    },
+    {
+      "label": "SPY_OOS_B_slip1_principal",
+      "trades": 73,
+      "net_pnl": -2429.868863333338,
+      "final_capital": 97570.13113666669
+    }
+  ],
+  "scope": "All IS/OOS principal trades for ['SPY'], stop A/B, slippage 1; not all sensitivity/WF signal paths",
+  "limits": "OHLC cannot establish subminute sequencing, actual fills, borrow availability, or omitted signals"
+}

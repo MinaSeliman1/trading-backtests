@@ -1,0 +1,179 @@
+//@version=6
+strategy("First Candle + FVG | recherche v1", overlay=true, initial_capital=100000,
+     currency=currency.USD, pyramiding=0, commission_type=strategy.commission.cash_per_contract,
+     commission_value=0.005, slippage=1, process_orders_on_close=false,
+     calc_on_order_fills=true, calc_on_every_tick=false, margin_long=100, margin_short=100,
+     max_boxes_count=300, max_labels_count=300)
+
+// Python is authoritative for pessimistic intrabar order, next-open sizing and fee minima.
+string tz = "America/New_York"
+string variant = input.string("A", "Stop", options=["A", "B"])
+int expiryMinutes = input.int(15, "Retest : minutes maximum", minval=1)
+int confirmBars = input.int(2, "Confirmation : bougies après retest", minval=0, maxval=5)
+float riskPct = input.float(0.5, "Risque cible (%)", minval=0.01, maxval=5) / 100
+float marginContract = input.float(25000, "Marge USD/contrat futures", minval=1)
+float futuresLeverage = input.float(10, "Exposition maximale futures / capital", minval=1)
+float perUnitFee = input.float(0.005, "Commission estimée/unité/côté pour taille", minval=0)
+float minimumFee = input.float(1, "Commission minimum/côté pour taille", minval=0)
+int sizingSlippage = input.int(1, "Slippage ticks estimé pour taille (aligner Propriétés)", minval=1)
+int sizingSpread = input.int(1, "Spread complet ticks estimé pour taille", minval=0)
+float volumeFraction = input.float(1, "Volume confirmation maximum (%)", minval=0.01, maxval=100) / 100
+// Futures cash-calendar close must be supplied because CME regular session is different.
+int cashCloseHour = input.int(16, "Clôture cash NY (futures)", minval=10, maxval=16)
+int cashCloseMinute = input.int(0, "Minute clôture cash", minval=0, maxval=59)
+bool showZones = input.bool(true, "Afficher les FVG")
+bool isFuture = syminfo.type == "futures"
+float tick = syminfo.mintick
+float pointValue = syminfo.pointvalue
+int minuteNY = hour(time, tz) * 60 + minute(time, tz)
+int dateNY = year(time, tz) * 10000 + month(time, tz) * 100 + dayofmonth(time, tz)
+bool inCash = minuteNY >= 570 and minuteNY < 960 and dayofweek(time, tz) >= dayofweek.monday and dayofweek(time, tz) <= dayofweek.friday
+bool newDay = ta.change(dateNY) != 0
+bool consecutive = time - time[1] == 60000
+bool bullEngulf = close > open and close[1] < open[1] and open <= close[1] and close >= open[1]
+bool bearEngulf = close < open and close[1] > open[1] and open >= close[1] and close <= open[1]
+
+type Gap
+    int direction
+    float lower
+    float upper
+    int formed
+    int retestBar
+    float extremeLow
+    float extremeHigh
+
+var array<Gap> gaps = array.new<Gap>()
+var float rangeHigh = na
+var float rangeLow = na
+var int rangeCount = 0
+var bool invalidDay = true
+var bool submitted = false
+var float activeStop = na
+var float activeTarget = na
+var int activeDirection = 0
+varip float lastPosition = 0
+varip int lastDecisionBar = na
+bool fillRecalculation = strategy.position_size != lastPosition
+lastPosition := strategy.position_size
+
+roundDown(float price) => math.floor(price / syminfo.mintick + 1e-7) * syminfo.mintick
+roundUp(float price) => math.ceil(price / syminfo.mintick - 1e-7) * syminfo.mintick
+
+if not timeframe.isminutes or timeframe.multiplier != 1
+    runtime.error("Utiliser exclusivement un graphique de 1 minute.")
+
+// At fill recalculation, only actual fill price and previously fixed stop are consumed.
+if fillRecalculation and strategy.position_size != 0
+    float actualEntry = strategy.position_avg_price
+    float actualRisk = activeDirection * (actualEntry - activeStop)
+    if actualRisk <= 0
+        strategy.close_all(comment="Gap : stop invalide après fill", immediately=true)
+    else
+        activeTarget := activeDirection == 1 ? roundUp(actualEntry + 3 * actualRisk) : roundDown(actualEntry - 3 * actualRisk)
+        strategy.exit("Bracket", from_entry=activeDirection == 1 ? "Long" : "Short", stop=activeStop, limit=activeTarget)
+
+bool confirmedRetest = false
+bool confirmedSignal = false
+if barstate.isconfirmed and not fillRecalculation and (na(lastDecisionBar) or bar_index != lastDecisionBar)
+    lastDecisionBar := bar_index
+    if newDay
+        rangeHigh := na
+        rangeLow := na
+        rangeCount := 0
+        invalidDay := true
+        submitted := false
+        array.clear(gaps)
+        activeStop := na
+        activeTarget := na
+    if minuteNY == 570
+        rangeHigh := high
+        rangeLow := low
+        rangeCount := 1
+        invalidDay := false
+        submitted := false
+        array.clear(gaps)
+    else if inCash and minuteNY > 570 and minuteNY < 575
+        if consecutive and not invalidDay
+            rangeHigh := math.max(rangeHigh, high)
+            rangeLow := math.min(rangeLow, low)
+            rangeCount += 1
+        else
+            invalidDay := true
+    if inCash and minuteNY > 570 and not consecutive
+        invalidDay := true
+        array.clear(gaps)
+        strategy.cancel_all()
+        if strategy.position_size != 0
+            strategy.close_all(comment="Minutes manquantes", immediately=true)
+    bool eligible = inCash and minuteNY >= 575 and minuteNY < 659 and rangeCount == 5 and not invalidDay and not submitted and strategy.position_size == 0
+    if eligible
+        int selected = na
+        int i = 0
+        while i < array.size(gaps)
+            Gap g = array.get(gaps, i)
+            bool remove = false
+            if na(g.retestBar)
+                if time_close > g.formed + expiryMinutes * 60000
+                    remove := true
+                else if low <= g.upper and high >= g.lower
+                    g.retestBar := bar_index
+                    g.extremeLow := low
+                    g.extremeHigh := high
+                    confirmedRetest := true
+            if not remove and not na(g.retestBar)
+                if bar_index - g.retestBar > confirmBars
+                    remove := true
+                else
+                    g.extremeLow := math.min(g.extremeLow, low)
+                    g.extremeHigh := math.max(g.extremeHigh, high)
+                    if (g.direction == 1 and bullEngulf) or (g.direction == -1 and bearEngulf)
+                        if na(selected)
+                            selected := i
+            if remove
+                array.remove(gaps, i)
+            else
+                i += 1
+        if not na(selected)
+            Gap g = array.get(gaps, selected)
+            float proposedStop = g.direction == 1 ? roundDown((variant == "A" ? g.extremeLow : g.lower) - tick) : roundUp((variant == "A" ? g.extremeHigh : g.upper) + tick)
+            float assumedFriction = (sizingSlippage + sizingSpread / 2.0) * tick
+            float estimatedEntry = g.direction == 1 ? roundUp(close + assumedFriction) : roundDown(close - assumedFriction)
+            float distance = g.direction * (estimatedEntry - proposedStop)
+            if distance > 0
+                float unitLoss = (distance + assumedFriction) * pointValue + 2 * perUnitFee
+                float byRisk = math.floor(math.max(0, strategy.equity * riskPct - 2 * minimumFee) / unitLoss)
+                float byExposure = math.floor(strategy.equity * (isFuture ? futuresLeverage : 1) / (estimatedEntry * pointValue))
+                float byMargin = math.floor(strategy.equity / (isFuture ? marginContract : estimatedEntry))
+                float byVolume = math.floor(volume * volumeFraction)
+                float qty = math.min(math.min(byRisk, byExposure), math.min(byMargin, byVolume))
+                if qty >= 1
+                    activeStop := proposedStop
+                    activeDirection := g.direction
+                    activeTarget := na
+                    strategy.entry(g.direction == 1 ? "Long" : "Short", g.direction == 1 ? strategy.long : strategy.short, qty=qty)
+                    submitted := true
+                    confirmedSignal := true
+                    label.new(bar_index, close, g.direction == 1 ? "LONG confirmé" : "SHORT confirmé", style=g.direction == 1 ? label.style_label_up : label.style_label_down, color=g.direction == 1 ? color.green : color.red, textcolor=color.white)
+            array.remove(gaps, selected)
+        // Add after processing candidates, so third candle can never be its own retest.
+        bool validTriple = minuteNY >= 577 and time - time[2] == 120000
+        bool longFVG = validTriple and low > high[2] and open[1] <= rangeHigh and close[1] > rangeHigh
+        bool shortFVG = validTriple and high < low[2] and open[1] >= rangeLow and close[1] < rangeLow
+        if longFVG or shortFVG
+            float lower = longFVG ? high[2] : high
+            float upper = longFVG ? low : low[2]
+            array.push(gaps, Gap.new(longFVG ? 1 : -1, lower, upper, time_close, na, na, na))
+            if showZones
+                box.new(left=time, top=upper, right=time_close + expiryMinutes * 60000, bottom=lower, xloc=xloc.bar_time, bgcolor=color.new(longFVG ? color.green : color.red, 88), border_color=color.new(color.gray, 60))
+    bool endCash = isFuture ? minuteNY >= cashCloseHour * 60 + cashCloseMinute - 1 : session.islastbar_regular
+    if inCash and endCash
+        strategy.cancel_all()
+        if strategy.position_size != 0
+            strategy.close_all(comment="Clôture séance", immediately=true)
+
+plot(rangeCount == 5 and inCash ? rangeHigh : na, "Opening Range High", color=color.orange, style=plot.style_linebr)
+plot(rangeCount == 5 and inCash ? rangeLow : na, "Opening Range Low", color=color.blue, style=plot.style_linebr)
+plot(strategy.position_size != 0 ? activeStop : na, "Stop", color=color.red, style=plot.style_linebr)
+plot(strategy.position_size != 0 ? activeTarget : na, "Objectif 3R", color=color.green, style=plot.style_linebr)
+plotshape(confirmedRetest, title="Premier retest", style=shape.circle, location=location.belowbar, color=color.yellow, size=size.tiny)
+plotshape(confirmedSignal, title="Englobante confirmée", style=shape.diamond, location=location.abovebar, color=color.aqua, size=size.tiny)

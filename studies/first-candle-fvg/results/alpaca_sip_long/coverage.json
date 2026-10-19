@@ -1,0 +1,14 @@
+[
+  {
+    "instrument": "SPY",
+    "status": "IS_OOS",
+    "valid_sessions": 930,
+    "span_days": 1355
+  },
+  {
+    "instrument": "QQQ",
+    "status": "IS_OOS",
+    "valid_sessions": 931,
+    "span_days": 1355
+  }
+]

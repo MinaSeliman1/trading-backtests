@@ -1,0 +1,29 @@
+# Environnements et caches
+.python_packages/
+.venv*/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest_*/
+.test_tmp*/
+.mplconfig/
+# Identifiants et configuration personnelle
+.env
+.env.*
+!.env.example
+**/credentials*
+**/secrets*
+*.pem
+*.key
+# Historiques complets : acquisition locale, jamais ajoutés automatiquement
+**/data/**
+!**/data/README.md
+*_1m.csv
+*_raw_pages/
+*.json.gz
+# Archives volumineuses et fichiers système
+*.zip
+*.zip.sha256
+Thumbs.db
+.DS_Store

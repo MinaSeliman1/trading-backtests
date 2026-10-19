@@ -1,0 +1,591 @@
+{
+  "status": "passed",
+  "verifier_sha256": "7d8f41d2e1f0acef1aa37049d1774ebdddb978a44f7d605df7e0901fd3115283",
+  "scenarios_checked": 116,
+  "png_files_checked": 122,
+  "code_and_data_hashes_match": true,
+  "original_split_unchanged": true,
+  "scope": "All export totals and invariants; detailed source/exit audit covers principal IS/OOS 1-tick trades",
+  "checks": [
+    {
+      "label": "SPY_IS_A_slip1_principal",
+      "trades": 154,
+      "net_pnl": -2212.1853366665737
+    },
+    {
+      "label": "SPY_IS_A_slip1_retest10",
+      "trades": 150,
+      "net_pnl": -1812.9283683332383
+    },
+    {
+      "label": "SPY_IS_A_slip1_retest20",
+      "trades": 157,
+      "net_pnl": -2279.262057222128
+    },
+    {
+      "label": "SPY_IS_A_slip1_confirmation0",
+      "trades": 40,
+      "net_pnl": -845.5088988888891
+    },
+    {
+      "label": "SPY_IS_A_slip1_confirmation1",
+      "trades": 98,
+      "net_pnl": -2069.013294166523
+    },
+    {
+      "label": "SPY_IS_A_slip1_confirmation3",
+      "trades": 194,
+      "net_pnl": -1487.7624183331855
+    },
+    {
+      "label": "SPY_IS_A_slip2_principal",
+      "trades": 153,
+      "net_pnl": -2455.2379419443896
+    },
+    {
+      "label": "SPY_IS_A_slip3_principal",
+      "trades": 154,
+      "net_pnl": -3528.807837499969
+    },
+    {
+      "label": "SPY_IS_A_slip5_principal",
+      "trades": 154,
+      "net_pnl": -4351.985556388922
+    },
+    {
+      "label": "SPY_IS_B_slip1_principal",
+      "trades": 146,
+      "net_pnl": 282.90704333347696
+    },
+    {
+      "label": "SPY_IS_B_slip1_retest10",
+      "trades": 143,
+      "net_pnl": 90.7543505556929
+    },
+    {
+      "label": "SPY_IS_B_slip1_retest20",
+      "trades": 148,
+      "net_pnl": 46.673373055694356
+    },
+    {
+      "label": "SPY_IS_B_slip1_confirmation0",
+      "trades": 40,
+      "net_pnl": 236.0225177777268
+    },
+    {
+      "label": "SPY_IS_B_slip1_confirmation1",
+      "trades": 99,
+      "net_pnl": 52.944404166702036
+    },
+    {
+      "label": "SPY_IS_B_slip1_confirmation3",
+      "trades": 180,
+      "net_pnl": 409.1315794445794
+    },
+    {
+      "label": "SPY_IS_B_slip2_principal",
+      "trades": 147,
+      "net_pnl": 7.68322277791242
+    },
+    {
+      "label": "SPY_IS_B_slip3_principal",
+      "trades": 148,
+      "net_pnl": -792.7829099999964
+    },
+    {
+      "label": "SPY_IS_B_slip5_principal",
+      "trades": 149,
+      "net_pnl": -1930.0857511111471
+    },
+    {
+      "label": "SPY_OOS_A_slip1_principal",
+      "trades": 75,
+      "net_pnl": -1325.9789213888848
+    },
+    {
+      "label": "SPY_OOS_A_slip1_retest10",
+      "trades": 75,
+      "net_pnl": -1325.9789213888848
+    },
+    {
+      "label": "SPY_OOS_A_slip1_retest20",
+      "trades": 75,
+      "net_pnl": -1321.9695347222048
+    },
+    {
+      "label": "SPY_OOS_A_slip1_confirmation0",
+      "trades": 19,
+      "net_pnl": -714.9525163888658
+    },
+    {
+      "label": "SPY_OOS_A_slip1_confirmation1",
+      "trades": 53,
+      "net_pnl": -2357.839949999996
+    },
+    {
+      "label": "SPY_OOS_A_slip1_confirmation3",
+      "trades": 96,
+      "net_pnl": -1979.1407699999932
+    },
+    {
+      "label": "SPY_OOS_A_slip2_principal",
+      "trades": 75,
+      "net_pnl": -1442.1328169443454
+    },
+    {
+      "label": "SPY_OOS_A_slip3_principal",
+      "trades": 75,
+      "net_pnl": -1562.7808736109146
+    },
+    {
+      "label": "SPY_OOS_A_slip5_principal",
+      "trades": 75,
+      "net_pnl": -1807.5727994443262
+    },
+    {
+      "label": "SPY_OOS_B_slip1_principal",
+      "trades": 73,
+      "net_pnl": -2429.868863333338
+    },
+    {
+      "label": "SPY_OOS_B_slip1_retest10",
+      "trades": 73,
+      "net_pnl": -2429.868863333338
+    },
+    {
+      "label": "SPY_OOS_B_slip1_retest20",
+      "trades": 73,
+      "net_pnl": -2420.430599999996
+    },
+    {
+      "label": "SPY_OOS_B_slip1_confirmation0",
+      "trades": 19,
+      "net_pnl": -735.0921063888787
+    },
+    {
+      "label": "SPY_OOS_B_slip1_confirmation1",
+      "trades": 53,
+      "net_pnl": -2942.199407222234
+    },
+    {
+      "label": "SPY_OOS_B_slip1_confirmation3",
+      "trades": 90,
+      "net_pnl": -3772.69525222229
+    },
+    {
+      "label": "SPY_OOS_B_slip2_principal",
+      "trades": 73,
+      "net_pnl": -2647.4148161109997
+    },
+    {
+      "label": "SPY_OOS_B_slip3_principal",
+      "trades": 73,
+      "net_pnl": -2769.1602377776926
+    },
+    {
+      "label": "SPY_OOS_B_slip5_principal",
+      "trades": 73,
+      "net_pnl": -3338.2064605554133
+    },
+    {
+      "label": "SPY_WF252_A",
+      "trades": 18,
+      "net_pnl": -177.3523788888678
+    },
+    {
+      "label": "SPY_WF252_B",
+      "trades": 17,
+      "net_pnl": 876.9991983334027
+    },
+    {
+      "label": "SPY_WF315_A",
+      "trades": 18,
+      "net_pnl": -83.28173527779941
+    },
+    {
+      "label": "SPY_WF315_B",
+      "trades": 17,
+      "net_pnl": -91.35881305559528
+    },
+    {
+      "label": "SPY_WF378_A",
+      "trades": 15,
+      "net_pnl": -267.5659055555508
+    },
+    {
+      "label": "SPY_WF378_B",
+      "trades": 14,
+      "net_pnl": -41.500035555597265
+    },
+    {
+      "label": "SPY_WF441_A",
+      "trades": 16,
+      "net_pnl": -243.3959880555293
+    },
+    {
+      "label": "SPY_WF441_B",
+      "trades": 14,
+      "net_pnl": -121.40390472218292
+    },
+    {
+      "label": "SPY_WF504_A",
+      "trades": 13,
+      "net_pnl": 617.2388905555821
+    },
+    {
+      "label": "SPY_WF504_B",
+      "trades": 13,
+      "net_pnl": -174.12319444438128
+    },
+    {
+      "label": "SPY_WF567_A",
+      "trades": 18,
+      "net_pnl": -530.8194561110714
+    },
+    {
+      "label": "SPY_WF567_B",
+      "trades": 18,
+      "net_pnl": -564.7567686110559
+    },
+    {
+      "label": "SPY_WF630_A",
+      "trades": 11,
+      "net_pnl": -104.14516166664436
+    },
+    {
+      "label": "SPY_WF630_B",
+      "trades": 11,
+      "net_pnl": 24.836603055564197
+    },
+    {
+      "label": "SPY_WF693_A",
+      "trades": 20,
+      "net_pnl": -503.6579844444522
+    },
+    {
+      "label": "SPY_WF693_B",
+      "trades": 19,
+      "net_pnl": -575.4766525000056
+    },
+    {
+      "label": "SPY_WF756_A",
+      "trades": 14,
+      "net_pnl": 413.08710138888046
+    },
+    {
+      "label": "SPY_WF756_B",
+      "trades": 14,
+      "net_pnl": -288.38512972220144
+    },
+    {
+      "label": "SPY_WF819_A",
+      "trades": 18,
+      "net_pnl": -428.04755277779344
+    },
+    {
+      "label": "SPY_WF819_B",
+      "trades": 17,
+      "net_pnl": -835.5953611111415
+    },
+    {
+      "label": "SPY_WF882_A",
+      "trades": 14,
+      "net_pnl": -687.1339647222151
+    },
+    {
+      "label": "SPY_WF882_B",
+      "trades": 14,
+      "net_pnl": -755.3256166666561
+    },
+    {
+      "label": "QQQ_IS_A_slip1_principal",
+      "trades": 158,
+      "net_pnl": -1376.684441666584
+    },
+    {
+      "label": "QQQ_IS_A_slip1_retest10",
+      "trades": 154,
+      "net_pnl": -916.0005791665774
+    },
+    {
+      "label": "QQQ_IS_A_slip1_retest20",
+      "trades": 161,
+      "net_pnl": -1707.0799319443663
+    },
+    {
+      "label": "QQQ_IS_A_slip1_confirmation0",
+      "trades": 44,
+      "net_pnl": -1217.7778955555361
+    },
+    {
+      "label": "QQQ_IS_A_slip1_confirmation1",
+      "trades": 110,
+      "net_pnl": -2169.2596963887772
+    },
+    {
+      "label": "QQQ_IS_A_slip1_confirmation3",
+      "trades": 205,
+      "net_pnl": -566.664893888826
+    },
+    {
+      "label": "QQQ_IS_A_slip2_principal",
+      "trades": 157,
+      "net_pnl": -1572.6779783333695
+    },
+    {
+      "label": "QQQ_IS_A_slip3_principal",
+      "trades": 157,
+      "net_pnl": -2514.199308611153
+    },
+    {
+      "label": "QQQ_IS_A_slip5_principal",
+      "trades": 158,
+      "net_pnl": -3610.5847250000743
+    },
+    {
+      "label": "QQQ_IS_B_slip1_principal",
+      "trades": 152,
+      "net_pnl": -1629.272400833292
+    },
+    {
+      "label": "QQQ_IS_B_slip1_retest10",
+      "trades": 149,
+      "net_pnl": -2219.5316202776985
+    },
+    {
+      "label": "QQQ_IS_B_slip1_retest20",
+      "trades": 155,
+      "net_pnl": -2044.7305502777717
+    },
+    {
+      "label": "QQQ_IS_B_slip1_confirmation0",
+      "trades": 43,
+      "net_pnl": -2769.9382783333326
+    },
+    {
+      "label": "QQQ_IS_B_slip1_confirmation1",
+      "trades": 110,
+      "net_pnl": -1748.3644544444123
+    },
+    {
+      "label": "QQQ_IS_B_slip1_confirmation3",
+      "trades": 197,
+      "net_pnl": -2621.4562105555606
+    },
+    {
+      "label": "QQQ_IS_B_slip2_principal",
+      "trades": 153,
+      "net_pnl": -1855.3524469443341
+    },
+    {
+      "label": "QQQ_IS_B_slip3_principal",
+      "trades": 153,
+      "net_pnl": -2749.684460833346
+    },
+    {
+      "label": "QQQ_IS_B_slip5_principal",
+      "trades": 154,
+      "net_pnl": -3603.9959825001156
+    },
+    {
+      "label": "QQQ_OOS_A_slip1_principal",
+      "trades": 58,
+      "net_pnl": -246.61956666669505
+    },
+    {
+      "label": "QQQ_OOS_A_slip1_retest10",
+      "trades": 53,
+      "net_pnl": -545.5649413889168
+    },
+    {
+      "label": "QQQ_OOS_A_slip1_retest20",
+      "trades": 62,
+      "net_pnl": 350.66386694441053
+    },
+    {
+      "label": "QQQ_OOS_A_slip1_confirmation0",
+      "trades": 16,
+      "net_pnl": -1326.4542455555852
+    },
+    {
+      "label": "QQQ_OOS_A_slip1_confirmation1",
+      "trades": 42,
+      "net_pnl": -744.0239891666856
+    },
+    {
+      "label": "QQQ_OOS_A_slip1_confirmation3",
+      "trades": 75,
+      "net_pnl": -1543.5470911111006
+    },
+    {
+      "label": "QQQ_OOS_A_slip2_principal",
+      "trades": 58,
+      "net_pnl": -351.41246305553796
+    },
+    {
+      "label": "QQQ_OOS_A_slip3_principal",
+      "trades": 58,
+      "net_pnl": -461.7238694444461
+    },
+    {
+      "label": "QQQ_OOS_A_slip5_principal",
+      "trades": 58,
+      "net_pnl": -678.1492505556334
+    },
+    {
+      "label": "QQQ_OOS_B_slip1_principal",
+      "trades": 56,
+      "net_pnl": -1096.5496672222482
+    },
+    {
+      "label": "QQQ_OOS_B_slip1_retest10",
+      "trades": 51,
+      "net_pnl": -1232.3388897222633
+    },
+    {
+      "label": "QQQ_OOS_B_slip1_retest20",
+      "trades": 61,
+      "net_pnl": -1267.0269569444686
+    },
+    {
+      "label": "QQQ_OOS_B_slip1_confirmation0",
+      "trades": 16,
+      "net_pnl": -1785.0438455556023
+    },
+    {
+      "label": "QQQ_OOS_B_slip1_confirmation1",
+      "trades": 42,
+      "net_pnl": -1884.9457508334253
+    },
+    {
+      "label": "QQQ_OOS_B_slip1_confirmation3",
+      "trades": 70,
+      "net_pnl": -823.7545774999552
+    },
+    {
+      "label": "QQQ_OOS_B_slip2_principal",
+      "trades": 56,
+      "net_pnl": -1206.4173952777905
+    },
+    {
+      "label": "QQQ_OOS_B_slip3_principal",
+      "trades": 57,
+      "net_pnl": -1338.8470213888418
+    },
+    {
+      "label": "QQQ_OOS_B_slip5_principal",
+      "trades": 58,
+      "net_pnl": -1590.1323097222157
+    },
+    {
+      "label": "QQQ_WF252_A",
+      "trades": 17,
+      "net_pnl": -521.2531063888653
+    },
+    {
+      "label": "QQQ_WF252_B",
+      "trades": 16,
+      "net_pnl": -452.214861666643
+    },
+    {
+      "label": "QQQ_WF315_A",
+      "trades": 17,
+      "net_pnl": 571.7329336111259
+    },
+    {
+      "label": "QQQ_WF315_B",
+      "trades": 17,
+      "net_pnl": 1101.8141522222597
+    },
+    {
+      "label": "QQQ_WF378_A",
+      "trades": 11,
+      "net_pnl": 82.26870750001754
+    },
+    {
+      "label": "QQQ_WF378_B",
+      "trades": 11,
+      "net_pnl": -365.93742583332295
+    },
+    {
+      "label": "QQQ_WF441_A",
+      "trades": 21,
+      "net_pnl": 528.4269400000533
+    },
+    {
+      "label": "QQQ_WF441_B",
+      "trades": 21,
+      "net_pnl": 809.5818822222305
+    },
+    {
+      "label": "QQQ_WF504_A",
+      "trades": 13,
+      "net_pnl": -920.4724597222062
+    },
+    {
+      "label": "QQQ_WF504_B",
+      "trades": 13,
+      "net_pnl": -1528.0736233333437
+    },
+    {
+      "label": "QQQ_WF567_A",
+      "trades": 16,
+      "net_pnl": 684.4026358333122
+    },
+    {
+      "label": "QQQ_WF567_B",
+      "trades": 15,
+      "net_pnl": -231.02177500001937
+    },
+    {
+      "label": "QQQ_WF630_A",
+      "trades": 21,
+      "net_pnl": -348.4479930555459
+    },
+    {
+      "label": "QQQ_WF630_B",
+      "trades": 20,
+      "net_pnl": -728.5639463889513
+    },
+    {
+      "label": "QQQ_WF693_A",
+      "trades": 14,
+      "net_pnl": -616.2329638888708
+    },
+    {
+      "label": "QQQ_WF693_B",
+      "trades": 13,
+      "net_pnl": -973.735340833309
+    },
+    {
+      "label": "QQQ_WF756_A",
+      "trades": 14,
+      "net_pnl": 478.2106711111006
+    },
+    {
+      "label": "QQQ_WF756_B",
+      "trades": 14,
+      "net_pnl": 1032.9103605555958
+    },
+    {
+      "label": "QQQ_WF819_A",
+      "trades": 9,
+      "net_pnl": -1110.4302133333672
+    },
+    {
+      "label": "QQQ_WF819_B",
+      "trades": 9,
+      "net_pnl": -1083.8702133333513
+    },
+    {
+      "label": "QQQ_WF882_A",
+      "trades": 7,
+      "net_pnl": 1285.6699422222237
+    },
+    {
+      "label": "QQQ_WF882_B",
+      "trades": 7,
+      "net_pnl": 623.1094272222177
+    }
+  ]
+}

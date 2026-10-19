@@ -1,0 +1,30 @@
+[
+  {
+    "instrument": "SPY",
+    "valid_sessions": 930,
+    "span_days": 1355,
+    "first": "2023-01-03",
+    "last": "2026-09-18",
+    "IS_first": "2023-01-03",
+    "IS_last": "2025-08-08",
+    "OOS_first": "2025-08-11",
+    "OOS_last": "2026-09-18",
+    "valid_session_fraction": 0.9989258861439313,
+    "calendar": "XNYS",
+    "quality_policy": "entire incomplete sessions excluded, no gap filling"
+  },
+  {
+    "instrument": "QQQ",
+    "valid_sessions": 931,
+    "span_days": 1355,
+    "first": "2023-01-03",
+    "last": "2026-09-18",
+    "IS_first": "2023-01-03",
+    "IS_last": "2025-08-07",
+    "OOS_first": "2025-08-08",
+    "OOS_last": "2026-09-18",
+    "valid_session_fraction": 1.0,
+    "calendar": "XNYS",
+    "quality_policy": "entire incomplete sessions excluded, no gap filling"
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "trades": 75,
+  "winners": 15,
+  "losers": 60,
+  "breakeven": 0,
+  "win_rate": 0.2,
+  "win_rate_wilson_95": [
+    0.12512147714196872,
+    0.30411282834771325
+  ],
+  "profit_factor": 0.7785855583191271,
+  "profit_factor_status": "defined",
+  "net_pnl": -1543.5470911111006,
+  "net_return_pct": -1.5435470911111007,
+  "expectancy_r": -0.27158942910207895,
+  "average_win_r": 2.933429750788187,
+  "average_loss_r": -1.0728442240746456,
+  "win_loss_ratio": 2.7342550623491886,
+  "max_drawdown_usd": 2919.7641525000363,
+  "max_drawdown_pct": 2.914837727041776,
+  "longest_loss_streak": 14,
+  "longest_win_streak": 2,
+  "actual_risk_mean_usd": 112.5826666666658,
+  "actual_risk_max_usd": 385.0,
+  "actual_risk_mean_pct": 0.11389573139120003,
+  "planned_loss_max_usd": 389.8279999999975,
+  "max_exposure_usd": 100054.56,
+  "max_exposure_pct": 99.99671124495299,
+  "average_duration_minutes": 16.0,
+  "total_fees": 245.5670911111111,
+  "valid_sessions": 280,
+  "trades_per_five_sessions": 1.3392857142857142,
+  "pnl_excluding_best_3_trades": -3422.88303277776,
+  "label": "QQQ_OOS_A_slip1_confirmation3",
+  "first_session": "2025-08-08",
+  "last_session": "2026-09-18",
+  "bootstrap_iid": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 1,
+    "expectancy_r_ci95": [
+      -0.6168450298198419,
+      0.1281061920687396
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.0782,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "bootstrap_block5": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 5,
+    "expectancy_r_ci95": [
+      -0.6280634343648,
+      0.10411196061109725
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.0696,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "trades_per_calendar_week": 1.271186440677966,
+  "pnl_excluding_best_3_sessions": -3422.8830327777596
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "instrument": "ES",
+    "raw_rows": 464160,
+    "rth_rows": 129705,
+    "first_timestamp": "2025-06-20 00:00:00-04:00",
+    "last_timestamp": "2026-10-09 16:59:00-04:00",
+    "complete_sessions": 329,
+    "complete_span_days": 477,
+    "metadata_contract_identity": false,
+    "overlap_minutes": 5850,
+    "overlap_ohlc_match_half_tick_fraction": 0.6162393162393163,
+    "upstream_original_repository_status": "404 at time checked",
+    "decision": "not eligible for final dated-contract OOS validation"
+  },
+  {
+    "instrument": "NQ",
+    "raw_rows": 772780,
+    "rth_rows": 215655,
+    "first_timestamp": "2024-08-04 18:00:00-04:00",
+    "last_timestamp": "2026-10-08 19:41:00-04:00",
+    "complete_sessions": 547,
+    "complete_span_days": 795,
+    "metadata_contract_identity": false,
+    "overlap_minutes": 5460,
+    "overlap_ohlc_match_half_tick_fraction": 0.29102564102564105,
+    "upstream_original_repository_status": "404 at time checked",
+    "decision": "not eligible for final dated-contract OOS validation"
+  }
+]

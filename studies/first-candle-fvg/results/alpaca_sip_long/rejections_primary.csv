@@ -1,0 +1,6 @@
+instrument,segment,stop,raison,intentions
+SPY,IS,B,invalid_stop_at_order,8
+SPY,OOS,B,invalid_stop_at_order,4
+QQQ,IS,B,broker_capital_or_exposure_rejection_after_gap,2
+QQQ,IS,B,invalid_stop_at_order,4
+QQQ,OOS,B,invalid_stop_at_order,2

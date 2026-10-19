@@ -1,0 +1,7 @@
+date,signal_time,reason
+2025-08-19,2025-08-19 09:56:00-04:00,invalid_stop_at_order
+2025-11-28,2025-11-28 09:45:00-05:00,invalid_stop_at_order
+2026-04-24,2026-04-24 10:38:00-04:00,invalid_stop_at_order
+2026-07-21,2026-07-21 09:52:00-04:00,invalid_stop_at_order
+2026-08-11,2026-08-11 10:03:00-04:00,invalid_stop_at_order
+2026-08-17,2026-08-17 09:44:00-04:00,invalid_stop

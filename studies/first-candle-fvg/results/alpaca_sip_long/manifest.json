@@ -1,0 +1,118 @@
+{
+  "generated_utc": "2026-10-19T18:39:07.540989+00:00",
+  "command": [
+    "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\fvg_backtest\\__main__.py",
+    "--data",
+    "SPY=data/alpaca_sip_2023_2026/SPY_1m.csv",
+    "--data",
+    "QQQ=data/alpaca_sip_2023_2026/QQQ_1m.csv",
+    "--sensitivity",
+    "--out",
+    "results/alpaca_sip_long"
+  ],
+  "python": "3.14.6",
+  "packages": {
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "exchange-calendars": "4.13.2",
+    "pytest": "9.1.1",
+    "yfinance": "1.7.0"
+  },
+  "config": {
+    "initial_capital": 100000.0,
+    "risk_fraction": 0.005,
+    "stop_variant": "A",
+    "slippage_ticks": 1,
+    "spread_ticks": null,
+    "retest_minutes": 15,
+    "confirmation_bars": 2,
+    "extra_fee_per_unit": 0.0001,
+    "annual_borrow_rate": 0.01,
+    "max_volume_fraction": 0.01
+  },
+  "instruments": {
+    "SPY": {
+      "symbol": "SPY",
+      "tick": 0.01,
+      "point_value": 1.0,
+      "commission": 0.005,
+      "min_commission": 1.0,
+      "margin": 1.0,
+      "max_leverage": 1.0,
+      "futures": false
+    },
+    "QQQ": {
+      "symbol": "QQQ",
+      "tick": 0.01,
+      "point_value": 1.0,
+      "commission": 0.005,
+      "min_commission": 1.0,
+      "margin": 1.0,
+      "max_leverage": 1.0,
+      "futures": false
+    },
+    "ES": {
+      "symbol": "ES",
+      "tick": 0.25,
+      "point_value": 50.0,
+      "commission": 2.5,
+      "min_commission": 0.0,
+      "margin": 25000.0,
+      "max_leverage": 10.0,
+      "futures": true
+    },
+    "NQ": {
+      "symbol": "NQ",
+      "tick": 0.25,
+      "point_value": 20.0,
+      "commission": 2.5,
+      "min_commission": 0.0,
+      "margin": 40000.0,
+      "max_leverage": 10.0,
+      "futures": true
+    }
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\alpaca_sip_2023_2026\\SPY_1m.csv",
+      "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+      "instrument": "SPY",
+      "first_timestamp": "2023-01-03 04:00:00-05:00",
+      "last_timestamp": "2026-09-18 19:59:00-04:00",
+      "raw_rows": 773977,
+      "identical_duplicates_removed": 0,
+      "valid_sessions": 930,
+      "calendar": "XNYS",
+      "timestamp_at": "open",
+      "source_timezone": "offset_or_epoch_in_file",
+      "continuous_unverified": false,
+      "strict_futures": false
+    },
+    {
+      "path": "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\alpaca_sip_2023_2026\\QQQ_1m.csv",
+      "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+      "instrument": "QQQ",
+      "first_timestamp": "2023-01-03 04:00:00-05:00",
+      "last_timestamp": "2026-09-18 19:59:00-04:00",
+      "raw_rows": 807421,
+      "identical_duplicates_removed": 0,
+      "valid_sessions": 931,
+      "calendar": "XNYS",
+      "timestamp_at": "open",
+      "source_timezone": "offset_or_epoch_in_file",
+      "continuous_unverified": false,
+      "strict_futures": false
+    }
+  ],
+  "source_hashes": {
+    "fvg_backtest\\cli.py": "17e8713913ab20e124b85c752e8dac18179bff2c57546789d8c76bf6c0d3dd8f",
+    "fvg_backtest\\data.py": "60d2c42dd5cfe8a2a41b4c3520ad72d4f80550652565601a3fb5d748064e2fa8",
+    "fvg_backtest\\engine.py": "17ac048a842bba8d51d67db394164686c44357194057aa9b769b21ea19804778",
+    "fvg_backtest\\report.py": "3e8b40b87d58938da932f114ceac9ecb9200231fcd44c1140421879f9bb68f40",
+    "fvg_backtest\\__init__.py": "6143479bb5cd17c6e6b2b077810035be3cbe2fe36af482cacdbfbec5b681626d",
+    "fvg_backtest\\__main__.py": "cf7390a2508a0fcad4777a4a629fc5212ab655cb45845975995f835676a834e3"
+  },
+  "bootstrap_reps": 5000,
+  "seed": 20261019
+}

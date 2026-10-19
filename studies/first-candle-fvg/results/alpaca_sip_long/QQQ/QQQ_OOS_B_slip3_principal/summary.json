@@ -1,0 +1,63 @@
+{
+  "trades": 57,
+  "winners": 10,
+  "losers": 47,
+  "breakeven": 0,
+  "win_rate": 0.17543859649122806,
+  "win_rate_wilson_95": [
+    0.0981885223971012,
+    0.29367352829693566
+  ],
+  "profit_factor": 0.7643616042217357,
+  "profit_factor_status": "defined",
+  "net_pnl": -1338.847021388842,
+  "net_return_pct": -1.3388470213888422,
+  "expectancy_r": -0.5837205871552587,
+  "average_win_r": 2.9040184854300994,
+  "average_loss_r": -1.3257927302585262,
+  "win_loss_ratio": 2.19040157571525,
+  "max_drawdown_usd": 2426.701892222176,
+  "max_drawdown_pct": 2.4240482683553113,
+  "longest_loss_streak": 12,
+  "longest_win_streak": 2,
+  "actual_risk_mean_usd": 117.92491228070139,
+  "actual_risk_max_usd": 290.5800000000015,
+  "actual_risk_mean_pct": 0.11943463161823871,
+  "planned_loss_max_usd": 302.0192111111066,
+  "max_exposure_usd": 99864.25,
+  "max_exposure_pct": 99.98961390193762,
+  "average_duration_minutes": 22.0,
+  "total_fees": 184.2170213888889,
+  "valid_sessions": 280,
+  "trades_per_five_sessions": 1.0178571428571428,
+  "pnl_excluding_best_3_trades": -3533.026032499977,
+  "label": "QQQ_OOS_B_slip3_principal",
+  "first_session": "2025-08-08",
+  "last_session": "2026-09-18",
+  "bootstrap_iid": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 1,
+    "expectancy_r_ci95": [
+      -1.139401896816376,
+      -0.07838368720467534
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.0124,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "bootstrap_block5": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 5,
+    "expectancy_r_ci95": [
+      -1.0469231019226897,
+      -0.11876784836031787
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.0074,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "trades_per_calendar_week": 0.9661016949152542,
+  "pnl_excluding_best_3_sessions": -3533.026032499977
+}

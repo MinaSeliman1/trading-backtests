@@ -1,0 +1,63 @@
+{
+  "trades": 194,
+  "winners": 45,
+  "losers": 149,
+  "breakeven": 0,
+  "win_rate": 0.23195876288659795,
+  "win_rate_wilson_95": [
+    0.17811859186062123,
+    0.2962079693165462
+  ],
+  "profit_factor": 0.8798431973449988,
+  "profit_factor_status": "defined",
+  "net_pnl": -1487.7624183331855,
+  "net_return_pct": -1.4877624183331855,
+  "expectancy_r": -0.2103842093149431,
+  "average_win_r": 2.836715538397434,
+  "average_loss_r": -1.1306492337918352,
+  "win_loss_ratio": 2.508926246634422,
+  "max_drawdown_usd": 3871.2478825000144,
+  "max_drawdown_pct": 3.8458053299393917,
+  "longest_loss_streak": 15,
+  "longest_win_streak": 2,
+  "actual_risk_mean_usd": 78.55541237113346,
+  "actual_risk_max_usd": 314.399999999997,
+  "actual_risk_mean_pct": 0.07975987005543879,
+  "planned_loss_max_usd": 325.0826861111034,
+  "max_exposure_usd": 100575.72,
+  "max_exposure_pct": 99.9989114490979,
+  "average_duration_minutes": 18.195876288659793,
+  "total_fees": 649.9724183333333,
+  "valid_sessions": 651,
+  "trades_per_five_sessions": 1.490015360983103,
+  "pnl_excluding_best_3_trades": -3543.325116110954,
+  "label": "SPY_IS_A_slip1_confirmation3",
+  "first_session": "2023-01-03",
+  "last_session": "2025-08-08",
+  "bootstrap_iid": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 1,
+    "expectancy_r_ci95": [
+      -0.44315349459967673,
+      0.026179516265133145
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.041,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "bootstrap_block5": {
+    "status": "computed",
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_sessions": 5,
+    "expectancy_r_ci95": [
+      -0.4375252338992407,
+      0.023578577949410432
+    ],
+    "fraction_bootstrap_expectancy_positive": 0.0374,
+    "note": "percentile bootstrap; fraction positive is not a Bayesian posterior or a p-value"
+  },
+  "trades_per_calendar_week": 1.4264705882352942,
+  "pnl_excluding_best_3_sessions": -3543.325116110954
+}
