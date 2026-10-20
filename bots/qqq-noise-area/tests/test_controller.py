@@ -22,6 +22,16 @@ def test_shadow_uses_real_next_bar_open_and_never_calls_broker(tmp_path):
     assert store.position==0 and len(store.fills())==2
 
 
+def test_observation_clock_records_processing_time_without_changing_fill_time(tmp_path):
+    import json
+    m,s,f=fixture();store=Store(tmp_path/'s.db',Parameters(),'shadow','sip');c=Controller(store,mode='shadow')
+    cutoff=s.open+pd.Timedelta(minutes=31);observed=cutoff+pd.Timedelta(minutes=9)
+    c.step(m,f,s,cutoff,observation_clock=lambda:observed)
+    row=store.db.execute('SELECT data FROM decisions').fetchone()
+    assert pd.Timestamp(json.loads(row[0])['observed_at'])==observed
+    assert pd.Timestamp(store.fills()[0]['timestamp'])==s.open+pd.Timedelta(minutes=30)
+
+
 def test_utc_rest_payload_reaches_shadow_signal_and_costed_fill(tmp_path):
     from qqq_paper.alpaca import DataClient
     m,s,f=fixture();f.iloc[30,f.columns.get_loc('open')]=106;f.iloc[30,f.columns.get_loc('high')]=106

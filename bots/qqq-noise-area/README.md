@@ -6,6 +6,8 @@ Avec le compte gratuit vérifié le 20 octobre, le lancement retenu est **shadow
 
 L'adaptateur **ordres Alpaca paper** reste disponible avec SIP temps réel si le compte possède ces droits et un historique valide. IEX est une expérience distincte, explicitement sélectionnée, dont les signaux peuvent différer de SIP et qui ne passe pas actuellement le contrôle d'historique observé. Aucun basculement silencieux de flux.
 
+**Installation Windows du 20 octobre :** la simulation tourne désormais sans console via `pythonw`, avec démarrage automatique à l'ouverture de session. Les clés PAPER sont protégées dans le coffre Windows et le journal existant est conservé. Voir les [commandes de contrôle, arrêt et reprise](BACKGROUND_WINDOWS.md) et la [preuve de lancement et de reprise](validation/windows_background_2026-10-20.json). Le contrôle prospectif commence le 21 octobre ; aucun résultat prospectif n'est encore revendiqué.
+
 ## Règles figées
 
 | Paramètre | Valeur |
@@ -46,7 +48,7 @@ python -m venv .venv
 .\launch-paper.ps1 -Mode shadow -Feed sip
 ```
 
-Saisir les **clés du compte PAPER** dans la console, jamais dans le chat ou un fichier. Le lanceur masque la saisie, transmet les clés uniquement dans l'environnement de son processus enfant, puis efface ces variables à sa sortie. Aucun secret n'est enregistré dans SQLite, les exports ou Git. La machine, le réseau et la console doivent rester disponibles.
+Ce lancement est le mode interactif : saisir les **clés du compte PAPER** dans la console, jamais dans le chat ou un fichier. Ce lanceur masque la saisie, transmet les clés uniquement dans l'environnement de son processus enfant, puis efface ces variables à sa sortie. Aucun secret n'est enregistré dans SQLite, les exports ou Git. La machine, le réseau et la console doivent rester disponibles. Pour le démarrage sans console et la persistance protégée des clés, utiliser le [lanceur Windows](BACKGROUND_WINDOWS.md).
 
 Pour contrôler la connexion sans ordre :
 
@@ -90,7 +92,7 @@ Si shadow s'arrête avec une position et manque la clôture, la séance suivante
 
 ## Preuves disponibles
 
-- **47 tests** hors ligne, dont conversion UTC/API, historique incomplet, reprise, timeouts, fills partiels, délais, coûts et clôture : [validation](VALIDATION.md).
+- **69 tests**, dont conversion UTC/API, historique incomplet, reprise, timeouts, fills partiels, délais, coûts, clôture, coffre Windows avec clés factices, lancement caché et suivi prospectif : [validation](VALIDATION.md). Les tests fonctionnels restent hors ligne ; deux tests vérifient le coffre Windows avec des identifiants factices uniques, sans lire la clé réelle.
 - Replay SIP réel : **618 séances, 7 380 décisions, 504 transactions** ; résultat net identique au scénario historique à 0,01 USD/action/côté : [preuve JSON](validation/replay_2026-10-20.json).
 - Le replay n'est pas une nouvelle validation hors échantillon. La simulation prospective doit accumuler ses propres observations avant conclusion.
 

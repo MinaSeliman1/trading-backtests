@@ -1,0 +1,37 @@
+# Piste : momentum de clôture sur SPY et QQQ
+
+**Statut au 20 octobre 2026 : protocole préparé, aucun résultat de backtest calculé pour cette piste.** Elle n'est pas ajoutée au bot Noise Area actif.
+
+L'hypothèse principale est que le signe du rendement entre la clôture précédente et la fin de la première demi-heure aide à prévoir la dernière demi-heure. Un article des auteurs Baltussen, Da, Lammers et Martens décrit cette relation étudiée par Gao et al. et présente une autre prédiction fondée sur le reste de la journée. [Source primaire, introduction et définitions, pp. 378 et 381](https://academicweb.nd.edu/~zda/intramom.pdf). Ce constat publié motive un test ; il ne fournit pas nos résultats SPY/QQQ après coûts.
+
+## Règles à figer avant calcul
+
+| Élément | Protocole principal |
+|---|---|
+| Instruments | SPY et QQQ, séparément ; ne pas choisir le gagnant après calcul |
+| Données | OHLCV minute Alpaca SIP raw et dividendes de l'acquisition locale vérifiée |
+| Signal | `close_09:59 / (clôture_RTH_précédente - dividende_ex_date) - 1` |
+| Direction | LONG si positif, SHORT si négatif, aucune position si exactement nul |
+| Entrée | Open 15:30 ; signal du matin déjà connu |
+| Sortie | Open 15:59, sans maintien overnight |
+| Demi-séance | Entrée 12:30, sortie 12:59 ; résultats identifiés séparément |
+| Exposition | 1x ; quantité entière `floor(capital_net / close_15:29)` ; capital initial 100 000 USD |
+| Stop/objectif | Aucun ; ne pas optimiser un stop après observation des gains/pertes |
+| Frais | 0,0035 USD/action/côté, minimum 0,35 USD/ordre ; emprunt SHORT 1 %/360, minimum un jour |
+| Friction adverse | Principal 0,01 USD/action/côté ; stress prédéfini 0,02, 0,03 et 0,05 |
+
+Le rendement du matin inclut l'overnight ; `close_09:59 / open_09:30 - 1` serait une autre hypothèse. La sortie à 15:59 et les données ETF sont des choix de notre protocole : une réplication exacte aux enchères de clôture ou sur futures ne sera pas revendiquée.
+
+Toutes les entrées nécessitent les minutes complètes servant au signal, au dimensionnement et à l'exécution, ainsi que la dernière séance NYSE précédente valide. Aucun remplissage de trous. Publier le nombre et les dates des séances exclues. Ne pas utiliser le volume final ou le prix de clôture pour décider l'entrée à 15:30. Contrôler splits, ex-dividendes et heure d'été.
+
+## Évaluation prévue
+
+Période A : début de l'historique commun vérifié à avril 2024 ; période B : mai 2024 au 16 octobre 2026. Ces périodes ont déjà servi aux études précédentes : B sera présenté comme **historique exploratoire réutilisé**, pas comme un échantillon vierge. Les futures observations après gel du protocole seront distinguées.
+
+Publier tous les instruments et les quatre frictions, plus un diagnostic LONG seul à friction principale (10 scénarios au total). Mesurer résultat net, rendement annualisé, drawdowns quotidien et minute, nombre de transactions, exposition, répartition LONG/SHORT, coûts, résultats annuels et concentration des meilleurs jours. Ajouter l'ablation des trois meilleurs jours et une incertitude tenant compte des dépendances temporelles ; ne pas présenter un bootstrap avec trop peu d'années comme une preuve forte.
+
+Comparer à une position LONG systématique sur le même créneau et au rendement du signal opposé, avec les mêmes quantités et frais. Ces références diagnostiques seront publiées séparément, sans les intégrer à un choix rétrospectif du meilleur modèle. Examiner manuellement des transactions gagnantes et perdantes, ex-dividendes et demi-séances. Tester causalité, décalage des prix, coûts, absence d'overnight et absence de fuite future.
+
+Critère pour poursuivre en simulation : avantage net qui résiste aux coûts plus élevés, ne repose pas seulement sur quelques jours ou un seul régime, et reste crédible face aux références. Si ce n'est pas le cas, archiver le résultat négatif sans multiplier ensuite les filtres. Aucun passage en argent réel n'est prévu dans cette étude.
+
+Une extension utilisant le rendement jusqu'à 15:29 sera une étude distincte, avec son propre gel de règles et une entrée tenant compte du délai de publication de cette minute. Elle ne sera pas introduite après coup comme une correction de l'hypothèse principale.

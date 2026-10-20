@@ -5,7 +5,7 @@ import os
 import json
 import pandas as pd
 import exchange_calendars as xcals
-from .strategy import Session
+from .strategy import Session,decision_times
 from noise_area.data import read_market
 
 
@@ -65,3 +65,22 @@ def load_history(data,session,folder,feed):
 def write_status(folder,**fields):
     path=Path(folder)/'status.json';temp=path.with_suffix('.tmp')
     temp.write_text(json.dumps(fields,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8');temp.replace(path)
+
+
+def finalize_shadow_session(store,session,asof,observed_at=None):
+    day=str(session.open.date());key='completed_session:'+day
+    if store.get(key) or asof<session.close or store.position or store.get('paused') or store.get('paused_day')==day:return False
+    on_time=0;times=decision_times(session)
+    for at in times:
+        row=store.db.execute('SELECT data FROM decisions WHERE key=?',(f'{day}:{at:%H%M}',)).fetchone()
+        if row is None:return False
+        data=json.loads(row[0])
+        if data.get('status')!='processed':return False
+        if data.get('observed_at'):
+            delay=(pd.Timestamp(data['observed_at'])-at).total_seconds()
+            if 0<=delay<=120:on_time+=1
+    observed_at=asof if observed_at is None else pd.Timestamp(observed_at)
+    close_on_time=0<=(observed_at-session.close).total_seconds()<=120
+    with store.db:store.put(key,json.dumps(dict(day=day,processed_decisions=len(times),on_time_decisions=on_time,
+        closure_observed_on_time=close_on_time,fully_prospective=on_time==len(times) and close_on_time,closing_equity=store.balance,asof=str(asof),observed_at=str(observed_at))))
+    return True

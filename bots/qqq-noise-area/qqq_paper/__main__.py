@@ -11,7 +11,7 @@ import pandas as pd
 from .strategy import Parameters,verify_frozen_strategy
 from .ledger import Store
 from .alpaca import Transport,PaperBroker,DataClient,APIError
-from .runtime import ProcessLock,session_for,load_history,write_status
+from .runtime import ProcessLock,session_for,load_history,write_status,finalize_shadow_session
 from .runner import Controller,Executor,PendingOrder
 
 
@@ -24,8 +24,10 @@ def arguments(argv=None):
     p.add_argument('--check',action='store_true',help='Connexion et lecture uniquement, aucun ordre.')
     p.add_argument('--once',action='store_true')
     p.add_argument('--poll-seconds',type=float,default=5.)
+    p.add_argument('--stop-file',type=Path,help='Arret local sans ordre, shadow uniquement.')
     a=p.parse_args(argv)
     if not 1<=a.poll_seconds<=60:p.error('poll-seconds must be between 1 and 60')
+    if a.stop_file and a.mode!='shadow':p.error('stop-file is supported only for shadow simulation')
     return a
 
 
@@ -42,10 +44,13 @@ def preflight(broker,store):
     return account
 
 
-def main(argv=None):
+def main(argv=None,credentials=None):
     a=arguments(argv);a.runtime.mkdir(parents=True,exist_ok=True);verify_frozen_strategy()
     folder=a.runtime/(a.mode+'-'+a.feed);folder.mkdir(parents=True,exist_ok=True)
-    key=os.environ.get('ALPACA_PAPER_KEY_ID','');secret=os.environ.get('ALPACA_PAPER_SECRET_KEY','')
+    if credentials is None:
+        key=os.environ.get('ALPACA_PAPER_KEY_ID','');secret=os.environ.get('ALPACA_PAPER_SECRET_KEY','')
+    else:
+        key,secret=credentials;credentials=None
     if a.prompt:
         print('QQQ NOISE AREA — ALPACA PAPER UNIQUEMENT',flush=True)
         print('Cles du compte PAPER ; saisie masquee ; aucune sauvegarde des cles.',flush=True)
@@ -72,6 +77,9 @@ def main(argv=None):
         print('Bot demarre. Ctrl+C suspend les entrees et tente de fermer la position geree si le marche est ouvert.',flush=True)
         history=None;loaded_day=None;dividend=0.;last_note=None;recovering=True
         while True:
+            if a.stop_file and a.stop_file.exists():
+                write_status(folder,state='stopped',mode=a.mode,feed=a.feed,managed_qty=store.position,utc=datetime.now(timezone.utc).isoformat())
+                store.export(folder);return 0
             try:
                 clock=broker.clock();now=pd.Timestamp(clock['timestamp']).tz_convert('America/New_York')
                 day=str(now.date());session=session_for(day)
@@ -97,7 +105,11 @@ def main(argv=None):
                     end=min(asof.floor('min'),session.close)
                     if end>session.open:
                         bars=data.bars(session.open,end,a.feed)
-                        controller.step(history,bars,session,asof,dividend)
+                        if a.mode=='shadow':
+                            observation_clock=lambda:pd.Timestamp(datetime.now(timezone.utc))-pd.Timedelta(minutes=16)
+                            controller.step(history,bars,session,asof,dividend,observation_clock=observation_clock)
+                            finalize_shadow_session(store,session,asof,observed_at=observation_clock())
+                        else:controller.step(history,bars,session,asof,dividend)
                     state='paused' if store.get('paused') or store.get('paused_day')==day else 'running'
                 status=dict(state=state,mode=a.mode,feed=a.feed,utc=datetime.now(timezone.utc).isoformat(),
                             managed_qty=store.position,net_realized_equity=store.balance,model_extra_friction_per_share=.01,

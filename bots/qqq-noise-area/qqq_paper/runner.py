@@ -113,7 +113,7 @@ class Controller:
         day=str(session.open.tz_convert('America/New_York').date())
         return self.mode=='paper' and (asof>=session.flatten or bool(self.store.get('paused')) or
             self.store.get('paused_day')==day or bool(self.store.position and self.store.position_day!=day))
-    def step(self,history,frame,session,asof,dividend=0.):
+    def step(self,history,frame,session,asof,dividend=0.,observation_clock=None):
         asof=pd.Timestamp(asof);day=str(session.open.tz_convert('America/New_York').date())
         if asof<session.open:return
         if self.mode=='shadow' and self.store.position and self.store.position_day!=day:
@@ -155,7 +155,8 @@ class Controller:
                 if self.mode=='paper':self._flatten_paper(day,asof)
                 break
             ok=self._target(x.target,quantity,day,at.strftime('%H%M'),reference,at)
-            self.store.record(key,dict(status='processed' if ok else 'partial_or_rejected',**vars(x),quantity=quantity,observed_at=str(asof)))
+            observed=observation_clock() if observation_clock is not None else asof
+            self.store.record(key,dict(status='processed' if ok else 'partial_or_rejected',**vars(x),quantity=quantity,observed_at=str(observed)))
             if not ok:break
         if self.mode=='shadow' and asof>=session.close and self.store.position:
             try:reference=float(frame.loc[session.flatten,'open'])

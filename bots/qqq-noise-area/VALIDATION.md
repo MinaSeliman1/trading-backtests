@@ -1,5 +1,17 @@
 # Validation QQQ Noise Area paper — 20 octobre 2026
 
+## Extension arrière-plan Windows
+
+**69 tests passent en 15,40 secondes**, commande `python -m pytest -q --basetemp=.test_tmp_windows_release`. Deux tests de coffre Windows utilisent des valeurs factices sous une cible de test unique, supprimée après le roundtrip. Le profil restreint de l'environnement refuse l'accès au coffre ; ces tests ont donc été exécutés sous le contexte utilisateur autorisé. Aucune clé réelle n'est imprimée ou incluse dans les tests. Les scripts PowerShell ont aussi été analysés sans erreur de syntaxe.
+
+La tâche Windows est enregistrée et active sous l'utilisateur courant, déclenchée à sa connexion avec délai de 20 secondes, `pythonw.exe`, fenêtre absente, durée d'exécution illimitée. Le premier lancement caché a été observé, puis un arrêt par drapeau et une reprise immédiate ont réussi : même solde **99 237,196 USD**, à plat, aucun ordre en attente, séquence de fills inchangée à **2**. L'ancienne console dédiée est fermée. La tâche de connexion est vérifiée, mais un redémarrage effectif du PC n'a pas été provoqué pour ce test. [Preuve sans identifiants de compte](validation/windows_background_2026-10-20.json).
+
+Une revue indépendante a trouvé deux défauts de cette extension. Les premiers tests rouges ont reproduit une observation tardive datée avec l'horloge antérieure au téléchargement et un lancement perdu pendant l'arrêt du superviseur. La correction conserve le cutoff des données, mais date l'observation après calcul/fill ; le marqueur de clôture utilise une observation distincte après traitement. Le script attend désormais la fin de la tâche précédente avant de supprimer le drapeau, puis confirme un superviseur récent avec processus actif. Les régressions incluent l'absence de double lancement et la conservation d'un solde existant avec position virtuelle ouverte lors d'un arrêt shadow. La seconde revue ne trouve plus de blocage sur les changements corrigés.
+
+Le module de bilan lit SQLite en lecture seule. Une référence prospective créée une seule fois débute le **21 octobre 2026**, au solde existant, sans inclure les fills du rattrapage du 20 octobre. Les séances avec décision ou clôture observée trop tard ne deviennent pas entièrement prospectives ; les manques sont signalés. Premier bilan à 20 séances complètes, bilan prolongé à 60 séances et 50 transactions fermées ; ces seuils ne prouvent pas une rentabilité. Le suivi de ce chat est programmé les jours ouvrés à 17 h, heure locale Toronto. [Exploitation et limites](BACKGROUND_WINDOWS.md).
+
+Les preuves de replay et de la livraison antérieure ci-dessous restent datées de leur version ; le replay de marché n'a pas été réexécuté pour cette extension d'exploitation. Aucun résultat des études historiques n'est modifié.
+
 ## Périmètre effectivement exercé
 
 **47 tests contrôlés passent en 9,20 secondes** sous Python 3.14.6, avec les dépendances figées de l'étude. Les données de ces tests ne sont pas des résultats de marché. Commande depuis ce dossier :

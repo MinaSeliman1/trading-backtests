@@ -1,0 +1,85 @@
+{
+  "observed_utc": "2026-10-20T21:03:41.825951+00:00",
+  "mode": "shadow",
+  "feed": "sip",
+  "data_delay_minutes": 16,
+  "broker_orders_enabled": false,
+  "windows": {
+    "observed_utc": "2026-10-20T21:03:41.5333404Z",
+    "task_state": "Running",
+    "executable": "pythonw.exe",
+    "main_window_handle": 0,
+    "matching_bot_processes": 1,
+    "trigger_type": "MSFT_TaskLogonTrigger",
+    "trigger_delay": "PT20S",
+    "logon_type": "Interactive",
+    "hidden": true,
+    "execution_time_limit": "PT0S",
+    "multiple_instances": "IgnoreNew",
+    "start_when_available": true
+  },
+  "engine": {
+    "state": "running",
+    "utc": "2026-10-20T21:03:41.021026+00:00",
+    "age_seconds": 0.80316,
+    "managed_qty": 0
+  },
+  "transition": {
+    "balance_before": 99237.19600000001,
+    "balance_after": 99237.19600000001,
+    "position_after": 0,
+    "pending_after": 0,
+    "fill_seq_before": 2,
+    "fill_seq_after": 2,
+    "old_console_closed": true,
+    "graceful_stop_and_restart_observed": true
+  },
+  "automatic_logon_trigger_verified": true,
+  "actual_pc_reboot_tested": false,
+  "prospective": {
+    "first_session": "2026-10-21",
+    "initial_realized_equity": 99237.19600000001,
+    "completed_sessions_at_activation": 0,
+    "baseline_fill_seq": 2
+  },
+  "follow_up": {
+    "automation_id": "suivi-simulation-qqq",
+    "status": "ACTIVE",
+    "schedule": "Weekdays 17:00 America/Toronto",
+    "first_bilan_sessions": 20,
+    "extended_bilan_sessions": 60,
+    "extended_bilan_closed_trades": 50
+  },
+  "validation": {
+    "tests_passed": 69,
+    "elapsed_seconds": 15.4,
+    "windows_vault_dummy_roundtrip": true,
+    "independent_review": "Two P2 findings reproduced and fixed; second review no remaining blockers",
+    "fvg_snapshot_files_unchanged": 1977
+  },
+  "code_sha256": {
+    "configure-windows.ps1": "70c2e241941d2464f191b0759d8b15b5ca596de427c250d26446e99d00a91551",
+    "install-background.ps1": "ba441e6d4863632cdef616041fdc41fc16e435ad2a292552747ff4975ddadf2d",
+    "qqq_paper/__init__.py": "6e8857f72754d37e80f8d8ae8002dc03646ecec514cc7f6ad6d5acef40b765dd",
+    "qqq_paper/__main__.py": "0a1585bf49b9459c01d77596ab29bdffc8d38c47e49ada2fa7cd2d0c1a575bae",
+    "qqq_paper/alpaca.py": "e2f1f5b2dc7c2ed19f96f128a510b3d4c15d9d3466fb841f6f3210ce4fb8fb11",
+    "qqq_paper/background.py": "4f2ef06bd4e55a6a85147fafb7d1de503837817f8db2d07f63a443579ece658f",
+    "qqq_paper/ledger.py": "5fd29078d545edb07c95756fee9c77d0157f45bd5a56ede3c3b20dddf0481e8e",
+    "qqq_paper/monitor.py": "0081f9c7040b5c438143785435117b4eff5c072887f0e231a996fe5da608b572",
+    "qqq_paper/runner.py": "545b07b913e7ae1b8c82014c72fb98d58cb30297c64ce49ec53199cb07ca3320",
+    "qqq_paper/runtime.py": "f152b1bd0f4aa23feeafc70f950850825f1493519ea5b9335e8e5f5ef9e5bb4e",
+    "qqq_paper/strategy.py": "e9c78635edfd73dccfa51bd10f64df2bda416cb0c6f44e1301d62824207fa6bc",
+    "qqq_paper/windows_setup.py": "ef97899bcb6240125a88158c11ee8ffcbcf73ba9e2f2b6e66864ad5410fc4f94",
+    "qqq_paper/windows_vault.py": "2057cf38cefa4c7c6aa03471028f32abac9a727079ac42279e751737bcc4a52f",
+    "scripts/background_bootstrap.py": "2c8901f11ecc17e950ac46a73f2fe3ebe6fae1072a05cc669c771bd9d1c30976",
+    "start-background.ps1": "29a7470c13aacdd8e9d4ac90a5262fa774e788968c120f9ad88ee4926e2782aa",
+    "stop-background.ps1": "c1263d00350699b327253ca74ffb234cce6c849253ebfdac1e2cbaaac2f67317",
+    "windows-common.ps1": "2524fb54632e359678665b4c57c83c127a63c9a363d60da38f8d94b23d8c49c9"
+  },
+  "limits": [
+    "Automatic startup observed through registered task, not by rebooting PC.",
+    "Requires logged-on user, awake PC and internet.",
+    "Delayed historical fills are local simulations, not Alpaca orders.",
+    "Prospective milestones do not establish statistical profitability."
+  ]
+}
