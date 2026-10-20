@@ -1,0 +1,71 @@
+{
+  "utc": "2026-10-20T01:59:55.386158+00:00",
+  "periods": {
+    "SPY": {
+      "A": [
+        "2016-01-26",
+        "2024-04-30"
+      ],
+      "B": [
+        "2024-05-01",
+        "2026-10-16"
+      ],
+      "C": [
+        "2024-05-15",
+        "2026-10-16"
+      ],
+      "D": [
+        "2025-09-23",
+        "2026-10-16"
+      ]
+    },
+    "QQQ": {
+      "A": [
+        "2016-01-26",
+        "2024-04-30"
+      ],
+      "B": [
+        "2024-05-01",
+        "2026-10-16"
+      ],
+      "C": [
+        "2024-05-15",
+        "2026-10-16"
+      ],
+      "D": [
+        "2025-09-23",
+        "2026-10-16"
+      ]
+    }
+  },
+  "config": {
+    "execution": "next_open",
+    "slippage": 0.001,
+    "leverage_cap": 4.0,
+    "frequency": 30,
+    "stop": "combined",
+    "borrow_rate": 0.01
+  },
+  "volatility_terciles_from_A": {
+    "SPY": [
+      0.005814610704031158,
+      0.009947109438224444
+    ],
+    "QQQ": [
+      0.008197558168849777,
+      0.013113043746936252
+    ]
+  },
+  "protocol_sha256": {
+    "docs/PROTOCOLE.md": "6a77652793693c750346367909779d27b0990cd777d121a4284af969863bb450"
+  },
+  "code_sha256": {
+    "noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "noise_area/engine.py": "64a49a9575d7badc8921c5c2c34bbe650d0f47e7fab0d6b45f3700f6501e1f76",
+    "noise_area/features.py": "ecab630d5f850c4def089739c9a13b7acd88de1361527483ff39f0f6a6765664",
+    "noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "noise_area/__init__.py": "bade9dd944a6b2d0ed267f6290bad7bcb78082f4040cb92066b29fb66bba624a",
+    "run_study.py": "3cd1a7aee8fd5ebd1a16eb5fefd71a547d6cf9459068abce7135ec20c2b1c947"
+  },
+  "note": "Frozen before first performance simulation. Retrospective study; current paper revision dated 2025-09-22."
+}

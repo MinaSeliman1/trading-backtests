@@ -1,0 +1,194 @@
+[
+  {
+    "instrument": "SPY",
+    "label": "D_close_L1_s0.001_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0005233162698451954,
+      0.00022472740007035773
+    ],
+    "sharpe_ci95": [
+      -2.7544812061342436,
+      0.9541809230503531
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -4.58784442240924,
+      0.5891163813981531
+    ],
+    "p_random_sharpe_ge_strategy": 0.7432567432567433,
+    "note": "Supplemental uncertainty assessment; no signal, parameter or P&L changed."
+  },
+  {
+    "instrument": "SPY",
+    "label": "D_close_L4_s0.001_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.001404705236552739,
+      0.0009029711045478072
+    ],
+    "sharpe_ci95": [
+      -2.655876192572811,
+      1.1766971721474773
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -4.537758882223098,
+      0.9129154303883704
+    ],
+    "p_random_sharpe_ge_strategy": 0.6273726273726273,
+    "note": "Supplemental uncertainty assessment; no signal, parameter or P&L changed."
+  },
+  {
+    "instrument": "SPY",
+    "label": "D_next_open_L1_s0.001_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0005209521933279174,
+      0.00022927330584536225
+    ],
+    "sharpe_ci95": [
+      -2.714003366769075,
+      0.9833449180062388
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -4.532398113380384,
+      0.5948151179247432
+    ],
+    "p_random_sharpe_ge_strategy": 0.7332667332667333,
+    "note": "Supplemental uncertainty assessment; no signal, parameter or P&L changed."
+  },
+  {
+    "instrument": "SPY",
+    "label": "D_next_open_L4_s0.001_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.001403420358128044,
+      0.0009162726612921846
+    ],
+    "sharpe_ci95": [
+      -2.6501260284302917,
+      1.198753206386752
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -4.517918304529437,
+      0.9212434672337074
+    ],
+    "p_random_sharpe_ge_strategy": 0.6243756243756243,
+    "note": "Supplemental uncertainty assessment; no signal, parameter or P&L changed."
+  },
+  {
+    "instrument": "QQQ",
+    "label": "D_close_L1_s0.001_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00015223242819648118,
+      0.000921821885187718
+    ],
+    "sharpe_ci95": [
+      -0.5871627403284514,
+      2.951276270910241
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.271619475014214,
+      2.893234681157366
+    ],
+    "p_random_sharpe_ge_strategy": 0.07292707292707293,
+    "note": "Supplemental uncertainty assessment; no signal, parameter or P&L changed."
+  },
+  {
+    "instrument": "QQQ",
+    "label": "D_close_L4_s0.001_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00028645137573382953,
+      0.0022060540670356603
+    ],
+    "sharpe_ci95": [
+      -0.5733287991970594,
+      2.7169036688405694
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.3143124355987954,
+      2.8650313731696504
+    ],
+    "p_random_sharpe_ge_strategy": 0.07592407592407592,
+    "note": "Supplemental uncertainty assessment; no signal, parameter or P&L changed."
+  },
+  {
+    "instrument": "QQQ",
+    "label": "D_next_open_L1_s0.001_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.000155465508069013,
+      0.0009176043033213802
+    ],
+    "sharpe_ci95": [
+      -0.6145325419882594,
+      2.9380405882231813
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.2961325452450128,
+      2.8800148181051006
+    ],
+    "p_random_sharpe_ge_strategy": 0.07292707292707293,
+    "note": "Supplemental uncertainty assessment; no signal, parameter or P&L changed."
+  },
+  {
+    "instrument": "QQQ",
+    "label": "D_next_open_L4_s0.001_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00029636055315777806,
+      0.0022031888732430226
+    ],
+    "sharpe_ci95": [
+      -0.5882670772483326,
+      2.7140558313304
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.3319237520383727,
+      2.854282628330046
+    ],
+    "p_random_sharpe_ge_strategy": 0.07792207792207792,
+    "note": "Supplemental uncertainty assessment; no signal, parameter or P&L changed."
+  }
+]

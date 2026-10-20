@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "utc": "2026-10-20T01:54:53.684418+00:00",
+  "profiles": [
+    {
+      "symbol": "SPY",
+      "first": "2015-12-31",
+      "last": "2026-10-16",
+      "calendar_sessions": 2714,
+      "valid_sessions": 2705,
+      "excluded_sessions": 9,
+      "raw_rows": 2166287,
+      "cash_dividend_count": 43,
+      "last_cash_dividend": "2026-09-18"
+    },
+    {
+      "symbol": "QQQ",
+      "first": "2015-12-31",
+      "last": "2026-10-16",
+      "calendar_sessions": 2714,
+      "valid_sessions": 2707,
+      "excluded_sessions": 7,
+      "raw_rows": 2092391,
+      "cash_dividend_count": 44,
+      "last_cash_dividend": "2026-09-21"
+    }
+  ],
+  "acquisitions": [
+    {
+      "manifest": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\noise_area_extension\\2016_2022\\SPY_manifest.json",
+      "path": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\noise_area_extension\\2016_2022\\SPY_1m.csv",
+      "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+      "rows": 1374698,
+      "pages": 138,
+      "raw_pages_reconciled": true
+    },
+    {
+      "manifest": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\alpaca_sip_2023_2026\\SPY_manifest.json",
+      "path": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\alpaca_sip_2023_2026\\SPY_1m.csv",
+      "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+      "rows": 773977,
+      "pages": 78,
+      "raw_pages_reconciled": true
+    },
+    {
+      "manifest": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\noise_area_extension\\recent\\SPY_manifest.json",
+      "path": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\noise_area_extension\\recent\\SPY_1m.csv",
+      "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+      "rows": 17612,
+      "pages": 2,
+      "raw_pages_reconciled": true
+    },
+    {
+      "manifest": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\noise_area_extension\\2016_2022\\QQQ_manifest.json",
+      "path": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\noise_area_extension\\2016_2022\\QQQ_1m.csv",
+      "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+      "rows": 1266570,
+      "pages": 127,
+      "raw_pages_reconciled": true
+    },
+    {
+      "manifest": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\alpaca_sip_2023_2026\\QQQ_manifest.json",
+      "path": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\alpaca_sip_2023_2026\\QQQ_1m.csv",
+      "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+      "rows": 807421,
+      "pages": 81,
+      "raw_pages_reconciled": true
+    },
+    {
+      "manifest": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\noise_area_extension\\recent\\QQQ_manifest.json",
+      "path": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\noise_area_extension\\recent\\QQQ_1m.csv",
+      "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+      "rows": 18400,
+      "pages": 2,
+      "raw_pages_reconciled": true
+    }
+  ],
+  "script_sha256": "6d94c9f28d8ccc1823c890ebeee6edc651baa629b819bf38f48a21953bffd948",
+  "corporate_actions_source": "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\noise_area_extension\\corporate_actions",
+  "dividend_reconciliation": {
+    "SPY": {
+      "source": "SSGA official historical distributions XLSX",
+      "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+      "count": 43
+    },
+    "QQQ": {
+      "source": "Alpaca corporate actions; exact equal duplicate removed",
+      "count": 44,
+      "duplicates_removed": [
+        "2022-09-19"
+      ]
+    },
+    "notes": [
+      "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+      "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+      "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+      "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+    ]
+  },
+  "original_raw_acquisition_audit": "DATA_VALIDATION_acquisition_v1.json",
+  "prepared_files_sha256": {
+    "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+    "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+    "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+    "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+    "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+    "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+  }
+}

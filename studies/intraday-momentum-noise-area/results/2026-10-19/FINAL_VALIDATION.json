@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "utc": "2026-10-20T13:31:55.101448+00:00",
+  "scenarios": 220,
+  "figures": 73,
+  "source_and_protocol_hashes_unchanged": true,
+  "prepared_hashes_reproduced": 6,
+  "historical_audit": "passed",
+  "risk_audit": "passed",
+  "local_links_checked": 49,
+  "python_sources_parsed": 22,
+  "manual_trades": 15,
+  "unit_tests": {
+    "passed": 32,
+    "seconds": 9.15,
+    "command": "python -m pytest -q --basetemp=.test_tmp_delivery",
+    "evidence": "Observed final tool output: 32 passed in 9.15s. Verification script does not rerun pytest."
+  },
+  "previous_study_snapshot": {
+    "files": 1977,
+    "evidence": "Observed tools/verify_snapshot.py: all SHA-256 identical."
+  },
+  "limitations": [
+    "No real fills, margin liquidation or annual Pine/Python signal parity verified.",
+    "Backtest data stops 2026-10-16."
+  ]
+}

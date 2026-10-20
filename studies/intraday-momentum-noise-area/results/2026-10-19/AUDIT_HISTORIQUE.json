@@ -1,0 +1,206 @@
+{
+  "status": "passed",
+  "utc": "2026-10-20T02:23:35.154200+00:00",
+  "scenarios_exports_checked": 220,
+  "primary_scenarios_independently_rebuilt": 32,
+  "primary_trade_rows_checked": 24352,
+  "halfhour_decisions_checked": 335136,
+  "independent_calendar_days": 28044,
+  "manual_sample_count": 10,
+  "reconciliations": [
+    {
+      "instrument": "SPY",
+      "label": "A_close_L1_s0.001_principal",
+      "trades": 1768,
+      "final_capital": 177159.27577715
+    },
+    {
+      "instrument": "SPY",
+      "label": "A_close_L4_s0.001_principal",
+      "trades": 1768,
+      "final_capital": 342305.59593125083
+    },
+    {
+      "instrument": "SPY",
+      "label": "A_next_open_L1_s0.001_principal",
+      "trades": 1768,
+      "final_capital": 175551.62893446075
+    },
+    {
+      "instrument": "SPY",
+      "label": "A_next_open_L4_s0.001_principal",
+      "trades": 1768,
+      "final_capital": 335486.6951790275
+    },
+    {
+      "instrument": "SPY",
+      "label": "B_close_L1_s0.001_principal",
+      "trades": 548,
+      "final_capital": 101548.00689101117
+    },
+    {
+      "instrument": "SPY",
+      "label": "B_close_L4_s0.001_principal",
+      "trades": 548,
+      "final_capital": 108665.77988307815
+    },
+    {
+      "instrument": "SPY",
+      "label": "B_next_open_L1_s0.001_principal",
+      "trades": 548,
+      "final_capital": 101540.1066078002
+    },
+    {
+      "instrument": "SPY",
+      "label": "B_next_open_L4_s0.001_principal",
+      "trades": 548,
+      "final_capital": 108606.72916549812
+    },
+    {
+      "instrument": "SPY",
+      "label": "C_close_L1_s0.001_principal",
+      "trades": 543,
+      "final_capital": 103015.66893913901
+    },
+    {
+      "instrument": "SPY",
+      "label": "C_close_L4_s0.001_principal",
+      "trades": 543,
+      "final_capital": 112244.40997956123
+    },
+    {
+      "instrument": "SPY",
+      "label": "C_next_open_L1_s0.001_principal",
+      "trades": 543,
+      "final_capital": 103020.07234048088
+    },
+    {
+      "instrument": "SPY",
+      "label": "C_next_open_L4_s0.001_principal",
+      "trades": 543,
+      "final_capital": 112166.27736126225
+    },
+    {
+      "instrument": "SPY",
+      "label": "D_close_L1_s0.001_principal",
+      "trades": 253,
+      "final_capital": 95884.23117616674
+    },
+    {
+      "instrument": "SPY",
+      "label": "D_close_L4_s0.001_principal",
+      "trades": 253,
+      "final_capital": 91185.27978092518
+    },
+    {
+      "instrument": "SPY",
+      "label": "D_next_open_L1_s0.001_principal",
+      "trades": 253,
+      "final_capital": 95973.98705460026
+    },
+    {
+      "instrument": "SPY",
+      "label": "D_next_open_L4_s0.001_principal",
+      "trades": 253,
+      "final_capital": 91369.78953825627
+    },
+    {
+      "instrument": "QQQ",
+      "label": "A_close_L1_s0.001_principal",
+      "trades": 1755,
+      "final_capital": 257154.1812512696
+    },
+    {
+      "instrument": "QQQ",
+      "label": "A_close_L4_s0.001_principal",
+      "trades": 1755,
+      "final_capital": 482134.8580819424
+    },
+    {
+      "instrument": "QQQ",
+      "label": "A_next_open_L1_s0.001_principal",
+      "trades": 1755,
+      "final_capital": 251852.94323443936
+    },
+    {
+      "instrument": "QQQ",
+      "label": "A_next_open_L4_s0.001_principal",
+      "trades": 1755,
+      "final_capital": 462086.4378737262
+    },
+    {
+      "instrument": "QQQ",
+      "label": "B_close_L1_s0.001_principal",
+      "trades": 504,
+      "final_capital": 129390.88272538055
+    },
+    {
+      "instrument": "QQQ",
+      "label": "B_close_L4_s0.001_principal",
+      "trades": 504,
+      "final_capital": 160143.88770587213
+    },
+    {
+      "instrument": "QQQ",
+      "label": "B_next_open_L1_s0.001_principal",
+      "trades": 504,
+      "final_capital": 129210.54077096099
+    },
+    {
+      "instrument": "QQQ",
+      "label": "B_next_open_L4_s0.001_principal",
+      "trades": 504,
+      "final_capital": 159406.57434410276
+    },
+    {
+      "instrument": "QQQ",
+      "label": "C_close_L1_s0.001_principal",
+      "trades": 499,
+      "final_capital": 130444.07175552782
+    },
+    {
+      "instrument": "QQQ",
+      "label": "C_close_L4_s0.001_principal",
+      "trades": 499,
+      "final_capital": 162495.26845499134
+    },
+    {
+      "instrument": "QQQ",
+      "label": "C_next_open_L1_s0.001_principal",
+      "trades": 499,
+      "final_capital": 130217.0807101444
+    },
+    {
+      "instrument": "QQQ",
+      "label": "C_next_open_L4_s0.001_principal",
+      "trades": 499,
+      "final_capital": 161791.64415027486
+    },
+    {
+      "instrument": "QQQ",
+      "label": "D_close_L1_s0.001_principal",
+      "trades": 218,
+      "final_capital": 110458.00362060838
+    },
+    {
+      "instrument": "QQQ",
+      "label": "D_close_L4_s0.001_principal",
+      "trades": 218,
+      "final_capital": 125089.07436626399
+    },
+    {
+      "instrument": "QQQ",
+      "label": "D_next_open_L1_s0.001_principal",
+      "trades": 218,
+      "final_capital": 110347.20359913324
+    },
+    {
+      "instrument": "QQQ",
+      "label": "D_next_open_L4_s0.001_principal",
+      "trades": 218,
+      "final_capital": 124842.84737743325
+    }
+  ],
+  "auditor_sha256": "d8d240d4f606d59f42dd20bc94cf5d3ecd00db7cba6147d3c9a89e50b3bb44bb",
+  "limits": "Shared validated raw OHLCV cache; does not establish real fills, borrow availability, intrabar price order or future tradability."
+}

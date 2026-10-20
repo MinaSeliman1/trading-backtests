@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "noise-area-b",
+      "title": "Noise Area : validation B sur SPY et QQQ",
+      "queries": [
+        {
+          "id": "noise-area-execution",
+          "source": {
+            "label": "Backtest Python Noise Area, exécution locale",
+            "metricDefinitions": [
+              "Rendement net : capital final / 100 000 USD − 1, commissions, friction et emprunt inclus.",
+              "Sharpe : rendements quotidiens nets, taux sans risque nul, annualisation 252.",
+              "Drawdown : marques minute et exécutions simulées."
+            ],
+            "filters": [
+              "2024-05-01 au 2026-10-16",
+              "Alpaca SIP raw ; séance régulière NYSE",
+              "Prochain open ; cibles 1x/4x ; friction 0,001 USD/action/côté"
+            ],
+            "caveats": [
+              "La période B commence avant la publication initiale et avant la révision de septembre 2025.",
+              "QQQ dépend de quelques jours ; la validation après révision et à coûts plus élevés reste incertaine.",
+              "Les cibles de levier peuvent être dépassées en cours de position ; les appels de marge ne sont pas simulés."
+            ],
+            "links": [
+              {
+                "label": "Article des auteurs",
+                "url": "https://concretumgroup.com/wp-content/uploads/2026/02/Beat-the-Market.pdf"
+              },
+              {
+                "label": "Données SIP historiques Alpaca",
+                "url": "https://docs.alpaca.markets/us/docs/market-data-faq"
+              }
+            ],
+            "executedAt": "2026-10-20T02:11:13.953908+00:00",
+            "evidenceFlow": [
+              {
+                "kind": "calculation",
+                "title": "Simulation",
+                "detail": "220 scénarios réellement exécutés sur des acquisitions minute réelles ; paramètres principaux gelés avant le P&L."
+              },
+              {
+                "kind": "validation",
+                "title": "Audit",
+                "detail": "220 exports rapprochés ; 335 136 décisions et 24 352 lignes de trades principaux contrôlées par calcul indépendant."
+              }
+            ]
+          },
+          "columns": [
+            "instrument",
+            "cible",
+            "rendement_net_pct",
+            "sharpe",
+            "drawdown_minute_pct"
+          ],
+          "rows": [
+            {
+              "instrument": "SPY",
+              "cible": 1.0,
+              "rendement_net_pct": 1.5401066078044368,
+              "sharpe": 0.1383406175738245,
+              "drawdown_minute_pct": 9.882494937871538
+            },
+            {
+              "instrument": "SPY",
+              "cible": 4.0,
+              "rendement_net_pct": 8.606729165510728,
+              "sharpe": 0.3040935622436364,
+              "drawdown_minute_pct": 21.792612236051355
+            },
+            {
+              "instrument": "QQQ",
+              "cible": 1.0,
+              "rendement_net_pct": 29.210540770966052,
+              "sharpe": 1.3071367152427145,
+              "drawdown_minute_pct": 7.017767381572224
+            },
+            {
+              "instrument": "QQQ",
+              "cible": 4.0,
+              "rendement_net_pct": 59.40657434411308,
+              "sharpe": 1.325303159017167,
+              "drawdown_minute_pct": 15.458151383095752
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

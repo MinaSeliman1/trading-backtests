@@ -1,0 +1,922 @@
+[
+  {
+    "instrument": "SPY",
+    "label": "B_close_L1_s0.001_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.001,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00022449852901447687,
+      0.00031991776318457974
+    ],
+    "sharpe_ci95": [
+      -1.1269811426006793,
+      1.242176674997755
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.097573918573147,
+      0.5609439870750023
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_close_L1_s0.01_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.01,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0002514357287896548,
+      0.00029492156914724904
+    ],
+    "sharpe_ci95": [
+      -1.2673870099494056,
+      1.1497082301477635
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.2338100365231743,
+      0.461302420785771
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_close_L1_s0.02_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.02,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0002791189647690295,
+      0.00026799906997807406
+    ],
+    "sharpe_ci95": [
+      -1.4110698800051733,
+      1.0400407150644135
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.3692443373427463,
+      0.3413259498803787
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_close_L1_s0.03_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.03,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0003070474903275467,
+      0.00023990403854664617
+    ],
+    "sharpe_ci95": [
+      -1.5458234491141745,
+      0.9284879672017138
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.516616567255039,
+      0.22234946594912317
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_close_L1_s0.05_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.05,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0003650903924026922,
+      0.00018185844421443384
+    ],
+    "sharpe_ci95": [
+      -1.8119169375633768,
+      0.7097761776473493
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.7948936150508565,
+      -0.006625890129509159
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_close_L4_s0.001_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.001,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0004804570535502333,
+      0.0008406383679975517
+    ],
+    "sharpe_ci95": [
+      -0.9198441663815291,
+      1.3540218257559444
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.8073207878752164,
+      0.69452162803344
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_close_L4_s0.01_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.01,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0005488129378131351,
+      0.0007722566170834074
+    ],
+    "sharpe_ci95": [
+      -1.0473032350550366,
+      1.2519187743156879
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.9446542179444335,
+      0.5850006146269531
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_close_L4_s0.02_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.02,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.000623789713569883,
+      0.0006931836027888714
+    ],
+    "sharpe_ci95": [
+      -1.1981190482088702,
+      1.1246300880242242
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.0903199907422296,
+      0.45632507020926094
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_close_L4_s0.03_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.03,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0006993478703329005,
+      0.0006176035883727109
+    ],
+    "sharpe_ci95": [
+      -1.3435211401850362,
+      0.9994486356472773
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.2343926942771373,
+      0.3372363018877016
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_close_L4_s0.05_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.05,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0008507829157411358,
+      0.0004702337242571288
+    ],
+    "sharpe_ci95": [
+      -1.63320448748763,
+      0.7542805450456544
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.5237367620267195,
+      0.09345803144205797
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L1_s0.001_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.001,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00022220848069728978,
+      0.0003197170055417895
+    ],
+    "sharpe_ci95": [
+      -1.1268472476978026,
+      1.2412551520267503
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.091145406053186,
+      0.5567463874145416
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L1_s0.01_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.01,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00024815862232136925,
+      0.0002942865123364503
+    ],
+    "sharpe_ci95": [
+      -1.2512776287089828,
+      1.1468776624649872
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.2182780815650176,
+      0.4494109691005255
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L1_s0.02_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.02,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00027597987203242303,
+      0.00026640879774359226
+    ],
+    "sharpe_ci95": [
+      -1.3897115881399282,
+      1.0406607467803186
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.353198416230815,
+      0.34012737896357836
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L1_s0.03_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.03,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00030461458568090664,
+      0.000237857822821715
+    ],
+    "sharpe_ci95": [
+      -1.525332763731546,
+      0.9297651656791059
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.493150650535194,
+      0.21571364018984757
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L1_s0.05_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.05,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00036256678465749234,
+      0.00018154346195820278
+    ],
+    "sharpe_ci95": [
+      -1.806028359919915,
+      0.7148181942951399
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.7840190135389107,
+      -0.012126093798271963
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L4_s0.001_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.001,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00047940251338897595,
+      0.0008382360985225524
+    ],
+    "sharpe_ci95": [
+      -0.9209580628919436,
+      1.360914583836973
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.8097948723259814,
+      0.6886377359527495
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L4_s0.01_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.01,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0005474398745900657,
+      0.000771270007429724
+    ],
+    "sharpe_ci95": [
+      -1.0553326604866302,
+      1.2491889125769347
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.940040888169666,
+      0.57951369150921
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L4_s0.02_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.02,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0006230510676001333,
+      0.0006951256167083277
+    ],
+    "sharpe_ci95": [
+      -1.1982615655376654,
+      1.1239840032687203
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.0870450109873158,
+      0.4578270285968438
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L4_s0.03_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.03,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0006984398751315229,
+      0.0006202667498249099
+    ],
+    "sharpe_ci95": [
+      -1.3465750673239918,
+      0.9966592912781259
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.2318150131572927,
+      0.3381914449068492
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "label": "B_next_open_L4_s0.05_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.05,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0008505232098524395,
+      0.00047076670734966887
+    ],
+    "sharpe_ci95": [
+      -1.631556749773835,
+      0.7546532388357127
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -3.517849502541826,
+      0.09832796588496756
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L1_s0.001_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.001,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      6.51942046993643e-05,
+      0.0008603555503494066
+    ],
+    "sharpe_ci95": [
+      0.2452972330675,
+      2.2366333108834935
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.4702384315069574,
+      1.7196824577099918
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L1_s0.01_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.01,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      3.911842365508149e-05,
+      0.0008356212585157858
+    ],
+    "sharpe_ci95": [
+      0.14712285231425679,
+      2.165549847195547
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.5718851924475932,
+      1.6467419852415741
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L1_s0.02_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.02,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      9.25954499324353e-06,
+      0.0008066209482329435
+    ],
+    "sharpe_ci95": [
+      0.03910920129106989,
+      2.0836110895505597
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.6819057625517677,
+      1.5697941304222176
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L1_s0.03_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.03,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -1.9448963876601063e-05,
+      0.0007770297249797291
+    ],
+    "sharpe_ci95": [
+      -0.0760483608064048,
+      2.0014870380959677
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.7804624306555963,
+      1.489188268135621
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L1_s0.05_principal",
+    "execution": "close",
+    "leverage_cap": 1.0,
+    "slippage": 0.05,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -7.670739675100931e-05,
+      0.0007161106925882494
+    ],
+    "sharpe_ci95": [
+      -0.29013662409008,
+      1.8439821363862183
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.9976724425025707,
+      1.3238336680503835
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L4_s0.001_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.001,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      0.0001313529584118115,
+      0.0015429264263565425
+    ],
+    "sharpe_ci95": [
+      0.24706590916646542,
+      2.325216759130602
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.4746332427813358,
+      1.784132235294193
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L4_s0.01_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.01,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      7.927479649510673e-05,
+      0.0014918391066971368
+    ],
+    "sharpe_ci95": [
+      0.15277745934928266,
+      2.245208142802671
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.5754190680770392,
+      1.708570334323165
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L4_s0.02_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.02,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      1.745498425629488e-05,
+      0.001435331961384706
+    ],
+    "sharpe_ci95": [
+      0.033547355654417695,
+      2.151662232294834
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.6931506807798462,
+      1.6159277206371425
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L4_s0.03_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.03,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -4.0293962763234995e-05,
+      0.0013818274378048973
+    ],
+    "sharpe_ci95": [
+      -0.08254840312020958,
+      2.0624399577697483
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.8117848189250116,
+      1.5307023915840714
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_close_L4_s0.05_principal",
+    "execution": "close",
+    "leverage_cap": 4.0,
+    "slippage": 0.05,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.00016327921446223997,
+      0.0012633978442682626
+    ],
+    "sharpe_ci95": [
+      -0.3113938195538542,
+      1.8826448776177587
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.033710001317861,
+      1.35260085678496
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L1_s0.001_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.001,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      6.298511085183062e-05,
+      0.0008577200596090995
+    ],
+    "sharpe_ci95": [
+      0.2366058747430367,
+      2.229326372255305
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.4836455559930846,
+      1.7140301310987396
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L1_s0.01_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.01,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      3.7373317912129025e-05,
+      0.000833244632202018
+    ],
+    "sharpe_ci95": [
+      0.13845191357872916,
+      2.1586969465809935
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.5807175851073882,
+      1.6444402105834506
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L1_s0.02_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.02,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      8.33288609505543e-06,
+      0.0008040978946573837
+    ],
+    "sharpe_ci95": [
+      0.030408499335765386,
+      2.0774573293152754
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.6901746585932773,
+      1.567175514963111
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L1_s0.03_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.03,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -2.098497889852928e-05,
+      0.0007750299093638987
+    ],
+    "sharpe_ci95": [
+      -0.07904129992026399,
+      1.9932926713680337
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.7937379122515376,
+      1.4868492533608901
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L1_s0.05_principal",
+    "execution": "next_open",
+    "leverage_cap": 1.0,
+    "slippage": 0.05,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -7.842090004258253e-05,
+      0.0007155357922706456
+    ],
+    "sharpe_ci95": [
+      -0.30822526104448683,
+      1.8396645687099984
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.0084142407329564,
+      1.3237623275430845
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L4_s0.001_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.001,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      0.00012401541199733777,
+      0.0015365580231121953
+    ],
+    "sharpe_ci95": [
+      0.24463824776022317,
+      2.3120975708178904
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.4944342994589992,
+      1.7667543526994685
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L4_s0.01_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.01,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      7.14663652472837e-05,
+      0.0014849103542606912
+    ],
+    "sharpe_ci95": [
+      0.13893250147269026,
+      2.233228043587814
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.5926107197210788,
+      1.6891737980804933
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L4_s0.02_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.02,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      1.2750494198361961e-05,
+      0.0014290642457355572
+    ],
+    "sharpe_ci95": [
+      0.02650652727323273,
+      2.1435099978991734
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.7044753443211644,
+      1.5998180110306888
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L4_s0.03_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.03,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -4.6777084496323685e-05,
+      0.0013749791698524582
+    ],
+    "sharpe_ci95": [
+      -0.08919241826828431,
+      2.051828045810164
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -1.8213431986673647,
+      1.510959280498527
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "label": "B_next_open_L4_s0.05_principal",
+    "execution": "next_open",
+    "leverage_cap": 4.0,
+    "slippage": 0.05,
+    "repetitions": 5000,
+    "seed": 20261019,
+    "block_length": 5,
+    "method": "circular day blocks, paired benchmark dates",
+    "daily_mean_ci95": [
+      -0.0001651964502338476,
+      0.001253326611210878
+    ],
+    "sharpe_ci95": [
+      -0.31924080532702914,
+      1.8779802684272158
+    ],
+    "sharpe_minus_buyhold_ci95": [
+      -2.0483147524149548,
+      1.3362267998826853
+    ]
+  }
+]

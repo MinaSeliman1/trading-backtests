@@ -1,0 +1,23 @@
+[
+  {
+    "path": "data\\noise_area_sources\\paper_revised_2025-09-22.pdf",
+    "url": "https://concretumgroup.com/wp-content/uploads/2026/02/Beat-the-Market.pdf",
+    "sha256": "865010dfd938d513c1cd22a7be5932bc232afe498c3cf493d6d8bd4b0de86ebb",
+    "bytes": 1881316,
+    "status": "acquired"
+  },
+  {
+    "path": "data\\noise_area_sources\\authors_python.html",
+    "url": "https://concretumgroup.com/python-backtesting-beat-the-market-an-effective-intraday-momentum-strategy-for-the-sp500-etf-spy/",
+    "sha256": "1c05df97871ac6a1972026f013b8ab13d6be2fbc94e86a1f515785a1763120d0",
+    "bytes": 309684,
+    "status": "acquired"
+  },
+  {
+    "path": "data\\noise_area_sources\\VIX_History.csv",
+    "url": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
+    "sha256": "dd316faa6120a323845988c180d9d2297af29c7d4495c84d6e3e76af3f19d199",
+    "bytes": 473890,
+    "status": "acquired"
+  }
+]

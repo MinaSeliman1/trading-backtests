@@ -1,0 +1,365 @@
+{
+  "results": [
+    {
+      "instrument": "SPY",
+      "label": "B_close_L1_s0.001_principal",
+      "execution": "close",
+      "leverage_cap": 1.0,
+      "bootstrap": {
+        "repetitions": 5000,
+        "seed": 20261019,
+        "block_length": 5,
+        "method": "circular day blocks, paired benchmark dates",
+        "daily_mean_ci95": [
+          -0.00022449852901447028,
+          0.00031991776318458364
+        ],
+        "sharpe_ci95": [
+          -1.1269811426006642,
+          1.2421766749977814
+        ],
+        "sharpe_minus_buyhold_ci95": [
+          -3.0975739185731177,
+          0.5609439870750239
+        ]
+      },
+      "SPY_buyhold": {
+        "total_return_pct": 56.514557722399196,
+        "final_equity": 156514.5577223992,
+        "cagr_pct": 19.961807903800665,
+        "sharpe": 1.25820468099303,
+        "sortino": 1.8579172889269477,
+        "volatility_annual_pct": 15.469472159821093,
+        "daily_mean": 0.0007723715192054862,
+        "max_daily_close_drawdown_pct": 18.708953440135556,
+        "worst_drawdown_duration_calendar_days": 127,
+        "worst_drawdown_recovered": true,
+        "worst_day_pct": -5.9779778290305705,
+        "worst_day": "2025-04-04",
+        "worst_month_pct": -5.595235986380331,
+        "worst_month": "2025-03",
+        "worst_year_pct": 12.818164406428224,
+        "worst_year": 2026,
+        "sessions": 618,
+        "first_session": "2024-05-01",
+        "last_session": "2026-10-16"
+      }
+    },
+    {
+      "instrument": "SPY",
+      "label": "B_close_L4_s0.001_principal",
+      "execution": "close",
+      "leverage_cap": 4.0,
+      "bootstrap": {
+        "repetitions": 5000,
+        "seed": 20261019,
+        "block_length": 5,
+        "method": "circular day blocks, paired benchmark dates",
+        "daily_mean_ci95": [
+          -0.00048045705355022816,
+          0.0008406383679975534
+        ],
+        "sharpe_ci95": [
+          -0.9198441663815176,
+          1.3540218257559509
+        ],
+        "sharpe_minus_buyhold_ci95": [
+          -2.807320787875202,
+          0.6945216280334554
+        ]
+      },
+      "SPY_buyhold": {
+        "total_return_pct": 56.514557722399196,
+        "final_equity": 156514.5577223992,
+        "cagr_pct": 19.961807903800665,
+        "sharpe": 1.25820468099303,
+        "sortino": 1.8579172889269477,
+        "volatility_annual_pct": 15.469472159821093,
+        "daily_mean": 0.0007723715192054862,
+        "max_daily_close_drawdown_pct": 18.708953440135556,
+        "worst_drawdown_duration_calendar_days": 127,
+        "worst_drawdown_recovered": true,
+        "worst_day_pct": -5.9779778290305705,
+        "worst_day": "2025-04-04",
+        "worst_month_pct": -5.595235986380331,
+        "worst_month": "2025-03",
+        "worst_year_pct": 12.818164406428224,
+        "worst_year": 2026,
+        "sessions": 618,
+        "first_session": "2024-05-01",
+        "last_session": "2026-10-16"
+      }
+    },
+    {
+      "instrument": "SPY",
+      "label": "B_next_open_L1_s0.001_principal",
+      "execution": "next_open",
+      "leverage_cap": 1.0,
+      "bootstrap": {
+        "repetitions": 5000,
+        "seed": 20261019,
+        "block_length": 5,
+        "method": "circular day blocks, paired benchmark dates",
+        "daily_mean_ci95": [
+          -0.0002222084806972828,
+          0.00031971700554179376
+        ],
+        "sharpe_ci95": [
+          -1.126847247697788,
+          1.2412551520267643
+        ],
+        "sharpe_minus_buyhold_ci95": [
+          -3.091145406053154,
+          0.5567463874145623
+        ]
+      },
+      "SPY_buyhold": {
+        "total_return_pct": 56.514557722399196,
+        "final_equity": 156514.5577223992,
+        "cagr_pct": 19.961807903800665,
+        "sharpe": 1.25820468099303,
+        "sortino": 1.8579172889269477,
+        "volatility_annual_pct": 15.469472159821093,
+        "daily_mean": 0.0007723715192054862,
+        "max_daily_close_drawdown_pct": 18.708953440135556,
+        "worst_drawdown_duration_calendar_days": 127,
+        "worst_drawdown_recovered": true,
+        "worst_day_pct": -5.9779778290305705,
+        "worst_day": "2025-04-04",
+        "worst_month_pct": -5.595235986380331,
+        "worst_month": "2025-03",
+        "worst_year_pct": 12.818164406428224,
+        "worst_year": 2026,
+        "sessions": 618,
+        "first_session": "2024-05-01",
+        "last_session": "2026-10-16"
+      }
+    },
+    {
+      "instrument": "SPY",
+      "label": "B_next_open_L4_s0.001_principal",
+      "execution": "next_open",
+      "leverage_cap": 4.0,
+      "bootstrap": {
+        "repetitions": 5000,
+        "seed": 20261019,
+        "block_length": 5,
+        "method": "circular day blocks, paired benchmark dates",
+        "daily_mean_ci95": [
+          -0.00047940251338896884,
+          0.0008382360985225557
+        ],
+        "sharpe_ci95": [
+          -0.9209580628919339,
+          1.3609145838369787
+        ],
+        "sharpe_minus_buyhold_ci95": [
+          -2.809794872325968,
+          0.6886377359527664
+        ]
+      },
+      "SPY_buyhold": {
+        "total_return_pct": 56.514557722399196,
+        "final_equity": 156514.5577223992,
+        "cagr_pct": 19.961807903800665,
+        "sharpe": 1.25820468099303,
+        "sortino": 1.8579172889269477,
+        "volatility_annual_pct": 15.469472159821093,
+        "daily_mean": 0.0007723715192054862,
+        "max_daily_close_drawdown_pct": 18.708953440135556,
+        "worst_drawdown_duration_calendar_days": 127,
+        "worst_drawdown_recovered": true,
+        "worst_day_pct": -5.9779778290305705,
+        "worst_day": "2025-04-04",
+        "worst_month_pct": -5.595235986380331,
+        "worst_month": "2025-03",
+        "worst_year_pct": 12.818164406428224,
+        "worst_year": 2026,
+        "sessions": 618,
+        "first_session": "2024-05-01",
+        "last_session": "2026-10-16"
+      }
+    },
+    {
+      "instrument": "QQQ",
+      "label": "B_close_L1_s0.001_principal",
+      "execution": "close",
+      "leverage_cap": 1.0,
+      "bootstrap": {
+        "repetitions": 5000,
+        "seed": 20261019,
+        "block_length": 5,
+        "method": "circular day blocks, paired benchmark dates",
+        "daily_mean_ci95": [
+          6.519420469936706e-05,
+          0.0008603555503494055
+        ],
+        "sharpe_ci95": [
+          0.24529723306750845,
+          2.236633310883503
+        ],
+        "sharpe_minus_buyhold_ci95": [
+          -1.6610980764268024,
+          1.5953438212575
+        ]
+      },
+      "SPY_buyhold": {
+        "total_return_pct": 56.514557722399196,
+        "final_equity": 156514.5577223992,
+        "cagr_pct": 19.961807903800665,
+        "sharpe": 1.25820468099303,
+        "sortino": 1.8579172889269477,
+        "volatility_annual_pct": 15.469472159821093,
+        "daily_mean": 0.0007723715192054862,
+        "max_daily_close_drawdown_pct": 18.708953440135556,
+        "worst_drawdown_duration_calendar_days": 127,
+        "worst_drawdown_recovered": true,
+        "worst_day_pct": -5.9779778290305705,
+        "worst_day": "2025-04-04",
+        "worst_month_pct": -5.595235986380331,
+        "worst_month": "2025-03",
+        "worst_year_pct": 12.818164406428224,
+        "worst_year": 2026,
+        "sessions": 618,
+        "first_session": "2024-05-01",
+        "last_session": "2026-10-16"
+      }
+    },
+    {
+      "instrument": "QQQ",
+      "label": "B_close_L4_s0.001_principal",
+      "execution": "close",
+      "leverage_cap": 4.0,
+      "bootstrap": {
+        "repetitions": 5000,
+        "seed": 20261019,
+        "block_length": 5,
+        "method": "circular day blocks, paired benchmark dates",
+        "daily_mean_ci95": [
+          0.0001313529584118135,
+          0.0015429264263565425
+        ],
+        "sharpe_ci95": [
+          0.2470659091664742,
+          2.3252167591306065
+        ],
+        "sharpe_minus_buyhold_ci95": [
+          -1.6588709460471118,
+          1.6441692225082267
+        ]
+      },
+      "SPY_buyhold": {
+        "total_return_pct": 56.514557722399196,
+        "final_equity": 156514.5577223992,
+        "cagr_pct": 19.961807903800665,
+        "sharpe": 1.25820468099303,
+        "sortino": 1.8579172889269477,
+        "volatility_annual_pct": 15.469472159821093,
+        "daily_mean": 0.0007723715192054862,
+        "max_daily_close_drawdown_pct": 18.708953440135556,
+        "worst_drawdown_duration_calendar_days": 127,
+        "worst_drawdown_recovered": true,
+        "worst_day_pct": -5.9779778290305705,
+        "worst_day": "2025-04-04",
+        "worst_month_pct": -5.595235986380331,
+        "worst_month": "2025-03",
+        "worst_year_pct": 12.818164406428224,
+        "worst_year": 2026,
+        "sessions": 618,
+        "first_session": "2024-05-01",
+        "last_session": "2026-10-16"
+      }
+    },
+    {
+      "instrument": "QQQ",
+      "label": "B_next_open_L1_s0.001_principal",
+      "execution": "next_open",
+      "leverage_cap": 1.0,
+      "bootstrap": {
+        "repetitions": 5000,
+        "seed": 20261019,
+        "block_length": 5,
+        "method": "circular day blocks, paired benchmark dates",
+        "daily_mean_ci95": [
+          6.298511085183118e-05,
+          0.0008577200596090988
+        ],
+        "sharpe_ci95": [
+          0.23660587474303907,
+          2.2293263722553123
+        ],
+        "sharpe_minus_buyhold_ci95": [
+          -1.6658969545967737,
+          1.5863188261083612
+        ]
+      },
+      "SPY_buyhold": {
+        "total_return_pct": 56.514557722399196,
+        "final_equity": 156514.5577223992,
+        "cagr_pct": 19.961807903800665,
+        "sharpe": 1.25820468099303,
+        "sortino": 1.8579172889269477,
+        "volatility_annual_pct": 15.469472159821093,
+        "daily_mean": 0.0007723715192054862,
+        "max_daily_close_drawdown_pct": 18.708953440135556,
+        "worst_drawdown_duration_calendar_days": 127,
+        "worst_drawdown_recovered": true,
+        "worst_day_pct": -5.9779778290305705,
+        "worst_day": "2025-04-04",
+        "worst_month_pct": -5.595235986380331,
+        "worst_month": "2025-03",
+        "worst_year_pct": 12.818164406428224,
+        "worst_year": 2026,
+        "sessions": 618,
+        "first_session": "2024-05-01",
+        "last_session": "2026-10-16"
+      }
+    },
+    {
+      "instrument": "QQQ",
+      "label": "B_next_open_L4_s0.001_principal",
+      "execution": "next_open",
+      "leverage_cap": 4.0,
+      "bootstrap": {
+        "repetitions": 5000,
+        "seed": 20261019,
+        "block_length": 5,
+        "method": "circular day blocks, paired benchmark dates",
+        "daily_mean_ci95": [
+          0.00012401541199734265,
+          0.001536558023112195
+        ],
+        "sharpe_ci95": [
+          0.2446382477602295,
+          2.3120975708178957
+        ],
+        "sharpe_minus_buyhold_ci95": [
+          -1.6799560482005005,
+          1.6328351933603815
+        ]
+      },
+      "SPY_buyhold": {
+        "total_return_pct": 56.514557722399196,
+        "final_equity": 156514.5577223992,
+        "cagr_pct": 19.961807903800665,
+        "sharpe": 1.25820468099303,
+        "sortino": 1.8579172889269477,
+        "volatility_annual_pct": 15.469472159821093,
+        "daily_mean": 0.0007723715192054862,
+        "max_daily_close_drawdown_pct": 18.708953440135556,
+        "worst_drawdown_duration_calendar_days": 127,
+        "worst_drawdown_recovered": true,
+        "worst_day_pct": -5.9779778290305705,
+        "worst_day": "2025-04-04",
+        "worst_month_pct": -5.595235986380331,
+        "worst_month": "2025-03",
+        "worst_year_pct": 12.818164406428224,
+        "worst_year": 2026,
+        "sessions": 618,
+        "first_session": "2024-05-01",
+        "last_session": "2026-10-16"
+      }
+    }
+  ],
+  "script_sha256": "f781496d6c7ec2a549a775071fe45a2b3105ba4bc09230ececa9d5d1fbf92190"
+}

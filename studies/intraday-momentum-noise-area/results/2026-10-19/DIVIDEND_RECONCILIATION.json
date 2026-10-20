@@ -1,0 +1,20 @@
+{
+  "SPY": {
+    "source": "SSGA official historical distributions XLSX",
+    "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+    "count": 43
+  },
+  "QQQ": {
+    "source": "Alpaca corporate actions; exact equal duplicate removed",
+    "count": 44,
+    "duplicates_removed": [
+      "2022-09-19"
+    ]
+  },
+  "notes": [
+    "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+    "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+    "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+    "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+  ]
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "instrument": "SPY",
+    "leverage_cap": 1.0,
+    "status": "root_bracketed",
+    "zero_slippage_net_pnl": 1700.7239084670728,
+    "slippage_per_side_usd": 0.00972709655761719,
+    "bracket": [
+      0.009726715087890626,
+      0.009727478027343752
+    ]
+  },
+  {
+    "instrument": "SPY",
+    "leverage_cap": 4.0,
+    "status": "root_bracketed",
+    "zero_slippage_net_pnl": 9112.137000331859,
+    "slippage_per_side_usd": 0.018745803833007814,
+    "bracket": [
+      0.01874542236328125,
+      0.018746185302734378
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "leverage_cap": 1.0,
+    "status": "root_bracketed",
+    "zero_slippage_net_pnl": 29432.927997086095,
+    "slippage_per_side_usd": 0.14487762451171876,
+    "bracket": [
+      0.14487609863281253,
+      0.14487915039062502
+    ]
+  },
+  {
+    "instrument": "QQQ",
+    "leverage_cap": 4.0,
+    "status": "root_bracketed",
+    "zero_slippage_net_pnl": 60008.859306327504,
+    "slippage_per_side_usd": 0.1305191040039063,
+    "bracket": [
+      0.13051757812500003,
+      0.13052062988281254
+    ]
+  }
+]

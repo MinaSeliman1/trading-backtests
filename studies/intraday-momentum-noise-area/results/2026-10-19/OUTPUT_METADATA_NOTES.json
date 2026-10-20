@@ -1,0 +1,10 @@
+{
+  "unadjusted_gap": {
+    "affected_rows": 4,
+    "exported_lookback": 99,
+    "actual_sigma_lookback": 14,
+    "explanation": "99 is the internal feature cache key for the no-dividend diagnostic, not a 99-session lookback. Prices, trades and P&L unaffected."
+  },
+  "duration": "summary.worst_drawdown_duration_calendar_days is DAILY-CLOSE duration. INTRADAY_RISK_AUDIT reports duration of the actual worst minute drawdown.",
+  "audit_days": "independent_calendar_days counts scenario-day recalculations with overlapping periods, not independent market observations."
+}

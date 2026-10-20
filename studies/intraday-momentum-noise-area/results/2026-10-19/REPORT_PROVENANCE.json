@@ -1,0 +1,10 @@
+{
+  "report_sha256": "d29b916860850ec8b0398bcf816199b06492d86b85ff952dcf871006b4f97dcb",
+  "script_sha256": "5747436502c13c94bfdb9a9c525644ed90de9acc51244be9076b03f7c69783a1",
+  "manual_checks": 15,
+  "classification": {
+    "SPY": 3,
+    "QQQ": 2
+  },
+  "data_cutoff": "2026-10-16"
+}

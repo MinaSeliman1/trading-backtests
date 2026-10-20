@@ -1,0 +1,143 @@
+//@version=6
+strategy("Noise Area | recherche v1", overlay=true, initial_capital=100000,
+     currency=currency.USD, pyramiding=0, commission_type=strategy.commission.cash_per_contract,
+     commission_value=0.0035, slippage=1, process_orders_on_close=false,
+     calc_on_every_tick=false, calc_on_order_fills=false, margin_long=25, margin_short=25)
+
+// Python is the reference for fee minima, borrow, sub-cent slippage and data exclusions.
+// Pine default slippage = 0.01 USD/side, not the paper's 0.001 USD/side.
+int lookback = input.int(14, "Historique de la zone", minval=10, maxval=20)
+int frequency = input.int(30, "Decision (minutes)", options=[15,30,60])
+float cap = input.float(4.0, "Plafond cible", options=[1.0,4.0])
+bool useDividends = input.bool(true, "Corriger le gap ex-dividende")
+string ny = "America/New_York"
+// Explicit XNYS early-close dates, 2016-2026. Update this table for later years.
+var array<int> earlyDates = array.from(20161125,20170703,20171124,20180703,20181123,20181224,20190703,20191129,20191224,20201127,20201224,20211126,20221125,20230703,20231124,20240703,20241129,20241224,20250703,20251128,20251224,20261127,20261224)
+int dateKey = year(time,ny)*10000+month(time,ny)*100+dayofmonth(time,ny)
+int expected = array.includes(earlyDates,dateKey) ? 210 : 390
+int clock = hour(time,ny)*60+minute(time,ny)-570
+bool regular = session.ismarket and clock >= 0 and clock < expected
+bool first = regular and clock == 0
+float cashEvent = request.dividends(syminfo.tickerid, dividends.gross, gaps=barmerge.gaps_on,
+     lookahead=barmerge.lookahead_off, ignore_invalid_symbol=true)
+
+var array<float> history = array.new_float(390*lookback,na)
+var array<float> sums = array.new_float(390,0)
+var array<int> heads = array.new_int(390,0)
+var array<int> counts = array.new_int(390,0)
+var array<float> todayMoves = array.new_float(390,na)
+var array<float> dailyReturns = array.new_float()
+var float previousClose = na
+var float todayOpen = na
+var float todayDividend = 0
+var float volumeSum = 0
+var float pvSum = 0
+var float dailyVol = na
+var float dayQty = 0
+var int seen = 0
+var int completeDays = 0
+var int totalBars = 0
+var int currentDate = na
+
+if barstate.isfirst and (not timeframe.isminutes or timeframe.multiplier != 1)
+    runtime.error("Utiliser un graphique 1 minute standard, cours non ajustes.")
+
+bool changedDay = na(currentDate) or currentDate != dateKey
+if changedDay
+    currentDate := dateKey
+    todayOpen := na
+    todayDividend := 0
+    pvSum := 0
+    volumeSum := 0
+    seen := 0
+    dayQty := 0
+    array.fill(todayMoves,na)
+
+if first and barstate.isconfirmed
+    todayOpen := open
+    todayDividend := useDividends ? nz(cashEvent,0) : 0
+    dailyVol := na
+    if array.size(dailyReturns) == 14
+        float meanRet = array.avg(dailyReturns)
+        float variance = 0
+        for k = 0 to 13
+            variance += math.pow(array.get(dailyReturns,k)-meanRet,2)
+        dailyVol := math.sqrt(variance/13)
+    if not na(dailyVol) and not na(todayOpen)
+        float leverage = dailyVol > 0 ? math.min(cap,0.02/dailyVol) : cap
+        dayQty := math.floor(strategy.equity*leverage/todayOpen)
+
+float upper = na
+float lower = na
+float vwapValue = na
+int observations = regular ? array.get(counts,clock) : 0
+if regular and barstate.isconfirmed
+    totalBars += 1
+    seen += 1
+    if useDividends and not na(cashEvent)
+        todayDividend := cashEvent
+    pvSum += hlc3*volume
+    volumeSum += volume
+    vwapValue := volumeSum > 0 ? pvSum/volumeSum : na
+    if not na(todayOpen)
+        array.set(todayMoves,clock,math.abs(close/todayOpen-1))
+    if observations == lookback and not na(previousClose) and not na(todayOpen)
+        float sigma = array.get(sums,clock)/lookback
+        float reference = previousClose-todayDividend
+        upper := math.max(todayOpen,reference)*(1+sigma)
+        lower := math.min(todayOpen,reference)*(1-sigma)
+    bool decision = (clock+1)%frequency == 0 and clock+1 < expected-1
+    if decision and not na(upper) and not na(vwapValue) and dayQty > 0
+        bool longEntry = close > upper and close > vwapValue
+        bool shortEntry = close < lower and close < vwapValue
+        if strategy.position_size > 0 and close < math.max(upper,vwapValue)
+            if shortEntry
+                strategy.entry("Short",strategy.short,qty=dayQty)
+            else
+                strategy.close_all(comment="Trailing")
+        else if strategy.position_size < 0 and close > math.min(lower,vwapValue)
+            if longEntry
+                strategy.entry("Long",strategy.long,qty=dayQty)
+            else
+                strategy.close_all(comment="Trailing")
+        else if strategy.position_size == 0
+            if longEntry
+                strategy.entry("Long",strategy.long,qty=dayQty)
+            else if shortEntry
+                strategy.entry("Short",strategy.short,qty=dayQty)
+    // Submit at 15:58 close for the next 15:59 open (12:58/12:59 early closes).
+    if clock == expected-2
+        strategy.close_all(comment="Fin de seance")
+    if clock == expected-1
+        bool complete = seen == expected and not na(todayOpen)
+        float dayReturn = complete and not na(previousClose) ? close/previousClose-1 : na
+        array.push(dailyReturns,dayReturn)
+        if array.size(dailyReturns) > 14
+            array.shift(dailyReturns)
+        if complete
+            completeDays += 1
+            for j = 0 to expected-1
+                int head = array.get(heads,j)
+                int offset = j*lookback+head
+                float old = array.get(history,offset)
+                float value = array.get(todayMoves,j)
+                array.set(sums,j,array.get(sums,j)-nz(old,0)+value)
+                array.set(history,offset,value)
+                array.set(heads,j,(head+1)%lookback)
+                array.set(counts,j,math.min(lookback,array.get(counts,j)+1))
+        previousClose := complete ? close : na
+
+pUpper = plot(regular ? upper : na,"Limite haute",color=color.blue,style=plot.style_linebr)
+pLower = plot(regular ? lower : na,"Limite basse",color=color.red,style=plot.style_linebr)
+fill(pUpper,pLower,color=color.new(color.gray,90))
+plot(regular ? vwapValue : na,"VWAP HLC3",color=color.orange,style=plot.style_linebr)
+var table status = table.new(position.top_right,2,4)
+if barstate.islast or barstate.islastconfirmedhistory
+    table.cell(status,0,0,"Noise Area 1 minute",text_color=chart.fg_color,bgcolor=chart.bg_color)
+    table.cell(status,1,0,"Recherche",text_color=chart.fg_color,bgcolor=chart.bg_color)
+    table.cell(status,0,1,"Seances completes chargees",text_color=chart.fg_color,bgcolor=chart.bg_color)
+    table.cell(status,1,1,str.tostring(completeDays),text_color=chart.fg_color,bgcolor=chart.bg_color)
+    table.cell(status,0,2,"Historique a cette minute",text_color=chart.fg_color,bgcolor=chart.bg_color)
+    table.cell(status,1,2,str.tostring(observations)+" / "+str.tostring(lookback),text_color=chart.fg_color,bgcolor=chart.bg_color)
+    table.cell(status,0,3,"Volatilite passee disponible",text_color=chart.fg_color,bgcolor=chart.bg_color)
+    table.cell(status,1,3,na(dailyVol) ? "NON : historique insuffisant" : "Oui",text_color=chart.fg_color,bgcolor=chart.bg_color)
