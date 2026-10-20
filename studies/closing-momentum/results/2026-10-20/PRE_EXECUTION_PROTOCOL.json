@@ -1,0 +1,178 @@
+{
+  "utc": "2026-10-20T21:18:59.213439+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "base_config": {
+    "mode": "momentum",
+    "slippage": 0.01,
+    "initial_capital": 100000.0,
+    "commission": 0.0035,
+    "minimum_commission": 0.35,
+    "borrow_rate": 0.01
+  },
+  "strategy_executions": 30,
+  "reference_executions": 12,
+  "frictions": [
+    0.01,
+    0.02,
+    0.03,
+    0.05
+  ],
+  "protocols": {
+    "README.md": {
+      "sha256": "e92d4ab80b4ad19e6d061bb5d369f08db99312ebf8c02450bacb8b838b7504f2",
+      "text": "# Piste : momentum de clôture sur SPY et QQQ\n\n**Statut au 20 octobre 2026 : protocole préparé, aucun résultat de backtest calculé pour cette piste.** Elle n'est pas ajoutée au bot Noise Area actif.\n\nL'hypothèse principale est que le signe du rendement entre la clôture précédente et la fin de la première demi-heure aide à prévoir la dernière demi-heure. Un article des auteurs Baltussen, Da, Lammers et Martens décrit cette relation étudiée par Gao et al. et présente une autre prédiction fondée sur le reste de la journée. [Source primaire, introduction et définitions, pp. 378 et 381](https://academicweb.nd.edu/~zda/intramom.pdf). Ce constat publié motive un test ; il ne fournit pas nos résultats SPY/QQQ après coûts.\n\n## Règles à figer avant calcul\n\n| Élément | Protocole principal |\n|---|---|\n| Instruments | SPY et QQQ, séparément ; ne pas choisir le gagnant après calcul |\n| Données | OHLCV minute Alpaca SIP raw et dividendes de l'acquisition locale vérifiée |\n| Signal | `close_09:59 / (clôture_RTH_précédente - dividende_ex_date) - 1` |\n| Direction | LONG si positif, SHORT si négatif, aucune position si exactement nul |\n| Entrée | Open 15:30 ; signal du matin déjà connu |\n| Sortie | Open 15:59, sans maintien overnight |\n| Demi-séance | Entrée 12:30, sortie 12:59 ; résultats identifiés séparément |\n| Exposition | 1x ; quantité entière `floor(capital_net / close_15:29)` ; capital initial 100 000 USD |\n| Stop/objectif | Aucun ; ne pas optimiser un stop après observation des gains/pertes |\n| Frais | 0,0035 USD/action/côté, minimum 0,35 USD/ordre ; emprunt SHORT 1 %/360, minimum un jour |\n| Friction adverse | Principal 0,01 USD/action/côté ; stress prédéfini 0,02, 0,03 et 0,05 |\n\nLe rendement du matin inclut l'overnight ; `close_09:59 / open_09:30 - 1` serait une autre hypothèse. La sortie à 15:59 et les données ETF sont des choix de notre protocole : une réplication exacte aux enchères de clôture ou sur futures ne sera pas revendiquée.\n\nToutes les entrées nécessitent les minutes complètes servant au signal, au dimensionnement et à l'exécution, ainsi que la dernière séance NYSE précédente valide. Aucun remplissage de trous. Publier le nombre et les dates des séances exclues. Ne pas utiliser le volume final ou le prix de clôture pour décider l'entrée à 15:30. Contrôler splits, ex-dividendes et heure d'été.\n\n## Évaluation prévue\n\nPériode A : début de l'historique commun vérifié à avril 2024 ; période B : mai 2024 au 16 octobre 2026. Ces périodes ont déjà servi aux études précédentes : B sera présenté comme **historique exploratoire réutilisé**, pas comme un échantillon vierge. Les futures observations après gel du protocole seront distinguées.\n\nPublier tous les instruments et les quatre frictions, plus un diagnostic LONG seul à friction principale (10 scénarios au total). Mesurer résultat net, rendement annualisé, drawdowns quotidien et minute, nombre de transactions, exposition, répartition LONG/SHORT, coûts, résultats annuels et concentration des meilleurs jours. Ajouter l'ablation des trois meilleurs jours et une incertitude tenant compte des dépendances temporelles ; ne pas présenter un bootstrap avec trop peu d'années comme une preuve forte.\n\nComparer à une position LONG systématique sur le même créneau et au rendement du signal opposé, avec les mêmes quantités et frais. Ces références diagnostiques seront publiées séparément, sans les intégrer à un choix rétrospectif du meilleur modèle. Examiner manuellement des transactions gagnantes et perdantes, ex-dividendes et demi-séances. Tester causalité, décalage des prix, coûts, absence d'overnight et absence de fuite future.\n\nCritère pour poursuivre en simulation : avantage net qui résiste aux coûts plus élevés, ne repose pas seulement sur quelques jours ou un seul régime, et reste crédible face aux références. Si ce n'est pas le cas, archiver le résultat négatif sans multiplier ensuite les filtres. Aucun passage en argent réel n'est prévu dans cette étude.\n\nUne extension utilisant le rendement jusqu'à 15:29 sera une étude distincte, avec son propre gel de règles et une entrée tenant compte du délai de publication de cette minute. Elle ne sera pas introduite après coup comme une correction de l'hypothèse principale.\n"
+    },
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "870f874465278786fe64486c1f8a51d5d1403b6a7f510ea9c6e1d12bdf67741d",
+      "text": "# Complément d'exécution — fixé avant le premier P&L\n\nLe protocole principal figure dans README.md au commit `4d79c7f`. Cette précision lève les ambiguïtés de qualité et de comparaison avant de calculer des résultats. Aucun seuil, instrument ou horaire n'est optimisé.\n\n- À 10:00, le signal utilise les 30 minutes terminées depuis l'ouverture, et la dernière minute de la séance NYSE immédiatement précédente. Toutes doivent présenter OHLCV finis et cohérents, prix positifs, volume non négatif et volume cumulé du premier segment positif. Une minute manquante du matin interdit le signal. La clôture précédente n'est jamais remplacée par une séance plus ancienne.\n- À 15:30 (12:30 en demi-séance), la quantité utilise la clôture de la minute précédente, déjà terminée et valide. Les autres minutes intermédiaires ne sont pas nécessaires au signal. Le prix de référence d'entrée est l'open de ce créneau ; sa réalisation future n'est pas garantie par le backtest, notamment à cause du délai de publication du prix de dimensionnement.\n- Une journée entière incomplète n'est pas exclue par anticipation : les fenêtres connues à la décision déterminent l'éligibilité. Toute ambiguïté d'identifiant/doublon signalée par la source suspend le calcul pour inspection ; elle n'est pas silencieusement résolue. Le calendrier, les types et les empreintes sont contrôlés avant chargement des pickles de confiance.\n- La sortie est l'open une minute avant la clôture NYSE. Si une entrée est admissible mais le prix de sortie manque, l'exécution entière doit échouer comme non résolue ; aucun capital plat ou fill inventé. Des minutes manquantes pendant le maintien ne changent pas rétroactivement l'entrée ; elles sont signalées et limitent le drawdown observé minute. Le drawdown ne prétend pas mesurer les variations entre deux observations.\n- Le signal strictement nul est défini par comparaison décimale de la clôture du matin avec `previous_close - dividend`, sans signal artificiel causé par une soustraction binaire. Un dividende négatif ou une référence ajustée non positive est refusé.\n- L'exposition 1x est une cible avant entrée : la quantité entière est fixée avec le dernier prix terminé et le capital net. Le levier effectif peut légèrement dépasser 1 après un écart à l'open ; il sera mesuré, sans emprunt additionnel supposé ni limite cachée.\n- La friction s'applique contre chaque côté ; commission minimum par ordre, deux ordres par transaction ; emprunt SHORT calculé sur le prix d'entrée après friction, 1 % /360, un jour minimum. Aucun intérêt créditeur sur le cash ni frais réglementaires distincts. Les coûts sont des hypothèses, pas le tarif effectivement facturé par Alpaca.\n- A, B et ALL sont simulés séparément à partir de 100 000 USD ; les périodes se recouvrent, leurs transactions ne sont pas des preuves indépendantes. Dix scénarios de stratégie par période : deux instruments × (quatre frictions pour LONG/SHORT + LONG seul à 0,01). Soit 30 exécutions. Deux témoins supplémentaires par instrument/période (12 exécutions) : LONG systématique et signal inversé à 0,01, avec quantités cibles quotidiennes héritées du scénario principal, pour comparer le sens à exposition identique. Le témoin LONG prend aussi les séances de signal nul si la quantité cible est positive ; l'inversé reste plat sur signal nul. Ces témoins ne sont pas des portefeuilles redimensionnés à 1x selon leur propre solde.\n- Les coûts de référence du bot Noise Area restent inchangés. Cette étude ne le configure pas et ne lui envoie aucun ordre.\n- Tous les chemins s'arrêtent en cas d'insolvabilité, y compris les témoins : les quantités communes sont garanties seulement tant que leur capital reste positif. L'audit vérifiera cette condition ; une insolvabilité éventuelle devra être publiée, sans interpréter le témoin comme une comparaison à exposition inchangée après cette date.\n- Les suppressions des trois meilleurs jours sont des diagnostics à rendements quotidiens figés, sans nouveau dimensionnement après suppression. Les intervalles par blocs de 5 et 20 séances, et par années entières, sont descriptifs ; trois années partiellement observées en B limitent particulièrement l'intervalle par années. Tous les scénarios et témoins seront publiés, avec les exclusions.\n\nLes données et le code seront hachés dans `PRE_EXECUTION_PROTOCOL.json` avant la boucle des scénarios. Une correction affectant un résultat crée une nouvelle exécution datée ou suffixée, avec motif et référence à la précédente.\n"
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "code_sha256": {
+    "closing_momentum/__init__.py": "d3313c9b87d9c7710f4934e59a46bb5870de7a736a5905137bdfd21372f77a07",
+    "closing_momentum/analysis.py": "c9a69d93c7c10f3e67df822e76d173acb488651f2759e6f99b1db63f95e78e44",
+    "closing_momentum/engine.py": "8a59839154e9e1f048f053ed2e8b9f288bfc8ba0e34ab99326f2ac2f19709f49",
+    "scripts/audit_results.py": "8a035772816ab093117f4c344c793a3e7f72e71956045402aa21f00ee000860f",
+    "scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "tests/test_analysis.py": "b23fc31105d315fc696f00e097872f29e8fa5fabcb946b32bd6b071c976c7735",
+    "tests/test_engine.py": "e8b25a40f42b2c48d161a9b0f359c670c189414d17fefbe483968a5afd530bcb",
+    "tests/test_sources.py": "33e9cd07aa1c0c31cb3221065eb11d66a24bb835d1f005ef519e01a1769a3e32"
+  },
+  "statistics_sha256": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+  "python": "3.14.6",
+  "numpy": "2.5.4",
+  "pandas": "3.0.6",
+  "calendar_version": "4.13.2",
+  "rerun_reason": null,
+  "note": "Frozen before first financial scenario loop. B reuses previously studied history; not blind OOS."
+}

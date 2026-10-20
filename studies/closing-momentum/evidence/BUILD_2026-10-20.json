@@ -1,0 +1,33 @@
+{
+  "utc": "2026-10-20T21:34:08.978236+00:00",
+  "tests": {
+    "command": "python -m pytest -q --tb=short --basetemp=.test_tmp_final",
+    "passed": 33,
+    "elapsed_seconds": 1.33
+  },
+  "validation": {
+    "decimal_audit": "passed; 70934 overlapping trade rows, 2274918 marks, max error1.935e-8USD",
+    "aggregate_reconciliation": "42 executions passed",
+    "raw_price_checks": "16 examples,80 references,zero price error",
+    "initial_manifest_files_verified": 271,
+    "delivery_manifest_files_verified": 284,
+    "fvg_snapshot_files_unchanged": 1977
+  },
+  "review": "Independent review: insolvency protocol clarified before P&L; local drawdown-duration correction tested in v2; final daily-vs-trade CI labels clarified. No remaining financial blocker.",
+  "source_sha256": {
+    "closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "closing_momentum/engine.py": "8a59839154e9e1f048f053ed2e8b9f288bfc8ba0e34ab99326f2ac2f19709f49",
+    "closing_momentum/__init__.py": "d3313c9b87d9c7710f4934e59a46bb5870de7a736a5905137bdfd21372f77a07",
+    "scripts/audit_results.py": "8a035772816ab093117f4c344c793a3e7f72e71956045402aa21f00ee000860f",
+    "scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "scripts/validate_outputs.py": "9225d5e17fc0424357ca4113e279d7837dc43da5068a3f7bfe8a54fa7601fba8",
+    "scripts/write_report.py": "dbf4a031b142099f8ad8d77cb6da668015495ab7e98bc5d003ba7b81be65ef98",
+    "tests/test_analysis.py": "6bc55dc05697b2fa1ceaea68c726665a4b7bde04b36e16acf3b080df7af80e76",
+    "tests/test_engine.py": "e8b25a40f42b2c48d161a9b0f359c670c189414d17fefbe483968a5afd530bcb",
+    "tests/test_sources.py": "33e9cd07aa1c0c31cb3221065eb11d66a24bb835d1f005ef519e01a1769a3e32",
+    "pytest.ini": "8e9d8e7cc4dc43f90b4287c34939b0e7a2ff4a7740b672a8857da66f8708916e",
+    "requirements.txt": "07648fb2564ae7009ad00657736e23478ca2eca09c068f637e9c4d9bfa9646b2",
+    "PROTOCOL_EXECUTION.md": "870f874465278786fe64486c1f8a51d5d1403b6a7f510ea9c6e1d12bdf67741d"
+  },
+  "note": "Core engine/statistics/tests/run-script hashes match v2 pre-execution snapshot. Report and secondary reconciliations were authored after computation. No bot files or parameters changed."
+}

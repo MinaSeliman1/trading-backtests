@@ -1,0 +1,12 @@
+Instrument,date,eligibility
+SPY,2016-01-04,invalid_previous_close
+SPY,2019-08-12,invalid_sizing_minute
+SPY,2019-08-13,invalid_previous_close
+SPY,2020-03-09,invalid_morning_window
+SPY,2020-03-12,invalid_morning_window
+SPY,2020-03-16,invalid_morning_window
+SPY,2023-06-05,invalid_morning_window
+QQQ,2016-01-04,invalid_previous_close
+QQQ,2020-03-09,invalid_morning_window
+QQQ,2020-03-12,invalid_morning_window
+QQQ,2020-03-16,invalid_morning_window

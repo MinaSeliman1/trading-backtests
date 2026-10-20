@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "previous": "2026-10-20",
+  "reference": "2026-10-20-v2",
+  "identical_fields_except": [
+    "worst_drawdown_duration_calendar_days"
+  ],
+  "all_trade_and_daily_files_identical": true,
+  "reason": "Local drawdown duration correction only"
+}

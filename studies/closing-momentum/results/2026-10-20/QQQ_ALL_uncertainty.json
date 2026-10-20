@@ -1,0 +1,61 @@
+{
+  "repetitions": 3000,
+  "seed": 20261020,
+  "paired_blocks": {
+    "5": {
+      "daily_mean_ci95": [
+        -0.0002698155096764864,
+        -3.7785140686306976e-05
+      ],
+      "mean_minus_long_ci95": [
+        -0.00019792492889401359,
+        0.000160934235698459
+      ]
+    },
+    "20": {
+      "daily_mean_ci95": [
+        -0.00027313909322359626,
+        -3.60864145206353e-05
+      ],
+      "mean_minus_long_ci95": [
+        -0.000199661443063741,
+        0.00015610861250026382
+      ]
+    }
+  },
+  "block_method": "Circular blocks of complete aligned sessions; daily returns and long reference paired by date",
+  "annual_cluster": {
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "events_by_year": [
+      251,
+      250,
+      251,
+      252,
+      250,
+      250,
+      251,
+      249,
+      252,
+      250,
+      199
+    ],
+    "valid_repetitions": 3000,
+    "mean_trade_bps_ci95": [
+      -2.8810226792621405,
+      -0.13369941776169078
+    ]
+  },
+  "caveat": "Descriptive intervals, no multiplicity correction; few calendar-year clusters and reused B limit evidence. Fixed-quantity benchmark equity differs from a separately resized 1x strategy."
+}

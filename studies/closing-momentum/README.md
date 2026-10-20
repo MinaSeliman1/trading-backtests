@@ -1,6 +1,12 @@
 # Piste : momentum de clôture sur SPY et QQQ
 
-**Statut au 20 octobre 2026 : protocole préparé, aucun résultat de backtest calculé pour cette piste.** Elle n'est pas ajoutée au bot Noise Area actif.
+**Statut au 20 octobre 2026 : backtest terminé, 42 exécutions prédéfinies et 33 tests ; référence v2. Les scénarios principaux SPY/QQQ perdent après frais sur A, B et ALL : aucun nouveau bot justifié pour cette version.** Elle n'est pas ajoutée au bot Noise Area actif.
+
+[Rapport complet](results/2026-10-20-v2/RAPPORT_FINAL.md) · [42 comparaisons](results/2026-10-20-v2/comparison_all.csv) · [Audit indépendant](results/2026-10-20-v2/AUDIT_INDEPENDANT.json) · [Examen de transactions et sources brutes](results/2026-10-20-v2/EXAMEN_TRANSACTIONS.md) · [Validation](VALIDATION.md).
+
+Sur B (01/05/2024–16/10/2026), cible 1x et tous coûts prévus : SPY **−3,39 % /616 trades**, QQQ **−3,70 % /618 trades**. Sur ALL (2016–16/10/2026), **−34,72 % et −35,19 %**. La variante QQQ LONG seule gagne 2,01 % en B, mais reste négative sur ALL et sous le témoin LONG de B. B réutilise l'historique des précédentes études : comparaison exploratoire, sans nouveau label hors échantillon aveugle.
+
+Les règles ci-dessous étaient enregistrées avant P&L au commit `4d79c7f` ; les précisions de qualité, témoins et insolvabilité ont été figées dans le [complément d'exécution](PROTOCOL_EXECUTION.md). Le texte antérieur et ses empreintes sont conservés dans [PRE_EXECUTION_PROTOCOL.json](results/2026-10-20-v2/PRE_EXECUTION_PROTOCOL.json). Le premier calcul reste archivé ; v2 corrige uniquement la durée du drawdown, sans modifier les fichiers de trades ou de capital quotidien.
 
 L'hypothèse principale est que le signe du rendement entre la clôture précédente et la fin de la première demi-heure aide à prévoir la dernière demi-heure. Un article des auteurs Baltussen, Da, Lammers et Martens décrit cette relation étudiée par Gao et al. et présente une autre prédiction fondée sur le reste de la journée. [Source primaire, introduction et définitions, pp. 378 et 381](https://academicweb.nd.edu/~zda/intramom.pdf). Ce constat publié motive un test ; il ne fournit pas nos résultats SPY/QQQ après coûts.
 
@@ -35,3 +41,18 @@ Comparer à une position LONG systématique sur le même créneau et au rendemen
 Critère pour poursuivre en simulation : avantage net qui résiste aux coûts plus élevés, ne repose pas seulement sur quelques jours ou un seul régime, et reste crédible face aux références. Si ce n'est pas le cas, archiver le résultat négatif sans multiplier ensuite les filtres. Aucun passage en argent réel n'est prévu dans cette étude.
 
 Une extension utilisant le rendement jusqu'à 15:29 sera une étude distincte, avec son propre gel de règles et une entrée tenant compte du délai de publication de cette minute. Elle ne sera pas introduite après coup comme une correction de l'hypothèse principale.
+
+## Reproduction
+
+Python 3.14.6, avec les caches préparés de confiance et les CSV bruts locaux déjà acquis pour Noise Area. Les chemins et empreintes sont contrôlés ; aucun téléchargement, clé ou compte connecté n'est nécessaire. Les données complètes restent ignorées par Git. Depuis ce dossier :
+
+```powershell
+python -m pip install -r requirements.txt
+python -m pytest -q --basetemp=.test_tmp_local
+python scripts/run_study.py --out results/nouvelle-execution --rerun-reason "Reproduction sans modification des regles"
+python scripts/audit_results.py --out results/nouvelle-execution
+python scripts/validate_outputs.py --out results/nouvelle-execution
+python scripts/write_report.py --out results/nouvelle-execution
+```
+
+Un dossier d'exécution existant n'est jamais écrasé par `run_study.py`. Les témoins à quantités communes et les limites d'exécution aux opens sont détaillés dans le rapport ; ils ne sont pas des ordres exécutés. Les contrôles qualité et résultats peuvent aussi être consultés dans le [notebook de synthèse](notebooks/quality_and_results.ipynb).

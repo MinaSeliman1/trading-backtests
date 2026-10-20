@@ -1,0 +1,304 @@
+{
+  "status": "passed",
+  "utc": "2026-10-20T21:32:23.136097+00:00",
+  "executions": 42,
+  "checks": [
+    {
+      "label": "SPY_ALL_momentum_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_ALL_momentum_s0.02",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_ALL_momentum_s0.03",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_ALL_momentum_s0.05",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_ALL_long_only_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_ALL_always_long_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_ALL_opposite_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_A_momentum_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_A_momentum_s0.02",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_A_momentum_s0.03",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_A_momentum_s0.05",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_A_long_only_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_A_always_long_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_A_opposite_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_B_momentum_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_B_momentum_s0.02",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_B_momentum_s0.03",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_B_momentum_s0.05",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_B_long_only_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_B_always_long_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "SPY_B_opposite_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_ALL_momentum_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_ALL_momentum_s0.02",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_ALL_momentum_s0.03",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_ALL_momentum_s0.05",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_ALL_long_only_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_ALL_always_long_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_ALL_opposite_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 11,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_A_momentum_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_A_momentum_s0.02",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_A_momentum_s0.03",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_A_momentum_s0.05",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_A_long_only_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_A_always_long_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_A_opposite_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 9,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_B_momentum_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_B_momentum_s0.02",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_B_momentum_s0.03",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_B_momentum_s0.05",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_B_long_only_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_B_always_long_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    },
+    {
+      "label": "QQQ_B_opposite_s0.01",
+      "aggregate_fields": 20,
+      "annual_rows": 3,
+      "group_exports": 2,
+      "duration_checked": true
+    }
+  ],
+  "script_sha256": "9225d5e17fc0424357ca4113e279d7837dc43da5068a3f7bfe8a54fa7601fba8",
+  "scope": "CSV-to-summary consistency, aggregate costs/wins/ratios/exposure/ablation/CAGR/Sharpe, annual returns/counts, direction/half-session groups, corrected drawdown duration, no insolvency.",
+  "limitation": "These are secondary reconciliations of audited exports, not a second raw-data acquisition. Monte-Carlo intervals have controlled tests and explicit methodological caveats, not independent statistical certification."
+}

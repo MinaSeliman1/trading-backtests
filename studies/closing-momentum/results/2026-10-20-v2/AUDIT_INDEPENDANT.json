@@ -1,0 +1,307 @@
+{
+  "status": "passed",
+  "utc": "2026-10-20T21:27:26.886472+00:00",
+  "executions": 42,
+  "trade_rows": 70934,
+  "minute_marks": 2274918,
+  "max_currency_error_usd": 1.934999999999996e-08,
+  "method": "Independent Decimal selection and accounting from source arrays; exact trade membership, direction, integer sizing, dividends, costs, timestamps, cumulative equity, daily and observed-minute drawdowns, annual P&L. No engine/statistics helper imported.",
+  "script_sha256": "8a035772816ab093117f4c344c793a3e7f72e71956045402aa21f00ee000860f",
+  "scenarios": [
+    {
+      "label": "SPY_ALL_momentum_s0.01",
+      "trades": 2701,
+      "final_equity": 65277.84101816111,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_ALL_momentum_s0.02",
+      "trades": 2701,
+      "final_equity": 55931.95092461944,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_ALL_momentum_s0.03",
+      "trades": 2701,
+      "final_equity": 47893.254196,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_ALL_momentum_s0.05",
+      "trades": 2701,
+      "final_equity": 35129.82696013611,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_ALL_long_only_s0.01",
+      "trades": 1514,
+      "final_equity": 75444.8463,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_ALL_always_long_s0.01",
+      "trades": 2706,
+      "final_equity": 70361.5911,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_ALL_opposite_s0.01",
+      "trades": 2701,
+      "final_equity": 94096.57200529167,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_A_momentum_s0.01",
+      "trades": 2085,
+      "final_equity": 67577.61240243334,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_A_momentum_s0.02",
+      "trades": 2085,
+      "final_equity": 59067.037207825,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_A_momentum_s0.03",
+      "trades": 2085,
+      "final_equity": 51625.01338111667,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_A_momentum_s0.05",
+      "trades": 2085,
+      "final_equity": 39467.53699223611,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_A_long_only_s0.01",
+      "trades": 1158,
+      "final_equity": 76277.5942,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_A_always_long_s0.01",
+      "trades": 2088,
+      "final_equity": 71548.5882,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_A_opposite_s0.01",
+      "trades": 2085,
+      "final_equity": 96482.34665285278,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_B_momentum_s0.01",
+      "trades": 616,
+      "final_equity": 96608.71991938056,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_B_momentum_s0.02",
+      "trades": 616,
+      "final_equity": 94745.1939219,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_B_momentum_s0.03",
+      "trades": 616,
+      "final_equity": 92920.34629608889,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_B_momentum_s0.05",
+      "trades": 616,
+      "final_equity": 89353.66997590278,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_B_long_only_s0.01",
+      "trades": 356,
+      "final_equity": 98916.1087,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_B_always_long_s0.01",
+      "trades": 618,
+      "final_equity": 98231.1301,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "SPY_B_opposite_s0.01",
+      "trades": 616,
+      "final_equity": 96494.13727989722,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_ALL_momentum_s0.01",
+      "trades": 2705,
+      "final_equity": 64805.06715226667,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_ALL_momentum_s0.02",
+      "trades": 2705,
+      "final_equity": 51475.316664880556,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_ALL_momentum_s0.03",
+      "trades": 2705,
+      "final_equity": 40886.026672658336,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_ALL_momentum_s0.05",
+      "trades": 2705,
+      "final_equity": 25728.36823993611,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_ALL_long_only_s0.01",
+      "trades": 1508,
+      "final_equity": 79280.3186,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_ALL_always_long_s0.01",
+      "trades": 2709,
+      "final_equity": 68348.8607,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_ALL_opposite_s0.01",
+      "trades": 2705,
+      "final_equity": 74609.56361135833,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_A_momentum_s0.01",
+      "trades": 2087,
+      "final_equity": 67267.87016344722,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_A_momentum_s0.02",
+      "trades": 2087,
+      "final_equity": 54688.966826969445,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_A_momentum_s0.03",
+      "trades": 2087,
+      "final_equity": 44486.860891105556,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_A_momentum_s0.05",
+      "trades": 2087,
+      "final_equity": 29404.645864933333,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_A_long_only_s0.01",
+      "trades": 1166,
+      "final_equity": 77724.4679,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_A_always_long_s0.01",
+      "trades": 2091,
+      "final_equity": 65787.5917,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_A_opposite_s0.01",
+      "trades": 2087,
+      "final_equity": 77159.29818036388,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_B_momentum_s0.01",
+      "trades": 618,
+      "final_equity": 96297.34922786945,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_B_momentum_s0.02",
+      "trades": 618,
+      "final_equity": 94206.31981451111,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_B_momentum_s0.03",
+      "trades": 618,
+      "final_equity": 92155.817097675,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_B_momentum_s0.05",
+      "trades": 618,
+      "final_equity": 88152.34757190556,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_B_long_only_s0.01",
+      "trades": 342,
+      "final_equity": 102012.0288,
+      "fixed_quantities_audited": false,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_B_always_long_s0.01",
+      "trades": 618,
+      "final_equity": 103837.9173,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    },
+    {
+      "label": "QQQ_B_opposite_s0.01",
+      "trades": 618,
+      "final_equity": 96271.23624135833,
+      "fixed_quantities_audited": true,
+      "insolvency_sessions": 0
+    }
+  ],
+  "limits": "Overlapping ALL/A/B trade rows are not independent trades. Source arrays share the validated acquisition; this does not validate actual execution prices or provider completeness."
+}
