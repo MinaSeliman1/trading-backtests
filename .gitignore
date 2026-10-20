@@ -8,6 +8,13 @@ __pycache__/
 .pytest_*/
 .test_tmp*/
 .mplconfig/
+**/runtime/**
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+*.db-shm
+*.db-wal
 # Identifiants et configuration personnelle
 .env
 .env.*

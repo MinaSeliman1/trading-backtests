@@ -1,0 +1,47 @@
+{
+  "observed_utc": "2026-10-20T15:32:11.868394+00:00",
+  "current_state": "running",
+  "mode": "shadow",
+  "feed": "sip",
+  "delay_minutes": 16,
+  "broker_order_submission_enabled": false,
+  "current_status": {
+    "state": "running",
+    "mode": "shadow",
+    "feed": "sip",
+    "utc": "2026-10-20T15:32:09.556263+00:00",
+    "managed_qty": 252,
+    "net_realized_equity": 99999.118,
+    "model_extra_friction_per_share": 0.01,
+    "note": "SIP shadow retarde de 16 minutes"
+  },
+  "initial_iex_connection": {
+    "observed_utc": "2026-10-20T15:16:51.506029+00:00",
+    "status": {
+      "state": "running",
+      "mode": "paper",
+      "feed": "iex",
+      "utc": "2026-10-20T15:16:50.069407+00:00",
+      "managed_qty": 0,
+      "net_realized_equity": 100000.0,
+      "model_extra_friction_per_share": 0.01,
+      "note": "IEX est distinct du backtest SIP"
+    },
+    "evidence": "Observed local status after successful paper-account preflight, broker reconciliation and IEX history download. Credentials entered by user in isolated console.",
+    "broker_orders_recorded": 0,
+    "fill_events_recorded": 0,
+    "iex_history_sessions": 70,
+    "iex_history_last15_valid": false,
+    "limits": "Running observation only; no claim of executed trades, future uptime, real-time fill parity or profitability. No credentials or account identifiers included."
+  },
+  "iex_final_state": "paused_and_stopped_flat_zero_fills",
+  "iex_quality_evidence": "iex_quality_2026-10-20.json",
+  "initial_shadow_issue": "UTC diagnostic corrected; initial instance stopped without fills; see startup_utc_diagnostic_2026-10-20.json",
+  "limits": "Observed running shadow process with fresh status; no broker orders submitted. No claim of future uptime, paper execution parity or profitability. No credentials or account identifiers included.",
+  "local_shadow_orders_recorded": 1,
+  "local_shadow_fill_events": 1,
+  "local_decisions_recorded": 3,
+  "sip_history_last15_valid": true,
+  "sip_history_csv_sha256": "c4c46d5b35438019a94987a56e2357423487fe1512633a373f93336c8b7006b9",
+  "startup_replay": "Elapsed decisions of current session replayed locally at archived next opens; distinguish from subsequent prospective observations."
+}

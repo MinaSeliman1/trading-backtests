@@ -1,0 +1,37 @@
+{
+  "utc": "2026-10-20T15:30:09.101974+00:00",
+  "python": "3.14.6",
+  "tests": {
+    "command": "python -m pytest -q --basetemp=.test_tmp_release_complete",
+    "passed": 47,
+    "duration_seconds": 9.2
+  },
+  "original_noise_tests": {
+    "passed": 32,
+    "duration_seconds": 10.25
+  },
+  "fvg_integrity": {
+    "files": 1977,
+    "status": "SHA-256 unchanged"
+  },
+  "replay_evidence": "replay_2026-10-20.json",
+  "source_sha256": {
+    "launch-paper.ps1": "b1dc6e6dcf73f2c9e0e80ecaf75dc66e6761f33c21d3d99453d4fcc0c73b993a",
+    "qqq_paper/__init__.py": "6e8857f72754d37e80f8d8ae8002dc03646ecec514cc7f6ad6d5acef40b765dd",
+    "qqq_paper/__main__.py": "207cb235193da9c685c27a82417186eaa369ebb938e435b2274b2d6c4065c52c",
+    "qqq_paper/alpaca.py": "e2f1f5b2dc7c2ed19f96f128a510b3d4c15d9d3466fb841f6f3210ce4fb8fb11",
+    "qqq_paper/ledger.py": "5fd29078d545edb07c95756fee9c77d0157f45bd5a56ede3c3b20dddf0481e8e",
+    "qqq_paper/runner.py": "43d72f35802c4eea9ec569b0cbbbb4709631dd6f8dbc1725fdf39651b3ae5577",
+    "qqq_paper/runtime.py": "3e3f5fabf779bb99f29d6f5e7c704558ec86aadfacbecc9ee9f289656c31ae73",
+    "qqq_paper/strategy.py": "e9c78635edfd73dccfa51bd10f64df2bda416cb0c6f44e1301d62824207fa6bc",
+    "requirements.txt": "07b9d9cf5482791fa143674a3717a519e38d205bb7f704c6dc129a687b6a5102",
+    "scripts/replay_parity.py": "aa5cf361e1cc35e0a461a2d9f86bac5f8285b7602b032b25a861294c829926c0",
+    "tests/test_api.py": "b948ac9ad2779b2d234010c3169076469a54e7b0af1668436403d5ef39a9183c",
+    "tests/test_cli_runtime.py": "ba9d7ec3bf687031d72fa891eafee35f2d8ee746c2b3de0aa52abf9df132bf26",
+    "tests/test_controller.py": "5b80315fb41a8f454cb4d441c58ef0a3213867150bcaa6ec44f8ace8fa200afe",
+    "tests/test_execution.py": "4cba29dc9769763347218152048b5ab24c4f01b45d79e9c2bae9964439a9a5e9",
+    "tests/test_ledger.py": "cc289e586cfad99625fca9154e67c123f589cf36bb106bb5fb9d364d3ff028c1",
+    "tests/test_recovery.py": "db79bb4c9ca6dbce16b54bcf56c2487ed393714bf9570bbacb0ac891d0b16aed",
+    "tests/test_strategy.py": "1e9f94af3c877be625805166bff72045fe21bcda3a62b6308e97deea7c862bab"
+  }
+}

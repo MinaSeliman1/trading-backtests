@@ -8,8 +8,15 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 |---|---|---|---|
 | [First Candle Rule + FVG](studies/first-candle-fvg/README.md) | Terminée pour SPY/QQQ | Alpaca SIP, 2023–2026, 116 scénarios IS/OOS et walk-forward ; 41 tests automatisés | Aucun avantage démontré dans les conditions testées ; les quatre scénarios principaux perdent hors échantillon |
 | [Intraday Momentum « Noise Area »](studies/intraday-momentum-noise-area/README.md) | Terminée pour SPY/QQQ | SIP 2016–16/10/2026 ; 220 scénarios ; 32 tests ; audits indépendants ; 73 figures | SPY : aucun avantage démontré ; QQQ : potentiellement intéressante, preuves insuffisantes |
+| [Opening Gap Reversal](studies/opening-gap-reversal/README.md) | Piste documentée | Comptage de gaps > 2 % ; protocole causal 09:31–10:00 fixé | Rentabilité non évaluée ; événements rares |
 
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
+
+## Bot QQQ Noise Area en simulation
+
+[Code et lancement de la simulation QQQ](bots/qqq-noise-area/README.md), [validation](bots/qqq-noise-area/VALIDATION.md) et [preuve du replay SIP](bots/qqq-noise-area/validation/replay_2026-10-20.json). Paramètres 14/14, 30 minutes, cible 2 %, plafond 4x ; coûts conservateurs tenus dans un ledger local. 47 tests hors ligne et parité sur 618 séances / 7 380 décisions.
+
+Avec l'offre gratuite, le mode retenu est shadow SIP différé de 16 minutes : transactions simulées localement, sans ordre paper. L'essai IEX a été arrêté sans fill à cause de minutes manquantes incompatibles avec les règles strictes. L'adaptateur d'ordres paper reste disponible avec SIP temps réel et droits appropriés. L'[état d'activation observé](bots/qqq-noise-area/validation/activation_2026-10-20.json) distingue la livraison du code, la connexion et les transactions éventuelles.
 
 ## Consulter les résultats Noise Area
 

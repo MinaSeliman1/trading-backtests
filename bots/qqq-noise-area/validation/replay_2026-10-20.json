@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "utc": "2026-10-20T15:26:13.804594+00:00",
+  "source": "Alpaca SIP raw acquisition validated 2026-10-19",
+  "symbol": "QQQ",
+  "period": "2024-05-01/2026-10-16",
+  "sessions": 618,
+  "decisions": 7380,
+  "fill_events": 1008,
+  "expected_trades": 504,
+  "mode": "offline shadow replay, no broker orders",
+  "slippage": 0.01,
+  "net_pnl": 54303.22175441508,
+  "expected_net_pnl": 54303.22175441508,
+  "max_daily_pnl_error_usd": 1.1596057447604835e-10,
+  "max_feature_abs_error": 1.3642420526593924e-12,
+  "market_sha256": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+  "script_sha256": "aa5cf361e1cc35e0a461a2d9f86bac5f8285b7602b032b25a861294c829926c0",
+  "limits": "Verifies historical strategy and ledger parity; not real-time IEX/SIP parity, real fills or future profitability."
+}

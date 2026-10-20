@@ -1,0 +1,12 @@
+{
+  "stage": "Initial shadow startup, no fills or broker orders",
+  "issue": "UTC bars compared to New York index without timezone normalization; rejected as missing",
+  "decisions": [
+    [
+      "2026-10-20:1000",
+      "{\"decision_time\": \"2026-10-20 10:00:00-04:00\", \"reason\": \"missing or off-grid completed minute\", \"status\": \"data_unavailable\"}"
+    ]
+  ],
+  "fix": "Normalize completed prefix to session timezone; unit regression and REST-to-controller integration passed",
+  "action": "After stopping initial process, removed only erroneous decision and day pause; retained ledger and history"
+}
