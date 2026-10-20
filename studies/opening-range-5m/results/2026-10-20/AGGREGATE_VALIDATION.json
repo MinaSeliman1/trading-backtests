@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "utc": "2026-10-20T22:14:58.179754+00:00",
+  "executions": 54,
+  "numeric_aggregate_checks": 1728,
+  "scope": "CSV-summary equality, costs/ratios/holding bounds/exposure, annual/direction/half-session/exit exports, ablation/CAGR/Sharpe/Sortino/volatility/drawdown duration; no insolvency.",
+  "script_sha256": "065b47e917fbd81082eec67a6233304834c048d235dd3ffff897dc5da484dd7a"
+}

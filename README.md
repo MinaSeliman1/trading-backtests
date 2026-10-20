@@ -10,6 +10,7 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 | [Intraday Momentum « Noise Area »](studies/intraday-momentum-noise-area/README.md) | Terminée pour SPY/QQQ | SIP 2016–16/10/2026 ; 220 scénarios ; 32 tests ; audits indépendants ; 73 figures | SPY : aucun avantage démontré ; QQQ : potentiellement intéressante, preuves insuffisantes |
 | [Opening Gap Reversal](studies/opening-gap-reversal/README.md) | Backtest terminé SPY/QQQ | 54 scénarios, 20 tests, audit de 2 334 lignes ; référence v3 | QQQ : piste à suivre, preuves insuffisantes ; SPY peu convaincante |
 | [Momentum de clôture](studies/closing-momentum/README.md) | Backtest terminé SPY/QQQ | 42 exécutions, 33 tests, audit de 70 934 lignes recouvrantes ; référence v2 | Principaux négatifs après coûts en A, B et ALL ; aucun bot justifié pour cette version |
+| [ORB cinq minutes](studies/opening-range-5m/README.md) | Backtest terminé SPY/QQQ | 54 scénarios, 42 tests, audit de 85 526 lignes recouvrantes | QQQ exploratoire positif mais fragile ; SPY faible ; performances conditionnelles à la couverture, aucun nouveau bot |
 
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
 
@@ -20,6 +21,10 @@ L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), claire
 Le [lanceur Windows sans console](bots/qqq-noise-area/BACKGROUND_WINDOWS.md) est installé avec démarrage automatique à l'ouverture de session, clés dans le coffre Windows et conservation du solde. Référence prospective à partir du 21 octobre 2026 ; suivi quotidien en jours ouvrés et bilans opérationnels définis. Les preuves de démarrage ne constituent pas des résultats de rentabilité.
 
 Avec l'offre gratuite, le mode retenu est shadow SIP différé de 16 minutes : transactions simulées localement, sans ordre paper. L'essai IEX a été arrêté sans fill à cause de minutes manquantes incompatibles avec les règles strictes. L'adaptateur d'ordres paper reste disponible avec SIP temps réel et droits appropriés. L'[état d'activation observé](bots/qqq-noise-area/validation/activation_2026-10-20.json) distingue la livraison du code, la connexion et les transactions éventuelles.
+
+## Consulter les résultats ORB cinq minutes
+
+[Rapport complet](studies/opening-range-5m/results/2026-10-20/RAPPORT_FINAL.md), [54 comparaisons](studies/opening-range-5m/results/2026-10-20/comparison_all.csv), [validation](studies/opening-range-5m/VALIDATION.md). Mêmes frais, risque cible 1 %, plafond causal 1x. B réutilisée du 01/05/2024 au 16/10/2026 : QQQ **+7,76 %**, SPY **−0,84 %**, 615 trades chacun ; ALL : **+50,93 % /+1,40 %**. Comptes historiques conditionnels à la qualité des données, filtre connu après coup ; aucune validation aveugle ni performance continue sur journées exclues. QQQ B sans ses trois meilleurs jours devient négatif ; pas de nouveau bot justifié.
 
 ## Consulter les résultats du momentum de clôture
 

@@ -1,0 +1,283 @@
+{
+  "utc": "2026-10-20T22:12:17.145859+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "specifications": [
+    {
+      "mode": "both",
+      "slippage": 0.01,
+      "priority": "stop_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    },
+    {
+      "mode": "both",
+      "slippage": 0.02,
+      "priority": "stop_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    },
+    {
+      "mode": "both",
+      "slippage": 0.03,
+      "priority": "stop_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    },
+    {
+      "mode": "both",
+      "slippage": 0.05,
+      "priority": "stop_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    },
+    {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "priority": "stop_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    },
+    {
+      "mode": "short_only",
+      "slippage": 0.01,
+      "priority": "stop_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    },
+    {
+      "mode": "inverse",
+      "slippage": 0.01,
+      "priority": "stop_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    },
+    {
+      "mode": "both",
+      "slippage": 0.01,
+      "priority": "target_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    },
+    {
+      "mode": "both",
+      "slippage": 0.01,
+      "priority": "stop_first",
+      "quality": "resolved_prefix",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    }
+  ],
+  "executions": 54,
+  "protocols": {
+    "README.md": {
+      "sha256": "d476b6104f7b7e4d2ed02727b2747840d01ec356508878d8f54753749c23827e",
+      "text": "# ORB cinq minutes — SPY et QQQ\n\n**Statut initial : protocole fixé avant P&L le 20 octobre 2026 ; aucun résultat calculé pour cette nouvelle piste.** Aucun ajout au bot Noise Area actif.\n\nHypothèse : le mouvement des cinq premières minutes se prolonge suffisamment pour rémunérer un stop défini par la première plage. [Zarattini et Aziz, définition de la stratégie, pp. 4–6](https://concretumgroup.com/wp-content/uploads/2026/02/Can-Day-Trading-Really-Be-Profitable.pdf) étudient une version simplifiée ORB : direction de la première bougie, entrée à la suivante, stop à l'extrême opposé, objectif 10R. Notre test l'adapte à SPY/QQQ non levierisés, aux coûts déjà utilisés et à la disponibilité de l'information ; aucune performance publiée n'est revendiquée comme nôtre.\n\nLe détail figé figure dans [PROTOCOL_EXECUTION.md](PROTOCOL_EXECUTION.md). Principaux choix : signal open 09:30 vers close 09:34 ; entrée open 09:35 ; risque cible 1 % du capital, exposition plafonnée à 1x ; taille basée sur close 09:34 et extrêmes 09:30–09:34, connus avant entrée. Stop fixe, objectif 10R calculé après constat du fill ; sortie au premier événement ou open 15:59 (12:59 en demi-séance). Un trade maximum par séance, sans overnight.\n\nCapital initial 100 000 USD. Mêmes coûts : 0,0035 USD/action/côté, minimum 0,35 USD/ordre ; friction adverse 0,01 USD/action/côté, stress 0,02/0,03/0,05 ; emprunt SHORT 1 %/360 avec un jour minimum. Le plafond 1x, les frais, le capital, le prix causal de dimensionnement et la sortie avant clôture diffèrent du papier source ; ceci n'est pas une réplication exacte.\n\n**Qualité : les résultats seront conditionnels aux séances dont l'exécution est observable.** Un stop nécessite des minutes intermédiaires exploitables. Le profil principal utilise les séances intégrales validées, filtre de recherche connu après coup, non déployable à l'ouverture. Une sensibilité observe seulement le préfixe jusqu'à la sortie et conserve les séances qui deviennent incomplètes ensuite ; un trou avec position active est déclaré non résolu. Aucun trou n'est interpolé ou assimilé automatiquement à une suspension. Un solde calculé en omettant ces séances ne représente pas le portefeuille réel qui les aurait traversées.\n\nALL : 04/01/2016–16/10/2026 ; A jusqu'au 30/04/2024 ; B du 01/05/2024 au 16/10/2026. Capital réinitialisé séparément par période. B réutilisée reste exploratoire, sans nouveau label de validation aveugle. Les versions du protocole, données et code seront hachées avant calcul, puis toutes les variantes publiées.\n"
+    },
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "379731417266c5ea4222d3061c0a8c2f94cdecf2501eceeb0a5415f3162536e8",
+      "text": "# Protocole ORB 5 minutes — avant P&L\n\nDemande : trouver une autre piste SPY/QQQ, la tester avec les mêmes frais et publier dans trading-backtests. Exécution autonome autorisée pendant l'absence de l'utilisateur. La disponibilité des historiques et les résultats des études antérieures sont connus ; aucun nouveau P&L ORB n'a été consulté.\n\n## Signal, quantité et sorties\n\n1. Données : caches Alpaca SIP raw validés, calendrier XNYS et précision float64. Première plage = cinq minutes 09:30 à 09:34 incluses, toutes OHLCV cohérentes et volume cumulé positif. Direction LONG si close 09:34 > open 09:30 ; SHORT si inférieur ; nul si égal par comparaison décimale. Pas de référence à une clôture précédente : le dividende ex-date ne crée pas de signal artificiel.\n2. Au signal, stop connu = plus bas des cinq minutes pour LONG, plus haut pour SHORT. Le risque unitaire de taille est la distance entre close 09:34 et ce stop. `q=floor(min(capital/close_09:34, 0.01*capital/risque_unitaire))`. Capital net recomposé, actions entières, maximum théorique 1x au prix connu ; le gap d'entrée peut modifier ce levier et dépasser la perte cible.\n3. Entrée supposée à l'open 09:35, plus friction adverse selon le sens. Aucun prix de 09:35 n'est utilisé pour choisir q. Le délai de publication de close 09:34 et de transmission ne garantit pas ce fill : hypothèse de backtest, pas exécution constatée. Une entrée sans open observable est exclue comme exécution non établie, sans retard inventé vers une autre minute.\n4. Après fill, R de référence = distance signée entre open d'entrée et stop. Si R <=0, le stop est immédiatement marketable : sortie au même open, avec les deux commissions et frictions ; le trade n'est pas éliminé après avoir vu le gap. Sinon objectif = open d'entrée + signe*10R, sans trailing ni sortie partielle. Quantité préfixée inchangée malgré ce risque réalisé.\n5. Pour chaque minute active : vérifier d'abord l'open. Un gap au-delà du stop se remplit à l'open, un gap favorable au-delà de l'objectif au niveau objectif conservateur. Ensuite comparer low/high au stop et à l'objectif, inclusivement. Si les deux sont touchés dans la même minute sans ordre observable, priorité STOP dans le principal ; sensibilité TARGET séparée à friction 0,01. Les prix exécutables appliquent ensuite la friction adverse. Aucune amélioration de cours supposée sur la cible.\n6. À l'open de la dernière minute (15:59 ou 12:59), si aucune barrière déjà exécutable à cet open, liquider au marché. Ne pas utiliser high/low/close de cette dernière minute après la liquidation. Un seul aller-retour par jour, aucune réentrée ou position overnight. Les timestamps de barrières intraminute désignent une minute, pas une seconde connue.\n7. Pour le drawdown minute, marquer l'entrée, les closes des minutes entièrement maintenues avant la minute de sortie, puis le capital réalisé net. Ne pas marquer le close ou les extrêmes postérieurs possibles à une sortie intraminute. MAE/MFE limitées aux barres entièrement maintenues, à l'entrée et à la référence de sortie : bornes observées partielles, pas risque tick exact. Durée d'exposition : borne supérieure d'une minute pour une sortie intraminute ; durée exacte aux opens.\n8. Frais : par côté `max(0.35, q*0.0035)` ; friction 0,01 USD/action/côté, stress 0,02/0,03/0,05 ; SHORT `q*prix_entrée_après_friction*0.01/360`, un jour minimum même pour une sortie immédiate. Pas de tarif réglementaire séparé ni intérêts sur cash. Les prix après friction doivent rester positifs. Insolvabilité : arrêter les nouvelles entrées et publier l'état.\n\n## Qualité et portée des performances\n\nLes historiques comportent des minutes manquantes, dont certaines autour des interruptions de mars 2020 et d'autres sans suspension officielle établie. Une sonde SIP actuelle sur QQQ 02/02/2016 11:15–11:30, via les identifiants déjà protégés, n'a pas récupéré les neuf minutes absentes ; aucune nouvelle clé n'a été demandée.\n\nProfil principal `complete_days` : uniquement séances intégrales validées. Cette sélection dépend d'une qualité connue après coup et les métriques sont **conditionnelles à cet univers historique**. Les autres séances sont publiées comme données exclues, pas comme journées où une stratégie réellement connectée aurait volontairement choisi le cash.\n\nSensibilité `resolved_prefix` à 0,01 : les cinq premières minutes puis l'open d'entrée doivent être observés ; examiner les barres uniquement jusqu'à la sortie. Si une minute active est absente ou invalide avant toute sortie démontrée, classer le trade/séance `unresolved_execution` : aucun fill, retour, barrière ou maintien réel ne peut être établi. Le compte conditionnel omet ces séances ; les colonnes d'exclusion et dates rendent cette imputation comptable explicite. Un trou après une sortie établie ne modifie pas le trade. Aucun trou n'est automatiquement déclaré halt, aucune bougie n'est fabriquée. Aucun rendement continu sur toutes les séances n'est revendiqué.\n\nOHLC extrêmes provenant d'un seul fournisseur peuvent comporter des anomalies affectant les stops. Relire dans les CSV bruts des exemples extrêmes, ex-dates, demi-séances et barrières ambiguës ; cette vérification n'est pas un contrôle indépendant par un autre fournisseur. Publier comptes de barres ambiguës, gaps, données exclues, expositions et risques effectivement dépassés.\n\n## Scénarios et évaluation\n\n54 exécutions : deux instruments × trois périodes × neuf spécifications :\n\n- LONG/SHORT, `complete_days`, STOP prioritaire, quatre frictions 0,01/0,02/0,03/0,05 ;\n- LONG seul et SHORT seul, chacun `complete_days` à 0,01, diagnostics prédéfinis ;\n- signal inversé, `complete_days` à 0,01, même règle de risque et stop à l'extrême approprié au sens : les quantités et sorties ne sont pas identiques au principal, ce n'est pas une comparaison à exposition fixée ;\n- priorité TARGET sur les barres ambiguës, `complete_days` à 0,01 : sensibilité d'exécution, aucun choix après observation ;\n- LONG/SHORT `resolved_prefix` à 0,01, STOP prioritaire : sensibilité de couverture, toujours conditionnelle aux exécutions résolues.\n\nPériodes ALL/A/B identiques à README, réinitialisées à 100 000 USD. Publier toutes les exécutions, frais, P&L net, rendements/CAGR conditionnels, DD quotidiens/minute observée, succès/échecs, profit factor, LONG/SHORT, années, demi-séances, coûts, levier et perte au stop. Cash témoin non rémunéré = 0 %, sans prétendre qu'il répare une observation manquante.\n\nIncertitude descriptive : blocs circulaires de 5 et 20 séances et années complètes, 3 000 répétitions, graine 20261020 ; années sans trade conservées. Peu de groupes annuels en B et filtrage de qualité imposent des réserves. Retirer les trois meilleurs jours est un diagnostic à rendements et tailles figés. A/B/ALL et les variantes se recouvrent ; ne pas compter les lignes comme observations indépendantes. Aucun réglage du stop, objectif, horaire ou budget après P&L.\n\nToute correction numérique après calcul crée un nouveau dossier avec motif ; conserver les sorties précédentes. Ne modifier ni le bot, ni ses secrets, ni les études historiques. Une performance positive conditionnelle ne suffit pas à autoriser un bot ou du réel.\n"
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "code_sha256": {
+    "orb/__init__.py": "4aa1cc8c56b8834f8846ba260770cd70fe5af1f71721e746792abca89058b878",
+    "orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2",
+    "orb/engine.py": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810",
+    "scripts/run_study.py": "8cef53a7d33436eb431d0afd3e338493612c300d5b6f3014b62dfaab17c1e992",
+    "tests/test_analysis.py": "e56602ec74e95759655b2466434c3c194426179a97480782da19c242d723e6fa",
+    "tests/test_engine.py": "1bd8dc228e54d646f46fcad2be65559b4a802bde8152e6b39e30ba0b06ff3b3a"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c"
+  },
+  "python": "3.14.6",
+  "numpy": "2.5.4",
+  "pandas": "3.0.6",
+  "note": "Frozen before first financial loop. All returns conditional on historical source coverage; B reused, not blind OOS."
+}

@@ -1,0 +1,61 @@
+{
+  "observed_utc": "2026-10-20 22:20:38 UTC",
+  "tests": {
+    "command": "python -m pytest -q --tb=short --basetemp=.test_tmp_final",
+    "exit_code": 0,
+    "result": "..........................................                               [100%]\r\n42 passed in 1.04s"
+  },
+  "archive_check": {
+    "command": "python tools/verify_snapshot.py",
+    "exit_code": 0,
+    "files": 1977,
+    "status": "SHA-256 unchanged"
+  },
+  "environment": {
+    "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "exchange_calendars": "4.13.2",
+      "matplotlib": "3.11.2",
+      "pytest": "9.1.1"
+    }
+  },
+  "environment_note": "exchange_calendars version recorded after execution; original freeze remains unchanged.",
+  "bot_readonly_check": {
+    "utc": "2026-10-20T22:19:41.953287+00:00",
+    "mode": "shadow",
+    "feed": "sip",
+    "engine_state": "running",
+    "managed_qty": 0,
+    "pending_orders": 0,
+    "alerts": [],
+    "prospective_first_session": "2026-10-21",
+    "simulation_configuration_unchanged": true
+  },
+  "credentials_probe": {
+    "purpose": "Read-only historical SIP check of existing QQQ source gap",
+    "requested_minutes": 15,
+    "returned_minutes": 6,
+    "recovered_missing_minutes": 0,
+    "sha256": "a8aa12265677ce9f42c60837d2929effb5d03cd4e6c0597b069a2043a48d1693",
+    "storage": "Existing protected Windows Credential Manager; no new prompt",
+    "credentials_printed": false,
+    "credentials_published": false,
+    "broker_orders_submitted": false
+  },
+  "figure_visual_check": {
+    "figures": 4,
+    "status": "inspected: readable, units/periods/conditional scope visible"
+  },
+  "sources": [
+    {
+      "url": "https://concretumgroup.com/wp-content/uploads/2026/02/Can-Day-Trading-Really-Be-Profitable.pdf",
+      "purpose": "Primary simplified ORB method, pages4-6; adaptation explicitly stated"
+    },
+    {
+      "url": "https://www.nyse.com/article/assessing-nyse-model-performance",
+      "purpose": "Context for market-wide interruptions, not gap interpolation"
+    }
+  ]
+}

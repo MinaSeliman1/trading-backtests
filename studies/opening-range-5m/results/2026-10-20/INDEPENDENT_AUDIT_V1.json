@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-20T22:15:51.337882+00:00",
+  "status": "passed",
+  "executions": 54,
+  "trade_rows": 85526,
+  "independent_source_marks": 9282328,
+  "unresolved_rows": 20,
+  "summary_numeric_checks": 324,
+  "max_numeric_error_usd": 4.0245140553452075e-11,
+  "method": "Independent first-five signals, Decimal sizing/levels/costs/PnL, source minute replay, capital and close-mark drawdowns, complete date membership incl conditional exclusions; no engine functions called.",
+  "caveat": "Source remains Alpaca SIP; no cross-provider validation. Overlapping scenarios/periods are not independent trades. Partial observed drawdown is not tick drawdown."
+}

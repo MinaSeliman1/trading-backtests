@@ -1,0 +1,6 @@
+date,symbol,sign,quantity,reason,first_unknown_slot,entry_reference,known_entry_commission,known_entry_friction,omitted_entire_trade
+2016-02-02,QQQ,-1,966,missing_active_open,108,103.79,3.3810000000000002,9.66,True
+2016-02-22,QQQ,1,1020,missing_active_open,56,102.6,3.5700000000000003,10.200000000000001,True
+2020-03-09,QQQ,1,655,missing_entry_open,5,,0.0,0.0,True
+2020-03-12,QQQ,1,691,missing_active_open,6,182.11,2.4185,6.91,True
+2020-03-18,QQQ,1,344,missing_active_open,207,174.33,1.204,3.44,True

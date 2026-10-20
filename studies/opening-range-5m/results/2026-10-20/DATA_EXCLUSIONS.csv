@@ -1,0 +1,15 @@
+Instrument,date,eligibility
+SPY,2016-02-02,excluded_incomplete_day
+SPY,2019-08-12,excluded_incomplete_day
+SPY,2020-03-09,excluded_incomplete_day
+SPY,2020-03-12,excluded_incomplete_day
+SPY,2020-03-16,invalid_opening_window
+SPY,2020-03-18,excluded_incomplete_day
+SPY,2021-05-05,excluded_incomplete_day
+SPY,2023-06-05,excluded_incomplete_day
+QQQ,2016-02-02,excluded_incomplete_day
+QQQ,2016-02-22,excluded_incomplete_day
+QQQ,2020-03-09,excluded_incomplete_day
+QQQ,2020-03-12,excluded_incomplete_day
+QQQ,2020-03-16,invalid_opening_window
+QQQ,2020-03-18,excluded_incomplete_day

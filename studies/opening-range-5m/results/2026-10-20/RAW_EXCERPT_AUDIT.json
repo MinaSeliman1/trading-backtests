@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "selected_transactions": 16,
+  "raw_bar_references": 112,
+  "ohlcv_values_compared": 560,
+  "maximum_absolute_error": 0,
+  "scope": "Five first bars, entry and exit minute: all OHLCV fields re-read from six hashed raw CSVs and compared to prepared arrays. Repeated minute roles allowed.",
+  "limitation": "Deterministic examples, single provider; not proof of tick ordering, actual fills or absence of provider price errors."
+}

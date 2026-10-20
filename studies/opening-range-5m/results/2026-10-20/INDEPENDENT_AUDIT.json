@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-20T22:22:09.365597+00:00",
+  "status": "passed",
+  "audit_revision": 2,
+  "executions": 54,
+  "trade_rows": 85526,
+  "independent_source_marks": 9282328,
+  "unresolved_rows": 20,
+  "summary_numeric_checks": 324,
+  "max_numeric_field_error_mixed_units": 4.0245140553452075e-11,
+  "max_currency_trade_field_error_usd": 4.0245140553452075e-11,
+  "max_price_error_usd_per_share": 1.1368683772161603e-13,
+  "max_net_bps_error": 4.085620730620576e-12,
+  "max_capital_error_usd": 2.4607288651168346e-08,
+  "max_drawdown_pct_error": 2.3746338229102548e-11,
+  "max_drawdown_usd_error": 2.438173396512866e-08,
+  "capital_and_summary_absolute_tolerance": 3e-06,
+  "revision_note": "Audit instrumentation only: separate measurement units and capital/DD errors. Financial simulation and initial manifest unchanged; original proof preserved in INDEPENDENT_AUDIT_V1.json.",
+  "method": "Independent first-five signals, Decimal sizing/levels/costs/PnL, source minute replay, capital and close-mark drawdowns, complete date membership incl conditional exclusions; no engine functions called.",
+  "caveat": "Source remains Alpaca SIP; no cross-provider validation. Overlapping scenarios/periods are not independent trades. Partial observed drawdown is not tick drawdown."
+}
