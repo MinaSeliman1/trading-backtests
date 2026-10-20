@@ -1,0 +1,16 @@
+[
+  {
+    "symbol": "SPY",
+    "sessions": 618,
+    "correlation_daily": -0.05144464457013516,
+    "noise_daily_sha256": "e0cee656eb51865ea5781a805a04e0a52b260ed43686a212242e99774aa2532b",
+    "note": "Descriptive correlation only; both target 1x, 0.01 friction. No optimized combination."
+  },
+  {
+    "symbol": "QQQ",
+    "sessions": 618,
+    "correlation_daily": -0.08293133192068823,
+    "noise_daily_sha256": "7fce37e4b6368241d9f425ee751a067ae79e61646ac999caae92ec43abee5bdf",
+    "note": "Descriptive correlation only; both target 1x, 0.01 friction. No optimized combination."
+  }
+]

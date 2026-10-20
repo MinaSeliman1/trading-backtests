@@ -1,0 +1,13 @@
+{
+  "initial": "2026-10-20",
+  "intermediate": "2026-10-20-v2",
+  "reference": "2026-10-20-v3",
+  "scenarios": 54,
+  "max_net_pnl_change_usd": 0.0,
+  "corrected_fields": [
+    "exact decimal post-dividend threshold",
+    "PnL and return correlations separately",
+    "drawdown duration from last preceding peak"
+  ],
+  "note": "No strategy, threshold, cost or date optimization. Initial and intermediate runs retained. Initial source code archived."
+}

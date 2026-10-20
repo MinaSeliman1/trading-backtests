@@ -1,6 +1,12 @@
-# Piste : retour après un grand gap d'ouverture
+# Opening Gap Reversal — backtest
 
-**Statut au 20 octobre 2026 : hypothèse documentée et comptage de faisabilité seulement. Aucun backtest de rentabilité, aucune transaction du bot.**
+**Statut au 20 octobre 2026 : backtest terminé, 54 scénarios et 20 tests ; rapport de référence v3. QQQ mérite un suivi virtuel, preuves insuffisantes pour un bot autonome. La stratégie ne passe aucun ordre.**
+
+[Rapport complet](results/2026-10-20-v3/RAPPORT_FINAL.md) · [54 scénarios](results/2026-10-20-v3/comparison_all.csv) · [Audit indépendant](results/2026-10-20-v3/AUDIT_INDEPENDANT.json) · [Validation](VALIDATION.md).
+
+Sur B (01/05/2024–16/10/2026), cible 1x et friction 0,01 USD/action/côté plus frais : QQQ +8,47 % avec 18 trades ; SPY +1,32 % avec 11 trades. B est une comparaison chronologique exploratoire sur un historique réutilisé. Les faibles échantillons et la concentration des gains empêchent de conclure à un avantage robuste.
+
+Le [protocole d’exécution](PROTOCOL_EXECUTION.md) précise avant P&L le traitement des bornes observées et suspensions. Le profil principal donne 48 événements SPY /83 QQQ sur ALL ; le filtre historique de journées complètes ci-dessous reste une sensibilité, avec 42 /77. Les comptes B sont identiques.
 
 Après un grand écart entre la clôture précédente et l'ouverture, tester une position opposée au gap pendant la première demi-heure. Cette logique de retour à la moyenne explore un comportement différent de la poursuite de mouvement de Noise Area. Sa complémentarité financière reste à mesurer.
 
@@ -30,17 +36,17 @@ Le script [count_events.py](scripts/count_events.py) a seulement compté les gap
 | SPY | 42 / 2 696 | 31 / 2 078 | 11 / 618 |
 | QQQ | 77 / 2 700 | 59 / 2 082 | 18 / 618 |
 
-Ces nombres ne sont ni des trades exécutés, ni des résultats de stratégie. Le filtre de journées complètes de l'étude exclut notamment plusieurs séances avec halts de mars 2020 ; les comptes sont conditionnels à cet univers. Le prochain backtest devra auditer explicitement ces séances et distinguer exclusion pour qualité des données et impossibilité d'exécuter.
+Ces nombres ne sont ni des trades exécutés, ni des résultats de stratégie. Le filtre de journées complètes de l'étude exclut notamment plusieurs séances avec halts de mars 2020 ; les comptes sont conditionnels à cet univers. Le backtest v3 audite explicitement ces séances et distingue les exclusions de qualité des bornes sans prix exécutable.
 
-Le faible nombre d'événements, surtout en B, est une limite forte de puissance statistique. Ne pas abaisser le seuil après ce constat uniquement pour obtenir davantage de trades. Aucun rendement, Sharpe ou taux de réussite n'a été calculé.
+Le faible nombre d'événements, surtout en B, est une limite forte de puissance statistique. Ne pas abaisser le seuil après ce constat uniquement pour obtenir davantage de trades. Le comptage initial ne calculait aucun rendement ; le backtest et ses limites sont maintenant publiés séparément dans la référence v3.
 
-## Validation à réaliser
+## Validation effectuée et limites
 
 Les périodes A et B ci-dessus servent de comparaison chronologique exploratoire. L'historique a déjà été étudié pour d'autres stratégies et le comptage vient d'être consulté : **B ne sera pas présenté comme un nouveau test aveugle**. Le protocole est daté du 20 octobre ; une observation prospective intacte peut commencer le 21 octobre 2026.
 
-Pour chaque instrument et coût, publier trades détaillés, P&L net, drawdown, distribution des pertes, exposition, nombre de trades par année et par sens, concentration des gains et incertitude des moyennes. Comparer à l'absence de position et à un trade dans le sens du gap sur les mêmes créneaux. Mesurer ensuite la corrélation des P&L quotidiens avec Noise Area, sans supposer de diversification.
+Les exports publient pour chaque instrument et coût les trades détaillés, P&L net, drawdown, pertes, exposition, nombre de trades par année et par sens, concentration des gains et incertitude des moyennes. Les témoins cash et dans le sens du gap ainsi que les corrélations avec Noise Area sont publiés, sans supposer de diversification.
 
-Les intervalles devront respecter la dépendance des événements par crise et année. Un faible échantillon positif sera une piste à suivre, pas une preuve suffisante pour lancer un bot. La stratégie n'est pas intégrée au bot QQQ livré.
+Les intervalles regroupent les événements par année et leur faible nombre limite fortement leur portée. Un faible échantillon positif sera une piste à suivre, pas une preuve suffisante pour lancer un bot. La stratégie n'est pas intégrée au bot QQQ livré.
 
 ## Reproduire uniquement le comptage
 
@@ -51,3 +57,17 @@ python studies/opening-gap-reversal/scripts/count_events.py
 ```
 
 Les historiques minute et pickles restent locaux et ignorés par Git. Ne charger que des pickles de confiance.
+
+## Installation et reproduction du backtest
+
+Python 3.14.6, depuis ce dossier :
+
+```powershell
+python -m pip install -r requirements.txt
+python -m pytest -q --basetemp=.test_tmp_local
+python scripts/run_study.py --out results/nouvelle-execution --rerun-reason "Reproduction sans modification des paramètres"
+python scripts/audit_results.py --out results/nouvelle-execution
+python scripts/write_report.py --out results/nouvelle-execution
+```
+
+Les scripts nécessitent les caches préparés locaux de Noise Area et vérifient leurs hashes avant calcul. Le rapport compare aussi avec les résultats Noise Area existants et la première exécution Gap Reversal archivée. Aucun téléchargement ni clé API ne sont nécessaires pour ce backtest. Une exécution ne remplace pas un dossier de résultats existant.

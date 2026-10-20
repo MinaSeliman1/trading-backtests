@@ -1,0 +1,1 @@
+-r ../intraday-momentum-noise-area/requirements-lock.txt

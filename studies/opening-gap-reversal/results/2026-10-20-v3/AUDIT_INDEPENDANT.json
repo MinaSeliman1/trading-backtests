@@ -1,0 +1,336 @@
+{
+  "status": "passed",
+  "utc": "2026-10-20T15:53:31.811367+00:00",
+  "scenarios": 54,
+  "trade_rows": 2334,
+  "max_currency_error_usd": 4.42e-11,
+  "method": "Independent Decimal recomputation from source arrays; event membership, size, direction, dividend reference, prices, costs, timestamps, equity, daily drawdown and summary return. No engine/statistics helper imported.",
+  "script_sha256": "c5aaea6317c044f8ddc6908f58a90b3cf3284fd850113d8b6e90f8051f3dd49f",
+  "scenarios_checked": [
+    {
+      "label": "SPY_ALL_reversal_endpoints_s0.01",
+      "trades": 48,
+      "expected_trades": 48,
+      "final_equity": 115546.88065930555
+    },
+    {
+      "label": "SPY_ALL_reversal_endpoints_s0.02",
+      "trades": 48,
+      "expected_trades": 48,
+      "final_equity": 115215.15534138889
+    },
+    {
+      "label": "SPY_ALL_reversal_endpoints_s0.03",
+      "trades": 48,
+      "expected_trades": 48,
+      "final_equity": 114873.83070333334
+    },
+    {
+      "label": "SPY_ALL_reversal_endpoints_s0.05",
+      "trades": 48,
+      "expected_trades": 48,
+      "final_equity": 114215.16869555555
+    },
+    {
+      "label": "SPY_ALL_momentum_endpoints_s0.01",
+      "trades": 48,
+      "expected_trades": 48,
+      "final_equity": 85469.8112143611
+    },
+    {
+      "label": "SPY_ALL_momentum_endpoints_s0.02",
+      "trades": 48,
+      "expected_trades": 48,
+      "final_equity": 85211.846242
+    },
+    {
+      "label": "SPY_ALL_momentum_endpoints_s0.03",
+      "trades": 48,
+      "expected_trades": 48,
+      "final_equity": 84968.932077
+    },
+    {
+      "label": "SPY_ALL_momentum_endpoints_s0.05",
+      "trades": 48,
+      "expected_trades": 48,
+      "final_equity": 84478.90055355556
+    },
+    {
+      "label": "SPY_ALL_reversal_complete_days_s0.01",
+      "trades": 42,
+      "expected_trades": 42,
+      "final_equity": 104407.79867638889
+    },
+    {
+      "label": "SPY_A_reversal_endpoints_s0.01",
+      "trades": 37,
+      "expected_trades": 37,
+      "final_equity": 114049.58403597222
+    },
+    {
+      "label": "SPY_A_reversal_endpoints_s0.02",
+      "trades": 37,
+      "expected_trades": 37,
+      "final_equity": 113763.52931916667
+    },
+    {
+      "label": "SPY_A_reversal_endpoints_s0.03",
+      "trades": 37,
+      "expected_trades": 37,
+      "final_equity": 113474.95978083333
+    },
+    {
+      "label": "SPY_A_reversal_endpoints_s0.05",
+      "trades": 37,
+      "expected_trades": 37,
+      "final_equity": 112912.25748472223
+    },
+    {
+      "label": "SPY_A_momentum_endpoints_s0.01",
+      "trades": 37,
+      "expected_trades": 37,
+      "final_equity": 86747.49591158333
+    },
+    {
+      "label": "SPY_A_momentum_endpoints_s0.02",
+      "trades": 37,
+      "expected_trades": 37,
+      "final_equity": 86529.37129713889
+    },
+    {
+      "label": "SPY_A_momentum_endpoints_s0.03",
+      "trades": 37,
+      "expected_trades": 37,
+      "final_equity": 86308.39235047222
+    },
+    {
+      "label": "SPY_A_momentum_endpoints_s0.05",
+      "trades": 37,
+      "expected_trades": 37,
+      "final_equity": 85879.14059522223
+    },
+    {
+      "label": "SPY_A_reversal_complete_days_s0.01",
+      "trades": 31,
+      "expected_trades": 31,
+      "final_equity": 103050.52551583333
+    },
+    {
+      "label": "SPY_B_reversal_endpoints_s0.01",
+      "trades": 11,
+      "expected_trades": 11,
+      "final_equity": 101317.51558916667
+    },
+    {
+      "label": "SPY_B_reversal_endpoints_s0.02",
+      "trades": 11,
+      "expected_trades": 11,
+      "final_equity": 101277.1558325
+    },
+    {
+      "label": "SPY_B_reversal_endpoints_s0.03",
+      "trades": 11,
+      "expected_trades": 11,
+      "final_equity": 101240.87307583334
+    },
+    {
+      "label": "SPY_B_reversal_endpoints_s0.05",
+      "trades": 11,
+      "expected_trades": 11,
+      "final_equity": 101153.6820588889
+    },
+    {
+      "label": "SPY_B_momentum_endpoints_s0.01",
+      "trades": 11,
+      "expected_trades": 11,
+      "final_equity": 98518.977425
+    },
+    {
+      "label": "SPY_B_momentum_endpoints_s0.02",
+      "trades": 11,
+      "expected_trades": 11,
+      "final_equity": 98481.34973444445
+    },
+    {
+      "label": "SPY_B_momentum_endpoints_s0.03",
+      "trades": 11,
+      "expected_trades": 11,
+      "final_equity": 98442.05004388888
+    },
+    {
+      "label": "SPY_B_momentum_endpoints_s0.05",
+      "trades": 11,
+      "expected_trades": 11,
+      "final_equity": 98360.16266277777
+    },
+    {
+      "label": "SPY_B_reversal_complete_days_s0.01",
+      "trades": 11,
+      "expected_trades": 11,
+      "final_equity": 101317.51558916667
+    },
+    {
+      "label": "QQQ_ALL_reversal_endpoints_s0.01",
+      "trades": 83,
+      "expected_trades": 83,
+      "final_equity": 134357.8374501528
+    },
+    {
+      "label": "QQQ_ALL_reversal_endpoints_s0.02",
+      "trades": 83,
+      "expected_trades": 83,
+      "final_equity": 133439.68916624444
+    },
+    {
+      "label": "QQQ_ALL_reversal_endpoints_s0.03",
+      "trades": 83,
+      "expected_trades": 83,
+      "final_equity": 132528.055893075
+    },
+    {
+      "label": "QQQ_ALL_reversal_endpoints_s0.05",
+      "trades": 83,
+      "expected_trades": 83,
+      "final_equity": 130767.16507465277
+    },
+    {
+      "label": "QQQ_ALL_momentum_endpoints_s0.01",
+      "trades": 83,
+      "expected_trades": 83,
+      "final_equity": 72418.18747665556
+    },
+    {
+      "label": "QQQ_ALL_momentum_endpoints_s0.02",
+      "trades": 83,
+      "expected_trades": 83,
+      "final_equity": 71949.30373148333
+    },
+    {
+      "label": "QQQ_ALL_momentum_endpoints_s0.03",
+      "trades": 83,
+      "expected_trades": 83,
+      "final_equity": 71447.26457783888
+    },
+    {
+      "label": "QQQ_ALL_momentum_endpoints_s0.05",
+      "trades": 83,
+      "expected_trades": 83,
+      "final_equity": 70495.83375235277
+    },
+    {
+      "label": "QQQ_ALL_reversal_complete_days_s0.01",
+      "trades": 77,
+      "expected_trades": 77,
+      "final_equity": 119688.9407161389
+    },
+    {
+      "label": "QQQ_A_reversal_endpoints_s0.01",
+      "trades": 65,
+      "expected_trades": 65,
+      "final_equity": 123858.21660527778
+    },
+    {
+      "label": "QQQ_A_reversal_endpoints_s0.02",
+      "trades": 65,
+      "expected_trades": 65,
+      "final_equity": 123118.25786277778
+    },
+    {
+      "label": "QQQ_A_reversal_endpoints_s0.03",
+      "trades": 65,
+      "expected_trades": 65,
+      "final_equity": 122365.01317138888
+    },
+    {
+      "label": "QQQ_A_reversal_endpoints_s0.05",
+      "trades": 65,
+      "expected_trades": 65,
+      "final_equity": 120892.76116694444
+    },
+    {
+      "label": "QQQ_A_momentum_endpoints_s0.01",
+      "trades": 65,
+      "expected_trades": 65,
+      "final_equity": 78887.3032686
+    },
+    {
+      "label": "QQQ_A_momentum_endpoints_s0.02",
+      "trades": 65,
+      "expected_trades": 65,
+      "final_equity": 78406.29990009444
+    },
+    {
+      "label": "QQQ_A_momentum_endpoints_s0.03",
+      "trades": 65,
+      "expected_trades": 65,
+      "final_equity": 77926.64992117223
+    },
+    {
+      "label": "QQQ_A_momentum_endpoints_s0.05",
+      "trades": 65,
+      "expected_trades": 65,
+      "final_equity": 76986.157234575
+    },
+    {
+      "label": "QQQ_A_reversal_complete_days_s0.01",
+      "trades": 59,
+      "expected_trades": 59,
+      "final_equity": 110350.26413902777
+    },
+    {
+      "label": "QQQ_B_reversal_endpoints_s0.01",
+      "trades": 18,
+      "expected_trades": 18,
+      "final_equity": 108468.53503838889
+    },
+    {
+      "label": "QQQ_B_reversal_endpoints_s0.02",
+      "trades": 18,
+      "expected_trades": 18,
+      "final_equity": 108396.87556922222
+    },
+    {
+      "label": "QQQ_B_reversal_endpoints_s0.03",
+      "trades": 18,
+      "expected_trades": 18,
+      "final_equity": 108318.84310005556
+    },
+    {
+      "label": "QQQ_B_reversal_endpoints_s0.05",
+      "trades": 18,
+      "expected_trades": 18,
+      "final_equity": 108171.05406866666
+    },
+    {
+      "label": "QQQ_B_momentum_endpoints_s0.01",
+      "trades": 18,
+      "expected_trades": 18,
+      "final_equity": 91796.38006555555
+    },
+    {
+      "label": "QQQ_B_momentum_endpoints_s0.02",
+      "trades": 18,
+      "expected_trades": 18,
+      "final_equity": 91748.54840333333
+    },
+    {
+      "label": "QQQ_B_momentum_endpoints_s0.03",
+      "trades": 18,
+      "expected_trades": 18,
+      "final_equity": 91688.48231083334
+    },
+    {
+      "label": "QQQ_B_momentum_endpoints_s0.05",
+      "trades": 18,
+      "expected_trades": 18,
+      "final_equity": 91554.28318527777
+    },
+    {
+      "label": "QQQ_B_reversal_complete_days_s0.01",
+      "trades": 18,
+      "expected_trades": 18,
+      "final_equity": 108468.53503838889
+    }
+  ],
+  "caveat": "Validates arithmetic and source membership, not historical order executability or future profitability."
+}
