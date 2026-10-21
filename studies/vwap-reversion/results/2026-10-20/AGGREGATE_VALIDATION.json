@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "utc": "2026-10-21T02:55:04.699419+00:00",
+  "executions": 48,
+  "numeric_aggregate_checks": 1776,
+  "script_sha256": "ee90999133fdcd4e980ac5db5d70e547dbd36e3ba4fbc2561c90f7cd2c5fc1e7",
+  "scope": "CSV/summary, sums/costs/ratios/risk/exposure, annual/direction/half/exit/eligibility groups, returns-ranked top3 and2020 ablations, volatility/CAGR/Sharpe/Sortino and drawdown duration; no insolvency."
+}

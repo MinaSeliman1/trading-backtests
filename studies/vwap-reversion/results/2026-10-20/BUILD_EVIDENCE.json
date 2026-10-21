@@ -1,0 +1,75 @@
+{
+  "observed_utc": "2026-10-21 03:03:15 UTC",
+  "execution_freeze_utc": "2026-10-21T02:51:38.379129+00:00",
+  "execution_completed_utc": "2026-10-21T02:52:09.687917+00:00",
+  "environment": {
+    "python": "3.14.6",
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "exchange_calendars": "4.13.2",
+      "matplotlib": "3.11.2",
+      "pytest": "9.1.1"
+    }
+  },
+  "tests": {
+    "command": "python -m pytest -q --tb=short --basetemp=.test_tmp_final",
+    "exit_code": 0,
+    "result": "..............................................                           [100%]\r\n46 passed in 1.41s"
+  },
+  "original_snapshot": {
+    "status": "passed",
+    "files": 1977,
+    "sha256": "unchanged"
+  },
+  "previous_orb_delivery": {
+    "exit_code": 0,
+    "original_files": 449,
+    "dependencies": 4,
+    "delivery_files": 482
+  },
+  "previous_studies_and_bot_code": {
+    "git_diff_against": "b9776d0442bbc224e7f6492deb359369367a6070",
+    "status": "unchanged"
+  },
+  "bot_readonly_check": {
+    "utc": "2026-10-21T03:02:40.147030+00:00",
+    "mode": "shadow",
+    "feed": "sip",
+    "engine_state": "running",
+    "managed_qty": 0,
+    "pending_orders": 0,
+    "alerts": [],
+    "first_prospective_session": "2026-10-21",
+    "mutations_applied": false
+  },
+  "market_api_requests_submitted": 0,
+  "vault_accessed": false,
+  "credentials_printed": false,
+  "orders_submitted": false,
+  "figures": {
+    "count": 4,
+    "status": "inspected; legible, conditional scope/units/periods visible, no clipping"
+  },
+  "review": {
+    "status": "no remaining blocking defect in reviewed scope",
+    "tests": 46,
+    "initial_hashes": 451,
+    "uncertainty_files_independently_reproduced": 6,
+    "scope": "read-only engine/data/statistics/runner audits/report/source excerpts and figures; actual fills and provider completeness not certified"
+  },
+  "sources": [
+    {
+      "url": "https://alpaca.markets/learn/algorithmic-trading-with-twap-and-vwap-using-alpaca",
+      "scope": "Indicator context, different trend signal; no empirical validation of this contrarian strategy"
+    },
+    {
+      "url": "https://alpaca.markets/learn/stock-minute-bars",
+      "scope": "Bar timestamps, fields and trade-condition filtering"
+    },
+    {
+      "url": "https://docs.alpaca.markets/us/docs/market-data-faq",
+      "scope": "Source VWAP aggregation"
+    }
+  ]
+}

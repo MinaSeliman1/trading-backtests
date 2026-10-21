@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "utc": "2026-10-21T02:54:39.589051+00:00",
+  "executions": 48,
+  "trade_rows": 12586,
+  "source_marks": 2125058,
+  "unresolved_rows": 0,
+  "summary_numeric_checks": 288,
+  "maximum_errors": {
+    "currency_trade_usd": 4.050448865200451e-11,
+    "price_usd_per_share": 1.1368683772161603e-13,
+    "trade_bps": 4.11093381558203e-12,
+    "dimensionless": 0.0,
+    "capital_usd": 3.768946044147015e-09,
+    "drawdown_pct": 3.396394276933279e-12,
+    "drawdown_usd": 3.396053216420114e-09
+  },
+  "absolute_currency_tolerance": 3e-06,
+  "method": "Independent ADR20, first-hour source VWAP, strict signals, Decimal sizing/trace/costs/capital/close marks, all date membership/omissions; no engine/statistics functions called.",
+  "limitation": "Source loader reused, single vendor; periods/variants overlap. Observed drawdown is partial, not tick risk; no provider completeness or actual-fill certification."
+}

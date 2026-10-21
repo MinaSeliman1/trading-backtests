@@ -1,0 +1,7 @@
+eligibility,sessions,net_pnl
+direction_filtered,186,0.0
+eligible,2395,-3148.13881499918
+excluded_incomplete_day,3,0.0
+invalid_firsthour,2,0.0
+invalid_prior20,108,0.0
+warmup20,19,0.0

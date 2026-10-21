@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "selected_transactions": 16,
+  "raw_minute_bars": 3168,
+  "numeric_fields_checked": 19008,
+  "max_absolute_error": 0.0,
+  "scope": "Entire selected session prefixes through exit, original gzip OHLCV and vw vs prepared arrays; first-hour weighted VWAP and close-triggered VWAP exits recalculated from raw.",
+  "limitation": "Deterministic sample, one provider; full exit bar fields are raw context and may postdate fill, never used as postexit marks. Other dates and previous20 ranges rely on full data extraction/audit separately."
+}

@@ -1,0 +1,2860 @@
+{
+  "utc": "2026-10-21T02:51:38.379129+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "specifications": [
+    {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "exit_policy": "vwap",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.02,
+      "quality": "complete_days",
+      "exit_policy": "vwap",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.03,
+      "quality": "complete_days",
+      "exit_policy": "vwap",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.05,
+      "quality": "complete_days",
+      "exit_policy": "vwap",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "exit_policy": "vwap",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "short_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "exit_policy": "vwap",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "exit_policy": "eod_only",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "resolved_prefix",
+      "exit_policy": "vwap",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    }
+  ],
+  "executions": 48,
+  "protocols": {
+    "README.md": {
+      "sha256": "989760bc8c7195a1a6184ac301486825655fd718cf6949cbbd32b5afee82fb28",
+      "text": "# Retour vers VWAP après la première heure — SPY / QQQ\n\nStatut : protocole du 20 octobre 2026, avant nouveau P&L. Hypothèse propre de retour à la moyenne ; les sources Alpaca définissent l'indicateur et les barres, sans valider la rentabilité de notre stratégie.\n\nDonnées SIP minute 2016–16/10/2026, archives brutes `vw` × volumes réguliers, pas proxy HLC3. Décision à close 10:29 : acheter sous VWAP, vendre à découvert au-dessus, seulement si écart absolu > 0,25 × ADR20. ADR20 = moyenne des amplitudes high-low des 20 séances immédiatement précédentes complètes, sans overnight. Entrée supposée open 10:30, taille connue avant entrée, risque cible 1 %, plafond causal 1x, stop fixe à une ADR20 de l'open d'entrée. Sortie au prochain open après clôture revenue au-delà du VWAP courant, ou stop, ou dernier open 15:59/12:59. Un trade maximum/jour.\n\nMêmes coûts : commission 0,0035 USD/action/côté, min 0,35 USD/ordre ; friction adverse 0,01 USD/action/côté, stress 0,02/0,03/0,05 ; SHORT 1 %/360, un jour minimum, cash non rémunéré. Capital initial 100 000 USD séparément par instrument et période.\n\n48 scénarios : 2 instruments × A/B/ALL × 8 spécifications (principal quatre frictions, LONG seul, SHORT seul, sans sortie VWAP mais mêmes stop/EOD, et couverture resolved_prefix). ALL 04/01/2016–16/10/2026 ; A jusqu'au 30/04/2024 ; B 01/05/2024–16/10/2026, historique réutilisé et exploratoire, pas nouveau test aveugle. Le seuil, le stop et les horaires ne seront pas optimisés après résultat.\n\nRésultats conditionnels à l'observabilité historique : le principal exige la séance actuelle complète après les filtres causaux de signal ; sensibilité jusqu'à sortie seulement. Les jours non résolus ne sont pas des rendements cash observés. Le protocole détaillé sera gelé avec le code et les sources avant toute boucle de P&L. Les études précédentes, le bot et les clés restent inchangés.\n\nSources primaires : [Alpaca, calcul de VWAP](https://alpaca.markets/learn/algorithmic-trading-with-twap-and-vwap-using-alpaca), [construction des barres](https://alpaca.markets/learn/stock-minute-bars), [FAQ des données et VWAP](https://docs.alpaca.markets/us/docs/market-data-faq). Le tutoriel présente une autre logique de signal ; notre version contrariante n'en est pas une réplication.\n"
+    },
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "a374a9faca5866f18f1d0fb4b32c321d783f26d8b48c9d8bb51454bacd39d2a8",
+      "text": "# Contrat d'exécution — VWAP reversion, avant P&L\n\n## Données et décisions\n\nChaque prix/volume vient de SIP raw, calendrier XNYS, dates/empreintes précédemment validées. Charger les caches de confiance après contrôle des six SHA, des CSV et du calendrier ; ne pas modifier ces caches. Récupérer le champ `vw` dans les pages gzip originales dont chaque SHA est contrôlé, rapprocher tous les OHLCV RTH des tableaux préparés. Aucun API ni secret nécessaire. Conserver les volumes et VWAP source ; les conditions de trades peuvent différer des OHLC : ne pas rejeter automatiquement un VWAP hors high/low, mais compter ces cas. Un `vw` non positif/non fini avec volume positif est invalide, volume zéro a poids zéro. Aucun prix n'est interpolé. Le calcul est un VWAP de barres du fournisseur, pas une reconstitution indépendante du tape.\n\nADR20 = moyenne arithmétique Decimal des high-low RTH des 20 séances immédiatement précédentes. Si historique <20 : abstention causale warmup ; si une des 20 séances est incomplète/incohérente : abstention causale pour historique inutilisable. Pas de saut vers une séance plus ancienne. Amplitude nulle : abstention causale. Ces journées sans entrée ont rendement observé cash 0 ; la règle est connue avant entrée, mais ne démontre pas la complétude du fournisseur.\n\nÀ close 10:29, les 60 premières minutes RTH doivent être valides, cumul volume positif et VWAP source exploitable. VWAP = somme(vw_j×volume_j)/somme(volume_j). Ecart = close10:29−VWAP10:29, comparaisons Decimal. Si écart strictement >0,25ADR, SHORT ; si strictement <−0,25ADR, LONG ; égalité/écart inférieur = aucun signal. Aucune clôture future ni donnée de la séance suivante dans signal ou taille. Les 20 séances antérieures peuvent précéder le début de B ; leurs données sont connues à la décision, sans calibration sur B.\n\n## Quantité, fill et sorties\n\nq=floor(min(capital/close10:29,0,01capital/ADR20)). Entrée à open10:30 plus friction adverse ; il faut ce prix, sans le remplacer par une minute ultérieure. Stop de référence fixé après entrée = open10:30−signe×ADR20, pas prix après friction. Plafond causal 1x peut être dépassé au fill après gap ; budget 1 % n'inclut pas frais/gaps futurs et n'est pas une garantie de perte maximale. Si prix après friction non positif, arrêter avec erreur, pas inventer un fill.\n\nPour chaque minute active : 1) open observé et positif requis ; si stop dépassé, fill à l'open défavorable. 2) si le close de la minute précédente avait déclenché le retour VWAP, sortie marché à cet open. 3) dernier open de la séance : liquidation, high/low/close suivants non utilisés. 4) bar OHLCV cohérente requise ; stop touché inclusivement par low LONG/high SHORT, fill au stop avec friction, sans utiliser VWAP/close pour une sortie ultérieure. 5) sinon minute entièrement tenue : VWAP source exploitable requis, mettre à jour cumul, marquer close ; LONG déclenche retour si close>=VWAP actualisé, SHORT si close<=VWAP, sortie seulement open suivant. Une simple touche intraminute VWAP ne déclenche pas le retour ; un gap d'entrée déjà au-delà du VWAP n'annule pas l'entrée et ne permet pas d'exit antérieur à la première clôture tenue. Stop actif dès la minute d'entrée.\n\nLa variante eod_only ignore uniquement la sortie VWAP ; conserve signal d'entrée, règle de taille, stop et liquidation. Le VWAP après le signal n'est donc plus requis par cette variante ; les OHLCV actifs restent nécessaires au stop. Ses tailles/capital se redimensionnent proprement : ce n'est pas un témoin à exposition fixe. LONG/SHORT seuls sont diagnostics prédéfinis, pas sélection après résultat. Pas d'inversion ou optimisation.\n\nMarks : avant entrée, frais/friction d'entrée, closes des minutes entièrement tenues avant sortie, sortie nette. Jamais close/extrêmes potentiellement postexit de la barre de stop. MAE/MFE partielles sur barres entièrement tenues et références entrée/sortie. Durée aux opens exacte, sortie intrabar borne supérieure d'une minute. DD aux marks observés n'est pas un DD tick.\n\nFrais identiques aux études précédentes : par côté max(0,35,0,0035q), slip adverse 0,01/0,02/0,03/0,05, emprunt SHORT q×prix_entrée_après_slip×0,01/360, un jour. Aucune rémunération cash, frais réglementaires distincts, modèle de disponibilité prêt/latence/volume/ordres réels. Plus d'entrée après insolvabilité ; publier l'état.\n\n## Couverture, comparaison et incertitude\n\nAprès abstentions causales pour historique et validation première heure, le principal complete_days exige la séance actuelle intégrale. Ce filtre est connu après coup, non déployable à l'ouverture ; les métriques sont celles d'un compte historique conditionnel, pas d'un portefeuille réel continu. Les observations de première heure insuffisantes sont exclues, pas cash observé. Sensibilité resolved_prefix : vérifier uniquement jusqu'à sortie ; trou avant sortie connue = unresolved_execution. Omettre tout le trade/jour, y compris frais connus, du compte conditionnel ; publier intention/frais connus et observed_return=NaN, return_net=0 comptable. Un trou après sortie ne doit pas modifier le trade. Les abstentions directionnelles LONG/SHORT avec signal opposé, prises sur information connue, restent de vrais jours sans entrée. Aucun trou automatiquement classé halt.\n\nPériodes A/B/ALL, reset100000 séparé, coûts et 48 spécifications ci-dessus. Publier tous les scénarios, P&L/coûts/directions/années/demi-séances/motifs et exclusions. Priorité au principal both/complete/vwap/slip0,01 ; aucune variante retenue pour seul meilleur P&L. Tous chiffres conditionnels, B déjà utilisée ; ne pas prétendre nouveau OOS aveugle.\n\nIC descriptifs : blocs circulaires quotidiens de 5/20 séances et groupes annuels de moyenne nette par trade en bps, 3000 réplications, seed20261020, années sans trades gardées, peu de groupes en B. Pas de correction essais multiples ; 48 variantes/périodes recouvrantes. Ablation : mettre les trois meilleurs rendements de jours positifs à zéro puis recomposer les autres rendements quotidiens conservés, pas trajectoire à quantités ou P&L fixes. Publier l'effet de 2020 à rendements quotidiens supprimés sans redimensionnement, comme diagnostic descriptif.\n\nAudit indépendant des sources/features, de chaque décision/trace/coût/compte et des agrégats, extraits bruts déterministes, figures inspectées, revue indépendante. Code/protocole/sources figés avant P&L. Correction numérique après résultats => nouveau dossier sans écraser le précédent. Un correctif à l'instrumentation d'audit ou une précision éditoriale n'est pas un recalcul des performances, mais sera tracé. Pas de changement de bot ni nouvel ordre. ORB QQQ reste candidate à une future validation prospective ; cette étude ne l'active pas.\n"
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    },
+    "vwap_source": {
+      "basis": {
+        "manifests": {
+          "data/noise_area_extension/2016_2022/SPY_manifest.json": "f59b7e93cd6bd1c455f71371d08edfb9fc2339b2c04774347df52219af3ea98b",
+          "data/alpaca_sip_2023_2026/SPY_manifest.json": "1cdfbf0c1c0272311de10b9d8a0a7ee6031d85ff12be2dfc4eb7ceb99c2a043b",
+          "data/noise_area_extension/recent/SPY_manifest.json": "587296b924350a52f2e74f5065395f2d73a0dd0bba3b0c9604e076097412eed6",
+          "data/noise_area_extension/2016_2022/QQQ_manifest.json": "9d87dc3b5ebaf1461be9a66348953d1372a7e893ca1e7c5ea31c96bcebfdc051",
+          "data/alpaca_sip_2023_2026/QQQ_manifest.json": "905e52e2c4d0c193e830e5d2c5e8c4925e25afbc2703ca97f0f89c8aaef8743c",
+          "data/noise_area_extension/recent/QQQ_manifest.json": "4e25041cd74ccd076f6ecb0fb02c0b29918efaa065736d43da56387323ce33e3"
+        },
+        "pages": [
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0001.json.gz",
+            "sha256": "d206277626a8a88ded4896caae5f64b875adab1744a03261ed621230c67d24fa",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0002.json.gz",
+            "sha256": "ba23d44cbd3245fec9426029cb2abf96392bf526270ed2545a3856220ce909a3",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0003.json.gz",
+            "sha256": "b60d4ee2fa1ecde9d848600fda23a6688df0285f99d0323840c86ebd89b0b866",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0004.json.gz",
+            "sha256": "b666c266d2b3cba11b4a5f5f271692b6747a36b359868cf77649f39f579a2288",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0005.json.gz",
+            "sha256": "7154928cf6a9e5717747da69716cce55b752dfd904796f6362dcead371446ca3",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0006.json.gz",
+            "sha256": "526b200e85595ab3aa8f12e895ccf020ac6410812db8b649c493f6257ac4e0b4",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0007.json.gz",
+            "sha256": "6146a425b9ce62da7d887adb771eef27b0ad43d7dcddb22fabf97a4a16a3c914",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0008.json.gz",
+            "sha256": "20c7afb4e655691aa7390f1e6b8396c58c9b668ed1a47d00d33249c1b48d2225",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0009.json.gz",
+            "sha256": "2739b355251dce9883ad1b570b3f5bf9072b59a3b578cbc0b9aa2469ece7610b",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0010.json.gz",
+            "sha256": "6693ea6444473388a9acd51147e07e97a156207d8197d078c147d37e1895548f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0011.json.gz",
+            "sha256": "2400523f31015b8952a9b49e7e55ae2d4768648f2f85ca802e624f0d9d45532a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0012.json.gz",
+            "sha256": "cb27bab9e5dbbd80187f4efe4d64b240f031ea51645b4a6b30fe7c27f99b5790",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0013.json.gz",
+            "sha256": "bd1816fb342705d179743e4388b0aa709187773f05adeffc8a2b1297e8e91c78",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0014.json.gz",
+            "sha256": "0bb1373bc65794bf1309700cf45d2e2897e1411cfd129644e7db6ada123667a5",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0015.json.gz",
+            "sha256": "83e0ba75c3936556de46aa9d52a5dfc394864a5be9c44f08b54be72d8fca0d03",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0016.json.gz",
+            "sha256": "899fadbd676875fa4b4e4e594ddf2aa73bac910f39ed0f27b55251e1db037118",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0017.json.gz",
+            "sha256": "2968e3f3c1143ff575ef0554818d79a4a3ecdb5867d5db22f5e55226a7e3ca77",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0018.json.gz",
+            "sha256": "510773fe0ee34fe72b3412dbcd31db44886b49e669000b7baf9ec1db39dc0f58",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0019.json.gz",
+            "sha256": "e3ca0327376c0ecbfd967d33e8776224ca32ab7b32a6142a6228b363cca4e2cd",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0020.json.gz",
+            "sha256": "e807facfccf60206fb1809343691c7200d9bf6015b7a9df02a2e73c65ed1908c",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0021.json.gz",
+            "sha256": "13f25984455668b6a29e30fbed33dd1d4db66ef4e31d46f8b08ca217f39ce55a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0022.json.gz",
+            "sha256": "8d2732b47298911d93712e5c95373eab96ef0dfe98fa2bd3f2d63d7c58841e97",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0023.json.gz",
+            "sha256": "de45a291902387101a283d244d64d42dced28969d35ca084cdb3d0575baf8ab6",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0024.json.gz",
+            "sha256": "d1f5e87825c431ce70bf4e3465a0de5b315b9dbf3bd8eb24e63473763c3da06f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0025.json.gz",
+            "sha256": "a645a9c5dda407fe4cf793bbaee70dc2a9259415046e0be571e3628aab325ee9",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0026.json.gz",
+            "sha256": "a213de284fbafc3c081fe30dc7f9a70a7d9c18ddfaff66f41ff5d194d69c17bb",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0027.json.gz",
+            "sha256": "37e759a7bdbc752c1842a4b56f61e0f920a468dd9f24b70f0488986458cdb009",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0028.json.gz",
+            "sha256": "18790fadedc6d520a8376a5b050e42950bf5a26801774f8182e8cc95adb37964",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0029.json.gz",
+            "sha256": "a2d8d8755b17b752b38735cfd15276774f2dfba6d9d473487689491a65474888",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0030.json.gz",
+            "sha256": "4d97b5d43c0c176e0e56e55c66eca6769eb8adddfb1b43ec92eba0683567ba1d",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0031.json.gz",
+            "sha256": "f2e08c781d0ee040fb37c4bf6303703885989e15aeb314639015b5eb6b6c8752",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0032.json.gz",
+            "sha256": "734c79790426ae053ab97dadfe0f02d41633425cbbfeda9ae93959f55c782c06",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0033.json.gz",
+            "sha256": "533b5ff7725522fa3d507aade147a098635afdd217895facae668e2e5a1faa61",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0034.json.gz",
+            "sha256": "182533fb457f21c62336e646a02d7748d2be27a45d5da41487e7780c6779db69",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0035.json.gz",
+            "sha256": "85fa83ef89782cb1073af1264b56310efcf1c10608d660b65ac25c39c4cf16d3",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0036.json.gz",
+            "sha256": "59386a516f2e91267c421c651b9f7961e0d74ffa8fea1e562b788d00b4eb179a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0037.json.gz",
+            "sha256": "b0e018ee59bb5973692ffeafcb9c094c3243d71e5a1364b4d4395514ac265465",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0038.json.gz",
+            "sha256": "955b38ec68873cf625d3707647b3eef1c0681ff11b15a7280cf5af01c4b3568c",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0039.json.gz",
+            "sha256": "739ef6ad72509e8c6e39b0bb6fa3f66ecce4beaf771c59072625b61c39d91016",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0040.json.gz",
+            "sha256": "1ad0ab66ab39478becfdf82ce351e3833ce2361df462fea71f54bcb2eb6a5161",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0041.json.gz",
+            "sha256": "4818c23199afccad6c09739d2cabd97392370f7b7c3d8507110608d818d7837d",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0042.json.gz",
+            "sha256": "5c97a49bb1994d8b5cea2e1f22e0618edeec0740a22dae4549ee839670e88e1d",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0043.json.gz",
+            "sha256": "e22e730c94052aaae3685798406aade9fa5e7d09a0ea27959e66fa57675fca05",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0044.json.gz",
+            "sha256": "9bd864be7eee7f4e44aad73f006ba790bc00ed00283bc21b744c5dd51016f50a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0045.json.gz",
+            "sha256": "372ba404668e9ed7169b61a71760a61f4fb72e0c1b7d74a025911f8dfa3e1822",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0046.json.gz",
+            "sha256": "4cf66a54a7bd6249640df64e007bd7a618e194a7b6f86ea225dada8f5765c47d",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0047.json.gz",
+            "sha256": "6e5f3117072bd8f728df25f4284b4e116e513160570fb01a04de3b122cd10e62",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0048.json.gz",
+            "sha256": "49b1cf583748af3eaf5dea54876d1bd6c7f62c4ec0be6dfaba7d4af40a83daf4",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0049.json.gz",
+            "sha256": "5cc5303b97b82cc60f71cf5077a8fb2b6d59daac77677d0ce101d51881f0b59f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0050.json.gz",
+            "sha256": "47fe1501af2da63b2723728c8063b6ebb83639976ad8793dca4636eb29899230",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0051.json.gz",
+            "sha256": "c9b927f218a640525994895112557c6d55ae94eae10cabae6e829af3ff6afaba",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0052.json.gz",
+            "sha256": "8e7611ec40aadac25d7b892ad0646a39e14ec4f82697feec00461c155d2235fc",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0053.json.gz",
+            "sha256": "6a9b60c5884cee2561b5fc8579d70759f9f195ed2f4a45aa8d42dae47929ee48",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0054.json.gz",
+            "sha256": "a64badc667bbbf0954e76ed0db2a8d0f2e35693afb22971879181d1b40f88447",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0055.json.gz",
+            "sha256": "05f183eb729c496a2dd419c624023c54410db31c4d9e260f6b91f8ca23cf2f25",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0056.json.gz",
+            "sha256": "3760259413b0702d940b3c585538739e29eacfe63641d5ad399d9a4a2aa46040",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0057.json.gz",
+            "sha256": "7af976896212c2ae89d8a789533e0b91662576f53c4e80752cac206122f93fc8",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0058.json.gz",
+            "sha256": "5a2890a9d8a5da25ffea07cb1fafb92c47baf54e6147845bed45b594afe5633f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0059.json.gz",
+            "sha256": "46c883fcdb77cab6b6acb25614183e3231665e488031f641f5ae46a866fbea22",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0060.json.gz",
+            "sha256": "105207b1ad2c19003e7e9e12c5ee813c0a424489cb2b69fd97eaca415ba746e7",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0061.json.gz",
+            "sha256": "1228fbbb3bd761ced8d95d56a6c7cde29b37efd624afffac9089eee9fdc4cbe9",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0062.json.gz",
+            "sha256": "fb30ada6f937a0ce693b7ef85fc4a67cfe4d59e851a91292451d18ce4630e8e6",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0063.json.gz",
+            "sha256": "d2550ddf0a2db0562df718e1db2c5e80b56c24dbaeb4b4eba3a20dd1021e6634",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0064.json.gz",
+            "sha256": "07dc25723d0755774774f120cfc110bcdff94db13999838d9cf8165b0e7c857f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0065.json.gz",
+            "sha256": "30a706b244dcbd8bc7d7e57664f3531f73d8e8c0b8d2b22b77311dddade68faa",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0066.json.gz",
+            "sha256": "f6e6a5adf6017797035737bd75f9def20a2783c19f1c6c9cf34cb6985ed0f42f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0067.json.gz",
+            "sha256": "1ac4adefb1a5c135c2535bfa386ab98cebfda0660e96e8a2134b45ae3f9b45cc",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0068.json.gz",
+            "sha256": "7357e77e52977aadb41a7bde377ee3fae5335a0211c1dd7ff304cd125f25dbe2",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0069.json.gz",
+            "sha256": "4fc89620e940c857a56863fa6b5913ccba07363884af786be05abf1908f91725",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0070.json.gz",
+            "sha256": "559e7ea5605a3861bc2339ba57241f2fac7574fdc1195efeda1e712050862332",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0071.json.gz",
+            "sha256": "59f6e3ea35b1a5a4a18b4e3d1c9d61834058797ee49a88544db7b33968065859",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0072.json.gz",
+            "sha256": "be4caadb163e2fdfb09cea7b8d5fbe3e5738c99c85afc2b2c939cab1cd2b62dd",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0073.json.gz",
+            "sha256": "abca9766dbb325904c01d809045e4f594093b86ff8f05c3e56475dbdfdfdf83f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0074.json.gz",
+            "sha256": "eff7fd4319b8b19a9c917b6c44701d2af1cf743e4d04377ad2e41a4c07dbce81",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0075.json.gz",
+            "sha256": "78fe58c6e51355d306b06843a719ccbb81eb3e1ca4e718db03e608a22b6426b5",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0076.json.gz",
+            "sha256": "276cf96a42247704c1530e655d826b3278cbe39650890cd2bdb31699976d4fab",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0077.json.gz",
+            "sha256": "ee6bd1ccc0aea0a03e4b5eeb38386ec66fc6ad13c79c2b78a5f08cc7b4cd3a13",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0078.json.gz",
+            "sha256": "71072103648844b83bd09f1af07ed6dd23939bd187cafc83500929535fa41e52",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0079.json.gz",
+            "sha256": "bcca6d495aa6efa5c7cd6f9423f21915de79a6a88a90bec82c12945812c89ebe",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0080.json.gz",
+            "sha256": "12c73b52530154d78167d2b701c32547c684ee390310563456411eca91e59a60",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0081.json.gz",
+            "sha256": "0a92883f6499016aac8fd4b853533636c039635507a1ef252b3574a46e8c56a1",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0082.json.gz",
+            "sha256": "a5db277e50d3aad1a30a43052be3ce5b15cbea21a25763b21956a0a146f141cd",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0083.json.gz",
+            "sha256": "ffcdc473d79cd35fe08905cee26f05080fdb75836a2ed2051ee502d537ed4fb5",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0084.json.gz",
+            "sha256": "389c327fef096dbad879cc29b57122f20dfbc4b1a0a766a621b0405d8fd793b1",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0085.json.gz",
+            "sha256": "6d626eca82257df3e10af972550d0e962a0dfe886179b7aefda156381de0745e",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0086.json.gz",
+            "sha256": "d4cd64ddfb6f0b7f0acf86207e32adaae7c3a510c7204395bc23a227818fd3c7",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0087.json.gz",
+            "sha256": "65e44a810cb9f8e252017a63e35f855edfeefed16d6d9ba40b0d6346b981f966",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0088.json.gz",
+            "sha256": "de89412ec03d64196913062ad06be94ea11a634fd1bbd94f4dde251b076904d2",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0089.json.gz",
+            "sha256": "2bcb78d99d9f8b4d6d31ea4488795974e0c2953b8a969509411f60ffe5461a19",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0090.json.gz",
+            "sha256": "ba1527fd46b247e72ac362af611f4a711925839c76d0c7fb5a28acb2d3bee226",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0091.json.gz",
+            "sha256": "f60ad5b80e77d08ff8dd7201e61ed1dfa2b702acc62b2a28b9a9995dea67117d",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0092.json.gz",
+            "sha256": "ad11db8701937d45e7e4a6cf2b8b28aec9787bc417bed7d08be258806402732f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0093.json.gz",
+            "sha256": "49ac41bf3ba5278e658e5b0f770ab133d623a8cb1941974c2f14b5d057edc721",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0094.json.gz",
+            "sha256": "9ea7c13bfa6dbd8ba19b3cb23f1fbcd0101b7e6c78e6799efbbce913d87790dd",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0095.json.gz",
+            "sha256": "a33a7252f987e20cd43d21e0f003f1b1009fc5efc2e99dda9f661d46f632be25",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0096.json.gz",
+            "sha256": "03364a32d9e7a3666c9a7c1d86e6855d58a28867d5e0196077d639ad979631c8",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0097.json.gz",
+            "sha256": "288a58e3223dd319c9918a3a7a0d0ebf827588f720eadcaacc3385c97224dc45",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0098.json.gz",
+            "sha256": "f88509b8c4534580b336141ebb157d4dc22f70289f2f3885332c575e59b0ea61",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0099.json.gz",
+            "sha256": "90d134f8bfd37697d34b718d2f3de388e985caf43abe69abbbc7cd52b26add0b",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0100.json.gz",
+            "sha256": "ab4101f52d336c132ff46c3ef445e7200737ab1e2b25b0dd122ada69454acf92",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0101.json.gz",
+            "sha256": "d6cc9caff7d68615a9aafd05d4d22933660339c7a6ae99e99c8a2dbe6e7e8785",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0102.json.gz",
+            "sha256": "b862fa46bfc7a1fdfde581dee0cce6f19c1e8a96a2849afb9f844640a0599720",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0103.json.gz",
+            "sha256": "c5eeff7cd758972cf25182e8ac558ba613f0a03225e5593ef48691d83ef5a5ac",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0104.json.gz",
+            "sha256": "8acab7dc656a6607704be234b7daf883e628ef2522d7b2631d6466eb5614fa7e",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0105.json.gz",
+            "sha256": "4d1f756cb46c3f9db340eb779bc75cfc9763fd1ee01d81ca1cff61d6e1470437",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0106.json.gz",
+            "sha256": "f2284cd633b6654215307cc4293d5e6931d848c5eb4f5218cf9ae3cc0548db73",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0107.json.gz",
+            "sha256": "b192d68bb795a21bdaa12395e7c0216262f8a23a00bc0ac91e0e8c572724df5e",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0108.json.gz",
+            "sha256": "25f6855e98acb359f80958c4c8dd8a9d8d9834c373cec5af566b7e63bb27310b",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0109.json.gz",
+            "sha256": "c4418945941806976296962ba61823544a78513b900d74fa8041bc1ba4fb89a6",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0110.json.gz",
+            "sha256": "cbbc759105a1864db1c25e29e57f88fc3d758e860a6a1fcffad3171e97d45ac5",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0111.json.gz",
+            "sha256": "3e6886c7feda8e75ef3b19c378b957b92cc68af5c3c0534d761713f423f7568a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0112.json.gz",
+            "sha256": "0647e04c67d398e41062d0cbb553c6aec9e2c36c2ab0bf5ae75eb27277a987d5",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0113.json.gz",
+            "sha256": "29274bd413e551629fcf126a9035ddb425cdde1982274f6b1d4b0395b77d7c67",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0114.json.gz",
+            "sha256": "772139145e2aa195787797d998bba9abe46115f091a46478868e27a095e226a4",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0115.json.gz",
+            "sha256": "76e97a762bdec913668fdf3ad12c1c3518f22920311667debca831ffddf717f8",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0116.json.gz",
+            "sha256": "845a9b3dfe08a0b5dfefcc8e63692ad78b60f2f60b91fd4a955691e5993ab688",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0117.json.gz",
+            "sha256": "c110d461c4400aa30b40b1e9b2d8ca3050d9ee54fb3df7000598a02bb237c58a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0118.json.gz",
+            "sha256": "82fd2ca133e9ba3bd84c9288542564d830729b2dbcc17d52ee7908e72e098d3d",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0119.json.gz",
+            "sha256": "2aadc8d268b4e0e1137f1bb717dc94a00e64fe39dfbf28c9e4f68729504d2553",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0120.json.gz",
+            "sha256": "9ba195156649a252ad85b543d59a6e13bb116f5749de354d2a2bcefb65d02adb",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0121.json.gz",
+            "sha256": "4b0260b49838b88b8beaa8bb659462ca90f59245761d55d98a819cca466cdf8a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0122.json.gz",
+            "sha256": "9f5a6c9f9252e783dfc17c3461b1b577a6c694f3efc57289b8c3d4639e3044fd",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0123.json.gz",
+            "sha256": "702e426a213e249b4a865806f08a9013f56e2a8abca9ae828bad999d4f0e4ee5",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0124.json.gz",
+            "sha256": "7892269a4b164a16db6af9cd6db0c7a6a4dff682f5051b3754572dfb6e7dff3b",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0125.json.gz",
+            "sha256": "d69ff0d8fc05c0f9eea9617ac1dc1538bee1e8d9df7305fbf1c344ea57a12fc5",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0126.json.gz",
+            "sha256": "fccb289e8c020e12f337f53a7d6f0210eaedafd4b24b451e6cf9679ac050c78a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0127.json.gz",
+            "sha256": "e8915f8573c607a2cfdb96edfbabf9b32e16771e9a5b6d0f04a2cda762c28934",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0128.json.gz",
+            "sha256": "07e35fb3fef16154f3d8dfb1d3d6933cd3883b46d378acdc8267f26d8ffbd7e8",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0129.json.gz",
+            "sha256": "4b140ae169c1bcd44f0c48e6245984df93cb7b7c959bb9f993a669b0e4e88cbe",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0130.json.gz",
+            "sha256": "7baaff4453309aec94d6d182f8d1c11e8220406268e9e15a20aad1ecbbe50138",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0131.json.gz",
+            "sha256": "51f1abb7bd00c6052930c5b4609fc6a5be70e241fcc1cf5c5a8cdfacb853c67b",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0132.json.gz",
+            "sha256": "5fb920b2dd7cf7aa948d35e28f15825f30fac78d4b9e9b72b44d1fe0dd37d608",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0133.json.gz",
+            "sha256": "f227aa06fab0f10bba63a14eee007ac252b25bdffddd04485ab2916239d62414",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0134.json.gz",
+            "sha256": "d5daa71df9e72447de2bcd221ee962c8df23484a1482ef0abac597503bb38692",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0135.json.gz",
+            "sha256": "b788e3604b68e8225b844a85dc0a36cbcc91531bca2fa6edcdaa1392ab143313",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0136.json.gz",
+            "sha256": "f9f3950dd47b63d1ec9151afa544ca6d39d244227b789c8bdb5ea7a2933ac9de",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0137.json.gz",
+            "sha256": "b6e723f9954cd626a2c95b8dea9186a4a9a77a28a4bd9cac0305f724654b3045",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/2016_2022/SPY_raw_pages/0138.json.gz",
+            "sha256": "159f5a4c2eeb44fd19fc796736d20e480d1133deb109e320514b210412e13051",
+            "rows": 4698
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0001.json.gz",
+            "sha256": "05bba3b8e01959393c866d2d19c03bed3a752b3b4a15ebedbbe5e32696370bcb",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0002.json.gz",
+            "sha256": "3c25714b9246c156ad6a654ea1ef336203e467833a16ca07e62f4286b0a5a9ab",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0003.json.gz",
+            "sha256": "dc3666b55c38b733d94fd34cada134b0cdce348da5c1eff0fd798546df234ba1",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0004.json.gz",
+            "sha256": "d84768fab61aa3abfa5c24bd98086bec69c89f22da9cf7dde48df5e416ef9d5f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0005.json.gz",
+            "sha256": "61682e574b3a7783a5d6f02c92e0002d5204cd999e358786bd15253b9ba8bcb9",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0006.json.gz",
+            "sha256": "79126ff6fad9c014dc1b336afd12193943dd4a75acc1ab4a752456995b714199",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0007.json.gz",
+            "sha256": "5d259303e658d916383ac76ccef6855e5532f07f9e420669cc8232da012dada4",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0008.json.gz",
+            "sha256": "7ce445b1f92cb0d58dbba6dc482dc28d934a5804c0ea16edd6e91fbb5e7c9f4b",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0009.json.gz",
+            "sha256": "7e87f96745d5ee8fda87c20f4511ef210570a0eaacaa60dc467a1f925db0e051",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0010.json.gz",
+            "sha256": "193f99aad6676db0011a53bad01ec043a0e786025267086d0e7c0f699f243abe",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0011.json.gz",
+            "sha256": "423e540f842b888915638b0f60f6e212c75e83ab03597c5acbce58d8ece39013",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0012.json.gz",
+            "sha256": "6b17cf5a77c36e08eee0a4435e451eba6434e642a39d264fdc00367f33dfed9f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0013.json.gz",
+            "sha256": "0572e01585da66ff76a866597920b4327e1ab921fa46dacda9f6333f250f3ad3",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0014.json.gz",
+            "sha256": "a3211f3f1f3b53dbe785c986a24f1e8f6ef29861c4d9c7bd1b33a1fc9c9878a1",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0015.json.gz",
+            "sha256": "1f148471f7b9e1af418c28427822bbef9dbd22efad14cd9deaa0bf201eb9aee3",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0016.json.gz",
+            "sha256": "a59c76eb39a99f4d05bec13b6d57fa71d192d64ef6d11e366d71c054f61ddbc8",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0017.json.gz",
+            "sha256": "a21af6785a2c76c90faf1ac5b8d96de015c417a510dbde6e99750b3f43bc1a4b",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0018.json.gz",
+            "sha256": "63a30ecdf108e80e0669e8f13571a8c4d9c7792ab15c0470f9b76f9bc2c8a025",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0019.json.gz",
+            "sha256": "0b6ec1d18d9fdc8799a48bbdbfa5b02bfa50b7cd9dffcb83bf04f011a851b933",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0020.json.gz",
+            "sha256": "19f7b6cf06bf87d021958b4b29c2df1a144912a17a9ac68577378a1e2c505512",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0021.json.gz",
+            "sha256": "05ed9ce4881e2fe7965984104781a7038ebb0c816403dad28ff69a31d1dfccd5",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0022.json.gz",
+            "sha256": "155539835a16ef946bd926117e01b51fb61d064eb22a362bec195b0040df9312",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0023.json.gz",
+            "sha256": "2c6db39ccb6d4e9d2937645a62e58c37f74750700782714fa462dc7d38abf01b",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0024.json.gz",
+            "sha256": "57dbd178e30d54673e6085e4c2c84b769188132f573c21c988a9e1199cd66693",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0025.json.gz",
+            "sha256": "17f4c334a8a810d2f3978104484f2aa6846237d770672978cb10cb8adef833fb",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0026.json.gz",
+            "sha256": "a027e52db6d41dfad7641dbc414531ad4068d79d61b8a2f047795a18dc823427",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0027.json.gz",
+            "sha256": "fb25a690abdedbf8acdb033531b53278559ed135fac954c4f9fbac670b3f1277",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0028.json.gz",
+            "sha256": "caa1242b705d5a2a405450b609ed2e3706c9acf91dacfadc9e54895846862b1e",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0029.json.gz",
+            "sha256": "12575718ec6a8855193afa6aebb0e69f6ef8b22cc9e4a9294f104456ade52f00",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0030.json.gz",
+            "sha256": "ee89b46bdcfcf062acb5773d41151979d87522b2477562be4817aef27f3c7955",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0031.json.gz",
+            "sha256": "c289350c4fda6399ce329e337bcbbac4b5a3a12a7aa040fe72edb1e4f3024020",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0032.json.gz",
+            "sha256": "cb5f26bf045115dae1f9bfc99aeec07b35e32ca90d50cc76d2112708a91aae62",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0033.json.gz",
+            "sha256": "bae191f033adf11aa62122d659200c0ab3c9e61496174d43b7ada22e7b4837d7",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0034.json.gz",
+            "sha256": "3054ab32da062dbf7fa1e0472a42c9af6909051d8d9b64eb249a07e6e3de5a2a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0035.json.gz",
+            "sha256": "5e75332979fdffa5550990fda05dbc9b7d8ac6ee5a4aad744b62cfb42c3b098a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0036.json.gz",
+            "sha256": "c7a0977b86222ca3f5a3404049760bbaf3c1db615b047694ff0cb8fac721bff6",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0037.json.gz",
+            "sha256": "a82ba711d051291e3ac67198d36cb687319adbc80812a02026e8effe08042cbf",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0038.json.gz",
+            "sha256": "a096fc60034c8408f8d11ca22cfc1bd10519da2f8c60f023e4adc650e71abaaa",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0039.json.gz",
+            "sha256": "5776dccdb5cca2bf7790b49c1e49275abfce426151efb5de46b101cf33b9ddad",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0040.json.gz",
+            "sha256": "aaced0bae459444019b9a1a2a7dfa7a00c9f6fc0c17a75497f00fcf5981dd15e",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0041.json.gz",
+            "sha256": "f75b5c0122a7a7af9eee6c2877635f2a001260de26484769616b694fea6cefb7",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0042.json.gz",
+            "sha256": "d4c67acbe46c08cc000e9d1cec0b08fcf7a890607658d98021c9762bec7adf56",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0043.json.gz",
+            "sha256": "0ffce7c7d9593d55f79a5b7c36d324fb839bf02a01fa01ecb9bb0866218edaa7",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0044.json.gz",
+            "sha256": "70140d9a1c93706fdf044a5cd5d0a8d900de209ac3959de4b55226920ced18a4",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0045.json.gz",
+            "sha256": "20f145ea9b5276a9d616f12e258657144d609c87eef16d27265adf934851ac11",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0046.json.gz",
+            "sha256": "d566bafd29b32bb0a64ea78f6fcca753c1d96de12ac2e40b6bbcf2c9ab308f3d",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0047.json.gz",
+            "sha256": "fa5f11c73e44c34a5a2d0a8e8ce290fbcb9f19288b8801aa40de59834f598fb1",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0048.json.gz",
+            "sha256": "4a27e29722db4961b70434810212bfc36c4a375db72dc04db477977590f07bf1",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0049.json.gz",
+            "sha256": "c15ebacc788af3529df236eb880c59afbd51462ab1ef3d8500ba8cacbdcb6cda",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0050.json.gz",
+            "sha256": "e2e77772711a81c98fca90be615473d81673abef7000ed08b8aeb0c509e83ffc",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0051.json.gz",
+            "sha256": "54bbd173cc296aa13269d684572f279ad7750ac8747d9f1b5492127499100f62",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0052.json.gz",
+            "sha256": "974083bc52004329d3a6862edd7e6502435314357bef09ae5d40bf33c21a02f4",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0053.json.gz",
+            "sha256": "a2f2159112193695a1b9f692d0c8dbc5874e264c1ba782e81d9e55949dafd5f9",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0054.json.gz",
+            "sha256": "d653001b1df1f45b2e41be220bf42a4158452c6a1074334edd466e05ca434ae9",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0055.json.gz",
+            "sha256": "e1ab412fc5537004a4da3bfdedf58e2f402a3422043c5fe82327768e14c85449",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0056.json.gz",
+            "sha256": "90c40bed558d097abed11910ab3144db23fcce149fc8d4acfd9f4f8ad1076161",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0057.json.gz",
+            "sha256": "865c666e79e8c3540f608b52a6a6797c0966ad70f9b274debbb16ffed0851165",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0058.json.gz",
+            "sha256": "0d06086c5de2a7d7ff98ee11c980709c9cfc3e672ad8cd37b2f3955075fec902",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0059.json.gz",
+            "sha256": "dad469bdd27e958c2ce1be0decf893ef77667caf3d855728ac3e3871ebc09c90",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0060.json.gz",
+            "sha256": "c71bdf9a0d8f1e355507f60694702c3c80bdcad9bfe4add0c4e243dd94c35c1c",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0061.json.gz",
+            "sha256": "104013f553fab83c2c9f9eadf20fb3b1b4f354521599ea5cbee86736b3013845",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0062.json.gz",
+            "sha256": "2c73650fe41cc573fdac74750b7971697303eadb111d7b666a86af697ba3ee46",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0063.json.gz",
+            "sha256": "55434f520c231b6de83fb2e4e3a6b64531dd3234260e3b78c577b67f8edda911",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0064.json.gz",
+            "sha256": "9802bc61a5b3fa215f7a22452cff0026e9fa5f0823eec2e08eef169159228518",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0065.json.gz",
+            "sha256": "d5f0095c7e39dd28e63e0e423e5d4905261ca84c37c9e0add62eb154edfd3b25",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0066.json.gz",
+            "sha256": "da876b7ef9070d4a788bee1d8a1ecd733517ebd8a3615df88043230e5b8e9efd",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0067.json.gz",
+            "sha256": "35718b9e0ee7efab48a1224e79c42698a24f33fb058965dd64f4f21058e1d2b7",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0068.json.gz",
+            "sha256": "51ebe3bcd7e3f5617a0b15cad6873ead7014838703e1cedfd4161940ade44253",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0069.json.gz",
+            "sha256": "ce9f2811a568777587cb72ca74be3062ef3c4e4d329bbeb6361ad756ceb0b6e4",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0070.json.gz",
+            "sha256": "cfb820996872dce59fb977912faf53374d1115d32ee69e655295786d9fba5be7",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0071.json.gz",
+            "sha256": "51e23d88b961f976107a64760ba88d2a72c420d4d5a26d9481bd7188a9c41eaa",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0072.json.gz",
+            "sha256": "93c5f35d01fda46e57f502823319aa23665d22c6eceed2d563971e867df61023",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0073.json.gz",
+            "sha256": "dd46019131708a4c58e50523dd3a1301fdcd2fd1c78598c3f02286dfbd7a52aa",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0074.json.gz",
+            "sha256": "d152f830e5513e559084e0f868cc061ea2b6fb603ac3187de158d6b9c46a7086",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0075.json.gz",
+            "sha256": "d1095788881282060685df68fcd51fb5e051869db0acb859fa8dde490ebd702f",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0076.json.gz",
+            "sha256": "5495b6057553d93186cb28c00fa288b8d30da97beff6ac4bd927160149e79d4c",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0077.json.gz",
+            "sha256": "e2faa2c0b3d827d067d0e1c441d12b8fcc9980e796f112818c146785e3245e3a",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/alpaca_sip_2023_2026/SPY_raw_pages/0078.json.gz",
+            "sha256": "c0ff896561e8405ada057d85910dbf51b04e35f8f712905c76e3a7c02b4eef1a",
+            "rows": 3977
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/recent/SPY_raw_pages/0001.json.gz",
+            "sha256": "8dc38f0db358be0dead101b7acdf95e2d7a3c7fcfd162d2a182b1b1a2e19a36c",
+            "rows": 10000
+          },
+          {
+            "symbol": "SPY",
+            "path": "data/noise_area_extension/recent/SPY_raw_pages/0002.json.gz",
+            "sha256": "019cf659c8550a73475d71878438df8d5120f3a87d4f7edf65d54ebe61288850",
+            "rows": 7612
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0001.json.gz",
+            "sha256": "0195107368cc823a27f4ec492de766d39389705b6a73bcfcb003c9ecac774091",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0002.json.gz",
+            "sha256": "1c90ee9d28b7fe4c3824e451908c1196a4a3c81b50176cd4324ea41e758ae722",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0003.json.gz",
+            "sha256": "23b837b521da46fe1bb4594974c1626f33285dd32e9b063148ecb3aa16306ae2",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0004.json.gz",
+            "sha256": "d2bf7e849dced95da2130a596efd722b1a2841dc45e1966f8321544101525658",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0005.json.gz",
+            "sha256": "377ad704dce81edf2f1e4d45106bef2260d13a723366c5483586f7cd09db0674",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0006.json.gz",
+            "sha256": "d8d9a472b4ad632a85e482aaf6cd444c176688af45524a359ea5fa86dcad7fc7",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0007.json.gz",
+            "sha256": "beb5c6d973de4089c36989f72f75b1617eb3b0bda93d6487243df04e95003851",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0008.json.gz",
+            "sha256": "1b37af6d95d7764fdcb16267a46ef8370c245b34f2692047c58a5b6a641ec1f1",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0009.json.gz",
+            "sha256": "a4c6b0596bee0a5ae4089b2ef152a64490dc3ab4c25df160b3040b5af06f8a2b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0010.json.gz",
+            "sha256": "6e7b26850a4fb0870d64226984987ab818e75b9273632257a311b0afc3bab1ee",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0011.json.gz",
+            "sha256": "bf026e35984d26816b7e614422a1fa17d106a8330843539023c5ec6a4554031d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0012.json.gz",
+            "sha256": "31beca172df8baeabe57c0ced432e496256c2ef79a588c49e0d5bf3d99542702",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0013.json.gz",
+            "sha256": "7a2baaed36370779f64f66af8880082f35e1c5576c969b50bd9e0afbf0daffa7",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0014.json.gz",
+            "sha256": "0ddcd52e97ff4ac11108c4a3fd1a9177b294a74497ddf9eff42d37117b6193c3",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0015.json.gz",
+            "sha256": "4fb5490aba066a43532a306a2244bcbf2f7d4cf229587f9d5a7bd36b41fad9e6",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0016.json.gz",
+            "sha256": "363c1a7b5294144d3b2005fe897810baaf87c1132035a7cdc42df4380416388c",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0017.json.gz",
+            "sha256": "45045d41e0ed956b4a5d828f81871c01c91a6a7a5b7010785ebbe314c77b6857",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0018.json.gz",
+            "sha256": "001a629efc1c48bed78ad989605071ad9e4b34670bb2d2d65afa9eb1bf3cfe7a",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0019.json.gz",
+            "sha256": "16e3a1186e093337f28f63d08b268ff8d5da5b6e1b490b2e366f532c89b2c02b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0020.json.gz",
+            "sha256": "c338333da5be9f0010531970a746373742175cb85074acdb853d2d4c8da87759",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0021.json.gz",
+            "sha256": "be4239f99db6ed5de010d26144388f6128e1d30f3d59942702485d5a42a3a6b2",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0022.json.gz",
+            "sha256": "cb6d092251ee9cecec9eae8fc6ec2b1dbf93d41172e25bddd454a23c1c7fd9c0",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0023.json.gz",
+            "sha256": "5be8372d99d48c1a21b9345e9830e099938da940f73c904b5a970addb2ba67c8",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0024.json.gz",
+            "sha256": "d34c67decba9190e26d0e21543cc1342d3ac8c998183673b45f5adf80314d767",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0025.json.gz",
+            "sha256": "c0a7aad8c1830701ab21787e2b0edd1eece578f70d5aec6d7def6f0e73e2e8e9",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0026.json.gz",
+            "sha256": "db4a6cc3700fe0429b553377ee9d1c67e40f5e1d935d423bcf9a6a892034e9bf",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0027.json.gz",
+            "sha256": "43f2323ee5d778ec7e870939b7c2551a44f3cfe8a2f5edc0103f693c7a2db691",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0028.json.gz",
+            "sha256": "b76dcea996da45aa50a61346263b388e8d7d032df6efd4030aa589fcfcfc07d9",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0029.json.gz",
+            "sha256": "1f32a1cf4adc0f93e9d7904810b9ea77709e472de67d2828586d14d2c0634168",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0030.json.gz",
+            "sha256": "937799b213ff581a67918979ec62686adc19e066ade4a97dbebbfcd417178367",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0031.json.gz",
+            "sha256": "e77806c84f3d0ffc507d0a8b4a64afd90bf8298e380be94248d290daf1ad13b4",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0032.json.gz",
+            "sha256": "6cd1fa4f835a2f3f42d45c2939397bdf816c946d83c31ca1d661f7232302d5f4",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0033.json.gz",
+            "sha256": "dbb319507e4dd11775ad5b11603cdd05c733ef7dcdb72c570a1cfac4b89583c5",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0034.json.gz",
+            "sha256": "2cb2a53abd02374f13fa24f53ab42aab8110837d0a2d0710ac349b976604823c",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0035.json.gz",
+            "sha256": "c5c47f865834e6aa4c8dee2f95fdb7cea3af4efc401090a4b7b6c68b8213c67d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0036.json.gz",
+            "sha256": "d1d7f1fd2f2bb3a437cac50a4c98364476078ee0c55f49f01c3b601483af6709",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0037.json.gz",
+            "sha256": "4a885c32556f80bcb0a14676ef77a0d0fc4d770650f38b75db5ec027ed25d77a",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0038.json.gz",
+            "sha256": "b998b8a2be437ce44fdbbb36a46e7624c87efb991f07d7ba75a20a56332e163d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0039.json.gz",
+            "sha256": "9f1654c82f64261ffebc356c9672acd206f109191c5130d6a7bf3afc55cb4b05",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0040.json.gz",
+            "sha256": "8c46074a7be82547db2a40a7b3f6f11e36fc5c07de68510c381a9d7156861f7a",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0041.json.gz",
+            "sha256": "524d9c781f6df0c0f86bc33e583b93ed391345fe38565fd302dd673fe701c448",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0042.json.gz",
+            "sha256": "6154746cd4e95ca85c2b56abb0654d7922cf500ebb08e67934771fc3605bff38",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0043.json.gz",
+            "sha256": "38be68b9074946d8d8747c5897b8b515588b88daeb5a6c4f511de9ecb20ed08b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0044.json.gz",
+            "sha256": "c8750380b713cbe262023ce69a33e4ad7ce179f46d90f063e0baf2c6f44db779",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0045.json.gz",
+            "sha256": "1d81bcdec7d2ced29882da6fd61c2cb96c1d6eb5cf16b21c064cf70835cafca7",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0046.json.gz",
+            "sha256": "4f1655e5b8f784d57e98d3973cedc4f048c443c5e10300da538efe899ca6952c",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0047.json.gz",
+            "sha256": "b2ba13198e31360138ab0f1a482acc536ba7dcec5fe02a73b63d283d05ebab04",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0048.json.gz",
+            "sha256": "ced4e8527b192b24c390f0228a4f8879430f0830ce386cd7638738e9d76289e4",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0049.json.gz",
+            "sha256": "a4ac83f7321acee7fd8c0ac0bd2a079ccfdb545897a2c38308fb6d36290d14a5",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0050.json.gz",
+            "sha256": "e848e11a26a53f596079c1dfe0ae49f8930d9d4784293904f7eef6ea7ee48d2a",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0051.json.gz",
+            "sha256": "e18bb3adf499d833cf2e064fe9a5481b510d061dd30caef8395242882e01e66f",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0052.json.gz",
+            "sha256": "6284c93b198de0c5aafd839cd603b3f613951c59ed6222fb753eff4584a93385",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0053.json.gz",
+            "sha256": "ab9f995541f17a6f713e1beca5864e609f29a1c6868b5b6dbc2a3b6cea52c984",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0054.json.gz",
+            "sha256": "252a2168b1d106a861dfe0968cf7bd6d16dbe3d464fb4b9b9e62c691ddf73d50",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0055.json.gz",
+            "sha256": "c111fc1d8d2e52e4f8bd2db062399dbf895f1549b9bf9ba28e380e4a673c5b94",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0056.json.gz",
+            "sha256": "c1e2f29e20a2632e6f21308183aef4f145d400a12a2e1280c8cd7ff49f2a5a97",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0057.json.gz",
+            "sha256": "8aec7de974070ce3b61a0a7b6e2df9c96ae93ea14b6ca939cadcf6fd5e7f732a",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0058.json.gz",
+            "sha256": "e0ae50cdae9624bfac2203b1072c20609d276eecea9d77be3123ad22e6374fa4",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0059.json.gz",
+            "sha256": "de67a68ff228559d7b7ca62ce8f4762e00ca15f33e7a122118ecb8f3905ea59a",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0060.json.gz",
+            "sha256": "ece4bd3e216e76707f3e95a85f2818312b2eb7edd5841e8ca17e72b2230b68df",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0061.json.gz",
+            "sha256": "6c91c83ff1a2debd0c0327624462993691252e62c3cae340b94eb65d68e14f24",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0062.json.gz",
+            "sha256": "ec5225ba5c572968310e053f483bdd14ed48f3c9f151ea0762ca8bc6e0db0b7f",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0063.json.gz",
+            "sha256": "7e54e8df10d9c8ab8aff1347a724693d0ae62401259e0d66c5019fd3924a9fdd",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0064.json.gz",
+            "sha256": "bdc79b4d4fb3f7755b8a4b5a1fa9f0b650731c64db61f387b47aac14c0945efa",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0065.json.gz",
+            "sha256": "790009ebd31b9e24cd9c449aea247fb1a8178ad6d00aa2ad803d16d18ebf50c1",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0066.json.gz",
+            "sha256": "f11cc2c5ad40fc5c9efe876b44246a45927c3d00adb4a32fd8b6137d7ff0d718",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0067.json.gz",
+            "sha256": "dd9af31de8903218911889ee288a3a6fab269a128b2855845e4bfae3b233546b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0068.json.gz",
+            "sha256": "a35f493effbcaba793ddad9979a54f177023e8f13ff93568219e8ef1eb39adf1",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0069.json.gz",
+            "sha256": "388a30ebadbdfa4da25e90bf8644cdc1636bb91269fe5baa801cd35a8f8ef7cb",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0070.json.gz",
+            "sha256": "63f8831b086966738734565e26c7db4a067cb7ddda81a4415e2c0772c9effb06",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0071.json.gz",
+            "sha256": "d01597f7f39b189e6ecf14b9490484bf1feac250b443e4a05961360c973fb101",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0072.json.gz",
+            "sha256": "5eb8320d23ba8fd2bfa3a18f6b8e1b4166db2a2b4134785b44c296a8039de164",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0073.json.gz",
+            "sha256": "b8c6e471976bae36946bdb95683cd1caba60fa3702a6dfb189bd3e7c7fd539d8",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0074.json.gz",
+            "sha256": "f5d6bad126bc4bec781fd4296edf8facfca82f050a80a4deb127895044e18dad",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0075.json.gz",
+            "sha256": "a186ad189e73359951b0e8954af27d19d2e663843cee21372cf9474aa0853334",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0076.json.gz",
+            "sha256": "5d197cc939deb1bf308c4bb72eb6094dab9002b8e3c042da7defb195f1f52687",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0077.json.gz",
+            "sha256": "1097dc56fd9a10969db8c7d2bf65dbbe56c00405a435f5121fd73e0723bed40f",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0078.json.gz",
+            "sha256": "b3f72aea01a3a7ab8ceef4b40d1156d958e3f90593ffb8e32baae37a1df847f5",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0079.json.gz",
+            "sha256": "3c1e4d63de3f71bc2ade09272c2d52f699d5e11f7d607e250fea346e5a15c300",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0080.json.gz",
+            "sha256": "272d17127fc9413b38e5f20cf794ed3e86adb5370b3c7379d5011e605014427c",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0081.json.gz",
+            "sha256": "aa790f66a34dc2da714a95fde225309cd4df570e64d621121f667151ab6cfe5d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0082.json.gz",
+            "sha256": "6b642e5e92f1663a3f9a45a4bd996399349614bd1ec53da964b63f0843461ea0",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0083.json.gz",
+            "sha256": "e0f45fc8c8d45702ddfe8602c21610e74fc35a762a6ce5d2daa203a0b8024c18",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0084.json.gz",
+            "sha256": "224b96fed6235bfd1cc3d9aec1b811f433a12443f732e689614181159d39c043",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0085.json.gz",
+            "sha256": "3571c02a8edc15dbeaa39b8d2358b6ff5933087832cbb219d67454822e220401",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0086.json.gz",
+            "sha256": "457526ff53107bcdb7016bca481f4b10532b8cdff2b58afb9d3b16f48f5c8eef",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0087.json.gz",
+            "sha256": "2940f49f2470e004f348de16c1ecf02fe954b6f546a1a739ec0c2d17cbe81114",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0088.json.gz",
+            "sha256": "cf7b4368d88eee2c12b51f7f92e3ecbafbe9b46b404954a96039c905e4adaaa4",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0089.json.gz",
+            "sha256": "dcf439b0c2cc8dc66802dbb12603e87dc3f1af2a3b3db40094c349892b91e4be",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0090.json.gz",
+            "sha256": "bf551776a8c1c3247664e1ad3c2f87224e1c88eb9b3780d70d10430a2b54bfdc",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0091.json.gz",
+            "sha256": "309115903d1482e459b8da5b3e92c8996439fe79d51faac430c40a005be9eacf",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0092.json.gz",
+            "sha256": "9e5ade6973398b90f8915144562c40fb419897c2ab762d5dc60b3fffa59506b2",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0093.json.gz",
+            "sha256": "0cfa1c91ac7d2243cca67ec0fb5e435fbda539073e9d2728e518b5f5120d6e07",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0094.json.gz",
+            "sha256": "5fab44af0d5030ae8af89fc1887926911e85e3f233298e27c2d9b0c08495fc12",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0095.json.gz",
+            "sha256": "040d6bde9ec5025b996683f2007b9329e8007fad86ddbefe2666538ca9fa91df",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0096.json.gz",
+            "sha256": "2ceba7776f66796358b030d28e93a26a749fafa87b3fa01c2cdabb90025785bc",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0097.json.gz",
+            "sha256": "e1fe32487b82412f9d32bffdf1a7b3995cf62392d5ef38fa376b0a82ad0aa77b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0098.json.gz",
+            "sha256": "00f947b0f1440d0dcaa3a46c592df721e0f2c59a9694476aea1d0c3f54cd9a6b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0099.json.gz",
+            "sha256": "85ee7e930804f6d2d4616266de545cee2544dd6f257dcca2644e2ee9591ce736",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0100.json.gz",
+            "sha256": "1ad2d99b66a8313af4cf99b17291a7ce84eaae86a242160b5e8a3eeff3efdab5",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0101.json.gz",
+            "sha256": "95665bd264966d4442e1e34ac073f25377f951328e1ce5185bf733ccefbfce60",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0102.json.gz",
+            "sha256": "5f1bc92bc47f282f60866dacc194475b76029b67a8d0e636814d40c447fe839b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0103.json.gz",
+            "sha256": "f1c6c7ec411ea9eca416c26a7a53b3d9f59b7acece2a367de92bd667a01f4f28",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0104.json.gz",
+            "sha256": "e9274e531e54f8a18fabd5b9212b6eeab8c1ba2c7de0346af781dff3b64326ab",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0105.json.gz",
+            "sha256": "6478472cebc9f44a5c87ffa32148974b49351d226b95ac0a3d862d260d0315be",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0106.json.gz",
+            "sha256": "2e7980a1b9ad4f0ee3de31f201b19245259b41b4298c948001d9381a22a22bb7",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0107.json.gz",
+            "sha256": "92b8d58c39acb55ebc0a1473724bbc901a120dd693621898c9b7198f555dcf1b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0108.json.gz",
+            "sha256": "35a10bced44368c147b82437baf0bb350d58be10de2e980330341e322f2aa61d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0109.json.gz",
+            "sha256": "a14ea09507996c60ceb795d154a87b64534b11194a6885c4a08688d7fd6e9772",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0110.json.gz",
+            "sha256": "e4b95a9ce18e965d7097385ce3ca295e1c3a596267266eeb1077142db9454668",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0111.json.gz",
+            "sha256": "3a2f5cc867750c9691677152363b70051768d3efc5aad24c19dfcc83902e2ce1",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0112.json.gz",
+            "sha256": "475bd3e5d4cb755a77930034523ef2d0cf25b105ee29293494cc5dd56e63bc14",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0113.json.gz",
+            "sha256": "2111fdd5e2a8b4e8e60837546b22e1d89e7eef724aaa48a6623f0383f0e4f65b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0114.json.gz",
+            "sha256": "3495e4b0f2c2313dfc38438ea315a3d283af986eb6a2ee39452a9c5154cdafdc",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0115.json.gz",
+            "sha256": "afe6cc2b41abec45b3f058782cbae9a55d7ced9547b94cd9c30eb7949f266dbc",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0116.json.gz",
+            "sha256": "3ed3a880f79570147f3df1300caaaa507b87003f805ac26c46b57bc3bc0b184d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0117.json.gz",
+            "sha256": "cd70f393eb7f4955f6beefaa40a74e3ebaf711ab98bcd528c8617b6eebbef15c",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0118.json.gz",
+            "sha256": "124470522a596a75580f778745da387803a37855dd2a00b2f3606de3134b67c0",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0119.json.gz",
+            "sha256": "fdb75fe6fcfb5054c5dd49d76535cfa9954840e01f77a950be1b3da554b51b24",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0120.json.gz",
+            "sha256": "f16b74db8b846da2bb513ae2488ee0f20b3d0315a33c9044b717f50d5b7f3b29",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0121.json.gz",
+            "sha256": "70f285c98b865defcc480647661865cad6b7894b1c3544ba618ac17594641ddb",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0122.json.gz",
+            "sha256": "c0d5af4e402a75994af1cdf4dd26f65d03ea922559520715bc0cabd34b76cb06",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0123.json.gz",
+            "sha256": "3c3541ee8d95a227fb687233c13fae1940dfd68f5a88acff98846fe3b2042fc9",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0124.json.gz",
+            "sha256": "e5663a63df11db5287b11d736274094d6ced5509b1b60f08569654ac92b5f5e9",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0125.json.gz",
+            "sha256": "3b25cf5378beeaaa7e58bc143b168e92f3199693a7cf7b1f1ed4c5d8f6c91847",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0126.json.gz",
+            "sha256": "44a718636398e85c26d62dab1e31b5e08a89b17bdfd9f96355a2f3bb7ebf45d8",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/2016_2022/QQQ_raw_pages/0127.json.gz",
+            "sha256": "487edeeba823d7b2abe8281ace544aed84332a5bcb3b7108073447705bc66710",
+            "rows": 6570
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0001.json.gz",
+            "sha256": "dd170afad8b822a09f7b0c4c65eed5c0b9a9df2c456756ab571372a17c5aa77b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0002.json.gz",
+            "sha256": "2ba0b7215113b29c68492f7f3f64ffaf803541324b8a7af6dc2532152fd4706d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0003.json.gz",
+            "sha256": "3d4ab1a0504308f77840c102918aa33f8e9bc65bb8c534a05207a8fe3ae5cbc6",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0004.json.gz",
+            "sha256": "2bb3efe9ee62a20f7e14393da6296cc77d41edcefcf60a80c3b5315f783eb3a2",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0005.json.gz",
+            "sha256": "6518585a26244a9568cbcd7870b2be00a041a420e9b643fefb0f4df83a08cc04",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0006.json.gz",
+            "sha256": "6ee69add7c1d5398591c9a386c7f10aa2308b833d02271f87d51a8bc622fe23c",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0007.json.gz",
+            "sha256": "03b696e811e5ccc0c1318ca8b0a7884426a72c4cf761a2518569e0ac925ba911",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0008.json.gz",
+            "sha256": "9120f605eb1b52a055b0a1679c1cb18f5be6a3cd763fe1e5a4df4d06fa3fc4b5",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0009.json.gz",
+            "sha256": "ab00d68896c6dc56cea9e2d72927485c5934d872f0dd28b24c13bc2eda3f11ef",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0010.json.gz",
+            "sha256": "8c9487f1da8ca27190b84897de42d9893eab424fa22d19160c33fb1148f9e704",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0011.json.gz",
+            "sha256": "118ecb11f0eeac4823c0b7b0550ba2b6f2facbd0caa3befe5c29e541f527014d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0012.json.gz",
+            "sha256": "0c1d1254b3f93273ae0b131fddfd4370c77a1a81e3f06b1fd52d4fc7be9ec485",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0013.json.gz",
+            "sha256": "ef37d2ba2c892ba6f423ed8a00c8d75f43cabca460b705d09c8c9c1fc6e61289",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0014.json.gz",
+            "sha256": "932bb59bfc78c599e6ea9296051c85453ce63f4fb2c8f1b14cba7df10377c9bd",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0015.json.gz",
+            "sha256": "58b6698ff8b2f20531ac7c9a24a0fff372496c1a5ed8633f33c820629417bdef",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0016.json.gz",
+            "sha256": "20e762dce5b55a8b91926a4fa73e892c7c97a85d74ccd0f3ec8551660bce1c98",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0017.json.gz",
+            "sha256": "93dcf3e329736f50d72a268e411cbcd758ad297bdbaefed631bd0efe6715d847",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0018.json.gz",
+            "sha256": "e7a0d399ba04d6eae42d2a4352732d9bbcc3b40986f6c3957f441a1e58d2b58d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0019.json.gz",
+            "sha256": "17358ca32cdc121c31d15b7cb70a93b785b46baeb5b0ad07903ced2ba4d4535c",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0020.json.gz",
+            "sha256": "d165ada602a55999aac8396158db010e0c48927f18e9ebb9541347b9a22c2bb0",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0021.json.gz",
+            "sha256": "0924ed8700ae3655781a4dc8d889106791de4a7be63f4c9463deb26f5725614d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0022.json.gz",
+            "sha256": "92a5f1f823ae9fe6569f0a0c895e6359e6a1b68e4a137a1614004a6be2a682db",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0023.json.gz",
+            "sha256": "6aa7e6ad5a5067249a0c953c0679c9d4243c7f2ef879b9be47f0fe4a83c5b9d7",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0024.json.gz",
+            "sha256": "fe385a007b8278742fac36461d552a36f7ed86c1099603a0e1f4ba406f2ce2cb",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0025.json.gz",
+            "sha256": "088d86dab7d63c0cf41e204aa9c8c006975b597170a02c5cf0dcb9335760ef1d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0026.json.gz",
+            "sha256": "811882a1df69fcc1782089677610a6539c7c1b10b571cbacfb2dbd8ef5525513",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0027.json.gz",
+            "sha256": "4973df6de752c13a24c501c697596d51e61ef3fe7e7c6b0d1c8690ee2b40e229",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0028.json.gz",
+            "sha256": "cb03efaac423f9215ea0cf822b4cb9a07f1f4d5509f1c321986f91f6af6b8f67",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0029.json.gz",
+            "sha256": "467be77d55560d9754b9f004d181451a82d0693ef8fbc5a15cd0a4ce11e6d346",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0030.json.gz",
+            "sha256": "5fc0de714557d9d627d0dbcdff99cfde1583eb26ef6bae745593847bb2627c69",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0031.json.gz",
+            "sha256": "aaa0115eda25e3f8e4fe130d9d94e735f83e66f484a5334c898b7752a02b27ea",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0032.json.gz",
+            "sha256": "0ad1943f4203aea6edc6055017d6183f570c53abf46865d047327a493dddec1a",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0033.json.gz",
+            "sha256": "678d715a57bdc41672bd7bcc7724612453a9307dad6f596ac7360175311d110b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0034.json.gz",
+            "sha256": "7196f3116fdc2d0e35acccfcb72c7f97151cd956e0db9b04ffaf03cde08e6986",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0035.json.gz",
+            "sha256": "3b4a823ecb0c76f10d5611e13fd54ce2439772d8097272a419e5918b21a21641",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0036.json.gz",
+            "sha256": "d0cda28b4d540539db1c45ac632b410ee4a107080b9e1a610e9f660997cd6893",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0037.json.gz",
+            "sha256": "1a6f53385d77aab53f2dc94685a4878cd8ffc444a78355dcf63d34bcfe977f53",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0038.json.gz",
+            "sha256": "97ccfa43596f2cf131e239271e8cff24019e29fb2cb8f9e059766d4889433ae5",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0039.json.gz",
+            "sha256": "5db9c593f72b6f04c449a347eba5db17a463f294822800fb75738bf4724e38b0",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0040.json.gz",
+            "sha256": "c57cb5e4ff97b72ba35ce47a02a1bd56aa215cacbd43abe1e434a808782b3e17",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0041.json.gz",
+            "sha256": "d0aa34438ecaf635082d91758865a13025675f8e40fab2a38b50ce9634ef7901",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0042.json.gz",
+            "sha256": "f60d104453ee38817e38e5e0b4ed418a59d29ad6231a3c16d814070e41370e65",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0043.json.gz",
+            "sha256": "0b3aa086e7a37bc5371040c7cca93f3759428cc483836ca116fd26e1a2dbc3a1",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0044.json.gz",
+            "sha256": "184c73d75276882c0be44d3a656a130a858947ecb969db9bd66c6e8f02e95078",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0045.json.gz",
+            "sha256": "35595493c096ecc03239cce8d173a5525c90ede13743cdb3b99ff170d3cbe5b6",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0046.json.gz",
+            "sha256": "b43e6bf836ed6fc5c3ca891577d68afad8d4c835ae865e83e4780033f18044e4",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0047.json.gz",
+            "sha256": "baa86c45785dda97e3d35bf0fcccd2a8fa71e6737d199b465e8ccac4fb4ea190",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0048.json.gz",
+            "sha256": "455dfc3ed1d36a0004f23b0d4eb351766fcf42de723a97295be330c81b755832",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0049.json.gz",
+            "sha256": "05cdf86e057f0cf7ea6e5948988f2d42a09d460601824132542eb1901a2dbf4e",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0050.json.gz",
+            "sha256": "d0606c9a28190b7304b83f831bb36dfb626642047c990fd2e3eeaaa6bdb928c5",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0051.json.gz",
+            "sha256": "210f80c1e2e351599b80edf8f6ac5780e09f4fc73ed3ab213c9c30957c9a6c85",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0052.json.gz",
+            "sha256": "3cb05668c7bea85105a0cd15ebbcb0460e89f852149b4a989bb7834819da8d78",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0053.json.gz",
+            "sha256": "f96f9659b598a3032e4570bb6195e28903d05f43dbe6b299ce7efe922e6715a3",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0054.json.gz",
+            "sha256": "d7b05237d1355847f7c270939c5c4d6ec45f37c4162d3261f3e2f01fbe3d2ac6",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0055.json.gz",
+            "sha256": "ed939c54946f5a93d17d81309f92c8aba5be5d84f5d2431d03613e1db8ef5f65",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0056.json.gz",
+            "sha256": "120e6d17036ee973e9d8cf48162c27b3c008d6de3d70228cdfa1f011f04f1c72",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0057.json.gz",
+            "sha256": "c240945b78390713828c6fc6e9116f5df3338bcf41cdfcb0f3f307132cad2a5d",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0058.json.gz",
+            "sha256": "5bee8af4f49d709e6bb23e9a4f38aff9ecd1ee742b12a2e6c295e00364cb58a6",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0059.json.gz",
+            "sha256": "b4fa2529dcde73feeba1bbc3b8c64d2d5e61c70a70c42a8742182f58d7460571",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0060.json.gz",
+            "sha256": "cec556ad0fb7149a3b0e328455ddb95284a43496a3ce82ba39271f68ff3233a8",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0061.json.gz",
+            "sha256": "12cb670f049766fb609b26f4bc0a9cec0e5eba9902e0f6973ce4446421a0b165",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0062.json.gz",
+            "sha256": "f06915e108e82c01e093c42f4004c60fba1f1cd390da09ff1ef3bf9f6c35b73b",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0063.json.gz",
+            "sha256": "2100ef019ae6af15ffb715ad4c3cf95a9129980b5740662f32a948d3cee556b2",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0064.json.gz",
+            "sha256": "d4e6579c94b8f49b9f80470812d64b984859b0b58ae93626c4ad7054a51ecdd1",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0065.json.gz",
+            "sha256": "66f6e15befdd6b494675a52c00cc4300141edc16965a38721763f167874c58d4",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0066.json.gz",
+            "sha256": "5fbdc7272f79b2cecdf594b6bcdf0e7835b487b7bbd2c89c6b4b8a60162484be",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0067.json.gz",
+            "sha256": "5a02f25a5853f3a8430ffecba847c50cfd922f54fb60c2fe7f2041114c8a4e79",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0068.json.gz",
+            "sha256": "817a3534f1b7e2c9eecada7d62eb2af677f5c8aac7c0613ff250e0c6e86e7f3a",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0069.json.gz",
+            "sha256": "8cc09729746e192c411bb42f7d1654deb61d6b6ca5fe39b02c6da6e690637bd6",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0070.json.gz",
+            "sha256": "21ecb05ab93b1dbf2a8a0d2dc43159c6bdb8fede573aa57c66b9a1babf03ca92",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0071.json.gz",
+            "sha256": "8f87137e82f797c6eaa0a10e07eb370bd6bd7923960e098ca6c1a9ab826c85f7",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0072.json.gz",
+            "sha256": "39a62f9b195b20c89d1007ecea794cd7c784a7206b6692dfbff2b0f740178bc7",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0073.json.gz",
+            "sha256": "ed10c657da2dfad721d7cb9608ec7208d338f86a2987bc212bde370d24a743a1",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0074.json.gz",
+            "sha256": "b8c4bf1b990ee085fb7ac6edc87aca9dfcc76fc0914da042ce24cda756872acb",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0075.json.gz",
+            "sha256": "488f2cfbdcc20b3f8e3e4dda93e70ac7a125862a686e10abedab06b0e5d86a1e",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0076.json.gz",
+            "sha256": "edf70d899a8806bccd3d50e3fd23a02f938a05c309b2d359eb9939b92e2d9aaf",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0077.json.gz",
+            "sha256": "e77a3a51d58bd4fecbb95792be0acae7b7cfdf9cbdce13da603126c7d6dfdc5f",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0078.json.gz",
+            "sha256": "e33aa3f8774badfc5d8a19d2228051c8a1426bce27a438802e10d1e8586447a9",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0079.json.gz",
+            "sha256": "b5020ce6a6edd5e370e1e7d9d3c3531fb7b1d3200242c31095ea30bbe24a0194",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0080.json.gz",
+            "sha256": "47c1399763a7561e6d97e25f3f2520550b988259b4278ff7aa10b72eada893eb",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/alpaca_sip_2023_2026/QQQ_raw_pages/0081.json.gz",
+            "sha256": "f013cfe18959dff04fab16ccd7dca755e54aebadf12cd066fd16603729cdc5ef",
+            "rows": 7421
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/recent/QQQ_raw_pages/0001.json.gz",
+            "sha256": "13ccb16bed69c959413c1b6cae9a36a606d39d85306e07c8907d3cc177c40212",
+            "rows": 10000
+          },
+          {
+            "symbol": "QQQ",
+            "path": "data/noise_area_extension/recent/QQQ_raw_pages/0002.json.gz",
+            "sha256": "fa10d40441081e3398ffe7dcbc1084a8e42f1169ce99ea4f1f9cd6b58063ed58",
+            "rows": 8400
+          }
+        ],
+        "prepared": {
+          "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+          "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+          "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+          "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+          "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+          "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+        }
+      },
+      "vwap_files_sha256": {
+        "SPY_vwap.npy": "3383e5e1595306367f34e686e489a4dbc055e27ec155a826e07e82f9a1ee14f2",
+        "QQQ_vwap.npy": "1e1ba3bb80d43bcdb35eedba42b9a2b2c98bef0fc5fd647776b6f8081fe82f0a"
+      },
+      "coverage": [
+        {
+          "symbol": "SPY",
+          "rth_rows": 1054186,
+          "rth_records_including_overlaps": 1054186,
+          "invalid_positive_volume_vwap": 0,
+          "vwap_outside_ohlc": 0,
+          "zero_volume_bars": 0
+        },
+        {
+          "symbol": "QQQ",
+          "rth_rows": 1054175,
+          "rth_records_including_overlaps": 1054175,
+          "invalid_positive_volume_vwap": 0,
+          "vwap_outside_ohlc": 0,
+          "zero_volume_bars": 0
+        }
+      ],
+      "method": "Original SIP per-minute vw weighted by corresponding volume; all RTH OHLCV reconciled, no HLC3 proxy or gap interpolation."
+    },
+    "vwap_source_metadata_sha256": "96489d830ae381db82729807e34b1829e85a14cf9e949ad21cd19cca442cac64"
+  },
+  "code_sha256": {
+    "scripts/run_study.py": "a1f1ab1becfb5d0f54ad383d93feaeae4624478a702caab383e7eac5640bd90d",
+    "tests/test_analysis.py": "17fd538aabe88f2d01302f49dd0e05ba1079932d0ccc44ef9c29e983b30b17ad",
+    "tests/test_data.py": "c87fc906b5901b2a5483b4d3a8992b26f6c0480aa71438fdd0220b3abec20f1c",
+    "tests/test_engine.py": "ffeb45c534e93d2dbf043bcd20a8e156a469d81ba43e294f1afb79b2f6ba3ded",
+    "vwap_reversion/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "vwap_reversion/analysis.py": "c14aae13f58c92e3b6159ef6bcfa20d785bd856f1c9f632c89a90beb3a85f792",
+    "vwap_reversion/data.py": "b9fb63eb198c2c1934f40dd205d24f7ac9c2714bf817bc98dbafa1d02fd31524",
+    "vwap_reversion/engine.py": "0b73dc7e0a9d97e83ed22c9201d32049564086504956ee600c72759c445c92b4"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "studies/opening-range-5m/orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2"
+  },
+  "python": "3.14.6",
+  "packages": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "exchange_calendars": "4.13.2",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  },
+  "note": "Frozen before first financial loop. Conditional current data coverage; B reused, not blind OOS. Source per-minute VWAP, no HLC3 proxy."
+}

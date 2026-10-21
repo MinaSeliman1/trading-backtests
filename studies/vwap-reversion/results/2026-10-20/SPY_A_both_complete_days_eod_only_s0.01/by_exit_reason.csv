@@ -1,0 +1,3 @@
+exit_reason,trades,net_pnl,mean_net_bps
+eod_open,245,35872.51010512901,15.417779114660446
+stop_intrabar,41,-34939.93890944419,-92.81249717647887
