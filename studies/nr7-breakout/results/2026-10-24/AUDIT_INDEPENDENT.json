@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "scenarios": 48,
+  "feature_rows": 5428,
+  "trade_rows_including_overlapping_periods": 19510,
+  "daily_rows": 86816,
+  "observed_marks": 6392716,
+  "method": "Independent raw-array validity/ranges/signals and Decimal fills/sizing/fees/capital/marks; no calls to prepare/simulate/trace.",
+  "checked_aggregates": [
+    "trade_count",
+    "final_equity",
+    "net_pnl",
+    "total_return",
+    "CAGR",
+    "Sharpe",
+    "observed_marks_drawdown",
+    "commissions",
+    "borrow",
+    "friction",
+    "price_move",
+    "profit_factor",
+    "win_rate",
+    "mean_trade_bps"
+  ],
+  "conditional_accounts": true,
+  "source_revalidated": true
+}

@@ -1,0 +1,11 @@
+# NR7 : cassure du range de la veille après compression
+
+Hypothèse exploratoire : après une séance dont le range High−Low est strictement inférieur à ceux des six séances précédentes, une cassure confirmée par clôture minute peut prolonger le mouvement. Adaptation ETF de la description [StockCharts ChartSchool](https://chartschool.stockcharts.com/table-of-contents/trading-strategies-and-models/trading-strategies/narrow-range-day-nr7), consultée le 24 octobre 2026. Cette source définit le motif, elle ne valide pas notre avantage ni les règles spécifiques de sizing/exécution ci-dessous.
+
+SPY et QQQ, archives Alpaca SIP minute déjà acquises, du 4 janvier 2016 au 16 octobre 2026. A : jusqu'au 30 avril 2024 ; B : 1er mai 2024–16 octobre 2026, **déjà explorée par d'autres stratégies, donc pas un nouvel OOS aveugle**. Capital virtuel100000 USD réinitialisé séparément pour chaque instrument/scénario/période. Voir [protocole figé](PROTOCOL_EXECUTION.md).
+
+Règles : sept séances immédiatement précédentes complètes, NR7 strict sans égalités ; limites de la veille corrigées du dividende ex-date courant ; premier close minute strictement au-delà d'une limite ; entrée open de la minute suivante ; stop limite opposée ; pas de cible ni de position overnight ; une transaction maximum par séance. Risque cible1% et plafond causal1x calculés au close du signal, quantités entières. Commission0,0035USD/action/côté, minimum0,35USD/ordre ; friction0,01USD/action/côté ; empruntSHORT1%/360 minimum un jour. Stress0,02/0,03/0,05USD.
+
+Principal conditionnel aux journées complètes ; variante resolved_prefix sans filtre de qualité future, explicitement incomplète si un signal ou une sortie ne peut être reconstitué. Une journée causalement sans NR7 ou sans historique utilisable reste sans transaction. Une donnée inconnue ne devient pas une observation de cash ; voir flags d'exclusion et intentions non résolues.
+
+Reproduction locale : `python -m pytest tests -q`, puis `python scripts/run_study.py`, `python scripts/audit.py`, `python scripts/sample_sources.py` et `python scripts/report.py`. Les historiques complets et les clés restent hors Git. Le calcul refuse d'écraser une exécution ; les audits et le rapport peuvent régénérer leurs seuls fichiers dérivés. Les sources et le moteur sont contrôlés par empreintes. Aucun bot NR7 n'est créé.

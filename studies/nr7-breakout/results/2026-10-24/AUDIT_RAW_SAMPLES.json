@@ -1,0 +1,138 @@
+{
+  "status": "passed",
+  "selected_sessions": 16,
+  "fields_compared": 30300,
+  "sample_excerpts": 108,
+  "sessions": [
+    {
+      "symbol": "SPY",
+      "date": "2016-01-19",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "SPY",
+      "date": "2026-10-13",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "SPY",
+      "date": "2025-04-30",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "SPY",
+      "date": "2022-05-18",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "SPY",
+      "date": "2023-03-01",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "SPY",
+      "date": "2025-09-16",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "SPY",
+      "date": "2022-10-28",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "SPY",
+      "date": "2017-11-24",
+      "grid_minutes": 210,
+      "present_minutes": 210,
+      "fields_compared": 1050,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "QQQ",
+      "date": "2016-01-25",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "QQQ",
+      "date": "2026-10-07",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "QQQ",
+      "date": "2025-04-30",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "QQQ",
+      "date": "2023-08-29",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "QQQ",
+      "date": "2020-03-09",
+      "grid_minutes": 390,
+      "present_minutes": 376,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "QQQ",
+      "date": "2022-06-22",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "QQQ",
+      "date": "2019-07-29",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    },
+    {
+      "symbol": "QQQ",
+      "date": "2020-11-17",
+      "grid_minutes": 390,
+      "present_minutes": 390,
+      "fields_compared": 1950,
+      "cache_matches_original": true
+    }
+  ],
+  "selection": "First,last,worst,best,seeded additional principal trade dates; includes unresolved QQQ2020-03-09. Whole selected grids checked, only small excerpts published.",
+  "caveat": "Sample verification supplements source-wide SHA reconciliation; not an independent re-download from the provider."
+}

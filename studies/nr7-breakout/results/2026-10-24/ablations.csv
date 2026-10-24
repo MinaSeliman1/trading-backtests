@@ -1,0 +1,7 @@
+symbol,period,return_without_top3_pct,return_without_2020_pct,method
+SPY,ALL,4.363762355285528,16.688230989988682,"Set selected daily returns to zero; keep original return sequence elsewhere, not a re-sized account."
+SPY,A,8.07828116941678,20.84140273866946,"Set selected daily returns to zero; keep original return sequence elsewhere, not a re-sized account."
+SPY,B,-6.3030680531160455,-3.4106489816160934,"Set selected daily returns to zero; keep original return sequence elsewhere, not a re-sized account."
+QQQ,ALL,-1.5959259232137368,2.9581501195087068,"Set selected daily returns to zero; keep original return sequence elsewhere, not a re-sized account."
+QQQ,A,-0.7724559603489278,3.9390970244447487,"Set selected daily returns to zero; keep original return sequence elsewhere, not a re-sized account."
+QQQ,B,-4.471069215533663,-0.9290729262551811,"Set selected daily returns to zero; keep original return sequence elsewhere, not a re-sized account."

@@ -1,0 +1,27 @@
+{
+  "utc": "2026-10-24T21:42:39.614943+00:00",
+  "status": "passed",
+  "protected_model_and_runner_unchanged": true,
+  "secondary_aggregate_checks": 2324,
+  "tests": {
+    "nr7_passed": 16,
+    "orb_bot_passed": 29
+  },
+  "figures_visually_reviewed": 4,
+  "independent_review": "No P1/P2. All48scenario calendars/counts/net/costs/PF/bps/CAGR/Sharpe and missing flags checked.",
+  "final_source_sha256": {
+    "nr7/data.py": "b19ede8a5b0e7c12904cceca20d0e732c2491106e01d0912206b6284a9a8c10c",
+    "nr7/engine.py": "f0e1d001e66686fcf80ecc71b16fddf056d8e0b91e2097e53e82900c66e29208",
+    "nr7/__init__.py": "33ccd7821c90756d29cd40e2dec7d934fe15cde0f3ca45e5024ea845cb57fa34",
+    "tests/test_engine.py": "e826e92713f7cb3d8163a9b227d63bd808cddcf79e2b0f995e59e46fc39b0caf",
+    "scripts/audit.py": "950989ec39d69c67a5618534c764a389ca8137c3adf3171cb9e405d21fb85ff4",
+    "scripts/report.py": "8550bdb2dcfbb439e6bd22a2f50c000856591d2416e6e8fe765abe81e1d7e988",
+    "scripts/run_study.py": "0ee7829bb9db04c4980b6674833f8bfb7d1b5e1ae1f712cf5f64bd11a79d56c6",
+    "scripts/sample_sources.py": "8fdceae0f9e3ce289ac36ac4bd9c9b9e9c8032e307d5ef8075d3c65faff59177",
+    "scripts/verify_delivery.py": "8eb299cd09eba2a9296e6b107cab6fd49d95e8356e9c151ad57a533e97e44b08",
+    "README.md": "7c9587f9faea1d2395b5fbb012978df8974e02a032995153824a7ddfc3617dd3",
+    "VALIDATION.md": "fe36e6ca81d80884ba407b9b63e2e7032dba8285e14b3336ac4c4c4ef89c0536",
+    "PROTOCOL_EXECUTION.md": "8363c7a832a57a538acb6bca3c7887e3f66187de5d08b810da74bd2e4a00e61a"
+  },
+  "changes_after_pnl": "Audit/report expanded and raw samples/verification added; README reproduction clarified. No parameter or financial-file changes. Initial code/protocol snapshot retained."
+}

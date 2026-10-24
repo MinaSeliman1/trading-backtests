@@ -1,0 +1,246 @@
+{
+  "utc": "2026-10-24T21:25:02.145870+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "specifications": [
+    {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "require_nr7": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.02,
+      "quality": "complete_days",
+      "require_nr7": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.03,
+      "quality": "complete_days",
+      "require_nr7": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.05,
+      "quality": "complete_days",
+      "require_nr7": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "require_nr7": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "short_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "require_nr7": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "require_nr7": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "resolved_prefix",
+      "require_nr7": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    }
+  ],
+  "executions": 48,
+  "protocols": {
+    "README.md": {
+      "sha256": "4c75ee42897bc87720478c2e26e45ae14c53f3ec9c5592db96a61f86f3064ce8",
+      "text": "# NR7 : cassure du range de la veille après compression\n\nHypothèse exploratoire : après une séance dont le range High−Low est strictement inférieur à ceux des six séances précédentes, une cassure confirmée par clôture minute peut prolonger le mouvement. Adaptation ETF de la description [StockCharts ChartSchool](https://chartschool.stockcharts.com/table-of-contents/trading-strategies-and-models/trading-strategies/narrow-range-day-nr7), consultée le 24 octobre 2026. Cette source définit le motif, elle ne valide pas notre avantage ni les règles spécifiques de sizing/exécution ci-dessous.\n\nSPY et QQQ, archives Alpaca SIP minute déjà acquises, du 4 janvier 2016 au 16 octobre 2026. A : jusqu'au 30 avril 2024 ; B : 1er mai 2024–16 octobre 2026, **déjà explorée par d'autres stratégies, donc pas un nouvel OOS aveugle**. Capital virtuel100000 USD réinitialisé séparément pour chaque instrument/scénario/période. Voir [protocole figé](PROTOCOL_EXECUTION.md).\n\nRègles : sept séances immédiatement précédentes complètes, NR7 strict sans égalités ; limites de la veille corrigées du dividende ex-date courant ; premier close minute strictement au-delà d'une limite ; entrée open de la minute suivante ; stop limite opposée ; pas de cible ni de position overnight ; une transaction maximum par séance. Risque cible1% et plafond causal1x calculés au close du signal, quantités entières. Commission0,0035USD/action/côté, minimum0,35USD/ordre ; friction0,01USD/action/côté ; empruntSHORT1%/360 minimum un jour. Stress0,02/0,03/0,05USD.\n\nPrincipal conditionnel aux journées complètes ; variante resolved_prefix sans filtre de qualité future, explicitement incomplète si un signal ou une sortie ne peut être reconstitué. Une journée causalement sans NR7 ou sans historique utilisable reste sans transaction. Une donnée inconnue ne devient pas une observation de cash ; voir flags d'exclusion et intentions non résolues.\n\nReproduction locale : `python -m pytest tests -q`, puis `python scripts/run_study.py`, `python scripts/audit.py` et `python scripts/report.py`. Les historiques complets et les clés restent hors Git. Les scripts contrôlent les empreintes des sources et refusent d'écraser des résultats existants. Aucun bot NR7 n'est créé.\n"
+    },
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "8363c7a832a57a538acb6bca3c7887e3f66187de5d08b810da74bd2e4a00e61a",
+      "text": "# Protocole NR7 v1 — fixé avant P&L le 24 octobre 2026\n\n1. Les sept séances boursières immédiatement antérieures doivent toutes être complètes et valides. Ne pas remplacer une séance invalide par une plus ancienne. Leur range est le High−Low RTH brut, y compris une demi-séance entière. NR7 si rangeveille < chacun des six autres ; égalité exclue. Sept observations manquantes en début d'historique : warmup, sans transaction causalement.\n2. High/Low de la veille moins le dividende cash de la date courante. Ranges passés invariants à cette translation. Aucune autre correction ni filtre de tendance/volume ; source des dividendes vérifiée. L'absence de splits retournés par le fournisseur ne prouve pas sa complétude.\n3. Balayer les minutes RTH par ordre ; première clôture strictement > Highveille ajusté => LONG ; < Lowveille ajusté => SHORT. Une touche intraminute sans clôture ne suffit pas. Sur la minute n−3 au plus tard, afin d'entrer au plus tard à n−2. LONG/SHORT seuls filtrent le premier signal, sans rechercher un deuxième signal inverse.\n4. Entrée à l'open de la minute suivante. Quantité entière floor(min(capital/closeSignal,0,01capital/distanceCloseSignalStopOpposé)). Le futur open n'intervient pas dans le sizing. Un gap peut dépasser le plafond1x et/ou le risque1% effectif. Un gap au-delà du stop n'annule pas rétroactivement l'entrée : aller-retour immédiat, avec frais et friction.\n5. Stop actif dès la minute d'entrée ; gap au stop => open défavorable ; touche intraminute => niveau du stop ; sinon liquidation au dernier open RTH15:59/12:59. Pas de target, pas de sortie avant l'entrée, pas de nouvelle entrée après la première. L'ordre des ticks dans une minute est inconnu. Les marks sont le fill initial net de coût connu, les closes entièrement tenus et la sortie nette ; aucun close post-sortie. MAE/MFE bornés aux barres entièrement tenues et prix de sortie.\n6. Commission0,0035/action/côté, minimum0,35/côté ; friction adverse0,01/côté, stress0,02/0,03/0,05 ; empruntSHORT1%annuel/360, minimum un jour. Même grille que les autres études ; hypothèses de coûts, pas barème garanti d'Alpaca. Frais réglementaires variables non modélisés séparément.\n7. 48 scénarios fixés : 2 instruments ×3 périodes ×8 configurations : BOTH aux4frictions ; LONG seul ; SHORT seul ; témoin sans filtre NR7 à0,01 ; resolved_prefix à0,01. Le témoin garde ses propres capital et quantités, ce n'est pas une comparaison à exposition égale. Aucun paramètre choisi d'après les gains.\n8. Les journées éligibles à la stratégie mais incomplètes sont exclues du principal complete_days, filtre connu après coup. Leur observed_return est manquant ; le zero comptable pour chaînage conditionnel ne représente pas du cash observé. resolved_prefix n'utilise pas le filtre futur courant : trou avant signal => signal inconnu ; trou actif => trade entier omis des performances conditionnelles, intention et coûts connus exportés, sans prétendre suivre un portefeuille continu. Pas d'interpolation. Une absence NR7 causalement connue ou un historique antérieur invalide ne nécessite pas de données futures pour rester sans transaction.\n9. Publication de toutes les configurations, trades/jours, empreintes de données/code/protocole avant boucle financière, vérification indépendante Decimal des signaux/fills/sizing/frais/capital/marks, agrégats, incertitudes descriptives (blocs5/20, années,3000tirages,seed20261024), concentration/top3jours/2020 et échantillons OHLCV. Pas de nouveau OOS aveugle ni de garantie d'exécution/rentabilité. Aucune modification automatique des bots existants.\n"
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "code_sha256": {
+    "nr7/__init__.py": "33ccd7821c90756d29cd40e2dec7d934fe15cde0f3ca45e5024ea845cb57fa34",
+    "nr7/data.py": "b19ede8a5b0e7c12904cceca20d0e732c2491106e01d0912206b6284a9a8c10c",
+    "nr7/engine.py": "f0e1d001e66686fcf80ecc71b16fddf056d8e0b91e2097e53e82900c66e29208",
+    "scripts/audit.py": "79673f723ccd5fadc243271149225ba31d94a3f3092e45159bd470a0fa562342",
+    "scripts/report.py": "0a9d08b16118f13dd9dd4d10b650f703c32a1bb7ec293bed49086681b749c789",
+    "scripts/run_study.py": "0ee7829bb9db04c4980b6674833f8bfb7d1b5e1ae1f712cf5f64bd11a79d56c6",
+    "tests/test_engine.py": "e826e92713f7cb3d8163a9b227d63bd808cddcf79e2b0f995e59e46fc39b0caf"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "studies/opening-range-5m/orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2",
+    "studies/opening-range-5m/orb/engine.py": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810"
+  },
+  "python": "3.14.6",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "exchange_calendars": "4.13.2",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  },
+  "note": "Before first P&L loop. Reused B, not blind OOS. Conditional histories, no continuous portfolio on excluded days."
+}

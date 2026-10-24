@@ -10,18 +10,31 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 | [Intraday Momentum « Noise Area »](studies/intraday-momentum-noise-area/README.md) | Terminée pour SPY/QQQ | SIP 2016–16/10/2026 ; 220 scénarios ; 32 tests ; audits indépendants ; 73 figures | SPY : aucun avantage démontré ; QQQ : potentiellement intéressante, preuves insuffisantes |
 | [Opening Gap Reversal](studies/opening-gap-reversal/README.md) | Backtest terminé SPY/QQQ | 54 scénarios, 20 tests, audit de 2 334 lignes ; référence v3 | QQQ : piste à suivre, preuves insuffisantes ; SPY peu convaincante |
 | [Momentum de clôture](studies/closing-momentum/README.md) | Backtest terminé SPY/QQQ | 42 exécutions, 33 tests, audit de 70 934 lignes recouvrantes ; référence v2 | Principaux négatifs après coûts en A, B et ALL ; aucun bot justifié pour cette version |
-| [ORB cinq minutes](studies/opening-range-5m/README.md) | Backtest terminé SPY/QQQ | 54 scénarios, 42 tests, audit de 85 526 lignes recouvrantes | QQQ exploratoire positif mais fragile ; SPY faible ; performances conditionnelles à la couverture, aucun nouveau bot |
+| [ORB cinq minutes](studies/opening-range-5m/README.md) | Backtest terminé ; simulation locale QQQ active | 54 scénarios, 42 tests historiques ; [bot séparé](bots/qqq-orb/README.md), 29 tests et parité 2 707 séances | QQQ exploratoire positif mais fragile ; observation shadow lancée le24/10, aucun avantage prospectif encore établi |
 | [Retour VWAP après première heure](studies/vwap-reversion/README.md) | Backtest terminé SPY/QQQ | 48 scénarios, 46 tests, 428 pages brutes vérifiées, audit de 12 586 lignes recouvrantes | Principaux négatifs en A/B/ALL après coûts ; archivée, aucun nouveau bot |
+| [Compression NR7 puis cassure](studies/nr7-breakout/README.md) | Backtest terminé SPY/QQQ | 48 scénarios, 16 tests, audit indépendant Decimal et échantillons des acquisitions brutes | B principale négative SPY/QQQ ; gains ALL faibles et sensibles aux coûts ; aucun bot NR7 |
 
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
 
 ## Bot QQQ Noise Area en simulation
 
-[Code et lancement de la simulation QQQ](bots/qqq-noise-area/README.md), [validation](bots/qqq-noise-area/VALIDATION.md) et [preuve du replay SIP](bots/qqq-noise-area/validation/replay_2026-10-20.json). Paramètres 14/14, 30 minutes, cible 2 %, plafond 4x ; coûts conservateurs tenus dans un ledger local. 69 tests et parité antérieure sur 618 séances / 7 380 décisions.
+[Code et lancement de la simulation QQQ](bots/qqq-noise-area/README.md), [validation](bots/qqq-noise-area/VALIDATION.md) et [preuve du replay SIP](bots/qqq-noise-area/validation/replay_2026-10-20.json). Paramètres 14/14, 30 minutes, cible 2 %, plafond 4x ; coûts conservateurs tenus dans un ledger local. 96 tests au correctif du24/10 et parité antérieure sur 618 séances / 7 380 décisions.
 
 Le [lanceur Windows sans console](bots/qqq-noise-area/BACKGROUND_WINDOWS.md) est installé avec démarrage automatique à l'ouverture de session, clés dans le coffre Windows et conservation du solde. Référence prospective à partir du 21 octobre 2026 ; suivi quotidien en jours ouvrés et bilans opérationnels définis. Les preuves de démarrage ne constituent pas des résultats de rentabilité.
 
 Avec l'offre gratuite, le mode retenu est shadow SIP différé de 16 minutes : transactions simulées localement, sans ordre paper. L'essai IEX a été arrêté sans fill à cause de minutes manquantes incompatibles avec les règles strictes. L'adaptateur d'ordres paper reste disponible avec SIP temps réel et droits appropriés. L'[état d'activation observé](bots/qqq-noise-area/validation/activation_2026-10-20.json) distingue la livraison du code, la connexion et les transactions éventuelles.
+
+## Bot ORB QQQ en simulation
+
+[Code, commandes et limites](bots/qqq-orb/README.md), [preuve d'activation du24octobre](bots/qqq-orb/validation/activation_2026-10-24.json), [parité historique](bots/qqq-orb/validation/historical_parity_2026-10-24.json). Tâche Windows cachée `TradingBacktests-QQQ-ORB-Simulation`, au logon, runtime100000USD propre et premières observations éligibles le26octobre2026. Règles ORB figées : première plage5minutes, risque1%, plafond causal1x, objectif10R, stop prioritaire ; mêmes frais. Le transport autorise seulement GET QQQ SIP, aucun ordre broker. 29tests passent ; 2707séances et2688trades reproduisent le moteur historique gelé.
+
+Le démarrage est une preuve opérationnelle ; aucun trade prospectif n'est encore revendiqué. La parité partage le helper historique et n'est pas un nouvel audit indépendant. Sur secteur, les deux superviseurs peuvent maintenir leurs propres requêtes contre la veille automatique ; garder le couvercle ouvert. Noise Area conserve son compte, ses règles et son suivi distincts.
+
+## Nouvelle piste NR7
+
+[Rapport complet](studies/nr7-breakout/results/2026-10-24/RAPPORT_FINAL.md), [48comparaisons](studies/nr7-breakout/results/2026-10-24/comparison_all.csv), [validation](studies/nr7-breakout/VALIDATION.md). Compression stricte de la veille sur7séances, première clôture hors range, entrée open suivant, stop opposé/EOD ; risque1% et plafond causal1x. Mêmes commissions, emprunt et frictions.
+
+ALL2016–16/10/2026 : SPY **+9,60%**, QQQ **+3,74%** après coûts ; B réutilisée01/05/2024–16/10/2026 : **−3,41% /−0,93%**, 106/94trades. B n'est pas un nouvel OOS aveugle. QQQ2020-03-09 est exclue du principal et demeure non résolue en prefix : l'égalité de leurs résultats ne prouve pas la robustesse de la couverture. Aucune variante choisie après observation et aucun bot NR7 installé.
 
 ## Consulter le retour VWAP après première heure
 
@@ -29,9 +42,9 @@ Avec l'offre gratuite, le mode retenu est shadow SIP différé de 16 minutes : t
 
 ## Consulter les résultats ORB cinq minutes
 
-[Rapport complet](studies/opening-range-5m/results/2026-10-20/RAPPORT_FINAL.md), [54 comparaisons](studies/opening-range-5m/results/2026-10-20/comparison_all.csv), [validation](studies/opening-range-5m/VALIDATION.md). Mêmes frais, risque cible 1 %, plafond causal 1x. B réutilisée du 01/05/2024 au 16/10/2026 : QQQ **+7,76 %**, SPY **−0,84 %**, 615 trades chacun ; ALL : **+50,93 % /+1,40 %**. Comptes historiques conditionnels à la qualité des données, filtre connu après coup ; aucune validation aveugle ni performance continue sur journées exclues. QQQ B sans ses trois meilleurs jours devient négatif ; pas de nouveau bot justifié.
+[Rapport complet](studies/opening-range-5m/results/2026-10-20/RAPPORT_FINAL.md), [54 comparaisons](studies/opening-range-5m/results/2026-10-20/comparison_all.csv), [validation](studies/opening-range-5m/VALIDATION.md). Mêmes frais, risque cible 1 %, plafond causal 1x. B réutilisée du 01/05/2024 au 16/10/2026 : QQQ **+7,76 %**, SPY **−0,84 %**, 615 trades chacun ; ALL : **+50,93 % /+1,40 %**. Comptes historiques conditionnels à la qualité des données, filtre connu après coup ; aucune validation aveugle ni performance continue sur journées exclues. QQQ B sans ses trois meilleurs jours devient négatif ; ces statistiques ne qualifient pas un bot pour le réel. La simulation distincte sert à observer de nouvelles séances.
 
-[Décision ORB QQQ et prochaine validation recommandée](docs/research/2026-10-20-orb-qqq-decision.md) : conserver les règles, observer de nouvelles séances et mesurer les coûts/fills ; aucun nouveau bot ORB activé par cette documentation.
+[Décision ORB QQQ et prochaine validation recommandée](docs/research/2026-10-20-orb-qqq-decision.md) : note historique du20octobre, antérieure à la simulation distincte activée le24octobre. Conserver les règles, observer de nouvelles séances et mesurer les coûts/fills ; la mise en simulation ne démontre pas la rentabilité.
 
 ## Consulter les résultats du momentum de clôture
 
