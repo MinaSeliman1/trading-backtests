@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "verified_utc": "2026-10-24T20:52:27.484974+00:00",
+  "mode": "shadow",
+  "feed": "sip",
+  "data_delay_minutes": 16,
+  "deployment_date_toronto": "2026-10-24",
+  "incident_date": "2026-10-21",
+  "incident": {
+    "on_time_decisions": 4,
+    "late_decisions": 8,
+    "first_late_decision": "11:00",
+    "last_late_decision": "14:30",
+    "sleep_reason": "Windows Kernel-Power: Button or Lid",
+    "actual_sleep_at_toronto": "2026-10-21T10:55:52-04:00",
+    "actual_wake_at_toronto": "2026-10-21T15:11:10.329-04:00"
+  },
+  "user_choice": "Prevent automatic sleep only; leave lid open. No lid/button/battery policy edits.",
+  "verification": {
+    "full_bot_tests": {
+      "passed": 96,
+      "failed": 0,
+      "seconds": 22.53,
+      "command": "python -m pytest -q -p no:cacheprovider --basetemp .test_tmp_power_release_20261024"
+    },
+    "independent_review": "No remaining findings; retry capability marker regression fixed.",
+    "windows_task_running": true,
+    "fresh_supervisor": true,
+    "fresh_engine": true,
+    "native_SetThreadExecutionState_succeeded": true,
+    "powercfg_requests_inspection": "Requires administrator; not elevated further. Native API success checked by worker.",
+    "powercfg_request_overrides": "No entries returned.",
+    "power_status": {
+      "state": "protected",
+      "utc": "2026-10-24T20:52:20.101310+00:00",
+      "system_required": true,
+      "automatic_sleep_only": true,
+      "ac_only": true,
+      "display_required": false,
+      "in_session_window": false,
+      "on_ac": true
+    },
+    "engine_state": "waiting_for_regular_session",
+    "engine_status_age_seconds": 0.516697,
+    "existing_account_unchanged": true,
+    "configuration_unchanged": true,
+    "baseline_unchanged": true,
+    "session_markers_unchanged": true,
+    "table_fingerprints_unchanged": {
+      "orders": {
+        "rows": 12,
+        "sha256": "35da053afe841052f437de64b14c95c8cf872e1fe742ac9072f4b9479a4b9ce0"
+      },
+      "fills": {
+        "rows": 12,
+        "sha256": "fe85aa1de39dd41cd8ba30bb6df7bc56dc78cf55db8c78a549ec14a4d76ab14e"
+      },
+      "decisions": {
+        "rows": 33,
+        "sha256": "d4bc2e058eda7e5607f12e142fb5611afec40e50bf8b67d733f191db43473fa3"
+      },
+      "days": {
+        "rows": 3,
+        "sha256": "ad60532041f2c1dcd8d754694b65c290432c83d70801811640efc9002bd810b6"
+      }
+    },
+    "initial_prospective_session": "2026-10-21",
+    "fully_prospective_sessions": 0,
+    "pending_orders": 0,
+    "managed_qty": 0
+  },
+  "source_sha256": {
+    "qqq_paper/power.py": "ac1989526c9817899086298fc0363fae0fa0de423f7553ba53b50837cc935796",
+    "qqq_paper/background.py": "81e7a0d6a10eb253daa1dc96b25506440fcf4b2b501d0a1b18c23d328922d95a",
+    "qqq_paper/monitor.py": "689770a6c16fe8b23bd3234ebdbfad350d4d110968d06df251fb23f50e906cb3",
+    "tests/test_power.py": "f71afd5f6ef46ab3ebb5df715791640499866a6a63a08c6708b2561b16c46d88",
+    "tests/test_monitor.py": "df887c1c10e3d1f5f085c7026d493b3785a56fc29829e8938498323f6df1f6e3",
+    "tests/test_background.py": "eb7b4ae5aea5fed9267ea39f14056add267c6d8aca5b1a8581b02224b9fa02a8"
+  },
+  "limits": [
+    "Windows API acceptance and a fresh worker are verified; no induced machine sleep or future session coverage is claimed.",
+    "Explicit sleep, closed lid, shutdown, AC loss and network interruption can still interrupt the simulation.",
+    "Power protection remains on overnight while the supervisor runs on AC; battery and display sleep behavior are unchanged.",
+    "Historical and replayed observations remain unchanged and do not count as fully prospective sessions."
+  ]
+}

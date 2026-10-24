@@ -8,6 +8,10 @@ La tâche `TradingBacktests-QQQ-NoiseArea-Simulation` lance `pythonw.exe` à l'o
 
 Le PC doit rester éveillé et connecté pendant les séances. Le lanceur réessaie une initialisation qui échoue toutes les 60 secondes ; les erreurs API en cours d'exécution sont réévaluées par le moteur. Une pause du journal reste une pause : aucune reconstruction de transactions manquées ni remise à zéro des protections n'est automatique.
 
+Depuis le correctif du **24 octobre 2026**, le superviseur empêche la **veille automatique sur secteur** avec une requête Windows `ES_SYSTEM_REQUIRED`. Un thread indépendant la maintient même pendant une attente API et la libère sur batterie, lors d'une demande d'arrêt ou à la sortie. La vérification d'alimentation s'effectue toutes les 15 secondes. La protection reste active la nuit lorsque le bot tourne sur secteur : sinon une mise en veille nocturne empêcherait le code de se réveiller pour protéger la séance suivante. L'écran peut s'éteindre normalement ; aucun réglage permanent du plan d'alimentation n'est changé.
+
+Conformément au choix de l'utilisateur, **le couvercle et les boutons de veille ne sont pas modifiés**. Garder le PC branché et le couvercle ouvert. Une veille explicite, une fermeture du couvercle, un arrêt, une panne réseau ou une perte d'alimentation peuvent encore interrompre la couverture. Le programme ne réveille pas un PC déjà endormi ou arrêté. Voir le [diagnostic des huit décisions retardées le 21 octobre](validation/sleep_incident_2026-10-21.md).
+
 Le dossier du dépôt, Python et ses dépendances doivent rester au même endroit. Les chemins absolus enregistrés dans la tâche sont propres à la machine ; un déplacement nécessite de réinstaller la tâche depuis le nouveau dossier. Une seule instance peut posséder le verrou du journal.
 
 ## Configuration initiale
@@ -30,6 +34,7 @@ Le stockage persiste après les connexions suivantes sur ce PC. Pour renouveler 
 # Lire l'état du moteur et du superviseur ; aucun secret
 Get-Content .\runtime\shadow-sip\status.json
 Get-Content .\runtime\windows\status.json
+Get-Content .\runtime\windows\power_status.json
 Get-ScheduledTask -TaskName TradingBacktests-QQQ-NoiseArea-Simulation
 
 # Arrêt demandé au moteur, sans ordre Alpaca et sans suppression du journal
@@ -57,6 +62,8 @@ python -m qqq_paper.monitor --runtime runtime
 
 Le bilan lit SQLite en lecture seule, sans API et sans clé. Une séance complète exige toutes les décisions prévues, à plat après clôture, sans pause, et des observations dans les deux minutes du créneau et de la clôture sur l'horloge logique différée de 16 minutes. Un rattrapage tardif reste identifié comme tel. Les transactions des séances incomplètes sont conservées dans le journal et le résultat global ; elles ne sont pas comptées comme observations entièrement prospectives.
 
+Le bilan expose aussi `coverage_details` : décisions à l'heure, retards, premiers et derniers créneaux retardés et retard maximal, calculés à partir des observations enregistrées. `power_protection` indique la requête de maintien éveillé et les interruptions du thread. Un statut périmé, absent après installation, invalide ou en erreur déclenche une alerte ; une alimentation sur batterie pendant une séance est signalée. Ces diagnostics ne reclassent pas une séance manquante ou rattrapée comme prospective.
+
 Premier bilan opérationnel après **20 séances entièrement prospectives**. Bilan prolongé après **60 séances et 50 transactions fermées** sur ces séances. Un arrêt, un statut périmé ou une couverture manquante est à examiner plus tôt. Ces seuils permettent une revue ; ils ne prouvent pas un avantage statistique ou une rentabilité future, et les fills demeurent des simulations aux prix archivés.
 
 Le suivi Codex est distinct de la tâche Windows : le bot fonctionne sans Codex ouvert, tandis que les contrôles planifiés nécessitent que l'environnement local du suivi puisse s'exécuter. Il faut conserver le PC disponible pour recevoir un contrôle à l'heure prévue.
@@ -64,3 +71,5 @@ Le suivi Codex est distinct de la tâche Windows : le bot fonctionne sans Codex 
 ## Sources techniques
 
 [CredWriteW et contexte utilisateur](https://learn.microsoft.com/en-us/windows/win32/api/wincred/nf-wincred-credwritew), [persistance des identifiants Windows](https://learn.microsoft.com/en-us/windows/win32/api/wincred/ns-wincred-credentialw), [paramètres de tâche Windows](https://learn.microsoft.com/en-us/powershell/module/scheduledtasks/new-scheduledtasksettingsset?view=windowsserver2025-ps). Consultés le 20 octobre 2026.
+
+[SetThreadExecutionState et ses limites face à la veille explicite](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate), [GetSystemPowerStatus](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getsystempowerstatus). Consultés le 23 octobre 2026.

@@ -11,6 +11,7 @@ import sys
 import time
 from . import __main__ as app
 from .runtime import ProcessLock,write_status
+from .power import PowerGuard
 from .windows_vault import WindowsVault
 
 
@@ -42,21 +43,21 @@ def serve(runtime):
     handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'));logger.addHandler(handler)
     stdout=LogStream(logger,logging.INFO);stderr=LogStream(logger,logging.ERROR)
     try:
-        with ProcessLock(runtime/'background.lock'),redirect_stdout(stdout),redirect_stderr(stderr):
+        with ProcessLock(runtime/'background.lock'),redirect_stdout(stdout),redirect_stderr(stderr),PowerGuard(runtime):
             attempt=0
             while not stop.exists():
                 attempt+=1
                 write_status(folder,state='supervising_shadow',mode='shadow',feed='sip',pid=os.getpid(),attempt=attempt,
-                    utc=datetime.now(timezone.utc).isoformat(),executable=Path(sys.executable).name)
+                    utc=datetime.now(timezone.utc).isoformat(),executable=Path(sys.executable).name,power_guard=True)
                 try:
                     code=app.main(['--mode','shadow','--feed','sip','--runtime',str(runtime),'--stop-file',str(stop)],credentials=WindowsVault().load())
                     logger.info('Shadow engine returned code %s',code)
                 except Exception as error:
                     logger.error('Shadow startup interrupted: %s; no credential values logged',type(error).__name__)
                 if stop.exists():break
-                write_status(folder,state='retrying_shadow_startup',mode='shadow',feed='sip',pid=os.getpid(),attempt=attempt,utc=datetime.now(timezone.utc).isoformat())
+                write_status(folder,state='retrying_shadow_startup',mode='shadow',feed='sip',pid=os.getpid(),attempt=attempt,utc=datetime.now(timezone.utc).isoformat(),power_guard=True)
                 if wait_for_stop(stop,60):break
-            write_status(folder,state='stopped',mode='shadow',feed='sip',pid=os.getpid(),utc=datetime.now(timezone.utc).isoformat())
+            write_status(folder,state='stopped',mode='shadow',feed='sip',pid=os.getpid(),utc=datetime.now(timezone.utc).isoformat(),power_guard=True)
             return 0
     finally:
         stdout.flush();stderr.flush();logger.removeHandler(handler);handler.close()

@@ -2,10 +2,17 @@ from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import json
+from contextlib import nullcontext
 import pytest
 from qqq_paper import background
 from qqq_paper import __main__ as app
 from qqq_paper.windows_vault import CredentialError
+
+
+@pytest.fixture(autouse=True)
+def isolate_windows_power_api(monkeypatch):
+    # These tests exercise the supervisor; never change the test machine's power request.
+    monkeypatch.setattr(background,'PowerGuard',lambda runtime:nullcontext(),raising=False)
 
 
 def test_hidden_launcher_is_fixed_shadow_sip_and_stops_cleanly(tmp_path,monkeypatch):
@@ -35,15 +42,19 @@ def test_missing_vault_never_logs_secret_or_runs_application(tmp_path,monkeypatc
 def test_background_retries_startup_failure_without_changing_state_directory(tmp_path,monkeypatch):
     class Vault:
         def load(self):return ('test-id','test-secret')
-    calls=[]
+    calls=[];retry_markers=[]
     def application(argv,credentials=None):
         calls.append(app.arguments(argv))
         if len(calls)==2:(tmp_path/'STOP_SHADOW.flag').touch();return 0
         return 1
     monkeypatch.setattr(background,'WindowsVault',Vault);monkeypatch.setattr(background.app,'main',application)
-    monkeypatch.setattr(background,'wait_for_stop',lambda *a:False)
+    def retry_wait(*args):
+        retry_markers.append(json.loads((tmp_path/'windows/status.json').read_text()).get('power_guard'))
+        return False
+    monkeypatch.setattr(background,'wait_for_stop',retry_wait)
     assert background.serve(tmp_path)==0 and len(calls)==2
     assert all(c.runtime==tmp_path for c in calls)
+    assert retry_markers==[True]
 
 
 def test_stop_file_option_is_refused_for_paper_orders(tmp_path):
@@ -112,3 +123,25 @@ def test_graceful_shadow_stop_preserves_existing_balance_and_open_position(tmp_p
     assert app.main(['--runtime',str(tmp_path),'--stop-file',str(stop)],credentials=('test-id','test-secret'))==0
     resumed=Store(path,Parameters(),'shadow','sip')
     assert resumed._account()==account and not resumed.fills()
+
+
+def test_supervisor_owns_power_protection_before_api_work_and_releases_on_stop(tmp_path,monkeypatch):
+    import pandas as pd
+    from qqq_paper.power import PowerGuard
+    class Power:
+        required=False
+        def on_ac(self):return True
+        def system_required(self,enabled):self.required=enabled
+    class Vault:
+        def load(self):return ('test-id','test-secret')
+    power=Power()
+    observed=[]
+    monkeypatch.setattr(background,'PowerGuard',lambda runtime:PowerGuard(runtime,backend=power,clock=lambda:pd.Timestamp('2026-10-23T15:00:00Z')))
+    monkeypatch.setattr(background,'WindowsVault',Vault)
+    def application(argv,credentials=None):
+        (tmp_path/'STOP_SHADOW.flag').touch()
+        observed.append(power.required)
+        return 0
+    monkeypatch.setattr(background.app,'main',application)
+    assert background.serve(tmp_path)==0
+    assert observed==[True] and not power.required

@@ -2,10 +2,12 @@
 import argparse
 from datetime import datetime,timezone
 import json
+import math
 from pathlib import Path
 import sqlite3
 import pandas as pd
 import exchange_calendars as xcals
+from .power import protection_window
 
 
 def read_json(path):
@@ -23,6 +25,51 @@ def now_utc(now):
     value=pd.Timestamp(now if now is not None else datetime.now(timezone.utc))
     if value.tz is None:raise ValueError('timezone-aware observation required')
     return value.tz_convert('UTC')
+
+
+def coverage_detail(day,records,completed):
+    late=[];on_time=0;unknown=0
+    for row in records:
+        if not row['key'].startswith(day+':'):continue
+        data=json.loads(row['data'])
+        try:
+            at=pd.Timestamp(data['decision_time']);observed=pd.Timestamp(data['observed_at'])
+            delay=(observed-at).total_seconds()
+            if at.tz is None or observed.tz is None or not pd.notna(delay):raise ValueError('invalid timing')
+        except (KeyError,TypeError,ValueError):
+            unknown+=1;continue
+        if data.get('status')=='processed' and 0<=delay<=120:on_time+=1
+        elif delay>120:late.append((at.strftime('%H:%M'),delay))
+        else:unknown+=1
+    marker=next((s for s in completed if s['day']==day),None)
+    return dict(day=day,session_completed=marker is not None,on_time_decisions=on_time,
+        late_decisions=len(late),unknown_or_unprocessed_decisions=unknown,
+        first_late_decision=min((clock for clock,_ in late),default=None),
+        last_late_decision=max((clock for clock,_ in late),default=None),
+        largest_delay_seconds=max((delay for _,delay in late),default=None))
+
+
+def power_report(runtime,now,alerts):
+    path=runtime/'windows/power_status.json'
+    if not path.exists():
+        try:
+            supervisor=read_json(runtime/'windows/status.json')
+            if isinstance(supervisor,dict) and supervisor.get('power_guard') is True:
+                alerts.append('power_protection_unavailable')
+        except (OSError,TypeError,ValueError):pass
+        return None  # older installations have no power worker
+    try:
+        value=read_json(path);age=(now-pd.Timestamp(value['utc'])).total_seconds()
+        if not math.isfinite(age):raise ValueError('invalid power timestamp')
+        if value.get('state')=='error':alerts.append('power_protection_error')
+        if protection_window(now):
+            if age>90 or age < -60:alerts.append('power_protection_stale')
+            elif value.get('on_ac') is False:alerts.append('power_on_battery_during_session')
+            elif value.get('state')!='protected' or value.get('system_required') is not True or value.get('on_ac') is not True:alerts.append('power_protection_inactive')
+        keys=('state','utc','on_ac','system_required','in_session_window','last_gap_seconds','last_gap_utc')
+        return {key:value[key] for key in keys if key in value}
+    except (OSError,KeyError,TypeError,ValueError):
+        alerts.append('power_protection_unavailable');return None
 
 
 def initialize(runtime,now=None):
@@ -58,6 +105,7 @@ def collect_report(runtime,now=None):
         prospective=[r for r in rows if r['day'] in good]
         closed=len({r['cid'] for r in prospective if r['action']=='close' and r['status']=='filled'})
         pending=db.execute("SELECT COUNT(*) FROM orders WHERE status NOT IN ('filled','canceled','expired','rejected')").fetchone()[0]
+        decisions=list(db.execute('SELECT key,data FROM decisions WHERE key>=? ORDER BY key',(first,)))
     db.close()
     if meta.get('paused'):alerts.append('ledger_paused')
     if pending:alerts.append('pending_orders')
@@ -77,6 +125,8 @@ def collect_report(runtime,now=None):
             if now>=pd.Timestamp(row['close'])+pd.Timedelta(minutes=18):expected.append(str(day.date()))
     gaps=sorted(set(expected)-set(good))
     if gaps:alerts.append('prospective_coverage_gaps')
+    details=[coverage_detail(day,decisions,completed) for day in gaps]
+    power=power_report(runtime,now,alerts)
     stage='waiting_for_observations'
     if len(good)>=baseline['operational_sessions']:stage='operational_bilan_ready'
     if len(good)>=baseline['extended_sessions'] and closed>=baseline['extended_closed_trades']:stage='extended_bilan_ready'
@@ -84,6 +134,7 @@ def collect_report(runtime,now=None):
     return dict(utc=now.isoformat(),mode='shadow',feed='sip',data_delay_minutes=16,first_session=first,
         initial_realized_equity=baseline['initial_realized_equity'],current_realized_equity=account['balance'],managed_qty=account['position'],
         completed_sessions=len(completed),fully_prospective_sessions=len(good),prospective_days=good,coverage_gaps=gaps,
+        coverage_details=details,power_protection=power,
         prospective_closed_trades=closed,prospective_realized_pnl=net(prospective),all_period_realized_pnl=net(rows),pending_orders=pending,
         engine_state=status.get('state'),engine_status_age_seconds=age,alerts=alerts,stage=stage,
         operational_sessions_target=baseline['operational_sessions'],extended_sessions_target=baseline['extended_sessions'],
