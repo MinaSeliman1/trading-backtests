@@ -4,6 +4,8 @@
 
 La méthode testable est la formalisation donnée par Mina le24octobre2026, conservée dans [MISSION.md](MISSION.md). Aucun document original Bard FX n'a été fourni ; aucune conformité à une autre version de sa méthode n'est revendiquée. Les deux bots QQQ existants ne sont pas concernés.
 
+La [tentative d'exécution TradingView du24octobre](results/2026-10-24-tradingview/ETAT_EXECUTION.md) reste bloquée avant compilation par un écran promotionnel dans la session Basic connectée. Aucun résultat de marché ni100trades par paire n'est revendiqué. Le [protocole de cette exécution](results/2026-10-24-tradingview/PROTOCOL.md) est conservé avant toute observation de performance.
+
 ## Code complet
 
 - **GBPUSD et AUDUSD** : [nowick_compensation_usd.pine](tradingview/nowick_compensation_usd.pine).

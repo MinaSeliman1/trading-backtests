@@ -1,0 +1,34 @@
+{
+  "observed_at_utc": "2026-10-24T22:26:13Z",
+  "status": "blocked_before_compilation",
+  "requested_platform": "TradingView",
+  "requested_minimum_closed_trades_per_pair": 100,
+  "source_commit": "c16a44b9640a45c59ab7a6998201d20c859c0c0c",
+  "feed_requested": "OANDA",
+  "timeframe_minutes": 15,
+  "chart_observed": "OANDA:GBPUSD",
+  "browser_session_connected": true,
+  "plan_observed": "Basic",
+  "access_blocker": "Promotional overlay initially reporting Ad blocker detected prevents access to the Pine editor. After its carousel advanced it displayed More indicators, more trading possibilities, current plan Basic, 2 applied indicators. These existing chart studies are not the Nowick strategy.",
+  "manual_action_requested": "User to close the blocking overlay or allow TradingView advertisements in their browser. Browser privacy settings were not modified.",
+  "source_pasted_in_pine_editor": false,
+  "pine_compilation_confirmed": false,
+  "nowick_strategy_applied": false,
+  "market_backtest_executed": false,
+  "exports_downloaded": [],
+  "results": [
+    {"symbol":"GBPUSD","closed_trades":null,"net_pnl":null,"profit_factor":null,"minimum_100_verified":false},
+    {"symbol":"USDJPY","closed_trades":null,"net_pnl":null,"profit_factor":null,"minimum_100_verified":false},
+    {"symbol":"AUDUSD","closed_trades":null,"net_pnl":null,"profit_factor":null,"minimum_100_verified":false}
+  ],
+  "basic_intraday_limit_documented_approximately": 5000,
+  "actual_chart_bar_count_measured": null,
+  "deep_backtesting_available_on_observed_plan": false,
+  "purchase_or_subscription_started": false,
+  "broker_orders_sent": false,
+  "references": [
+    "https://www.tradingview.com/support/solutions/43000480679-historical-intraday-data-bars-and-limits-explained/",
+    "https://www.tradingview.com/support/solutions/43000666265-how-deep-backtesting-works/"
+  ],
+  "note": "Null means unmeasured, not zero trades. This record documents an access attempt, not backtest results. No account identifier, email, cookie, secret, or unrelated browser content is archived."
+}
