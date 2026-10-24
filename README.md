@@ -13,6 +13,7 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 | [ORB cinq minutes](studies/opening-range-5m/README.md) | Backtest terminé ; simulation locale QQQ active | 54 scénarios, 42 tests historiques ; [bot séparé](bots/qqq-orb/README.md), 29 tests et parité 2 707 séances | QQQ exploratoire positif mais fragile ; observation shadow lancée le24/10, aucun avantage prospectif encore établi |
 | [Retour VWAP après première heure](studies/vwap-reversion/README.md) | Backtest terminé SPY/QQQ | 48 scénarios, 46 tests, 428 pages brutes vérifiées, audit de 12 586 lignes recouvrantes | Principaux négatifs en A/B/ALL après coûts ; archivée, aucun nouveau bot |
 | [Compression NR7 puis cassure](studies/nr7-breakout/README.md) | Backtest terminé SPY/QQQ | 48 scénarios, 16 tests, audit indépendant Decimal et échantillons des acquisitions brutes | B principale négative SPY/QQQ ; gains ALL faibles et sensibles aux coûts ; aucun bot NR7 |
+| [Nowick / Compensation Play Forex](studies/nowick-compensation/README.md) | Pine et tests contrôlés ; compilation et marché à valider | GBPUSD/AUDUSD/USDJPY ; 27 tests Python, variantes de coûts USD/JPY, stress des ambiguïtés | Aucun résultat FX calculé ; rentabilité non évaluée ; protocole de 100 trades par paire |
 
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
 

@@ -1,0 +1,339 @@
+//@version=6
+// USDJPY. Generated from USD source; identical rules, JPY-denominated cash fee.
+// Properties: verification=10 ticks (1 pip on 5/3-digit feeds), commission per unit,
+// slippage=0 by default: commission already represents 1 pip round-trip all-in.
+strategy("Nowick Compensation — JPY quote — audit v1", overlay=true,
+     initial_capital=100000, currency=currency.NONE, pyramiding=0,
+     commission_type=strategy.commission.cash_per_contract, commission_value=0.005,
+     slippage=0, backtest_fill_limits_assumption=10,
+     calc_on_order_fills=false, calc_on_every_tick=false, process_orders_on_close=false,
+     use_bar_magnifier=true, margin_long=1, margin_short=1, max_bars_back=1000)
+
+const string EXPECTED_QUOTE = "JPY"
+string trendMode = input.string("A Structure", "Tendance", options=["A Structure", "B EMA 1h"])
+int pivotLen = input.int(5, "Pivot : gauche ET droite", minval=1, maxval=50)
+string tz = input.string("America/New_York", "Fuseau IANA")
+string entrySession = input.session("0200-0800", "Nouvelles entrees (fin exclue)")
+int tolerance = input.int(0, "Tolerance Nowick (ticks)", minval=0)
+string levelMode = input.string("Ouverture", "Limite", options=["Ouverture", "50% du corps"])
+int ttl = input.int(9, "Validite : bougies suivantes", minval=1, maxval=50)
+bool frontRun = input.bool(true, "Annuler sur front-run")
+float bufferPips = input.float(3, "Buffer SL (pips)", minval=0)
+float minStop = input.float(5, "Distance SL minimale (pips)", minval=0.1)
+float maxStop = input.float(30, "Distance SL maximale (pips)", minval=0.1)
+float rr = input.float(1, "Objectif R", options=[1.0, 1.5, 2.0])
+bool swingFilter = input.bool(false, "Filtre Swing : extreme 10 bougies")
+bool srFilter = input.bool(false, "Filtre S/R : pivots entre limite et TP")
+int srAge = input.int(100, "S/R : age depuis confirmation (bougies)", minval=1, maxval=1000)
+bool doubleFilter = input.bool(false, "Filtre Double Nowick : ecart 2 a 4")
+bool newsFilter = input.bool(false, "Filtre News manuel")
+string newsText = input.text_area("", "News : YYYY-MM-DD@HHMM-HHMM;...",
+     tooltip="Fuseau choisi. Dates obligatoires, meme jour. Maximum 100 plages. Une bougie chevauchant une plage est interdite.")
+int testStart = input.time(timestamp("01 Jan 2016 00:00 +0000"), "Debut : nouvelles entrees")
+int testEnd = input.time(timestamp("24 Oct 2026 00:00 +0000"), "Fin : nouvelles entrees (exclue)")
+
+float pip = syminfo.currency == "JPY" ? 0.01 : 0.0001
+float tick = syminfo.mintick
+float epsilon = tick * 0.000001
+int pipTicks = int(math.ceil(pip / tick - 0.000001))
+var array<int> newsStarts = array.new<int>()
+var array<int> newsEnds = array.new<int>()
+var int sessionStart = na
+var int sessionEnd = na
+
+f_digits(string s) =>
+    not na(str.tonumber(s)) and str.length(str.replace_all(str.replace_all(str.replace_all(str.replace_all(str.replace_all(str.replace_all(str.replace_all(str.replace_all(str.replace_all(str.replace_all(s, "0", ""), "1", ""), "2", ""), "3", ""), "4", ""), "5", ""), "6", ""), "7", ""), "8", ""), "9", "")) == 0
+
+if barstate.isfirst
+    if not chart.is_standard or timeframe.in_seconds() != 900
+        runtime.error("Utiliser des chandeliers ordinaires 15 minutes.")
+    bool pairOK = (syminfo.basecurrency == "GBP" and syminfo.currency == "USD") or (syminfo.basecurrency == "AUD" and syminfo.currency == "USD") or (syminfo.basecurrency == "USD" and syminfo.currency == "JPY")
+    if syminfo.type != "forex" or not pairOK
+        runtime.error("Paires autorisees : GBPUSD, AUDUSD, USDJPY, flux forex.")
+    if syminfo.currency != EXPECTED_QUOTE
+        runtime.error("Mauvaise variante : fichier USD pour GBPUSD/AUDUSD ; fichier JPY pour USDJPY.")
+    if strategy.account_currency != syminfo.currency or syminfo.pointvalue != 1
+        runtime.error("Devise du compte = devise de cotation ; pointvalue doit valoir 1. Verifier le flux et les Proprietes.")
+    if minStop > maxStop or testEnd <= testStart
+        runtime.error("Bornes de stop ou dates incoherentes.")
+    sessionStart := int(str.tonumber(str.substring(entrySession, 0, 2))) * 60 + int(str.tonumber(str.substring(entrySession, 2, 4)))
+    sessionEnd := int(str.tonumber(str.substring(entrySession, 5, 7))) * 60 + int(str.tonumber(str.substring(entrySession, 7, 9)))
+    if sessionStart >= sessionEnd or sessionStart % 15 != 0 or sessionEnd % 15 != 0
+        runtime.error("Session du meme jour, heures alignees sur 15 minutes.")
+    if newsFilter and str.length(str.trim(newsText)) > 0
+        array<string> tokens = str.split(newsText, ";")
+        if array.size(tokens) > 100
+            runtime.error("Maximum 100 plages news.")
+        for token in tokens
+            string s = str.trim(token)
+            if str.length(s) != 20
+                runtime.error("News : format exact YYYY-MM-DD@HHMM-HHMM, sans point-virgule final.")
+            if str.substring(s, 4, 5) != "-" or str.substring(s, 7, 8) != "-" or str.substring(s, 10, 11) != "@" or str.substring(s, 15, 16) != "-"
+                runtime.error("Separateurs news invalides.")
+            string digits = str.substring(s, 0, 4) + str.substring(s, 5, 7) + str.substring(s, 8, 10) + str.substring(s, 11, 15) + str.substring(s, 16, 20)
+            if not f_digits(digits)
+                runtime.error("Date ou heure news non numerique.")
+            int y = int(str.tonumber(str.substring(s, 0, 4)))
+            int m = int(str.tonumber(str.substring(s, 5, 7)))
+            int d = int(str.tonumber(str.substring(s, 8, 10)))
+            int h1 = int(str.tonumber(str.substring(s, 11, 13)))
+            int m1 = int(str.tonumber(str.substring(s, 13, 15)))
+            int h2 = int(str.tonumber(str.substring(s, 16, 18)))
+            int m2 = int(str.tonumber(str.substring(s, 18, 20)))
+            int a = timestamp(tz, y, m, d, h1, m1)
+            int b = timestamp(tz, y, m, d, h2, m2)
+            if y < 1970 or m < 1 or m > 12 or d < 1 or d > 31 or h1 > 23 or h2 > 23 or m1 > 59 or m2 > 59 or b <= a or year(a, tz) != y or month(a, tz) != m or dayofmonth(a, tz) != d
+                runtime.error("Date news inexistante ou plage invalide / passant minuit.")
+            array.push(newsStarts, a)
+            array.push(newsEnds, b)
+
+f_allowed(int a, int b) =>
+    int minutes = hour(a, tz) * 60 + minute(a, tz)
+    bool ok = a >= testStart and b <= testEnd and minutes >= sessionStart and minutes < sessionEnd
+    int lastMinutes = hour(b - 1, tz) * 60 + minute(b - 1, tz)
+    ok := ok and lastMinutes < sessionEnd
+    if newsFilter and array.size(newsStarts) > 0
+        for k = 0 to array.size(newsStarts) - 1
+            if a < array.get(newsEnds, k) and b > array.get(newsStarts, k)
+                ok := false
+    ok
+
+// All pivot values become available on this bar only, never on the old pivot bar.
+float ph = ta.pivothigh(high, pivotLen, pivotLen)
+float pl = ta.pivotlow(low, pivotLen, pivotLen)
+var float lastPH = na
+var float prevPH = na
+var float lastPL = na
+var float prevPL = na
+var array<float> highsSR = array.new<float>()
+var array<int> highsAt = array.new<int>()
+var array<float> lowsSR = array.new<float>()
+var array<int> lowsAt = array.new<int>()
+if barstate.isconfirmed
+    if not na(ph)
+        prevPH := lastPH
+        lastPH := ph
+        array.push(highsSR, ph)
+        array.push(highsAt, bar_index)
+    if not na(pl)
+        prevPL := lastPL
+        lastPL := pl
+        array.push(lowsSR, pl)
+        array.push(lowsAt, bar_index)
+    while array.size(highsAt) > 0
+        if bar_index - array.get(highsAt, 0) <= srAge
+            break
+        array.shift(highsAt)
+        array.shift(highsSR)
+    while array.size(lowsAt) > 0
+        if bar_index - array.get(lowsAt, 0) <= srAge
+            break
+        array.shift(lowsAt)
+        array.shift(lowsSR)
+
+// lookahead_off alone is insufficient in real time: latch only the completed hour.
+[rawFast, rawSlow, rawHourEnd, hourWarm] = request.security(syminfo.tickerid, "60", [ta.ema(close, 50), ta.ema(close, 200), time_close, bar_index >= 199], lookahead=barmerge.lookahead_off)
+var float hourFast = na
+var float hourSlow = na
+var int hourEnd = na
+var bool hourReady = false
+if barstate.isconfirmed and time_close == rawHourEnd
+    hourFast := rawFast
+    hourSlow := rawSlow
+    hourEnd := rawHourEnd
+    hourReady := hourWarm
+int structureTrend = not na(prevPH) and not na(prevPL) ? (lastPH > prevPH and lastPL > prevPL ? 1 : lastPH < prevPH and lastPL < prevPL ? -1 : 0) : 0
+bool hourFresh = hourReady and not na(hourEnd) and time_close - hourEnd < 3600000
+int emaTrend = hourFresh and not na(hourSlow) ? (hourFast > hourSlow ? 1 : hourFast < hourSlow ? -1 : 0) : 0
+int trend = trendMode == "A Structure" ? structureTrend : emaTrend
+bool bull = close > open and open - low <= tolerance * tick + epsilon
+bool bear = close < open and high - open <= tolerance * tick + epsilon
+float lowest10 = ta.lowest(low, 10)
+float highest10 = ta.highest(high, 10)
+
+type Stats
+    int n = 0
+    int wins = 0
+    int streak = 0
+    int worstStreak = 0
+    float gain = 0
+    float loss = 0
+    float sumR = 0
+    float peakR = 0
+    float ddR = 0
+
+method add(Stats s, float pnl, float r) =>
+    s.n += 1
+    s.wins += pnl > 0 ? 1 : 0
+    s.gain += math.max(pnl, 0)
+    s.loss += math.max(-pnl, 0)
+    s.streak := pnl < 0 ? s.streak + 1 : 0
+    s.worstStreak := math.max(s.worstStreak, s.streak)
+    s.sumR += r
+    s.peakR := math.max(s.peakR, s.sumR)
+    s.ddR := math.max(s.ddR, s.peakR - s.sumR)
+
+f_wilson(Stats s) =>
+    float p = s.n > 0 ? float(s.wins) / s.n : na
+    float z = 1.959963984540054
+    float divisor = 1 + z * z / math.max(s.n, 1)
+    float centre = (p + z * z / (2 * math.max(s.n, 1))) / divisor
+    float half = z * math.sqrt(p * (1 - p) / math.max(s.n, 1) + z * z / (4 * math.max(s.n * s.n, 1))) / divisor
+    s.n > 0 ? str.tostring(100 * math.max(0, centre - half), "#.0") + " / " + str.tostring(100 * math.min(1, centre + half), "#.0") + "%" : "n/a"
+
+f_fmt(float x) =>
+    na(x) ? "n/a" : str.tostring(x, "#.###")
+
+var Stats native = Stats.new()
+var Stats stressed = Stats.new()
+var int dir = 0
+var int signalBar = na
+var float entry = na
+var float sl = na
+var float tp = na
+var float extreme = na
+var float riskCash = na
+var bool filled = false
+var bool ambiguous = false
+var int lastAcceptedLong = na
+var int lastAcceptedShort = na
+var int handled = 0
+var int ambiguousCount = 0
+var int improvedFills = 0
+var float previousNet = 0
+var float totalCommission = 0
+bool markedLong = false
+bool markedShort = false
+bool flagThisBar = false
+bool closedThisBar = strategy.closedtrades > handled
+bool hasPosition = strategy.position_size != 0
+bool newFill = dir != 0 and not filled and (hasPosition or closedThisBar)
+
+if barstate.isconfirmed
+    if dir != 0 and (hasPosition or closedThisBar)
+        // Audit only; these completed OHLC checks never decide past order placement.
+        if newFill
+            float actualEntry = hasPosition ? strategy.position_avg_price : strategy.closedtrades.entry_price(strategy.closedtrades - 1)
+            int actualTime = hasPosition ? strategy.opentrades.entry_time(0) : strategy.closedtrades.entry_time(strategy.closedtrades - 1)
+            if time > time_close[1] or not f_allowed(time, time_close) or not f_allowed(actualTime, actualTime + 1)
+                runtime.error("Fill hors fenetre / news / dates apres trou de donnees. Resultat refuse ; auditer le flux.")
+            if math.abs(actualEntry - entry) > tick * 0.5
+                improvedFills += 1
+                ambiguous := true
+            if frontRun and (dir == 1 ? high > extreme : low < extreme)
+                ambiguous := true
+        if low <= sl and high >= tp and dir == 1 or high >= sl and low <= tp and dir == -1
+            ambiguous := true
+        filled := true
+        flagThisBar := ambiguous
+    if closedThisBar
+        string expectedExit = dir == 1 ? "LX" : "SX"
+        if dir == 0 or hasPosition or strategy.closedtrades.exit_id(strategy.closedtrades - 1) != expectedExit or strategy.closedtrades - handled != 1 or na(riskCash) or riskCash <= 0
+            runtime.error("Incoherence du journal : une seule cloture attendue, risque connu obligatoire.")
+        // Delta of native closed net profit: includes commission exactly once.
+        float pnl = strategy.netprofit - previousNet
+        float commission = strategy.closedtrades.commission(strategy.closedtrades - 1)
+        float stressedPnl = ambiguous ? math.min(pnl, -riskCash - commission) : pnl
+        native.add(pnl, pnl / riskCash)
+        stressed.add(stressedPnl, stressedPnl / riskCash)
+        totalCommission += commission
+        ambiguousCount += ambiguous ? 1 : 0
+        previousNet := strategy.netprofit
+        handled := strategy.closedtrades
+        dir := 0
+        filled := false
+        ambiguous := false
+    bool nextAllowed = f_allowed(time_close, time_close + 900000)
+    if dir != 0 and not filled and not hasPosition
+        bool breached = frontRun and (dir == 1 ? high > extreme : low < extreme)
+        // Active on bars signal+1 ... signal+ttl inclusive, cancelled at close of last.
+        if time > time_close[1] or bar_index - signalBar >= ttl or not nextAllowed or breached
+            strategy.cancel_all()
+            dir := 0
+    int candidate = bull and trend == 1 ? 1 : bear and trend == -1 ? -1 : 0
+    if dir == 0 and not hasPosition and not closedThisBar and candidate != 0 and nextAllowed
+        float proposedEntry = math.round_to_mintick(levelMode == "Ouverture" ? open : (open + close) * 0.5)
+        float pivot = candidate == 1 ? lastPL : lastPH
+        float proposedSL = candidate == 1 ? math.floor((pivot - bufferPips * pip) / tick + 0.000001) * tick : math.ceil((pivot + bufferPips * pip) / tick - 0.000001) * tick
+        float distance = candidate * (proposedEntry - proposedSL)
+        float stopPips = distance / pip
+        float proposedTP = candidate == 1 ? math.floor((proposedEntry + rr * distance) / tick + 0.000001) * tick : math.ceil((proposedEntry - rr * distance) / tick - 0.000001) * tick
+        bool swingOK = not swingFilter or (bar_index >= 9 and (candidate == 1 ? open > lowest10 + epsilon : open < highest10 - epsilon))
+        int lastAccepted = candidate == 1 ? lastAcceptedLong : lastAcceptedShort
+        bool doubleOK = not doubleFilter or na(lastAccepted) or bar_index - lastAccepted < 2 or bar_index - lastAccepted > 4
+        bool srOK = true
+        if srFilter
+            array<float> levels = candidate == 1 ? highsSR : lowsSR
+            if array.size(levels) > 0
+                for level in levels
+                    if candidate == 1 ? (level > proposedEntry and level < proposedTP) : (level < proposedEntry and level > proposedTP)
+                        srOK := false
+        float step = syminfo.mincontract
+        float qty = not na(distance) and distance > 0 and strategy.equity > 0 ? math.floor(strategy.equity * 0.01 / distance / syminfo.pointvalue / step) * step : 0
+        if not na(pivot) and stopPips >= minStop - 0.000001 and stopPips <= maxStop + 0.000001 and swingOK and doubleOK and srOK and qty > 0
+            dir := candidate
+            signalBar := bar_index
+            entry := proposedEntry
+            sl := proposedSL
+            tp := proposedTP
+            extreme := candidate == 1 ? high : low
+            riskCash := qty * distance * syminfo.pointvalue
+            filled := false
+            ambiguous := false
+            if candidate == 1
+                lastAcceptedLong := bar_index
+                markedLong := true
+                strategy.entry("L", strategy.long, qty=qty, limit=entry)
+                strategy.exit("LX", "L", stop=sl, limit=tp)
+            else
+                lastAcceptedShort := bar_index
+                markedShort := true
+                strategy.entry("S", strategy.short, qty=qty, limit=entry)
+                strategy.exit("SX", "S", stop=sl, limit=tp)
+
+plotshape(markedLong, "Nowick valide achat", shape.triangleup, location.belowbar, color.lime, size=size.tiny)
+plotshape(markedShort, "Nowick valide vente", shape.triangledown, location.abovebar, color.red, size=size.tiny)
+plotshape(flagThisBar, "Ambiguite OHLC / prix de fill", shape.xcross, location.abovebar, color.orange, size=size.tiny)
+plot(dir != 0 ? entry : na, "Entree", color.blue, style=plot.style_linebr)
+plot(dir != 0 ? sl : na, "SL", color.red, style=plot.style_linebr)
+plot(dir != 0 ? tp : na, "TP", color.green, style=plot.style_linebr)
+plot(native.sumR, "R cumules natifs fermes", display=display.data_window)
+plot(stressed.sumR, "R cumules stress (capital natif)", display=display.data_window)
+var table dashboard = table.new(position.top_right, 3, 14, bgcolor=color.new(color.black, 12), border_width=1)
+f_cell(int col, int row, string text) =>
+    table.cell(dashboard, col, row, text, text_color=color.white, text_size=size.small)
+
+if barstate.islast
+    f_cell(0, 0, "Nowick 15m / " + syminfo.currency)
+    f_cell(1, 0, "Natif net")
+    f_cell(2, 0, "Stress ambiguite*")
+    array<string> labels = array.from("Trades fermes", "Win rate", "Profit factor monnaie", "Esperance R/trade", "Serie de pertes max", "DD ferme max R", "Wilson95% bas / haut")
+    for j = 0 to 6
+        f_cell(0, j + 1, array.get(labels, j))
+    for column = 1 to 2
+        Stats s = column == 1 ? native : stressed
+        f_cell(column, 1, str.tostring(s.n))
+        f_cell(column, 2, s.n > 0 ? f_fmt(100.0 * s.wins / s.n) + "%" : "n/a")
+        f_cell(column, 3, s.loss > 0 ? f_fmt(s.gain / s.loss) : s.gain > 0 ? "inf" : "n/a")
+        f_cell(column, 4, s.n > 0 ? f_fmt(s.sumR / s.n) : "n/a")
+        f_cell(column, 5, str.tostring(s.worstStreak))
+        f_cell(column, 6, f_fmt(s.ddR))
+        f_cell(column, 7, f_wilson(s))
+    f_cell(0, 8, "Trades ambigus / fills modifies")
+    f_cell(1, 8, str.tostring(ambiguousCount))
+    f_cell(2, 8, str.tostring(improvedFills))
+    f_cell(0, 9, "Commission native cumulee")
+    f_cell(1, 9, f_fmt(totalCommission))
+    f_cell(2, 9, syminfo.currency)
+    f_cell(0, 10, "1 pip = ticks / verifier Proprietes")
+    f_cell(1, 10, str.tostring(pipTicks))
+    f_cell(2, 10, "Natif : 10 par defaut")
+    f_cell(0, 11, "Position / attente")
+    f_cell(1, 11, hasPosition ? "ouverte" : dir != 0 ? "limite" : "aucune")
+    f_cell(2, 11, "Stops actifs hors session")
+    f_cell(0, 12, "*Stress : memes tailles natives")
+    f_cell(1, 12, "Ambigu => perte >=1R+frais")
+    f_cell(2, 12, "Pas une preuve de fills")
+    f_cell(0, 13, "Marge / risque hors frais")
+    f_cell(1, 13, "100x max / cible 1%")
+    f_cell(2, 13, "Aucun ordre broker")

@@ -1,0 +1,32 @@
+test_bad_news (test_reference.ReferenceTests.test_bad_news) ... ok
+test_breakeven (test_reference.ReferenceTests.test_breakeven) ... ok
+test_cost_both_currencies (test_reference.ReferenceTests.test_cost_both_currencies) ... ok
+test_double_gap (test_reference.ReferenceTests.test_double_gap) ... ok
+test_drawdown_and_streak (test_reference.ReferenceTests.test_drawdown_and_streak) ... ok
+test_fill_accepts_contiguous_allowed_bar (test_reference.ReferenceTests.test_fill_accepts_contiguous_allowed_bar) ... ok
+test_fill_rejects_cross_session_data_gap (test_reference.ReferenceTests.test_fill_rejects_cross_session_data_gap) ... ok
+test_fill_rejects_news_later_in_same_bar (test_reference.ReferenceTests.test_fill_rejects_news_later_in_same_bar) ... ok
+test_fill_rejects_outside_session (test_reference.ReferenceTests.test_fill_rejects_outside_session) ... ok
+test_invalid_risk (test_reference.ReferenceTests.test_invalid_risk) ... ok
+test_news_overlap_and_date (test_reference.ReferenceTests.test_news_overlap_and_date) ... ok
+test_nowick_tolerance (test_reference.ReferenceTests.test_nowick_tolerance) ... ok
+test_nowick_zero_tolerance (test_reference.ReferenceTests.test_nowick_zero_tolerance) ... ok
+test_pips (test_reference.ReferenceTests.test_pips) ... ok
+test_pivot_only_after_confirmation (test_reference.ReferenceTests.test_pivot_only_after_confirmation) ... ok
+test_risk_rounding (test_reference.ReferenceTests.test_risk_rounding) ... ok
+test_risk_units (test_reference.ReferenceTests.test_risk_units) ... ok
+test_session_dst_summer (test_reference.ReferenceTests.test_session_dst_summer) ... ok
+test_session_dst_winter (test_reference.ReferenceTests.test_session_dst_winter) ... ok
+test_sr_strict_between (test_reference.ReferenceTests.test_sr_strict_between) ... ok
+test_stress_never_improves_trade (test_reference.ReferenceTests.test_stress_never_improves_trade) ... ok
+test_structure (test_reference.ReferenceTests.test_structure) ... ok
+test_ttl_exact (test_reference.ReferenceTests.test_ttl_exact) ... ok
+test_verify_ticks (test_reference.ReferenceTests.test_verify_ticks) ... ok
+test_wilson_empty (test_reference.ReferenceTests.test_wilson_empty) ... ok
+test_wilson_extremes (test_reference.ReferenceTests.test_wilson_extremes) ... ok
+test_wilson_half (test_reference.ReferenceTests.test_wilson_half) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.035s
+
+OK

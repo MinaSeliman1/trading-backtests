@@ -1,0 +1,31 @@
+{
+  "verified_at_utc": "2026-10-24T22:14:52.892918+00:00",
+  "python": "3.14.6",
+  "controlled_unit_tests": {
+    "status": "passed",
+    "count": 27,
+    "command": "python -m unittest discover -s tests -v"
+  },
+  "usd_jpy_variant_equivalence": true,
+  "pine_compilation": "not_confirmed",
+  "pine_runtime": "not_confirmed",
+  "fx_market_backtest": "not_executed",
+  "profitability": "not_evaluated",
+  "fx_market_data_used": [],
+  "files_sha256": {
+    "MISSION.md": "2d059b1787917390268f6f3b569d4e11c5b1785bc5e3f086ba0bc58db3463ea6",
+    "README.md": "a06540d511e439171d5907dfc3baa85a58477fbb8d5367c6b9132f5ef4c56046",
+    "reference.py": "95371fb1b6bfa913263ffbf51cfd01afe09bd42a2f157234c4fbf6fe367910be",
+    "scripts/build_variants.py": "5a817180ddf100df455deb7a3f2c1550d5c78121dc33dbe88ac529741960d33c",
+    "scripts/verify_local.py": "295713760c0687badddbd71efbbb4c7e1d952d9ab0ae785ee1016e2019937fdd",
+    "tests/test_reference.py": "38671fffdc87cbc6e1f7749b1b1181f8a2f4894020209e06f5fb56cea1d4f36d",
+    "tradingview/nowick_compensation_jpy.pine": "4df77b24ff07fcb24e871d03aa5153403b8888f56d8257830458347715be9eb1",
+    "tradingview/nowick_compensation_usd.pine": "a5435292abd75e71f0100498ac27e28719a42b59071a74776a1c49901eb3cf23",
+    "VALIDATION.md": "3464ec9b2a622c519ef507ad1f309d856c7b48b585c59ca5e5359808b95e6ad9"
+  },
+  "limitations": [
+    "Python fixtures do not execute or compile Pine.",
+    "Native front-run cancellation is evaluated at 15m close.",
+    "Stress column uses native trade sizes; it is not an alternate executable portfolio or a guaranteed bound."
+  ]
+}
