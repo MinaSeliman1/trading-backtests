@@ -13,9 +13,15 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 | [ORB cinq minutes](studies/opening-range-5m/README.md) | Backtest terminé ; simulation locale QQQ active | 54 scénarios, 42 tests historiques ; [bot séparé](bots/qqq-orb/README.md), 29 tests et parité 2 707 séances | QQQ exploratoire positif mais fragile ; observation shadow lancée le24/10, aucun avantage prospectif encore établi |
 | [Retour VWAP après première heure](studies/vwap-reversion/README.md) | Backtest terminé SPY/QQQ | 48 scénarios, 46 tests, 428 pages brutes vérifiées, audit de 12 586 lignes recouvrantes | Principaux négatifs en A/B/ALL après coûts ; archivée, aucun nouveau bot |
 | [Compression NR7 puis cassure](studies/nr7-breakout/README.md) | Backtest terminé SPY/QQQ | 48 scénarios, 16 tests, audit indépendant Decimal et échantillons des acquisitions brutes | B principale négative SPY/QQQ ; gains ALL faibles et sensibles aux coûts ; aucun bot NR7 |
-| [Nowick / Compensation Play Forex](studies/nowick-compensation/README.md) | Pine et tests contrôlés ; compilation et marché à valider | GBPUSD/AUDUSD/USDJPY ; 27 tests Python, variantes de coûts USD/JPY, stress des ambiguïtés | Aucun résultat FX calculé ; rentabilité non évaluée ; protocole de 100 trades par paire |
+| [Nowick / Compensation Play Forex](studies/nowick-compensation/README.md) | Backtest Python terminé sur trois paires ; Pine non compilé | 126 scénarios, 70 tests, archives FXCM 1 min 2015–2024 ; au moins 100 trades résolus par paire | Références et moitiés négatives après 1 pip ; pénalités de couverture explicites ; aucun bot justifié |
 
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
+
+## Consulter le backtest Nowick Forex
+
+[Rapport complet](studies/nowick-compensation/results/2026-10-24-python-v1/RAPPORT_FINAL.md), [126 comparaisons](studies/nowick-compensation/results/2026-10-24-python-v1/comparison_all.csv), [validation et audit](studies/nowick-compensation/VALIDATION_PYTHON.md). Python sur Bid FXCM 1 minute, signaux 15 minutes et règles figées, risque 1 %, coût synthétique 1 pip aller-retour. Entrées nominales 2015–2024 : GBPUSD **−23,77 %**, USDJPY **−30,26 %**, AUDUSD **−52,48 %** ; 127/191/222 trades fermés, dont 122/174/193 sans trou pendant la position. Les deux moitiés sont négatives sur chaque paire.
+
+La source comporte des interruptions, notamment après le 13 décembre 2024 : ces performances incluent des pénalités de couverture et ne représentent pas dix ans de fills certifiés. Les trades sans trou restent perdants en diagnostic comptable. Les sensibilités de frais, filtres, tendance et exécution sont publiées sans choix après résultats. Aucun résultat TradingView, aucune compilation Pine ni aucun nouveau bot Forex ne sont revendiqués.
 
 ## Bot QQQ Noise Area en simulation
 

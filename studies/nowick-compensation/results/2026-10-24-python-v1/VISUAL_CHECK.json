@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-10-25T01:11:11.646948+00:00",
+  "inspection": "Five PNGs viewed at rendered resolution; checked labels, units, scales, clipping and correspondence to exported comparisons. Equity legend moved away from early curve peaks, then re-rendered and re-inspected.",
+  "figures": {
+    "chronological_expectancy.png": "8d23574331b17aa1086c1d148d33acfd78ce918a6255cc08f1c9282b423134b0",
+    "cost_sensitivity.png": "f08c54b38a4f9a5535f1479e59f1f91c0292b5ad53700c2d3566225da99315a3",
+    "coverage_monthly.png": "199172955f4242b0f3889b5a79e4bdbd6e8184e7a1341d82ddd465741abfd8ec",
+    "equity_reference.png": "454642476232ff74a50e124bd541d7e2ba2c7a0c0397d17ac8a35cdb4b7b5269",
+    "filter_comparison.png": "d5f0e285f54bbd208272b6be6277ebd455b930d04cafb04f74b2a72c1db43875"
+  },
+  "scope": "Standalone PNG/SVG scientific figures; no interactive dashboard or TradingView result."
+}

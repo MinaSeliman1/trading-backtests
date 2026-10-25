@@ -1,0 +1,21 @@
+{
+  "definition": "Reference ALL closed trades with no coverage penalty and no unresolved gap; not pooled variants/halves.",
+  "all_three_pass": true,
+  "pairs": {
+    "GBPUSD": {
+      "closed_trades": 127,
+      "resolved_closed_trades": 122,
+      "minimum_100_resolved": true
+    },
+    "USDJPY": {
+      "closed_trades": 191,
+      "resolved_closed_trades": 174,
+      "minimum_100_resolved": true
+    },
+    "AUDUSD": {
+      "closed_trades": 222,
+      "resolved_closed_trades": 193,
+      "minimum_100_resolved": true
+    }
+  }
+}

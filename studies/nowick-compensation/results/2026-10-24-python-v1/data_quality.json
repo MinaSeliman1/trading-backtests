@@ -1,0 +1,347 @@
+{
+  "GBPUSD": {
+    "expected_weekday_0200_0800_minutes": 939240,
+    "present_weekday_0200_0800_minutes": 925289,
+    "weekday_window_coverage_pct": 98.51465014266853,
+    "weekday_days": 2609,
+    "complete_360minute_days": 2550,
+    "missing_weekday_window_minutes": 13951,
+    "zero_quote_weekdays": 38,
+    "observed_target_15m_bars": 61699,
+    "complete_target_15m_bars": 61642,
+    "longest_gaps": [
+      {
+        "last_utc": "2024-12-13T21:59:00+00:00",
+        "next_utc": "2025-01-12T22:02:00+00:00",
+        "missing_clock_minutes": 43202
+      },
+      {
+        "last_utc": "2024-08-23T20:59:00+00:00",
+        "next_utc": "2024-09-01T21:03:00+00:00",
+        "missing_clock_minutes": 12963
+      },
+      {
+        "last_utc": "2023-06-30T20:58:00+00:00",
+        "next_utc": "2023-07-09T21:00:00+00:00",
+        "missing_clock_minutes": 12961
+      },
+      {
+        "last_utc": "2014-12-31T19:00:00+00:00",
+        "next_utc": "2015-01-04T22:00:00+00:00",
+        "missing_clock_minutes": 5939
+      },
+      {
+        "last_utc": "2023-12-22T21:59:00+00:00",
+        "next_utc": "2023-12-26T05:01:00+00:00",
+        "missing_clock_minutes": 4741
+      },
+      {
+        "last_utc": "2023-12-29T22:00:00+00:00",
+        "next_utc": "2024-01-02T05:01:00+00:00",
+        "missing_clock_minutes": 4740
+      },
+      {
+        "last_utc": "2017-12-22T21:58:00+00:00",
+        "next_utc": "2017-12-26T04:02:00+00:00",
+        "missing_clock_minutes": 4683
+      },
+      {
+        "last_utc": "2015-12-24T18:01:00+00:00",
+        "next_utc": "2015-12-27T22:06:00+00:00",
+        "missing_clock_minutes": 4564
+      },
+      {
+        "last_utc": "2015-12-31T18:02:00+00:00",
+        "next_utc": "2016-01-03T22:00:00+00:00",
+        "missing_clock_minutes": 4557
+      },
+      {
+        "last_utc": "2020-12-31T19:01:00+00:00",
+        "next_utc": "2021-01-03T22:00:00+00:00",
+        "missing_clock_minutes": 4498
+      },
+      {
+        "last_utc": "2020-12-24T19:03:00+00:00",
+        "next_utc": "2020-12-27T22:00:00+00:00",
+        "missing_clock_minutes": 4496
+      },
+      {
+        "last_utc": "2016-12-30T21:58:00+00:00",
+        "next_utc": "2017-01-03T00:00:00+00:00",
+        "missing_clock_minutes": 4441
+      },
+      {
+        "last_utc": "2016-12-23T21:59:00+00:00",
+        "next_utc": "2016-12-27T00:00:00+00:00",
+        "missing_clock_minutes": 4440
+      },
+      {
+        "last_utc": "2017-12-29T21:55:00+00:00",
+        "next_utc": "2018-01-01T22:00:00+00:00",
+        "missing_clock_minutes": 4324
+      },
+      {
+        "last_utc": "2022-12-30T21:58:00+00:00",
+        "next_utc": "2023-01-02T06:03:00+00:00",
+        "missing_clock_minutes": 3364
+      },
+      {
+        "last_utc": "2021-12-24T19:12:00+00:00",
+        "next_utc": "2021-12-26T22:03:00+00:00",
+        "missing_clock_minutes": 3050
+      },
+      {
+        "last_utc": "2021-12-31T20:01:00+00:00",
+        "next_utc": "2022-01-02T22:03:00+00:00",
+        "missing_clock_minutes": 3001
+      },
+      {
+        "last_utc": "2022-12-23T21:58:00+00:00",
+        "next_utc": "2022-12-25T23:09:00+00:00",
+        "missing_clock_minutes": 2950
+      },
+      {
+        "last_utc": "2020-03-27T20:57:00+00:00",
+        "next_utc": "2020-03-29T22:02:00+00:00",
+        "missing_clock_minutes": 2944
+      },
+      {
+        "last_utc": "2017-11-03T20:59:00+00:00",
+        "next_utc": "2017-11-05T22:01:00+00:00",
+        "missing_clock_minutes": 2941
+      }
+    ],
+    "definition": "Expected weekday envelope includes holidays; not a certification that every missing minute was a tradable quote. No forward fill.",
+    "features_sha256": "527cb033e0a5abce2ca7a3f117000d0711f7a9f2b0f5a61dc2b5f12ae1cac127"
+  },
+  "USDJPY": {
+    "expected_weekday_0200_0800_minutes": 939240,
+    "present_weekday_0200_0800_minutes": 925428,
+    "weekday_window_coverage_pct": 98.52944934202121,
+    "weekday_days": 2609,
+    "complete_360minute_days": 2530,
+    "missing_weekday_window_minutes": 13812,
+    "zero_quote_weekdays": 38,
+    "observed_target_15m_bars": 61704,
+    "complete_target_15m_bars": 61621,
+    "longest_gaps": [
+      {
+        "last_utc": "2024-12-13T21:58:00+00:00",
+        "next_utc": "2025-01-12T22:36:00+00:00",
+        "missing_clock_minutes": 43237
+      },
+      {
+        "last_utc": "2024-08-23T20:59:00+00:00",
+        "next_utc": "2024-09-01T21:33:00+00:00",
+        "missing_clock_minutes": 12993
+      },
+      {
+        "last_utc": "2023-06-30T20:58:00+00:00",
+        "next_utc": "2023-07-09T21:16:00+00:00",
+        "missing_clock_minutes": 12977
+      },
+      {
+        "last_utc": "2014-12-31T19:00:00+00:00",
+        "next_utc": "2015-01-04T22:00:00+00:00",
+        "missing_clock_minutes": 5939
+      },
+      {
+        "last_utc": "2023-12-29T21:58:00+00:00",
+        "next_utc": "2024-01-02T05:01:00+00:00",
+        "missing_clock_minutes": 4742
+      },
+      {
+        "last_utc": "2017-12-22T21:59:00+00:00",
+        "next_utc": "2017-12-26T04:02:00+00:00",
+        "missing_clock_minutes": 4682
+      },
+      {
+        "last_utc": "2015-12-24T18:01:00+00:00",
+        "next_utc": "2015-12-27T22:00:00+00:00",
+        "missing_clock_minutes": 4558
+      },
+      {
+        "last_utc": "2015-12-31T18:02:00+00:00",
+        "next_utc": "2016-01-03T22:00:00+00:00",
+        "missing_clock_minutes": 4557
+      },
+      {
+        "last_utc": "2020-12-31T19:01:00+00:00",
+        "next_utc": "2021-01-03T22:00:00+00:00",
+        "missing_clock_minutes": 4498
+      },
+      {
+        "last_utc": "2020-12-24T19:03:00+00:00",
+        "next_utc": "2020-12-27T22:01:00+00:00",
+        "missing_clock_minutes": 4497
+      },
+      {
+        "last_utc": "2016-12-23T21:58:00+00:00",
+        "next_utc": "2016-12-27T00:00:00+00:00",
+        "missing_clock_minutes": 4441
+      },
+      {
+        "last_utc": "2016-12-30T21:58:00+00:00",
+        "next_utc": "2017-01-03T00:00:00+00:00",
+        "missing_clock_minutes": 4441
+      },
+      {
+        "last_utc": "2017-12-29T21:57:00+00:00",
+        "next_utc": "2018-01-01T22:00:00+00:00",
+        "missing_clock_minutes": 4322
+      },
+      {
+        "last_utc": "2022-12-30T21:59:00+00:00",
+        "next_utc": "2023-01-02T05:59:00+00:00",
+        "missing_clock_minutes": 3359
+      },
+      {
+        "last_utc": "2021-12-24T19:12:00+00:00",
+        "next_utc": "2021-12-26T22:00:00+00:00",
+        "missing_clock_minutes": 3047
+      },
+      {
+        "last_utc": "2021-12-31T20:01:00+00:00",
+        "next_utc": "2022-01-02T22:16:00+00:00",
+        "missing_clock_minutes": 3014
+      },
+      {
+        "last_utc": "2023-12-22T21:58:00+00:00",
+        "next_utc": "2023-12-24T23:55:00+00:00",
+        "missing_clock_minutes": 2996
+      },
+      {
+        "last_utc": "2022-12-23T21:58:00+00:00",
+        "next_utc": "2022-12-25T23:16:00+00:00",
+        "missing_clock_minutes": 2957
+      },
+      {
+        "last_utc": "2024-11-01T20:59:00+00:00",
+        "next_utc": "2024-11-03T22:05:00+00:00",
+        "missing_clock_minutes": 2945
+      },
+      {
+        "last_utc": "2023-11-03T20:57:00+00:00",
+        "next_utc": "2023-11-05T22:00:00+00:00",
+        "missing_clock_minutes": 2942
+      }
+    ],
+    "definition": "Expected weekday envelope includes holidays; not a certification that every missing minute was a tradable quote. No forward fill.",
+    "features_sha256": "756c4cabd75b4811602c81438fca428b0eb01ccabdb24438a594a662681c6ca7"
+  },
+  "AUDUSD": {
+    "expected_weekday_0200_0800_minutes": 939240,
+    "present_weekday_0200_0800_minutes": 924586,
+    "weekday_window_coverage_pct": 98.43980239342447,
+    "weekday_days": 2609,
+    "complete_360minute_days": 2514,
+    "missing_weekday_window_minutes": 14654,
+    "zero_quote_weekdays": 39,
+    "observed_target_15m_bars": 61657,
+    "complete_target_15m_bars": 61516,
+    "longest_gaps": [
+      {
+        "last_utc": "2024-12-13T21:58:00+00:00",
+        "next_utc": "2025-01-12T22:04:00+00:00",
+        "missing_clock_minutes": 43205
+      },
+      {
+        "last_utc": "2023-06-30T20:58:00+00:00",
+        "next_utc": "2023-07-09T21:06:00+00:00",
+        "missing_clock_minutes": 12967
+      },
+      {
+        "last_utc": "2024-08-23T20:59:00+00:00",
+        "next_utc": "2024-09-01T21:03:00+00:00",
+        "missing_clock_minutes": 12963
+      },
+      {
+        "last_utc": "2018-12-28T21:58:00+00:00",
+        "next_utc": "2019-01-02T05:25:00+00:00",
+        "missing_clock_minutes": 6206
+      },
+      {
+        "last_utc": "2014-12-31T19:00:00+00:00",
+        "next_utc": "2015-01-04T22:00:00+00:00",
+        "missing_clock_minutes": 5939
+      },
+      {
+        "last_utc": "2023-12-29T21:58:00+00:00",
+        "next_utc": "2024-01-02T05:01:00+00:00",
+        "missing_clock_minutes": 4742
+      },
+      {
+        "last_utc": "2017-12-22T21:59:00+00:00",
+        "next_utc": "2017-12-26T04:02:00+00:00",
+        "missing_clock_minutes": 4682
+      },
+      {
+        "last_utc": "2015-12-24T18:01:00+00:00",
+        "next_utc": "2015-12-27T22:00:00+00:00",
+        "missing_clock_minutes": 4558
+      },
+      {
+        "last_utc": "2015-12-31T18:02:00+00:00",
+        "next_utc": "2016-01-03T22:00:00+00:00",
+        "missing_clock_minutes": 4557
+      },
+      {
+        "last_utc": "2020-12-31T19:01:00+00:00",
+        "next_utc": "2021-01-03T22:00:00+00:00",
+        "missing_clock_minutes": 4498
+      },
+      {
+        "last_utc": "2020-12-24T19:03:00+00:00",
+        "next_utc": "2020-12-27T22:00:00+00:00",
+        "missing_clock_minutes": 4496
+      },
+      {
+        "last_utc": "2016-12-30T21:57:00+00:00",
+        "next_utc": "2017-01-03T00:00:00+00:00",
+        "missing_clock_minutes": 4442
+      },
+      {
+        "last_utc": "2016-12-23T21:59:00+00:00",
+        "next_utc": "2016-12-27T00:00:00+00:00",
+        "missing_clock_minutes": 4440
+      },
+      {
+        "last_utc": "2017-12-29T21:56:00+00:00",
+        "next_utc": "2018-01-01T22:00:00+00:00",
+        "missing_clock_minutes": 4323
+      },
+      {
+        "last_utc": "2022-12-30T21:59:00+00:00",
+        "next_utc": "2023-01-02T08:03:00+00:00",
+        "missing_clock_minutes": 3483
+      },
+      {
+        "last_utc": "2021-12-24T19:11:00+00:00",
+        "next_utc": "2021-12-26T22:01:00+00:00",
+        "missing_clock_minutes": 3049
+      },
+      {
+        "last_utc": "2023-12-22T21:59:00+00:00",
+        "next_utc": "2023-12-25T00:42:00+00:00",
+        "missing_clock_minutes": 3042
+      },
+      {
+        "last_utc": "2021-12-31T20:01:00+00:00",
+        "next_utc": "2022-01-02T22:37:00+00:00",
+        "missing_clock_minutes": 3035
+      },
+      {
+        "last_utc": "2022-12-23T21:59:00+00:00",
+        "next_utc": "2022-12-25T23:15:00+00:00",
+        "missing_clock_minutes": 2955
+      },
+      {
+        "last_utc": "2021-11-05T20:58:00+00:00",
+        "next_utc": "2021-11-07T22:00:00+00:00",
+        "missing_clock_minutes": 2941
+      }
+    ],
+    "definition": "Expected weekday envelope includes holidays; not a certification that every missing minute was a tradable quote. No forward fill.",
+    "features_sha256": "e65d08edd2bc5626dbbc42b86cf0e4b5b2ea74ad1149e377e3b43c068fca9361"
+  }
+}

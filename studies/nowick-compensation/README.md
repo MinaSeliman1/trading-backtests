@@ -1,10 +1,29 @@
-# Nowick / Compensation Play — Pine v6
+# Nowick / Compensation Play — Python et Pine v6
 
-**Statut : code et tests contrôlés livrés ; rentabilité non évaluée.** Aucune performance de marché GBPUSD/USDJPY/AUDUSD n'a été calculée. La compilation et l'exécution Pine restent à confirmer dans TradingView. Les 27 tests Python ne compilent pas le Pine et ne constituent pas un backtest FX.
+**Backtest Python :** [rapport complet](results/2026-10-24-python-v1/RAPPORT_FINAL.md), [126 comparaisons](results/2026-10-24-python-v1/comparison_all.csv), [validation](VALIDATION_PYTHON.md), [protocole figé](PYTHON_PROTOCOL.md). Archives FXCM à la minute, entrées 2015–2024, mêmes règles principales, 1 pip de coût synthétique aller-retour. Le rapport précise le nombre de trades par paire, les moitiés chronologiques et les pénalités liées aux trous. Aucun résultat TradingView n’est revendiqué.
 
-La méthode testable est la formalisation donnée par Mina le24octobre2026, conservée dans [MISSION.md](MISSION.md). Aucun document original Bard FX n'a été fourni ; aucune conformité à une autre version de sa méthode n'est revendiquée. Les deux bots QQQ existants ne sont pas concernés.
+La méthode testée est la formalisation donnée par Mina le 24 octobre 2026, conservée dans [MISSION.md](MISSION.md). Aucun document original Bard FX n’a été fourni ; aucune conformité à une autre version n’est revendiquée. Les deux bots QQQ existants ne sont pas concernés.
 
-La [tentative d'exécution TradingView du24octobre](results/2026-10-24-tradingview/ETAT_EXECUTION.md) reste bloquée avant compilation par un écran promotionnel dans la session Basic connectée. Aucun résultat de marché ni100trades par paire n'est revendiqué. Le [protocole de cette exécution](results/2026-10-24-tradingview/PROTOCOL.md) est conservé avant toute observation de performance.
+## Reproduire le backtest Python
+
+Python 3.14, versions utilisées dans [requirements-python-lock.txt](requirements-python-lock.txt). Depuis ce dossier, dans un environnement installé :
+
+```powershell
+python -m pip install -r requirements-python-lock.txt
+python -m unittest discover -s tests -v
+python scripts/download_fxcm.py
+python scripts/run_python.py --run-id ma-nouvelle-execution
+python scripts/make_python_figures.py --run-id ma-nouvelle-execution
+python scripts/build_python_report.py --run-id ma-nouvelle-execution
+```
+
+Les téléchargements sont publics et ne demandent aucune clé. Le téléchargeur vérifie le cache s’il est complet ; sinon il réacquiert les archives en préservant le manifest publié et refuse une source modifiée. Une nouvelle exécution refuse d’écraser un dossier existant. Les fichiers bruts/préparés sont locaux et ignorés par Git. Les commandes de rapport/figures exigent les 126 sorties complètes ; le bilan définitif exige aussi l’audit.
+
+Pour contrôler cette publication sans données locales : `python scripts/verify_python_publication.py`. Ajouter `--raw` pour contrôler aussi les 1 579 archives originales et les préparations locales. L’audit indépendant détaillé se relance avec `python audit/independent_audit.py` et exige ces historiques. Sur la machine d’origine, `C:\Python314\python.exe` utilise le `PYTHONPATH` du dossier parent `.python_packages` ; tzdata fournit les fuseaux IANA sous Windows.
+
+## Statut TradingView et guide Pine
+
+La [tentative TradingView archivée](results/2026-10-24-tradingview/ETAT_EXECUTION.md) n’a produit aucun résultat de marché. La compilation et l’exécution Pine restent non vérifiées ; les tests Python ne compilent pas le Pine. L’utilisateur a ensuite autorisé explicitement le moteur Python. Le guide ci-dessous concerne le Pine disponible, pas une preuve de parité entre les deux plateformes.
 
 ## Code complet
 

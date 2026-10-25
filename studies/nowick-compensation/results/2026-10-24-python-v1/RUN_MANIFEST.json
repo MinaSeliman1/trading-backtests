@@ -1,0 +1,217 @@
+{
+  "created_utc": "2026-10-24T22:55:23.104784+00:00",
+  "engine": "Python Nowick minute model, not TradingView",
+  "source_manifest_sha256": "8062b7e006610cb8da75007282c192b226b752954c0ae65391f6a03e6948ba6f",
+  "code_sha256": {
+    "fx_data.py": "99a1caac1fecb2e92d030c4e78a0a3b12ba49cbeac9fee47a44e3cfe6695e4c7",
+    "fx_engine.py": "25da3f1cc6cc6a46f57ee7f0d9f4daa86de2024a251cca7ad9904385de26dfd3",
+    "fx_metrics.py": "39ffd27323f0829dbd36126103072822767d55ea89e4b9ba0687f8efb91d45f6",
+    "scripts/run_python.py": "56dcb027c47695cc875786156af6d93dd1f975423fac936b60459b7199b6bb39",
+    "PYTHON_PROTOCOL.md": "01883f3424162b0fc6df216450f7827e193f0cd1d759196621928fdc51acef7d",
+    "tests/test_fx_data.py": "30a6a5a344e68f1b84bbe704a0301f0fed2ad8183b97b0f4dc2c9510cc47eb2c",
+    "tests/test_fx_engine.py": "1856ec38af8fdbc64a7ccbd2887c58d043df1c3ebc6b6681ba15bd7f5c424988",
+    "tests/test_fx_metrics.py": "fd441bd4961e7ca602421e7b70173937118079908689d619b9d534d3c14940be",
+    "tests/test_reference.py": "38671fffdc87cbc6e1f7749b1b1181f8a2f4894020209e06f5fb56cea1d4f36d"
+  },
+  "configs": {
+    "reference": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "fill_first": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "fill_first",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "observed_gap": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "observed"
+    },
+    "swing_on": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": true,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "sr_on": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": true,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "double_on": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": false,
+      "double": true,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "filters_all": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": true,
+      "sr": true,
+      "double": true,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "ema_1h": {
+      "trend": "ema",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "mid_body": {
+      "trend": "structure",
+      "midpoint": true,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "rr_1_5": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.5,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "rr_2": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 2,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "front_run_off": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 1.0,
+      "penetration": 10,
+      "front_run": "off",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "cost_2pips": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 2,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    },
+    "cost_3pips": {
+      "trend": "structure",
+      "midpoint": false,
+      "rr": 1.0,
+      "cost_pips": 3,
+      "penetration": 10,
+      "front_run": "cancel_first",
+      "swing": false,
+      "sr": false,
+      "double": false,
+      "ttl": 9,
+      "gap_policy": "penalty"
+    }
+  },
+  "periods": {
+    "ALL": [
+      "2015-01-01T00:00:00+00:00",
+      "2025-01-01T00:00:00+00:00"
+    ],
+    "A": [
+      "2015-01-01T00:00:00+00:00",
+      "2020-01-01T00:00:00+00:00"
+    ],
+    "B": [
+      "2020-01-01T00:00:00+00:00",
+      "2025-01-01T00:00:00+00:00"
+    ]
+  },
+  "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+  "complete": true,
+  "finished_utc": "2026-10-24T23:12:52.534014+00:00"
+}

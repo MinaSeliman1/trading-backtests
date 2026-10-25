@@ -1,0 +1,13 @@
+{
+  "dependency": "reference.py",
+  "imports_used": [
+    "wilson",
+    "r_stats"
+  ],
+  "added_after_execution_started": true,
+  "reason": "Supplementary provenance for unchanged tracked metrics dependency omitted from original snapshot list. No financial code change.",
+  "original_commit": "599b1359c3ac1bb70cc13add581f0f29f89a7117",
+  "original_git_blob_sha256": "95371fb1b6bfa913263ffbf51cfd01afe09bd42a2f157234c4fbf6fe367910be",
+  "snapshot_sha256": "95371fb1b6bfa913263ffbf51cfd01afe09bd42a2f157234c4fbf6fe367910be",
+  "lf_normalized_equal_to_original": true
+}
