@@ -1,0 +1,7 @@
+symbol,period,eligible,no_signal,regime_filtered,invalid_prior_close,warmup200,unknown_signal,excluded_incomplete_day
+SPY,ALL,1591,377,342,201.0,199.0,2.0,1.0
+SPY,A,1139,265,288,201.0,199.0,2.0,1.0
+SPY,B,452,112,54,,,,
+QQQ,ALL,1713,393,406,1.0,199.0,1.0,
+QQQ,A,1251,294,349,1.0,199.0,1.0,
+QQQ,B,462,99,57,,,,

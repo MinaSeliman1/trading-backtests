@@ -13,9 +13,16 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 | [ORB cinq minutes](studies/opening-range-5m/README.md) | Backtest terminé ; simulation locale QQQ active | 54 scénarios, 42 tests historiques ; [bot séparé](bots/qqq-orb/README.md), 29 tests et parité 2 707 séances | QQQ exploratoire positif mais fragile ; observation shadow lancée le24/10, aucun avantage prospectif encore établi |
 | [Retour VWAP après première heure](studies/vwap-reversion/README.md) | Backtest terminé SPY/QQQ | 48 scénarios, 46 tests, 428 pages brutes vérifiées, audit de 12 586 lignes recouvrantes | Principaux négatifs en A/B/ALL après coûts ; archivée, aucun nouveau bot |
 | [Compression NR7 puis cassure](studies/nr7-breakout/README.md) | Backtest terminé SPY/QQQ | 48 scénarios, 16 tests, audit indépendant Decimal et échantillons des acquisitions brutes | B principale négative SPY/QQQ ; gains ALL faibles et sensibles aux coûts ; aucun bot NR7 |
-| [Nowick / Compensation Play Forex](studies/nowick-compensation/README.md) | Backtest Python terminé sur trois paires ; Pine non compilé | 126 scénarios, 70 tests, archives FXCM 1 min 2015–2024 ; au moins 100 trades résolus par paire | Références et moitiés négatives après 1 pip ; pénalités de couverture explicites ; aucun bot justifié |
+| [Nowick / Compensation Play Forex](studies/nowick-compensation/README.md) | Backtest Python terminé sur trois paires ; Pine non compilé | 126 scénarios, 70 tests, archives FXCM 1 min 2015–2024 ; au moins 100 trades résolus par paire | Abandonnée pour un bot ; références et moitiés négatives après 1 pip ; pénalités de couverture explicites |
+| [RSI(2) retour à la moyenne intraday](studies/rsi2-intraday/README.md) | Backtest terminé SPY/QQQ | 72scénarios,25tests, audit indépendant sur78646lignes recouvrantes ; SIP2016–16/10/2026 | Références A/B/ALL négatives après frais ; aucun nouveau bot |
 
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
+
+## Pistes actuellement suivies
+
+[Bilan du24octobre : pistes et état des bots](docs/research/2026-10-24-pistes-et-bots.md). Noise Area QQQ reste la piste historique prioritaire ; ORB QQQ la seconde, plus fragile. Les deux moteurs sont actifs en simulation locale shadow/SIP différé16minutes. Aucune séance entièrement qualifiée pour Noise Area depuis la référence21octobre ; première séance ORB prévue26octobre. Aucun avantage prospectif ni bot SPY validé.
+
+La nouvelle [étude RSI(2)](studies/rsi2-intraday/results/2026-10-24-v1/RAPPORT_FINAL.md) est négative en A/B/ALL après frais : SPY−5,47%, QQQ−17,18% sur ALL. Résultats,25tests,72scénarios et audit indépendant publiés, sans nouveau bot ni changement des deux simulations existantes.
 
 ## Consulter le backtest Nowick Forex
 

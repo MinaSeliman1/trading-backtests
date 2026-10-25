@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-25T01:33:12.735890+00:00",
+  "command": "python -m pytest -q -p no:cacheprovider --basetemp=.test_tmp_rsi2 --tb=short",
+  "exit_code": 0,
+  "passed": 25,
+  "stdout": ".........................                                                [100%]\n25 passed in 1.77s\n",
+  "stderr": ""
+}

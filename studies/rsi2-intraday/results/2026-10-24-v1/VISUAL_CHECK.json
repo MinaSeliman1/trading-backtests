@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-25T01:34:37.993752+00:00",
+  "inspection": "Four rendered PNGs inspected: labels, scales, period boundaries, legends, clipping and agreement with source CSV.",
+  "figures": {
+    "annual_returns.png": "0c49a2713a88912400d32055c0b29f45e44efd7a626f8b3bc79da4778d20fc7c",
+    "chronological.png": "a52f97d0fe896f62e15d7bd3b59ff1eb257c78cda4ccb8039f7fcee762853c51",
+    "cost_sensitivity.png": "361c789ea11ac9f32e6251c56e1fee04e2d8da17ec1f9cbf7a0b9663a22db21c",
+    "equity_drawdown.png": "fe4b1d3b842dbf53473ca40f3cf807a1d9779251ca27653c2a67f9ed1602b629"
+  }
+}

@@ -1,0 +1,7 @@
+symbol,period,return_without_top3_pct,return_without_2020_pct,longest_loss_streak,method
+SPY,ALL,-6.964788249653342,-5.47442541552059,7,"Set selected original daily returns to zero, not a portfolio re-sized without selected trades."
+SPY,A,-3.0975771132345957,-1.5452641030225478,6,"Set selected original daily returns to zero, not a portfolio re-sized without selected trades."
+SPY,B,-4.775964247664155,-4.001558199999444,7,"Set selected original daily returns to zero, not a portfolio re-sized without selected trades."
+QQQ,ALL,-19.13532063600664,-15.836439391813373,8,"Set selected original daily returns to zero, not a portfolio re-sized without selected trades."
+QQQ,A,-16.697547434079674,-13.299217031654042,8,"Set selected original daily returns to zero, not a portfolio re-sized without selected trades."
+QQQ,B,-4.217624458310842,-2.9425993999989686,5,"Set selected original daily returns to zero, not a portfolio re-sized without selected trades."

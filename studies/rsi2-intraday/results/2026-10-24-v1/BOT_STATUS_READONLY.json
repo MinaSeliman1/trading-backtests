@@ -1,0 +1,109 @@
+{
+  "checked_utc": "2026-10-25T01:29:47.594721+00:00",
+  "checked_local": "2026-10-24T21:29:47.648839-04:00",
+  "scope": "Read-only local monitors; no keys, API calls, orders, configuration or journal writes.",
+  "noise_area": {
+    "utc": "2026-10-25T01:29:49.398111+00:00",
+    "mode": "shadow",
+    "feed": "sip",
+    "data_delay_minutes": 16,
+    "first_session": "2026-10-21",
+    "initial_realized_equity": 99237.19600000001,
+    "current_realized_equity": 97567.76350000003,
+    "managed_qty": 0,
+    "completed_sessions": 1,
+    "fully_prospective_sessions": 0,
+    "prospective_days": [],
+    "coverage_gaps": [
+      "2026-10-21",
+      "2026-10-22",
+      "2026-10-23"
+    ],
+    "coverage_details": [
+      {
+        "day": "2026-10-21",
+        "session_completed": true,
+        "on_time_decisions": 4,
+        "late_decisions": 8,
+        "unknown_or_unprocessed_decisions": 0,
+        "first_late_decision": "11:00",
+        "last_late_decision": "14:30",
+        "largest_delay_seconds": 14150.818194
+      },
+      {
+        "day": "2026-10-22",
+        "session_completed": false,
+        "on_time_decisions": 0,
+        "late_decisions": 0,
+        "unknown_or_unprocessed_decisions": 0,
+        "first_late_decision": null,
+        "last_late_decision": null,
+        "largest_delay_seconds": null
+      },
+      {
+        "day": "2026-10-23",
+        "session_completed": false,
+        "on_time_decisions": 1,
+        "late_decisions": 8,
+        "unknown_or_unprocessed_decisions": 0,
+        "first_late_decision": "10:00",
+        "last_late_decision": "13:30",
+        "largest_delay_seconds": 14274.181729
+      }
+    ],
+    "power_protection": {
+      "state": "protected",
+      "utc": "2026-10-25T01:29:34.804742+00:00",
+      "on_ac": true,
+      "system_required": true,
+      "in_session_window": false
+    },
+    "prospective_closed_trades": 0,
+    "prospective_realized_pnl": 0,
+    "all_period_realized_pnl": -1669.4324999999985,
+    "pending_orders": 0,
+    "engine_state": "waiting_for_regular_session",
+    "engine_status_age_seconds": 3.6280799999999997,
+    "alerts": [
+      "prospective_coverage_gaps"
+    ],
+    "stage": "waiting_for_observations",
+    "operational_sessions_target": 20,
+    "extended_sessions_target": 60,
+    "extended_closed_trades_target": 50,
+    "limitation": "Local delayed-data simulation, no broker fills. Counts alone do not prove a profitable strategy."
+  },
+  "orb": {
+    "utc": "2026-10-25 01:29:51.550572+00:00",
+    "mode": "shadow",
+    "feed": "sip",
+    "delay_minutes": 16,
+    "first_session": "2026-10-26",
+    "balance": 100000.0,
+    "marked_equity": 100000.0,
+    "power_protection": {
+      "state": "protected",
+      "utc": "2026-10-25T01:29:47.900853+00:00",
+      "on_ac": true,
+      "system_required": true,
+      "in_session_window": false
+    },
+    "realized_net_pnl": 0.0,
+    "closed_trades": 0,
+    "fully_observed_sessions": 0,
+    "prospective_closed_trades": 0,
+    "prospective_net_pnl": 0,
+    "closed_commission": 0,
+    "closed_friction": 0,
+    "closed_borrow": 0,
+    "open_day": null,
+    "observed_drawdown_pct": 0.0,
+    "coverage_gaps": [],
+    "unresolved_days": [],
+    "engine_state": "waiting_non_session",
+    "engine_age_seconds": 4.730008,
+    "alerts": [],
+    "stage": "waiting",
+    "limitation": "Delayed local shadow fills, no broker orders. Historical replay does not count as prospective evidence."
+  }
+}
