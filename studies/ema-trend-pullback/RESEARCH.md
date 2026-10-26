@@ -1,0 +1,18 @@
+# Recherche publique — repli EMA puis reprise de tendance
+
+26 octobre 2026, avant nouveau PnL. Hypothèse distincte de la réintégration des extrêmes de veille écartée : suivre une tendance après repli vers une moyenne mobile. Pas de supposition sur des acteurs ou un carnet non observés.
+
+| Source primaire consultée | Apport et limite |
+| --- | --- |
+| [Forum Daytrading EMA9/20](https://www.reddit.com/r/Daytrading/comments/1ubwwp9/what_do_you_think_about_this_ema9_ema20_pullback/) | Auteur décrit prix/EMA9/EMA20 et cible2R ; commentaires contradictoires sur la validation intraday et les phases de consolidation. Témoignages non audités, aucun chiffre importé dans notre test. |
+| [Forum FuturesTrading](https://www.reddit.com/r/FuturesTrading/comments/1kh3081/beginner_friendly_strategy/) | Exemple de repli9/20 dans une tendance avec discrétion. Une pratique déclarée ne fournit pas une définition mécanique ni une preuve sur les ETF. |
+| [tradewithbhai7777-creator/ema-pullback-momentum-strategy](https://github.com/tradewithbhai7777-creator/ema-pullback-momentum-strategy), [source](https://github.com/tradewithbhai7777-creator/ema-pullback-momentum-strategy/blob/main/ema_pullback_momentum.py) | Structure9/20, rejet, force de clôture. Code crypto : entrée LONG utilise min(open, seuil) après dépassement du high, SHORT max ; cette convention peut fournir un prix antérieur au déclenchement. Sorties testées sur close et fonction swing centrée. Cette dernière existe dans le code, sans affirmer ici que chaque chemin en dépend. Aucune commission trouvée dans ce fichier ; README et défaut de cible du code diffèrent. Aucun code tiers exécuté/copied. |
+| [Cocofu92/qqq_swing_backtest](https://github.com/Cocofu92/qqq_swing_backtest) | Repli QQQ multi-échelle avec open suivant, mais contexte daily/hourly, sorties partielles/traînées et maintien prolongé : pas notre test intraday. |
+| [Yugo25/ema-strategy-validation](https://github.com/Yugo25/ema-strategy-validation) | Analyse des journaux FX/or manuels, critères en partie privés. L'auteur reconnaît discrétion, évolution des règles et absence de slippage. Ses bootstrap ne valident pas une exécution mécanique indépendante sur SPY/QQQ. |
+| [TOS Indicators, comparaison QQQ5min](https://tosindicators.com/research/what-moving-average-pullback-is-best-for-qqq-5-min-chart) | Source d'auteur : replis, stop bougie et cible2R ;252séances seulement, coûts/slippage explicitement omis. Comparaison commerciale non reprise comme preuve de rentabilité. |
+| [Forum QC Dual Thrust](https://www.quantconnect.com/forum/discussion/2486/issue-with-the-dual-thrust-trading-algorithm/) | Autre piste de cassure, discussion de correctifs et de valeurs manquantes ; cette famille est proche des ORB/NR7 déjà examinés. Pas la priorité de cette étude. |
+| [Forum QQQ/SPY et VWAP](https://www.reddit.com/r/algotrading/comments/1l5gil3/looking_for_ideas_for_qqq_and_spy_for_a_backtest/) | Piste de suivi VWAP à nombreux retournements, déjà repérée lors de notre recherche ORB/volume. Coûts de rotation prioritaires ; non retenue ici. |
+
+Choix de recherche : formalisation simple et propre des replis9/20, sans ADX, pivots centrés, trailing, choix discrétionnaire d'instrument ou de support. Tendance/pente connues avant la bougie, repli contrôlé, clôture de reprise, entrée open suivant. Ce choix est notre proposition sous la délégation de l'utilisateur ; aucune approbation d'un rendement externe n'est supposée.
+
+Cette formalisation adapte des idées publiques, pas une réplication fidèle d'un dépôt ou une garantie de meilleure stratégie. Les mêmes ETF, périodes et autres familles ont déjà été explorés : biais de sélection et essais multiples conservés. Pas de nouvelle période aveugle.

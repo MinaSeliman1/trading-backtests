@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-26T23:36:16.957158+00:00",
+  "review": "All4PNG figures inspected with view_image: axes/units, zero/reference lines, readable legends, blue SPY/orange QQQ consistency, no clipping. Daily-close DD figure distinct from event/minute DD in report. All sensitivities shown without promoting a winner.",
+  "files": {
+    "figures/annual_returns.png": "ef6036145d5e2f1e090512d3f997c0abee33f6b5ea3dd6f3c50a883bde681b22",
+    "figures/cost_sensitivity.png": "0655531fe90a645b747bb59f77886b1cdfa24e7fce4871690bbe61ae41f19288",
+    "figures/equity_drawdown.png": "a3c315ed92f9af678057d0d5c4f5bf4dda9aa0305da31cf89a64e0a0f2a742cb",
+    "figures/rule_sensitivity.png": "40a79fbabc863a3c8301f5e46a79c026e1738fc583db948796f43ddb2aa8a373"
+  }
+}

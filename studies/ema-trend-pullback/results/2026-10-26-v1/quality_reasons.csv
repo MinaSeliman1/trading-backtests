@@ -1,0 +1,7 @@
+symbol,period,eligible,no_pullback,unknown_signal,unknown_indicator_history,excluded_incomplete_day,warmup_initial
+SPY,ALL,1929,771,6.0,4.0,2.0,1.0
+SPY,A,1473,609,6.0,4.0,2.0,1.0
+SPY,B,456,162,,,,
+QQQ,ALL,1909,794,4.0,3.0,2.0,1.0
+QQQ,A,1445,640,4.0,3.0,2.0,1.0
+QQQ,B,464,154,,,,

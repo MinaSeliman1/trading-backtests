@@ -1,0 +1,362 @@
+{
+  "utc": "2026-10-26T23:30:03.477285+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "executions": 72,
+  "specifications": {
+    "reference": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.02": {
+      "mode": "both",
+      "slippage": 0.02,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.03": {
+      "mode": "both",
+      "slippage": 0.03,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.05": {
+      "mode": "both",
+      "slippage": 0.05,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "long_only": {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "short_only": {
+      "mode": "short_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "rr1": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 1,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "rr3": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 3,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "no_slope": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": false,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "no_momentum": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": true,
+      "momentum_fraction": 0,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "deep_pullback": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "resolved_prefix": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "resolved_prefix",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "require_slope": true,
+      "momentum_fraction": 0.7,
+      "allow_deep": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "protocols": {
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "a83f30be95ab55d9f497984e957005b549e8e16303d265b035248c63d428d7bc",
+      "text": "# Protocole fixé avant PnL — EMA9/20 pullback\n\n26 octobre 2026. SIP1minute SPY/QQQ déjà acquis et vérifié,2015-12-31–2026-10-16. Capital100000USD indépendant par scénario. Ne pas accéder aux clés, bots actifs, coffre ou journaux de simulation. Aucun ordre.\n\n1. Bougies5min OHLC depuis l'ouverture RTH NYSE, demi-séances210min incluses. EMA9 et EMA20 des closes5min, alpha2/(période+1), seed premier close valide. Ne pas utiliser le volume pour les indicateurs/signaux. Les EMA continuent entre séances RTH ; pas de bougie overnight inventée. Avant une ex-date, soustraire son cash courant connu à tous les états EMA conservés et au close précédent ; les pentes sont comparées dans la même échelle. Absence d'entrée cash=0 selon la source, aucun ajustement futur/split reconstruit.\n2. Exiger60bougies complètes consécutives avant la bougie signal. Au début, chauffe connue sans ordre. Toute bougie OHLC manquante/incohérente après démarrage remet EMA et compteur à zéro ; nouvelle chauffe60barres, classée historique indicateur inconnu. Ne jamais interpoler ni conserver un état à travers un trou. Des états non positifs après cash sont remis à zéro avec la même règle.\n3. Les niveaux du signal sont les EMA de la bougie PRECEDENTE, jamais des niveaux déplacés avec le close courant. LONG : EMA9>EMA20, close précédent>EMA9. Les deux EMA doivent être plus hautes que leurs valeurs3bougies auparavant (valeurs avant bougie courante). SHORT inverse. Comparaisons d'indicateur avec tolérance arithmétique1e-10USD pour éviter des signaux de quelques ulp ; ne représente pas un spread.\n4. Repli LONG : low de la bougie courante≤EMA9 et≥EMA20, puis close>EMA9 et close>open. SHORT : high≥EMA9 et≤EMA20, close<EMA9 et close<open. Force de clôture LONG (close−low)/(high−low)≥0,7 ; SHORT (high−close)/(high−low)≥0,7. Bornes inclusives, comparaisons du ratio par Decimal ; range nul ne produit pas de signal. Aucun ADX, RSI, VWAP, niveau de veille, pivot ou choix discrétionnaire.\n5. Examiner seulement les bougies dont l'open d'entrée suivant est09:45≤entrée<14:00NY (slots15≤entry<270) et strictement avant le dernier open RTH. Premier signal valide seulement, une entrée/jour. LONG/SHORT seuls filtrent ce premier signal sans en chercher un autre opposé. Une bougie candidate inconnue ou un historique indicateur inconnu avant le premier signal rend la journée inconnue ; pas de saut jusqu'à un signal ultérieur. La chauffe initiale connue n'est pas une exclusion de rendement observé.\n6. Entrée à l'open1min suivant la clôture confirmée de la bougie5min. Stop signal low−0,01LONG/high+0,01SHORT, arrondi centime vers l'extérieur. Quantité au close du signal : floor(min(capital/close,0,01capital/distance(close,stop))). Aucun sizing sur open futur ; gap peut dépasser plafonds effectifs1x/1%. Gap déjà au-delà du stop : entrée/sortie immédiates et tous frais, pas d'annulation rétroactive.\n7. TP2R depuis l'open de référence d'entrée et le stop figé, R hors frais. Arrondir TP au centime défavorable (floorLONG/ceilSHORT). Stop prioritaire si SL/TP touchés dans la même minute. Stop gap au prix open défavorable ; target gap au niveau sans amélioration. Sinon flat au dernier open15:59/12:59 avant sa mèche. Pas de break-even/trailing, pas d'overnight.\n8. Mêmes coûts : commission0,0035USD/action/côté minimum0,35 ; friction adverse0,01USD/action/côté ; empruntSHORT1%annuel/360 minimum1jour sur notionnel d'entrée simulé. Stress0,02/0,03/0,05. Modèle de recherche commun, pas tarif courtier garanti, cash non rémunéré, pas de quotes/profondeur/frais variables reconstruits.\n9. Principal complete_days : filtre futur OHLCV du cache courant sur les journées où le signal produirait une entrée ; peut favoriser le compte. resolved_prefix retire ce filtre : donnée nécessaire inconnue avant signal=>journée inconnue ; lacune active=>trade entier non résolu, frais d'entrée connus exportés, omission du compte conditionnel. Zéro de chaînage d'une exclusion n'est pas du cash observé. Le trou peut aussi exclure des séances suivantes via la chauffe EMA ; publier ces motifs.\n10. DD aux coûts d'entrée, closes entièrement détenus et sortie nette. MAE/MFE limités aux minutes entièrement détenues et références de fills, sans mèche entière de minute de sortie. Ne bornent pas tous les ticks.\n\nPériodes : ALL2016-01-04–2026-10-16 ; A jusqu'au2024-04-30 ; B2024-05-01–2026-10-16. Capital remis à100000par scénario ; historique EMA antérieur aux coupures conservé. B déjà explorée, pas nouveau holdout aveugle.\n\nMatrice72scénarios :12variantes ×2ETF ×3périodes. `reference`, `cost_0.02`, `cost_0.03`, `cost_0.05`, `long_only`, `short_only`, `rr1`, `rr3`, `no_slope`, `no_momentum`, `deep_pullback` (retire uniquement la borne du slowEMA au low/high, conserve touche fast et reprise), `resolved_prefix`. Aucune variante choisie gagnante après résultats.\n\nExports : features des premiers signaux et état de départ de séance, qualité/lacunes, transactions, journées/non-résolues,72résumés, matrice, années/mois/directions, frais/exposition/risque, top3/sans2020/pertes consécutives, bootstrap descriptif3000tirages blocs5/20/années seed20261026. Audit indépendant des EMA par segments pandas EWM sur closes+cash cumulatif causal, puis replay du signal et des comptes sans appeler le moteur. Code/tests/audit/rapport/vérificateur et dépendances figés avant première boucle PnL. Correction financière après observation=>nouvelle version immuable.\n"
+    },
+    "RESEARCH.md": {
+      "sha256": "273657fbb0d925d83735fab6104fe029f5d4c84bbd24bf4bfcfacf5d2527dfa2",
+      "text": "# Recherche publique — repli EMA puis reprise de tendance\n\n26 octobre 2026, avant nouveau PnL. Hypothèse distincte de la réintégration des extrêmes de veille écartée : suivre une tendance après repli vers une moyenne mobile. Pas de supposition sur des acteurs ou un carnet non observés.\n\n| Source primaire consultée | Apport et limite |\n| --- | --- |\n| [Forum Daytrading EMA9/20](https://www.reddit.com/r/Daytrading/comments/1ubwwp9/what_do_you_think_about_this_ema9_ema20_pullback/) | Auteur décrit prix/EMA9/EMA20 et cible2R ; commentaires contradictoires sur la validation intraday et les phases de consolidation. Témoignages non audités, aucun chiffre importé dans notre test. |\n| [Forum FuturesTrading](https://www.reddit.com/r/FuturesTrading/comments/1kh3081/beginner_friendly_strategy/) | Exemple de repli9/20 dans une tendance avec discrétion. Une pratique déclarée ne fournit pas une définition mécanique ni une preuve sur les ETF. |\n| [tradewithbhai7777-creator/ema-pullback-momentum-strategy](https://github.com/tradewithbhai7777-creator/ema-pullback-momentum-strategy), [source](https://github.com/tradewithbhai7777-creator/ema-pullback-momentum-strategy/blob/main/ema_pullback_momentum.py) | Structure9/20, rejet, force de clôture. Code crypto : entrée LONG utilise min(open, seuil) après dépassement du high, SHORT max ; cette convention peut fournir un prix antérieur au déclenchement. Sorties testées sur close et fonction swing centrée. Cette dernière existe dans le code, sans affirmer ici que chaque chemin en dépend. Aucune commission trouvée dans ce fichier ; README et défaut de cible du code diffèrent. Aucun code tiers exécuté/copied. |\n| [Cocofu92/qqq_swing_backtest](https://github.com/Cocofu92/qqq_swing_backtest) | Repli QQQ multi-échelle avec open suivant, mais contexte daily/hourly, sorties partielles/traînées et maintien prolongé : pas notre test intraday. |\n| [Yugo25/ema-strategy-validation](https://github.com/Yugo25/ema-strategy-validation) | Analyse des journaux FX/or manuels, critères en partie privés. L'auteur reconnaît discrétion, évolution des règles et absence de slippage. Ses bootstrap ne valident pas une exécution mécanique indépendante sur SPY/QQQ. |\n| [TOS Indicators, comparaison QQQ5min](https://tosindicators.com/research/what-moving-average-pullback-is-best-for-qqq-5-min-chart) | Source d'auteur : replis, stop bougie et cible2R ;252séances seulement, coûts/slippage explicitement omis. Comparaison commerciale non reprise comme preuve de rentabilité. |\n| [Forum QC Dual Thrust](https://www.quantconnect.com/forum/discussion/2486/issue-with-the-dual-thrust-trading-algorithm/) | Autre piste de cassure, discussion de correctifs et de valeurs manquantes ; cette famille est proche des ORB/NR7 déjà examinés. Pas la priorité de cette étude. |\n| [Forum QQQ/SPY et VWAP](https://www.reddit.com/r/algotrading/comments/1l5gil3/looking_for_ideas_for_qqq_and_spy_for_a_backtest/) | Piste de suivi VWAP à nombreux retournements, déjà repérée lors de notre recherche ORB/volume. Coûts de rotation prioritaires ; non retenue ici. |\n\nChoix de recherche : formalisation simple et propre des replis9/20, sans ADX, pivots centrés, trailing, choix discrétionnaire d'instrument ou de support. Tendance/pente connues avant la bougie, repli contrôlé, clôture de reprise, entrée open suivant. Ce choix est notre proposition sous la délégation de l'utilisateur ; aucune approbation d'un rendement externe n'est supposée.\n\nCette formalisation adapte des idées publiques, pas une réplication fidèle d'un dépôt ou une garantie de meilleure stratégie. Les mêmes ETF, périodes et autres familles ont déjà été explorés : biais de sélection et essais multiples conservés. Pas de nouvelle période aveugle.\n"
+    }
+  },
+  "code_sha256": {
+    "audit/independent.py": "c2897884330f0fa0e4b40d334821bed5a8ffeb513621abbe771e366cae50fc84",
+    "audit/indicators.py": "41946020db9eb5b7b8961e23d9fe24109713ae0e77f004bcb9e19acd243c3267",
+    "ema_pullback/__init__.py": "33ccd7821c90756d29cd40e2dec7d934fe15cde0f3ca45e5024ea845cb57fa34",
+    "ema_pullback/data.py": "dfbd0e9a6fcc43619b3ac77104ff9536879b98a567efc5de36dddae8016bf6f1",
+    "ema_pullback/engine.py": "7837e2daf39f2589bb6af3893200b0ffc07c4c3fa33468191c27a3f5c1e6a3c7",
+    "scripts/report.py": "b92cf27ed6d6589ece66255dbd3deabe458bbb5151c9f350c62d05d01f4d97d7",
+    "scripts/run_study.py": "e6e14224997366dd8f47e97852237fabef87b7168c4a2b08fd91ed9ca72ac4ff",
+    "scripts/verify_delivery.py": "f0755c1705f8933897c219b9d5f894eea6be0cc7652f245be01912cda066a0e7",
+    "tests/test_engine.py": "1cc26398e3a864a86b56c35c2798061c19608110872751560e7cc466a87e7585"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/closing_momentum/__init__.py": "d3313c9b87d9c7710f4934e59a46bb5870de7a736a5905137bdfd21372f77a07",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/closing-momentum/closing_momentum/engine.py": "8a59839154e9e1f048f053ed2e8b9f288bfc8ba0e34ab99326f2ac2f19709f49",
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/intraday-momentum-noise-area/noise_area/__init__.py": "bade9dd944a6b2d0ed267f6290bad7bcb78082f4040cb92066b29fb66bba624a",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "studies/intraday-momentum-noise-area/noise_area/engine.py": "64a49a9575d7badc8921c5c2c34bbe650d0f47e7fab0d6b45f3700f6501e1f76",
+    "studies/intraday-momentum-noise-area/noise_area/features.py": "ecab630d5f850c4def089739c9a13b7acd88de1361527483ff39f0f6a6765664",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/opening-range-5m/orb/__init__.py": "4aa1cc8c56b8834f8846ba260770cd70fe5af1f71721e746792abca89058b878",
+    "studies/opening-range-5m/orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2",
+    "studies/opening-range-5m/orb/engine.py": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810"
+  },
+  "python": "3.14.6",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "exchange_calendars": "4.13.2",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  },
+  "note": "Frozen before first market PnL; conditional coverage; reused B; no bot or claim of blind OOS."
+}

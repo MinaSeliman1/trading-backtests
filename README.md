@@ -6,6 +6,7 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 
 | Étude | Statut | Résultats disponibles | Conclusion |
 |---|---|---|---|
+| [Repli EMA9/20 puis reprise](studies/ema-trend-pullback/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche forums/GitHub ;72scénarios figés ;31tests ; replay EWM séparé et4figures | Références A/B/ALL négatives après les mêmes frais ; aucun nouveau bot |
 | [Rejet des extrêmes de veille](studies/previous-day-rejection/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche GitHub ;72scénarios figés ;32tests ; replay séparé et4figures | Références A/B/ALL négatives après les mêmes frais ; aucun nouveau bot |
 | [ORB confirmé + volume relatif](studies/opening-volume-breakout/README.md) | Backtest terminé SPY/QQQ | Recherche13sources publiques ;72scénarios ;29tests ; audit séparé et4figures | QQQ historiquement positif mais fragile en A ; SPY négatif ; aucune modification des bots |
 | [First Candle Rule + FVG](studies/first-candle-fvg/README.md) | Terminée pour SPY/QQQ | Alpaca SIP, 2023–2026, 116 scénarios IS/OOS et walk-forward ; 41 tests automatisés | Aucun avantage démontré dans les conditions testées ; les quatre scénarios principaux perdent hors échantillon |
@@ -21,6 +22,8 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
 
 ## Pistes actuellement suivies
+
+Nouvelle recherche du26octobre : [repli EMA9/20 puis reprise](studies/ema-trend-pullback/results/2026-10-26-v1/RAPPORT_FINAL.md), avec [sources forums/GitHub et différences de règles](studies/ema-trend-pullback/RESEARCH.md). ALL2016–16/10/2026 après les mêmes frais : **SPY−8,61%/1929trades, QQQ−18,72%/1909trades** ; A et B négatives sur les deux ETF. [Interprétation](studies/ema-trend-pullback/INTERPRETATION.md) : coûts supérieurs au gain de prix brut, variantes positives isolées non promues, aucun nouveau bot. Les deux simulations existantes restent inchangées.
 
 Nouvelle étude du26octobre : [rejet des extrêmes de veille](studies/previous-day-rejection/results/2026-10-26-v1/RAPPORT_FINAL.md), réintégration5min puis entrée open suivant, stop mèche et cible2R. ALL2016–16/10/2026 : **SPY−8,88%/929trades, QQQ−19,16%/998trades** après les mêmes frais ; A et B réutilisée négatives sur les deux ETF. [Décision et limites](studies/previous-day-rejection/INTERPRETATION.md) : piste écartée dans cette formalisation, sans promouvoir la variante QQQ1R positive seulement en B. Les deux simulations existantes restent inchangées.
 

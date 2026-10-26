@@ -1,0 +1,6 @@
+{
+  "utc": "2026-10-26T23:30:34.707005+00:00",
+  "exit_code": 0,
+  "passed": 31,
+  "command": "python -m pytest tests -q --basetemp .test_tmp_delivery"
+}
