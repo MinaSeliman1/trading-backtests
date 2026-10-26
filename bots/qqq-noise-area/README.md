@@ -8,6 +8,8 @@ L'adaptateur **ordres Alpaca paper** reste disponible avec SIP temps réel si le
 
 **Installation Windows du 20 octobre :** la simulation tourne désormais sans console via `pythonw`, avec démarrage automatique à l'ouverture de session. Les clés PAPER sont protégées dans le coffre Windows et le journal existant est conservé. Voir les [commandes de contrôle, arrêt et reprise](BACKGROUND_WINDOWS.md) et la [preuve de lancement et de reprise](validation/windows_background_2026-10-20.json). Le contrôle prospectif commence le 21 octobre ; aucun résultat prospectif n'est encore revendiqué.
 
+**Correctif du26octobre :** réveil séparé les jours ouvrés à09:10Toronto/NewYork sur secteur, pour éviter un nouveau rattrapage du matin après hibernation.103tests passent, dont8sur le réveil, les arrêts volontaires et le changement d'heure ; une intégration native sans rapport au coffre est exclue après refus d'accès du bac à sable. [Cause, limites et validation](validation/morning_wake_2026-10-26.md). Installation et action éveillée vérifiées, premier réveil matériel encore à observer ; moteur, règles et journal conservés.
+
 ## Règles figées
 
 | Paramètre | Valeur |

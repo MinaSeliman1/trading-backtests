@@ -37,6 +37,8 @@ La source comporte des interruptions, notamment après le 13 décembre 2024 : ce
 
 Le [lanceur Windows sans console](bots/qqq-noise-area/BACKGROUND_WINDOWS.md) est installé avec démarrage automatique à l'ouverture de session, clés dans le coffre Windows et conservation du solde. Référence prospective à partir du 21 octobre 2026 ; suivi quotidien en jours ouvrés et bilans opérationnels définis. Les preuves de démarrage ne constituent pas des résultats de rentabilité.
 
+Correctif du26octobre : [les quatre retards matinaux](bots/qqq-noise-area/validation/morning_wake_2026-10-26.md) venaient d'une hibernation prolongée jusqu'à12:11. Réveil distinct à09:10Toronto/NewYork du lundi au vendredi sur secteur, puis contrôle de la tâche shadow existante ; arrêts volontaires respectés, batterie/couvercle et journal conservés.103tests passent, dont le maintien de09:10locale après changement d'heure ; une intégration native du coffre sans rapport avec ce correctif est écartée après refus d'accès du bac à sable. Paramètres et action éveillée vérifiés ; premier réveil matériel encore à observer.
+
 Avec l'offre gratuite, le mode retenu est shadow SIP différé de 16 minutes : transactions simulées localement, sans ordre paper. L'essai IEX a été arrêté sans fill à cause de minutes manquantes incompatibles avec les règles strictes. L'adaptateur d'ordres paper reste disponible avec SIP temps réel et droits appropriés. L'[état d'activation observé](bots/qqq-noise-area/validation/activation_2026-10-20.json) distingue la livraison du code, la connexion et les transactions éventuelles.
 
 ## Bot ORB QQQ en simulation

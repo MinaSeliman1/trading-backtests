@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "verified_utc": "2026-10-26T21:23:32.403545+00:00",
+  "mode": "shadow",
+  "feed": "sip",
+  "data_delay_minutes": 16,
+  "incident": {
+    "date_toronto": "2026-10-26",
+    "sleep_started_local": "2026-10-25T01:02:37-04:00",
+    "wake_local": "2026-10-26T12:11:21-04:00",
+    "windows_event": "Power-Troubleshooter1",
+    "worker_gap_seconds": 126545.1,
+    "on_time_decisions": 8,
+    "late_decisions": 4,
+    "late_slots": [
+      "10:00",
+      "10:30",
+      "11:00",
+      "11:30"
+    ],
+    "largest_logical_delay_seconds": 7159.447051,
+    "root_cause": "PC suspended until midday; AC guard cannot wake its suspended process; original task was logon-only with WakeToRun=false."
+  },
+  "verification": {
+    "tests": {
+      "passed": 103,
+      "deselected": 1,
+      "seconds": 62.79,
+      "command": "python -m pytest -q tests -k 'not actual_windows_vault_roundtrip_and_delete_only_unique_test_target' -p no:cacheprovider --basetemp .test_tmp_morning_dst_final",
+      "initial_full_run": "102 passed,1 native synthetic-vault integration failed with Windows access denied5 in sandbox. No user credentials read; not elevated for unrelated vault test."
+    },
+    "new_wakeup_tests": 8,
+    "independent_review": "No P1/P2. Independent updated wake fixtures8passed. Zero-start assertions for altered task actions and offset-free DST boundary verified.",
+    "windows": {
+      "verified_utc": "2026-10-26T21:22:50.0044803Z",
+      "timezone": "Eastern Standard Time",
+      "task_name": "TradingBacktests-QQQ-NoiseArea-Simulation-Wakeup",
+      "wake_to_run": true,
+      "hidden": true,
+      "disallow_start_on_battery": true,
+      "stop_if_battery": true,
+      "start_when_available": true,
+      "task_state": "Ready",
+      "last_result": 0,
+      "last_run_local": "2026-10-26T17:22:39.0000000-04:00",
+      "next_run_local": "2026-10-27T09:10:00.0000000-04:00",
+      "days_of_week": 62,
+      "start_boundary": "2026-10-26T09:10:00",
+      "checker_state": "already_running",
+      "engine_task_state": "Running",
+      "ac_wake_timers": 1,
+      "dc_wake_timers": 0,
+      "power_plan_difference_lines": 2,
+      "difference_lines": [
+        "Current AC Power Setting Index: 0x00000001",
+        "Current AC Power Setting Index: 0x00000002"
+      ]
+    },
+    "policy_before": {
+      "ac": 2,
+      "dc": 0
+    },
+    "policy_after": {
+      "ac": 1,
+      "dc": 0
+    },
+    "only_one_power_setting_changed": true,
+    "ledger_unchanged": true,
+    "table_fingerprints": {
+      "orders": {
+        "rows": 14,
+        "sha256": "8749b8de674b7a15ad0f85b4ed564b9c80469f7779c824da7047939d4d8e2fe0"
+      },
+      "fills": {
+        "rows": 14,
+        "sha256": "df0b336f46963c12a4ce7da319c362204a82c39798fd94ea8823ebfa5192f0f2"
+      },
+      "decisions": {
+        "rows": 45,
+        "sha256": "82a672f86ec24fc8106640bdc70cb47e5504d88e41b6ebc4d2a85e353191a553"
+      },
+      "days": {
+        "rows": 4,
+        "sha256": "a4e2b2eb749098635bd81fbdb8a1b4f3531db44909c83e9b23f4e7ba178e628f"
+      }
+    },
+    "balance_unchanged": true,
+    "position": 0,
+    "configuration_unchanged": true,
+    "baseline_unchanged": true,
+    "session_markers_unchanged": true,
+    "engine_fresh": true,
+    "engine_status_age_seconds": 0.613943,
+    "no_engine_restart": true,
+    "no_broker_order": true,
+    "dst_boundary_without_offset": true,
+    "dst_seasonal_regressions": 2
+  },
+  "source_sha256": {
+    "install-wakeup.ps1": "22f3226916d60bafeaf3a1d8dd242d4ebc22de1364af9ea3b97e4a4e17eb1398",
+    "wake-before-session.ps1": "125dc942e34e299a07013a338877190727a367e2c09c8b36e4beb0060752f6e3",
+    "tests/test_wakeup.py": "97c75ba84c2767c0bd6d188bc5b50ced5cfbfb7f6f48b7190cd19e20342e3464",
+    "BACKGROUND_WINDOWS.md": "5dacdeea0057bdc25cb099b01f8c5e5aef3dd407c2df6875c9d2eb47e7385ba5"
+  },
+  "limits": [
+    "Task registration, timing, AC/DC policy and awake checker are verified; no real sleep/wake trial or future coverage success claimed.",
+    "powercfg /waketimers requires Windows administrator rights; native timer enumeration not available and not elevated further. Task XML and next-run metadata verified instead.",
+    "Wake from shutdown is not provided; AC power, logged-in Windows user and hardware support are required.",
+    "AC wake timers can also permit other existing ordinary wake tasks. DC/lid/button/display/sleep-duration policies remain unchanged.",
+    "Past catch-up decisions remain incomplete; no historical reclassification or reset."
+  ]
+}
