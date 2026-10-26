@@ -1,0 +1,7 @@
+symbol,period,opening_outside_range,eligible,no_rejection,unknown_prior_range,unknown_signal,excluded_incomplete_day,ambiguous_two_sided_signal
+SPY,ALL,1164,929,607,9.0,2.0,1.0,1.0
+SPY,A,919,690,473,9.0,2.0,1.0,1.0
+SPY,B,245,239,134,,,,
+QQQ,ALL,1111,998,594,7.0,1.0,1.0,1.0
+QQQ,A,857,770,459,7.0,1.0,1.0,
+QQQ,B,254,228,135,,,,1.0

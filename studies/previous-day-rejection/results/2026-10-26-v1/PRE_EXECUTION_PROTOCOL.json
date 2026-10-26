@@ -1,0 +1,349 @@
+{
+  "utc": "2026-10-26T22:54:26.959954+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "executions": 72,
+  "specifications": {
+    "reference": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.02": {
+      "mode": "both",
+      "slippage": 0.02,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.03": {
+      "mode": "both",
+      "slippage": 0.03,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.05": {
+      "mode": "both",
+      "slippage": 0.05,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "long_only": {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "short_only": {
+      "mode": "short_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "rr1": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 1,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "rr3": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 3,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "signal15": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 15,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "allow_opening_gap": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": true,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "no_cash_adjust": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": false,
+      "cash_adjust": false,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "resolved_prefix": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "resolved_prefix",
+      "bar_minutes": 5,
+      "earliest": 15,
+      "cutoff": 270,
+      "target_r": 2.0,
+      "allow_opening_gap": false,
+      "cash_adjust": true,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "protocols": {
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "294bd7dca6514a969b4ccad15372d82cf2d1a44c9c3fc1aef2d6954a2e876ea1",
+      "text": "# Protocole fixé avant PnL — rejet des extrêmes de veille\n\n26octobre2026. Nouveau dossier et résultats immuables v1. Réutiliser les archives SIP/préparations déjà vérifiées2015-12-31–2026-10-16, aucun accès aux clés ou aux bots actifs. Capital100000USD indépendant par scénario.\n\n1. Niveaux : plus haut et plus bas OHLC de la séance RTH immédiatement précédente, demi-séance entière comprise. Exiger ses OHLC finis, positifs, cohérents sur toutes ses minutes ; le volume n'est pas utilisé. Une séance inconnue n'est jamais remplacée par une plus ancienne. Soustraire le dividende cash ex-date connu du jour courant aux deux niveaux ; absence d'entrée de dividende =0 selon la source fournie. Pas d'ajustement futur. Documenter la complétude limitée des corporate actions.\n2. Référence : l'open09:30 courant doit être strictement dans ce range corrigé. Sinon aucun ordre. Cet open doit être fini/positif ; il n'exige pas les H/L/C futurs de la première minute. Première séance sans précédent =chauffe connue, historique antérieur incomplet =signal inconnu.\n3. Agréger les minutes OHLC en bougies5min depuis09:30. Examiner les bougies dont l'entrée suivante serait >=09:45 et <14:00NY (slots15≤entry<270), et strictement avant le dernier open de séance. Pour15min, mêmes bornes et regroupement depuis09:30. Chaque bougie candidate doit être entièrement connue/cohérente. Une lacune dans une bougie candidate antérieure au premier signal bloque la décision ; les bougies entièrement antérieures à la fenêtre de candidature ne sont pas nécessaires, sauf l'open09:30.\n4. Une réintégration exige PDL<close<PDH. LONG si low≤PDL−0,01USD ; SHORT si high≥PDH+0,01USD. La mèche hors range et la clôture de retour appartiennent à la même bougie ; son open peut être extérieur au range. Si les deux côtés sont dépassés dans une même bougie candidate qui clôture dedans : ambiguïté, aucun trade de toute la séance. Aucune hypothèse sur l'ordre des ticks. Une touche sans dépassement d'au moins un centime ou une clôture sur le niveau ne suffit pas.\n5. Prendre le premier signal valide de la fenêtre. LONG/SHORT seuls filtrent ce premier signal sans chercher un autre plus tard. Une seule entrée par séance, aucun retournement ou pyramide. Entrée à l'open1min suivant la clôture confirmée ; ne pas remplir au close du signal.\n6. Stop : low de la bougie signal−0,01 pour LONG, high+0,01 pour SHORT, arrondi au centime vers l'extérieur (floor LONG, ceil SHORT). Taille au signal : floor(min(capital/closeSignal,0,01capital/distance(closeSignal,stop))). Le futur open ne modifie ni quantité ni stop ; un gap peut dépasser les plafonds effectifs1x/1%. Si l'open d'entrée est déjà au-delà du stop, entrée/sortie immédiates avec tous les frais, sans annulation rétroactive.\n7. TP2R, R=distance de l'open d'entrée de référence au stop, sans frais ; TP arrondi au centime défavorable (floor LONG, ceil SHORT). Stop prioritaire si SL/TP touchent dans la même minute. Stop gap=prix open défavorable, target gap=niveau figé sans amélioration. Sinon sortie au dernier open RTH15:59/12:59, avant sa mèche. Aucun break-even, trailing, overnight ou filtre de news.\n8. Coûts identiques : commission0,0035USD/action/côté minimum0,35 ; friction adverse0,01USD/action/côté ; emprunt SHORT1%annuel/360, minimum1jour sur notionnel d'entrée simulé. Stress0,02/0,03/0,05. Modèle commun de recherche, pas barème garanti de courtier ; quotes, profondeur et frais réglementaires variables non reconstruits. Cash non rémunéré.\n9. Principal complete_days : filtre de qualité OHLCV du cache courant connu après coup, appliqué aux journées où le signal produirait une entrée. Cela rend le compte conditionnel et peut favoriser son résultat. resolved_prefix retire ce filtre : lacune nécessaire avant signal=>inconnu ; lacune active=>trade entier non résolu, omission du compte conditionnel et export des frais d'entrée connus. Pas d'interpolation. Le zéro de chaînage d'une exclusion ne constitue pas un rendement de cash observé.\n10. DD : marques au coût d'entrée, closes des minutes entièrement détenues et sortie nette. MAE/MFE sur minutes entièrement détenues et références de fill, sans mèche entière de la minute de sortie. Ces mesures ne bornent pas tous les ticks.\n\nPériodes ALL2016-01-04–2026-10-16, A jusqu'au2024-04-30, B2024-05-01–2026-10-16. B réutilisée, pas nouvel OOS aveugle. Les features antérieures à chaque coupure restent disponibles, capital remis à100000par scénario seulement.\n\nMatrice fixée :12variantes ×2ETF ×3périodes =72. `reference`, `cost_0.02`, `cost_0.03`, `cost_0.05`, `long_only`, `short_only`, `rr1`, `rr3`, `signal15`, `allow_opening_gap`, `no_cash_adjust`, `resolved_prefix`. Publier toutes, sans promotion d'un gagnant après résultats.\n\nExports : features/niveaux/signal, qualité/lacunes, transactions, journées/non-résolues, matrice, années/mois/directions, frais, risque/exposition, concentration/top3/2020, séries de pertes, intervalles descriptifs par blocs5/20 et clusters annuels3000tirages seed20261026. Audit indépendant du signal, du sizing/fills/coûts/returns et des agrégats. Snapshots du code, dépendances et SHA des sources avant boucle PnL. Toute correction après observation nécessite une nouvelle version préservant l'ancienne.\n"
+    },
+    "RESEARCH.md": {
+      "sha256": "fbe4fa445cf74393d312b6e529193cbee196bfdbe4a389bbb8b6a03cff477e12",
+      "text": "# Hypothèse : rejet des extrêmes de veille\n\nRecherche du26octobre2026 avant nouveau PnL. Hypothèse de retour après fausse cassure d'un niveau déjà connu ; aucune affirmation sur une intervention institutionnelle, un carnet ou des stops réellement observés. Les OHLC ne prouvent pas la cause d'un mouvement.\n\nSources primaires d'implémentations ouvertes :\n\n- [ikeawesom/xauusd-backtest](https://github.com/ikeawesom/xauusd-backtest), [README](https://github.com/ikeawesom/xauusd-backtest/blob/main/README.md) : formalise dépassement des extrêmes précédents et retour. Univers or, biais et sorties différents ; son win rate annoncé n'est pas transféré à nos ETF et ne constitue pas une validation indépendante.\n- [frankabingale1111/smc-backtest](https://github.com/frankabingale1111/smc-backtest) : détection d'une mèche au-delà d'un extrême suivi d'une clôture de retour, couplée à d'autres règles. Sert à identifier une primitive testable ; aucun code tiers exécuté ou installé, aucun résultat tiers importé.\n- [baturdenada/gold-sweep-backtester](https://github.com/baturdenada/gold-sweep-backtester) : plusieurs familles de signaux et sorties, plus de paramètres que nécessaire. Source de comparaison de définitions, pas notre protocole financier.\n\nL'ebook repéré sur le domaine de Linda Raschke n'a pas pu être récupéré (404). Il n'est donc pas utilisé comme référence de règles lues ; cette étude ne revendique pas de reproduire la stratégie originale Turtle Soup.\n\nChoix : simple rejet des niveaux RTH de la veille sur bougies5minutes. Contrairement à la recherche déjà archivée, l'entrée demande une réintégration après dépassement du niveau ; aucune compression NR7, aucun gap minimal, aucune bande VWAP/RSI ou cassure de plage d'ouverture. Le filtre d'ouverture à l'intérieur du range distingue la référence d'une stratégie de retournement de gap.\n\nLa familiarité de ces motifs, les témoignages et les dépôts ouverts ne prouvent pas leur rentabilité. Les ETF, les dates A/B et d'autres familles ont déjà été explorés dans ce dépôt : biais de sélection de recherche et essais multiples explicitement conservés.\n\nLecture du code : `TradeSimulation.py` chez ikeawesom passe bien `prevDate` aux fonctions de niveaux et de biais ; aucune accusation de lookahead n'est déduite de leur nom. Ses sorties utilisent les opens successifs et ne reproduisent pas nos SL/TP. Chez frankabingale1111, la roadmap du README laisse encore les vrais SL/TP dans les tâches à faire : l'exemple de performance n'est donc pas une preuve d'exécution conservatrice. Gold Strategy Lab propose de nombreuses combinaisons sur l'échantillon complet ; ce classement ne devient pas notre sélection de paramètres.\n"
+    }
+  },
+  "code_sha256": {
+    "audit/independent.py": "9af4b5e76410138baed231e3950fe988732a80745e94bbf7318a28d9e9fd0f28",
+    "pdr/__init__.py": "33ccd7821c90756d29cd40e2dec7d934fe15cde0f3ca45e5024ea845cb57fa34",
+    "pdr/data.py": "c8b0ecdfaa8683e3568e4a47fcfbee85497674a9f74b0f92b916d131c44f1e53",
+    "pdr/engine.py": "1ab7e280063e248887d1a7f08cdc2d0198b4ca245bbe1f5ce3196130d4b374aa",
+    "scripts/report.py": "afa0e548abe600ae5134700f563b233c270a519bb03d96619bc96c3768c5a3ad",
+    "scripts/run_study.py": "cdea1eb8d9c1c3c54da3da62f5c3d209042436e2cb06c8f864fc6a96e8848488",
+    "scripts/verify_delivery.py": "0e0781d5919939f9c7e4b937cb57f3554a99794a5d71ce7b8b2e0d52aa637bf9",
+    "tests/test_engine.py": "8321185e004f84efa56a74d343f3f5b2f4ee255c71d4ed521ab7e69256a3a9c7"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/closing_momentum/__init__.py": "d3313c9b87d9c7710f4934e59a46bb5870de7a736a5905137bdfd21372f77a07",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/closing-momentum/closing_momentum/engine.py": "8a59839154e9e1f048f053ed2e8b9f288bfc8ba0e34ab99326f2ac2f19709f49",
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/intraday-momentum-noise-area/noise_area/__init__.py": "bade9dd944a6b2d0ed267f6290bad7bcb78082f4040cb92066b29fb66bba624a",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "studies/intraday-momentum-noise-area/noise_area/engine.py": "64a49a9575d7badc8921c5c2c34bbe650d0f47e7fab0d6b45f3700f6501e1f76",
+    "studies/intraday-momentum-noise-area/noise_area/features.py": "ecab630d5f850c4def089739c9a13b7acd88de1361527483ff39f0f6a6765664",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/opening-range-5m/orb/__init__.py": "4aa1cc8c56b8834f8846ba260770cd70fe5af1f71721e746792abca89058b878",
+    "studies/opening-range-5m/orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2",
+    "studies/opening-range-5m/orb/engine.py": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810"
+  },
+  "python": "3.14.6",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "exchange_calendars": "4.13.2",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  },
+  "note": "Frozen before first market PnL; conditional coverage; reused B; no bot or claim of blind OOS."
+}

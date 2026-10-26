@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-26T22:58:46.041322+00:00",
+  "review": "All four PNG figures inspected with view_image; labels readable, blue SPY/orange QQQ consistent, zero/reference lines and units visible, no clipped labels. Conditional coverage and daily-close DD distinguished from event/minute DD in report. Calendar2016 caveat explained in INTERPRETATION.md.",
+  "files": {
+    "figures/annual_returns.png": "6ec6b2bcee875f1e3aa9d87682d578256aa7cec3fcc036be269cd8ad617f2654",
+    "figures/cost_sensitivity.png": "abb28154bd5368d21a7bf1fc628ef82161522e0c545891bac2538776e275c162",
+    "figures/equity_drawdown.png": "95c78f55c707a34cfc7ba3a3c5a703a9f5e6f4a34b0614032915229ad18997fd",
+    "figures/rule_sensitivity.png": "ff8be9907688618c09fa0d34be06ed6185dab822a6e60fe0fc32cb1165d0d54b"
+  }
+}
