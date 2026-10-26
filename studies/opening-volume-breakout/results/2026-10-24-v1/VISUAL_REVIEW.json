@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-26T16:12:37.549402+00:00",
+  "method": "Each authored PNG inspected with view_image; dates, axes, units, legends and values agree with exports.",
+  "files": {
+    "annual_returns.png": "c6380cb4553629343688feae5939f2b559d35b4e481aaba9a0aafa09f24acdd5",
+    "cost_sensitivity.png": "533b8ce58f34cebfe80da841d268907e0eb99551abf20ae49857aa1a067a1244",
+    "equity_drawdown.png": "6431c03b55f853bbb8a621fa36c19f7564c65635aef4469707c88dc26e179f05",
+    "volume_filter.png": "bf7fb167ba616a6b39828424b4e4f9e7431a6056025d21c8d6a51fe4f230d365"
+  }
+}

@@ -1,0 +1,7 @@
+symbol,period,volume_filtered,eligible,no_breakout,doji,unknown_volume_history,warmup14,unknown_signal,unknown_opening
+SPY,ALL,1617,899,141,26,15.0,12.0,2.0,1.0
+SPY,A,1252,686,104,23,15.0,12.0,2.0,1.0
+SPY,B,365,213,37,3,,,,
+QQQ,ALL,1603,915,146,19,15.0,13.0,1.0,1.0
+QQQ,A,1241,690,118,16,15.0,13.0,1.0,1.0
+QQQ,B,362,225,28,3,,,,
