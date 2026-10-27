@@ -1,0 +1,52 @@
+{
+  "repetitions": 3000,
+  "seed": 20261026,
+  "blocks": {
+    "5": {
+      "conditional_daily_mean_ci95": [
+        -8.115210210409935e-06,
+        0.0002178461443406314
+      ]
+    },
+    "20": {
+      "conditional_daily_mean_ci95": [
+        -7.11598542912505e-06,
+        0.00021447879146719987
+      ]
+    }
+  },
+  "annual_cluster": {
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "events_by_year": [
+      47,
+      48,
+      48,
+      48,
+      48,
+      47,
+      48,
+      47,
+      48,
+      48,
+      39
+    ],
+    "valid_repetitions": 3000,
+    "mean_trade_bps_ci95": [
+      0.19180895614331314,
+      11.01979618924508
+    ]
+  },
+  "caveat": "Descriptive conditional intervals; excluded sessions have zero bookkeeping return, not observed cash. Reused B, few annual clusters and no multiplicity correction."
+}

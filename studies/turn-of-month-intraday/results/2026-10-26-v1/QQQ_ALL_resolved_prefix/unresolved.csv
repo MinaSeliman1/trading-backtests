@@ -1,0 +1,2 @@
+date,symbol,sign,quantity,reason,first_unknown_slot,entry_reference,known_entry_commission,known_entry_friction,omitted_entire_trade
+2016-02-02,QQQ,1,989,missing_active_open,108,103.79,3.4615,9.89,True

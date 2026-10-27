@@ -1,0 +1,51 @@
+{
+  "utc": "2026-10-27T00:05:31.982393+00:00",
+  "method": "Quatre PNG ouverts et inspectés visuellement dans cette exécution.",
+  "figures": [
+    {
+      "file": "figures/equity_drawdown.png",
+      "sha256": "ed98f12616379053cc782e6390c8014fc49f34b69340ae81844e7b4ee66a50b8",
+      "status": "inspected",
+      "checks": [
+        "Axes et unités lisibles",
+        "Légendes et couleurs ETF cohérentes",
+        "Ligne zéro ou capital initial visible",
+        "Aucun rognage du titre ou des étiquettes"
+      ]
+    },
+    {
+      "file": "figures/cost_sensitivity.png",
+      "sha256": "4cf82eb78fae7bdbc00fe106d875808899f739525260a286fbec34f0d58af514",
+      "status": "inspected",
+      "checks": [
+        "Axes et unités lisibles",
+        "Légendes et couleurs ETF cohérentes",
+        "Ligne zéro ou capital initial visible",
+        "Aucun rognage du titre ou des étiquettes"
+      ]
+    },
+    {
+      "file": "figures/rule_sensitivity.png",
+      "sha256": "8c4c4591691fcc42ca9637c695211aa4bb40088241f4440bc8864c11fc42dcd1",
+      "status": "inspected",
+      "checks": [
+        "Axes et unités lisibles",
+        "Légendes et couleurs ETF cohérentes",
+        "Ligne zéro ou capital initial visible",
+        "Aucun rognage du titre ou des étiquettes"
+      ]
+    },
+    {
+      "file": "figures/annual_returns.png",
+      "sha256": "95bdcfeabf79699e889e1c0b5681e84d96d439461cb6b23ceb70f5f37ae3b932",
+      "status": "inspected",
+      "checks": [
+        "Axes et unités lisibles",
+        "Légendes et couleurs ETF cohérentes",
+        "Ligne zéro ou capital initial visible",
+        "Aucun rognage du titre ou des étiquettes"
+      ]
+    }
+  ],
+  "note": "DD du graphique quotidien, distinct du DD événements/closes minute des tableaux. Aucun changement de script ou chiffre après PnL."
+}

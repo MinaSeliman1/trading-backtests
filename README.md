@@ -6,6 +6,7 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 
 | Étude | Statut | Résultats disponibles | Conclusion |
 |---|---|---|---|
+| [Fin/début de mois intraday](studies/turn-of-month-intraday/README.md) | Backtest terminé SPY/QQQ ; avantage calendaire non établi | Recherche forums/GitHub ;72scénarios figés ;30tests ; calendrier et replay séparés ;4figures | Références positives mais IC95 du contraste avec les autres jours comprenant zéro ; QQQ A fragile aux frais ; aucun nouveau bot |
 | [Repli EMA9/20 puis reprise](studies/ema-trend-pullback/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche forums/GitHub ;72scénarios figés ;31tests ; replay EWM séparé et4figures | Références A/B/ALL négatives après les mêmes frais ; aucun nouveau bot |
 | [Rejet des extrêmes de veille](studies/previous-day-rejection/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche GitHub ;72scénarios figés ;32tests ; replay séparé et4figures | Références A/B/ALL négatives après les mêmes frais ; aucun nouveau bot |
 | [ORB confirmé + volume relatif](studies/opening-volume-breakout/README.md) | Backtest terminé SPY/QQQ | Recherche13sources publiques ;72scénarios ;29tests ; audit séparé et4figures | QQQ historiquement positif mais fragile en A ; SPY négatif ; aucune modification des bots |
@@ -22,6 +23,8 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
 
 ## Pistes actuellement suivies
+
+Nouvelle recherche du26octobre : [fin/début de mois intraday](studies/turn-of-month-intraday/results/2026-10-26-v1/RAPPORT_FINAL.md), issue de [forums, GitHub et références de calendrier](studies/turn-of-month-intraday/RESEARCH.md). ALL2016–16/10/2026 après les mêmes frais : **SPY+31,33%/516trades, QQQ+31,64%/518trades**, soit CAGR2,56%/2,58%. [Interprétation](studies/turn-of-month-intraday/INTERPRETATION.md) : A/B/ALL positives, mais IC95 du contraste mensuel avec les autres jours comprenant zéro sur les deux ETF ; QQQ A devient négatif à friction doublée. Critère prédéfini non satisfait, aucun nouveau bot ; les deux simulations existantes restent inchangées.
 
 Nouvelle recherche du26octobre : [repli EMA9/20 puis reprise](studies/ema-trend-pullback/results/2026-10-26-v1/RAPPORT_FINAL.md), avec [sources forums/GitHub et différences de règles](studies/ema-trend-pullback/RESEARCH.md). ALL2016–16/10/2026 après les mêmes frais : **SPY−8,61%/1929trades, QQQ−18,72%/1909trades** ; A et B négatives sur les deux ETF. [Interprétation](studies/ema-trend-pullback/INTERPRETATION.md) : coûts supérieurs au gain de prix brut, variantes positives isolées non promues, aucun nouveau bot. Les deux simulations existantes restent inchangées.
 

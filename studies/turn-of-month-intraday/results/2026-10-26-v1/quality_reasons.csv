@@ -1,0 +1,7 @@
+symbol,period,calendar_filtered,eligible,excluded_incomplete_day
+SPY,ALL,2194,516,3.0
+SPY,A,1695,397,3.0
+SPY,B,499,119,
+QQQ,ALL,2194,518,1.0
+QQQ,A,1695,399,1.0
+QQQ,B,499,119,

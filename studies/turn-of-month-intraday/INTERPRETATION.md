@@ -1,0 +1,13 @@
+# Décision de recherche — 26 octobre 2026
+
+La référence calendaire LONG (dernier jour de bourse et trois premières séances, achat09:35, stop1%, sortie le jour même) est positive après les mêmes frais sur les deux ETF et dans les trois périodes. ALL2016–16octobre2026 : SPY+31,33% sur516trades et QQQ+31,64% sur518trades ; CAGR2,56%/2,58%, PF1,233/1,178, drawdown aux événements/closes12,49%/16,22%. Il s'agit de gains cumulés sur plus de dix ans, pas de rendements annuels de31%.
+
+A jusqu'au30avril2024 : SPY+12,27%, QQQ+1,70%. B réutilisée du1mai2024 au16octobre2026 : SPY+17,00%, QQQ+29,41%,119trades chacun. QQQ dépend fortement de cette période récente : A devient−2,24% lorsque la friction passe de0,01 à0,02USD/action/côté, et−8,18% en retirant les trois meilleurs jours de A. Le sous-échantillon B a déjà été consulté dans d'autres recherches ; ce n'est pas un nouvel échantillon aveugle.
+
+Les contrôles conservent les mêmes ordres et coûts. Les autres jours donnent ALL−20,99% SPY et−14,56% QQQ ; acheter tous les jours donne+3,85%/+12,48%. Ces comptes sont composés séparément et leur exposition diffère : leurs rendements cumulés ne prouvent pas une cause calendaire.
+
+Le contraste prévu compare aussi les bps nets TOM et autres jours au sein de chaque mois du contrôle all_days, avec un poids égal par mois. Sur130mois, écart moyen SPY+6,50bps/trade, IC95[−0,27 ;13,49] ; QQQ+6,28bps, IC95[−2,28 ;15,39]. Les deux intervalles comprennent zéro. Le critère fixé avant PnL exigeait la positivité des six références ET une borne basse de contraste ALL positive sur les deux ETF : **il échoue**. Les intervalles descriptifs ne corrigent pas les nombreux essais historiques et ne sont pas une preuve d'absence d'effet non plus.
+
+Couverture principale : trois séances éligibles exclues SPY, une QQQ. Le diagnostic resolved_prefix donne exactement les mêmes trades résolus et résultats, mais conserve trois trades actifs non résolus SPY et un QQQ, omis du compte avec les coûts d'entrée connus exportés séparément. Cette égalité ne démontre pas une couverture complète et ne signifie pas absence d'exposition ces jours-là. Les mois incomplets/partiels restent signalés dans le contraste. Pas d'interpolation ni de frais broker observés : fills minute modélisés, compte conditionnel.
+
+Décision : conserver cette piste comme observation historique positive mais insuffisante pour justifier un nouveau bot dans cette formalisation. Aucune variante plus flatteuse choisie après résultats. Les deux simulations QQQ Noise Area et ORB, leurs règles, leurs journaux et leur suivi restent inchangés. Un nouveau test prospectif demanderait des règles conservées et des séances réellement nouvelles ; aucun passage automatique au réel.
