@@ -1,0 +1,7 @@
+symbol,period,no_rebound,eligible,unknown_history,warmup_initial,unknown_signal,excluded_incomplete_day
+SPY,ALL,1332,1290,64.0,19.0,5.0,3.0
+SPY,A,1011,993,64.0,19.0,5.0,3.0
+SPY,B,321,297,,,,
+QQQ,ALL,1317,1319,52.0,19.0,5.0,1.0
+QQQ,A,1005,1013,52.0,19.0,5.0,1.0
+QQQ,B,312,306,,,,

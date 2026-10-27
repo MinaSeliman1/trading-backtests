@@ -1,0 +1,51 @@
+{
+  "utc": "2026-10-27T00:41:02.685984+00:00",
+  "method": "Quatre PNG ouverts et inspectés visuellement.",
+  "figures": [
+    {
+      "file": "figures/equity_drawdown.png",
+      "sha256": "8a2e445d84c3991ced042951f028cb6bf440a90d6f62442cde1eaed3d227caee",
+      "status": "inspected",
+      "checks": [
+        "Axes/unités et légendes lisibles",
+        "Zéro ou capital initial visible",
+        "Pas de rognage",
+        "Couleurs ETF cohérentes"
+      ]
+    },
+    {
+      "file": "figures/cost_sensitivity.png",
+      "sha256": "1b3e47c233f4a2f2e9c269ead0d02d88be9c896813a94cfe04080cfe2de700da",
+      "status": "inspected",
+      "checks": [
+        "Axes/unités et légendes lisibles",
+        "Zéro ou capital initial visible",
+        "Pas de rognage",
+        "Couleurs ETF cohérentes"
+      ]
+    },
+    {
+      "file": "figures/rule_sensitivity.png",
+      "sha256": "0e3892263a2f6f06a30cd87086f2ca4405192c408cf201a4e293ab8ce5e4ed3c",
+      "status": "inspected",
+      "checks": [
+        "Axes/unités et légendes lisibles",
+        "Zéro ou capital initial visible",
+        "Pas de rognage",
+        "Couleurs ETF cohérentes"
+      ]
+    },
+    {
+      "file": "figures/annual_returns.png",
+      "sha256": "05b22ed779d8591a6bd9d121c0ba4290950f51d70db15be5414fdf4640d46ea8",
+      "status": "inspected",
+      "checks": [
+        "Axes/unités et légendes lisibles",
+        "Zéro ou capital initial visible",
+        "Pas de rognage",
+        "Couleurs ETF cohérentes"
+      ]
+    }
+  ],
+  "note": "DD quotidien graphique différent du DD événements/closes minute du tableau. Aucun script financier modifié après PnL."
+}

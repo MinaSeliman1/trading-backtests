@@ -6,6 +6,7 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 
 | Étude | Statut | Résultats disponibles | Conclusion |
 |---|---|---|---|
+| [Rebond après choc intraday](studies/intraday-shock-rebound/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche Web élargie académique/forums/GitHub ;72scénarios figés ;38tests ; statistiques et replay séparés ;4figures | Références A/B/ALL négatives après les mêmes frais ; aucun nouveau bot |
 | [Fin/début de mois intraday](studies/turn-of-month-intraday/README.md) | Backtest terminé SPY/QQQ ; avantage calendaire non établi | Recherche forums/GitHub ;72scénarios figés ;30tests ; calendrier et replay séparés ;4figures | Références positives mais IC95 du contraste avec les autres jours comprenant zéro ; QQQ A fragile aux frais ; aucun nouveau bot |
 | [Repli EMA9/20 puis reprise](studies/ema-trend-pullback/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche forums/GitHub ;72scénarios figés ;31tests ; replay EWM séparé et4figures | Références A/B/ALL négatives après les mêmes frais ; aucun nouveau bot |
 | [Rejet des extrêmes de veille](studies/previous-day-rejection/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche GitHub ;72scénarios figés ;32tests ; replay séparé et4figures | Références A/B/ALL négatives après les mêmes frais ; aucun nouveau bot |
@@ -23,6 +24,8 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
 
 ## Pistes actuellement suivies
+
+Nouvelle recherche du26octobre, élargie au Web académique et spécialisé : [rebond après choc intraday](studies/intraday-shock-rebound/results/2026-10-26-v1/RAPPORT_FINAL.md), avec [sources et différences de méthode](studies/intraday-shock-rebound/RESEARCH.md). ALL2016–16/10/2026 après les mêmes frais : **SPY−22,02%/1290trades, QQQ−28,69%/1319trades** ; A et B négatives également. [Interprétation](studies/intraday-shock-rebound/INTERPRETATION.md) : mouvements de prix déjà perdants avant attribution des frais, comptes conditionnels et sensibilités positives isolées non promues. Aucun nouveau bot ; les deux simulations existantes restent inchangées.
 
 Nouvelle recherche du26octobre : [fin/début de mois intraday](studies/turn-of-month-intraday/results/2026-10-26-v1/RAPPORT_FINAL.md), issue de [forums, GitHub et références de calendrier](studies/turn-of-month-intraday/RESEARCH.md). ALL2016–16/10/2026 après les mêmes frais : **SPY+31,33%/516trades, QQQ+31,64%/518trades**, soit CAGR2,56%/2,58%. [Interprétation](studies/turn-of-month-intraday/INTERPRETATION.md) : A/B/ALL positives, mais IC95 du contraste mensuel avec les autres jours comprenant zéro sur les deux ETF ; QQQ A devient négatif à friction doublée. Critère prédéfini non satisfait, aucun nouveau bot ; les deux simulations existantes restent inchangées.
 
