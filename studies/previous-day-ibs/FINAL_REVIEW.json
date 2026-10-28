@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-28T21:26:26.646923+00:00",
+  "role": "Independent code and results review",
+  "status": "passed",
+  "important_findings_remaining": 0,
+  "tests_passed": 48,
+  "scenarios": 72,
+  "reviewer_reported_aggregate_checks": 2538,
+  "reviewer_reported_derived_table_checks": 2308,
+  "independently_reproduced_bootstraps": 6,
+  "unchanged_code_and_dependency_hashes": 25,
+  "unchanged_protocols": 2,
+  "unchanged_audited_export_hashes": 290,
+  "figures_visually_reviewed": 4,
+  "fixes_before_market_run": [
+    "Exact reconstructed/export trade and unknown date sets, uniqueness and side/symbol/mode/quality/direction metadata; ten corruption tests",
+    "Removed misleading word confirme from report title",
+    "ADR quantized to 1e-8 USD before cent stop rounding; red-green numeric regression"
+  ],
+  "post_freeze_financial_code_changes": false,
+  "scope": "Independent reviewer recalculated aggregates and bootstrap draws from exports and inspected report/figures; separate scalar market audit in audit/AUDIT_RESULTS.json. Same source, overlapping periods, no independent price feed.",
+  "emphasis": {
+    "qqq_B_return_pct": 0.8580699000003,
+    "qqq_B_observed_drawdown_pct": 7.7140696,
+    "qqq_B_without_top3_pct": -5.5654081,
+    "qqq_B_top3_net_usd": 6705.754,
+    "qqq_B_total_net_usd": 858.0699
+  },
+  "decision": "Four of five preregistered criteria fail; no new bot. Does not refute all overnight/swing IBS implementations."
+}

@@ -6,6 +6,7 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 
 | Étude | Statut | Résultats disponibles | Conclusion |
 |---|---|---|---|
+| [IBS de la veille, rebond intraday](studies/previous-day-ibs/README.md) | Backtest terminé SPY/QQQ ; adaptation intraday écartée pour un nouveau bot | Recherche Web élargie ; 72 scénarios figés ; 48 tests ; replay séparé et 4 figures | ALL SPY -5,70 % et QQQ 13,15 % après frais ; aucune variante promue après calcul |
 | [Cassure puis premier retest](studies/opening-range-retest/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche Web élargie ;72scénarios figés ;42tests ; agrégation et replay séparés ;4figures | ALL SPY−6,16% et QQQ−5,50% après frais ; QQQ B positif mais A négatif ; aucun nouveau bot |
 | [Rebond après choc intraday](studies/intraday-shock-rebound/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche Web élargie académique/forums/GitHub ;72scénarios figés ;38tests ; statistiques et replay séparés ;4figures | Références A/B/ALL négatives après les mêmes frais ; aucun nouveau bot |
 | [Fin/début de mois intraday](studies/turn-of-month-intraday/README.md) | Backtest terminé SPY/QQQ ; avantage calendaire non établi | Recherche forums/GitHub ;72scénarios figés ;30tests ; calendrier et replay séparés ;4figures | Références positives mais IC95 du contraste avec les autres jours comprenant zéro ; QQQ A fragile aux frais ; aucun nouveau bot |
@@ -25,6 +26,8 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
 
 ## Pistes actuellement suivies
+
+Recherche du 28 octobre : [IBS de la veille puis rebond intraday](studies/previous-day-ibs/results/2026-10-28-v1/RAPPORT_FINAL.md), après comparaison de publications, GitHub, auteurs et forums. ALL 2016–16/10/2026, mêmes coûts : **SPY -5,70 % / 463 trades ; QQQ 13,15 % / 463 trades**. [Interprétation](studies/previous-day-ibs/INTERPRETATION.md) : adaptation intraday écartée pour un nouveau bot, règles fixées avant PnL et variantes toutes publiées ; adaptation sans overnight distincte des systèmes IBS swing. 48 tests, 72 scénarios et audit séparé ; les deux simulations QQQ restent inchangées par cette étude.
 
 Recherche reprise le28octobre : [premier retest confirmé après cassure du range15minutes](studies/opening-range-retest/results/2026-10-28-v1/RAPPORT_FINAL.md), issue de [publications, dépôts primaires, blogs quantitatifs et forums](studies/opening-range-retest/RESEARCH.md). ALL2016–16/10/2026 après les mêmes frais : **SPY−6,16%/497trades, QQQ−5,50%/509trades**. QQQ B réutilisée+2,78%/138trades, mais A−8,06%. [Interprétation](studies/opening-range-retest/INTERPRETATION.md) : quatre critères prédéfinis sur cinq échouent ; les variantes gagnantes isolées ne sont pas promues.42tests,72scénarios et audits séparés ; aucun nouveau bot, simulations existantes inchangées par cette recherche.
 

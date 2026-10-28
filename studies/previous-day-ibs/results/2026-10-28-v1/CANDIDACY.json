@@ -1,0 +1,10 @@
+{
+  "criteria": {
+    "min100trades_ALL": true,
+    "six_references_positive": false,
+    "sans_top3_ALL_positive": false,
+    "doubled_friction_A_positive": false,
+    "block20_ALL_lower_positive": false
+  },
+  "passed": false
+}

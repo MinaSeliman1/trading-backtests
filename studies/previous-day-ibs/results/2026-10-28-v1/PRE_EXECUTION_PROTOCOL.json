@@ -1,0 +1,322 @@
+{
+  "utc": "2026-10-28T21:13:39.407186+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "executions": 72,
+  "symbols": [
+    "SPY",
+    "QQQ"
+  ],
+  "specifications": {
+    "reference": {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "threshold": 0.2,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.02": {
+      "mode": "long_only",
+      "slippage": 0.02,
+      "quality": "complete_days",
+      "threshold": 0.2,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.03": {
+      "mode": "long_only",
+      "slippage": 0.03,
+      "quality": "complete_days",
+      "threshold": 0.2,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.05": {
+      "mode": "long_only",
+      "slippage": 0.05,
+      "quality": "complete_days",
+      "threshold": 0.2,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "threshold_0.1": {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "threshold": 0.1,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "threshold_0.3": {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "threshold": 0.3,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "both": {
+      "mode": "both",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "threshold": 0.2,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "short_only": {
+      "mode": "short_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "threshold": 0.2,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "trend200": {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "threshold": 0.2,
+      "trend_filter": true,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "entry_5": {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "threshold": 0.2,
+      "trend_filter": false,
+      "entry_slot": 5,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "always_long": {
+      "mode": "always_long",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "threshold": 0.2,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "resolved_prefix": {
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "resolved_prefix",
+      "threshold": 0.2,
+      "trend_filter": false,
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "protocols": {
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "ea287c8857658fcf99186447eb717479d6dc49590acea9044e745998e35e00f1",
+      "text": "# IBS de la veille, rebond intraday — protocole avant PnL\n\n28 octobre 2026. Adaptation propre, distincte des stratégies IBS close-to-close ou swing publiées. L'utilisateur autorise recherche, choix de piste, calcul et publication dans ce dépôt ; exécution native dans une branche dédiée. Aucun changement des deux bots, du runtime, des clés ou des ordres.\n\n1. SPY et QQQ, comptes séparés de 100000 USD. NYSE RTH New York, demi-séances incluses. IBS de la dernière séance = (close-low)/(high-low), avec high/low sur toutes ses minutes RTH et close de sa dernière minute. Si range nul, IBS=0,5. Le jour courant ne participe jamais à ce signal.\n2. Principal LONG seulement si IBS précédent <=0,20. Aucun RSI, filtre de volume, gap ou tendance. Les 14 séances immédiatement précédentes doivent avoir des OHLC complets et cohérents, sans sauter une séance manquante. ADR14 = moyenne arithmétique de leurs high-low : ni ATR ni lissage Wilder. Pour construire le stop, ADR arrondi à1e-8 USD avant arrondi du niveau au centime ; tolérance arithmétique IBS1e-12 et tendance1e-10 USD. Ces tolérances empêchent un centime de différence dû aux flottants. Historique insuffisant => warmup connu ; trou dans historique requis => jour inconnu. Aucun apprentissage des paramètres sur A ou B.\n3. Après clôture de la première minute 09:30, prix de sizing = close09:30 ; entrée à l'open09:31. Cette minute de sizing seule doit être valide, pas d'exigence de confirmation directionnelle. Stop fixe = prix de sizing - ADR14 pour LONG, +ADR14 pour SHORT ; arrondi au centime extérieur. Stop non positif/risque nul => pas d'ordre. Quantité entière floor(min(capital/prixSizing,1%capital/distanceStop)). Cible de risque 1%, plafond causal 1x, hors frais ; un gap d'entrée peut dépasser les plafonds sans réduction rétroactive.\n4. Aucun TP, break-even ou trailing. Stop au mauvais open en cas de gap ; stop intrabar au niveau si franchi. Si entrée déjà au-delà du stop, entrée puis sortie immédiate au même open de référence, avec tous les frais. Sortie sinon au dernier open RTH 15:59 ou12:59, avant la mèche de cette minute. Une entrée au plus par séance, aucune position overnight.\n5. Commission 0,0035 USD/action/côté, minimum0,35 ; friction adverse 0,01 USD/action/côté ; emprunt SHORT 1% annuel/360, minimum un jour. Stress friction0,02/0,03/0,05. Ce modèle commun ne garantit pas le tarif/fill d'un courtier. Friction dans fills et attribution, déduite une seule fois.\n6. Principal complete_days : une fois signal connu, qualité OHLCV de toute la séance courante requise, information future pouvant biaiser. resolved_prefix retire ce filtre. Minute nécessaire inconnue avant entrée => jour inconnu. Trou actif => trade entier non résolu omis, coûts d'entrée connus exportés ; zéro de chaînage non assimilé à du cash observé. Trou après sortie ou EOD mèche ne gêne pas une sortie déjà résolue.\n7. Pas de dividende crédité puisque flat overnight. IBS normalisé sur une seule séance ; ADR14/SMA200 utilisent les prix bruts des séances passées. Aucun split renvoyé pour SPY/QQQ dans la requête corporate actions archivée ; complétude du fournisseur non certifiée. Le signal ne touche pas de prix ex-dividende avant l'entrée, mais le choix de ne pas détenir la nuit exclut un morceau du mécanisme publié.\n8. DD aux frais d'entrée, closes minute entièrement détenus et sortie nette ; MAE/MFE aux minutes entièrement détenues et références de fill. Pas de reconstruction des ticks, ni des mèches après un fill dans une minute ambiguë.\n9. 12 variantes x 2 ETF x 3 périodes =72 comptes : reference ; cost_0.02/0.03/0.05 ; threshold_0.1/0.3 ; both ; short_only (IBS>=0,80) ; trend200 (close veille > SMA200 incluant veille, 200 séances consécutives complètes) ; entry_5 (sizing09:34, entrée09:35) ; always_long (sans filtre IBS, mêmes ADR/stop/sizing) ; resolved_prefix. Variantes SHORT symétriques ; seuils inclusifs. Tous publiés sans promotion du meilleur. always_long change fréquence/exposition et capital composé, donc pas une expérience causale isolant IBS.\n10. ALL2016-01-04–2026-10-16 ; A jusqu'au2024-04-30 ; B2024-05-01–2026-10-16. B est réutilisée après de nombreuses études : aucun nouveau OOS aveugle. Warmup utilise uniquement le cache disponible depuis2015-12-31, sans inventer un passé plus long. Comptes remis à100000 au début de chaque période, features préparées exclusivement avec le passé.\n11. Bootstrap descriptif3000 tirages, seed20261028, blocs circulaires5/20 séances et clusters annuels ; exclusions au zéro comptable, faible nombre de clusters et multiples essais antérieurs non corrigés. Gel SHA du code/tests/audit/rapport/protocole/dépendances et source avant premier PnL. Audit scalaire indépendant des features/signaux/fills/comptes, mais même source/chargeur.\n12. Présélection avant résultats : >=100 trades ALL sur chaque ETF ; références A/B/ALL toutes positives ; ALL sans3 meilleurs jours positif sur les deux ; A à friction doublée positive sur les deux ; borne basse IC95 moyenne quotidienne blocs20 ALL>0 sur les deux. Si échec, archiver cette adaptation sans nouveau bot. Si passage, seulement candidat historique à discuter, aucun lancement automatique. Corrections financières après PnL => nouvelle version immuable.\n"
+    },
+    "RESEARCH.md": {
+      "sha256": "c748e536be540577e4ab5628e5e2f541b0aeffb050002d542500f579fb4e4a91",
+      "text": "# Recherche Web, choix et limites — 28 octobre 2026\n\nRecherche large effectuée avant le nouveau PnL : publications universitaires, banques centrales, auteurs quantitatifs, GitHub/LEAN, TradingView, forums. Aucun code externe téléchargé exécuté. Le choix relève de l'agent dans le mandat de recherche ; aucune garantie de meilleure stratégie universelle.\n\n## Alternatives comparées\n\n- [Fed New York, disparition du drift nocturne, juillet2026](https://libertystreeteconomics.newyorkfed.org/2026/07/the-disappearing-overnight-drift/) : le créneau2–3h historiquement documenté s'affaiblit après2021. N'est pas retenu ; notre cache RTH n'offre pas ce créneau.\n- [Fed New York, drift nocturne,2021](https://libertystreeteconomics.newyorkfed.org/2021/05/the-overnight-drift-in-us-equity-returns/) : mécanisme de liquidité et retournement d'ouverture ; pas une recette directement transposable aux ETF RTH.\n- [QuantConnect, Dual Thrust conclusion primaire](https://github.com/QuantConnect/Tutorials/blob/master/04%20Strategy%20Library/05%20Dual%20Thrust%20Trading%20Algorithm/03%20Conclusion.html) : leur implémentation SPY publiée est négative. Famille de cassure déjà largement étudiée ici ; non retenue.\n- [Heston/Korajczyk/Sadka,2010](https://arxiv.org/abs/1005.3535) : continuation à la même demi-heure de jours antérieurs dans une coupe d'actions ; n'établit pas un avantage exploitable sur deux ETF après nos coûts.\n- [Gao et al., Market Intraday Momentum](https://profiles.wustl.edu/en/publications/market-intraday-momentum/) : famille déjà testée dans notre momentum de clôture, pas un nouveau choix.\n- [INFORMS, Factor Zoo](https://pubsonline.informs.org/doi/10.1287/mnsc.2023.01657) : prédicteurs transversaux nombreux hors de nos données ; ne pas inventer ces facteurs.\n- [Pairs cointegration, Brandes,2026](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7204658) : résumé primaire indique que SPY/QQQ peut avoir des niveaux corrélés sans spread stationnaire. Pas de sélection d'un spread après observation de notre PnL.\n\n## Piste retenue : IBS précédent\n\n- [Pagonidis, The IBS Effect, PDF primaire27pages](https://www.naaim.org/wp-content/uploads/2014/04/00V_Alexander_Pagonidis_The-IBS-Effect-Mean-Reversion-in-Equity-ETFs-1.pdf) : formule et hypothèse de retournement après clôture faible ; étudiée surtout en close-to-close. L'auteur avertit aussi des coûts et de la difficulté d'IBS seul. Nous n'importons aucun rendement publié et retirons volontairement l'overnight, différence matérielle.\n- [QuantConnect documentation IBS](https://www.quantconnect.com/docs/v2/writing-algorithms/indicators/supported-indicators/internal-bar-strength) et [implémentation LEAN primaire](https://github.com/QuantConnect/Lean/blob/master/Indicators/InternalBarStrength.cs) : définition reproductible et valeur0,5 si range nul ; aucune preuve de profit en soi.\n- [Pandey/Joshi,2023, résumé arXiv](https://arxiv.org/abs/2306.12434) : étude d'un panier de pays, contexte distinct de notre paire d'ETF et de nos exécutions.\n- [Cesar Alvarez,2022](https://alvarezquanttrading.com/blog/internal-bar-strength-for-mean-reversion/) : test d'IBS comme filtre de retour à la moyenne, non comme notre stratégie ; son commentaire souligne la difficulté d'IBS isolé. Aucun RSI repris.\n- [Auteur TradingView Algotradekit](https://www.tradingview.com/script/C6uAEwxB-IBS-Internal-Bar-Strength-Trading-Strategy-for-SPY-and-NDQ/) : système daily avec filtre de tendance et paramètres annoncés optimisés ; source d'une sensibilité seulement, pas paramètres prétendument validés chez nous.\n- [Auteur Alpha Algo Research,2026](https://algotr.substack.com/p/from-the-lab-what-happens-when-ibs) : partie publique décrit une autre adaptation intraday sur RTY15min, logique complète payante. Elle n'est ni reconstituée ni revendiquée comme reproduite.\n- [Discussion originale Reddit mars2026](https://www.reddit.com/r/algotrading/comments/1rjvxjy/found_a_simple_mean_reversion_setup_with_70_win/) et [témoignage QQQ décembre2025](https://www.reddit.com/r/Trading/comments/1pfvx83/tested_the_ibs_trading_system_no_not_irritable/) : pistes swing et frais/exécution insuffisamment établis. Leurs performances ne sont pas des preuves. Les republications Reddit ne comptent pas comme réplications indépendantes.\n- [Forum X-Trader,2018](https://www.x-trader.net/foro/viewtopic.php?t=19787) : discussion d'une règle IBS publique, contexte seulement.\n\nLecture : PDF NAAIM accessible, version qusma indisponible au fetch ; abstracts suffisants seulement là où explicitement indiqué. Sources externes non autoritaires sur nos résultats ; protocole propre dans PROTOCOL_EXECUTION.md. La partie intraday du mécanisme peut être plus faible que la partie overnight : c'est précisément la question testée.\n"
+    }
+  },
+  "code_sha256": {
+    "audit/bars.py": "a6ab06b55f117138b3af4cc6a458bfdd8139a27aa8a33dd641746507f8fb62d7",
+    "audit/independent.py": "a4dc1c09c3bf6bd754e297cb228bdf90a703629d94b57ef710beee4b18c4bf8a",
+    "audit/matrix.py": "67a12413d8b389aa5eb253b28cc4dd321533aa87c22284a77cdfcbbf72b02213",
+    "ibs/__init__.py": "ac709b974aef0e6e913db2dd64b72213c3462387d97ceb2a22ec778bef8971b0",
+    "ibs/data.py": "8903d073c85c0bd864285449ea94f3f111412d59b0448096bbf6256d53787424",
+    "ibs/engine.py": "d524a9e1a3b70ab89a6cc56ec62b36d439977c1a3a17e00cc8abcb3ea03d08e0",
+    "requirements-lock.txt": "000ee07f22f19efaca0b666e79a92c33065b402d6814160f919b1494215a60d3",
+    "scripts/report.py": "f0235251d9807f795ddaba75f95b2ef0e90661aeb953b219df42701f8c760da3",
+    "scripts/run_study.py": "32ebd8cd7c8ff75ba4709db774e4d3edf81ee76a149d4b6a40d03f3052aa0163",
+    "scripts/verify_delivery.py": "a59d45e01f95f65a4e9a837600993d7b690ca7da9520db84103f49dff3ea3de0",
+    "tests/test_audit.py": "f7c7ef7208fd306d1284f093a9f2900451731a3000d243a65559738fc4db3192",
+    "tests/test_engine.py": "985b31e676b18687ef6ecd0b970eb1f9256796c9bd7b6993e722e8afce974554",
+    "tests/test_matrix.py": "f08fceeede245d10bf676125a71f29deb26691b02ced6434e3e4af56a7b6d138"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/closing_momentum/__init__.py": "d3313c9b87d9c7710f4934e59a46bb5870de7a736a5905137bdfd21372f77a07",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/closing-momentum/closing_momentum/engine.py": "8a59839154e9e1f048f053ed2e8b9f288bfc8ba0e34ab99326f2ac2f19709f49",
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/intraday-momentum-noise-area/noise_area/__init__.py": "bade9dd944a6b2d0ed267f6290bad7bcb78082f4040cb92066b29fb66bba624a",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "studies/intraday-momentum-noise-area/noise_area/engine.py": "64a49a9575d7badc8921c5c2c34bbe650d0f47e7fab0d6b45f3700f6501e1f76",
+    "studies/intraday-momentum-noise-area/noise_area/features.py": "ecab630d5f850c4def089739c9a13b7acd88de1361527483ff39f0f6a6765664",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/opening-range-5m/orb/__init__.py": "4aa1cc8c56b8834f8846ba260770cd70fe5af1f71721e746792abca89058b878",
+    "studies/opening-range-5m/orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2",
+    "studies/opening-range-5m/orb/engine.py": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810"
+  },
+  "python": "3.14.6",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "exchange_calendars": "4.13.2",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  },
+  "note": "Frozen before first market PnL; conditional coverage; reused B; no bot or claim of blind OOS."
+}
