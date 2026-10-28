@@ -1,0 +1,4 @@
+Parent suite: 42 passed in33.09s.
+Independent review suite:42passed in24.79s.
+Report smoke:SYNTHETIC ONLY,72rows,4figures, no market PnL.
+Regression matrix:5expectedredfailures beforeimplementation;7strictJSONfixture failures fixed beforefreeze by actual writer.

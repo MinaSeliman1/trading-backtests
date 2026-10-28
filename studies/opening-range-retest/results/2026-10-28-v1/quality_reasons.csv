@@ -1,0 +1,7 @@
+symbol,period,retest_failed,retest_expired,eligible,no_breakout,entry_cutoff,unknown_range,excluded_incomplete_day,unknown_signal
+SPY,ALL,1514,621,497,61,15,3.0,1.0,1.0
+SPY,A,1175,475,371,58,11,3.0,1.0,1.0
+SPY,B,339,146,126,3,4,,,
+QQQ,ALL,1506,589,509,78,27,3.0,,1.0
+QQQ,A,1166,461,371,70,23,3.0,,1.0
+QQQ,B,340,128,138,8,4,,,

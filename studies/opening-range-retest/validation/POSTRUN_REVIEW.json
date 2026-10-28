@@ -1,0 +1,268 @@
+{
+  "status": "passed",
+  "checks": 15187,
+  "errors": [],
+  "code_files": 12,
+  "dependencies": 12,
+  "frozen_utc": "2026-10-28T19:28:27.306570+00:00",
+  "bootstrap": [
+    {
+      "label": "SPY_ALL_reference",
+      "block20": [
+        -5.8949560690759786e-05,
+        1.1049881339378184e-05
+      ],
+      "annual_cluster": [
+        -3.4324062618987066,
+        0.6451998652483836
+      ]
+    },
+    {
+      "label": "SPY_A_reference",
+      "block20": [
+        -6.405611685001401e-05,
+        1.471725126534622e-05
+      ],
+      "annual_cluster": [
+        -4.066179270548939,
+        0.7260809112374786
+      ]
+    },
+    {
+      "label": "SPY_B_reference",
+      "block20": [
+        -8.375343026477156e-05,
+        4.027673076685445e-05
+      ],
+      "annual_cluster": [
+        -4.702627493538751,
+        2.3007323985907195
+      ]
+    },
+    {
+      "label": "QQQ_ALL_reference",
+      "block20": [
+        -6.651405568943673e-05,
+        2.7448518392486e-05
+      ],
+      "annual_cluster": [
+        -2.9648096263437558,
+        0.98608143019511
+      ]
+    },
+    {
+      "label": "QQQ_A_reference",
+      "block20": [
+        -9.101909264026734e-05,
+        1.399915332208312e-05
+      ],
+      "annual_cluster": [
+        -3.9599613964593012,
+        -0.4719655254855791
+      ]
+    },
+    {
+      "label": "QQQ_B_reference",
+      "block20": [
+        -5.4623478877852996e-05,
+        0.00015201728913284224
+      ],
+      "annual_cluster": [
+        -0.576491038528964,
+        4.2929817567946635
+      ]
+    }
+  ],
+  "reference": [
+    {
+      "symbol": "SPY",
+      "period": "ALL",
+      "trades": 497,
+      "total_return_pct": -6.155966557625314,
+      "net_pnl": -6155.966557625407,
+      "data_excluded_sessions": 5,
+      "regular_time_exposure_upper_pct": 1.227366284418898
+    },
+    {
+      "symbol": "SPY",
+      "period": "A",
+      "trades": 371,
+      "total_return_pct": -4.954612764892275,
+      "net_pnl": -4954.612764892363,
+      "data_excluded_sessions": 5,
+      "regular_time_exposure_upper_pct": 1.122367532387794
+    },
+    {
+      "symbol": "SPY",
+      "period": "B",
+      "trades": 126,
+      "total_return_pct": -1.262083281255244,
+      "net_pnl": -1262.0832812552496,
+      "data_excluded_sessions": 0,
+      "regular_time_exposure_upper_pct": 1.5837292656497457
+    },
+    {
+      "symbol": "QQQ",
+      "period": "ALL",
+      "trades": 509,
+      "total_return_pct": -5.5023440104892245,
+      "net_pnl": -5502.3440104892525,
+      "data_excluded_sessions": 4,
+      "regular_time_exposure_upper_pct": 1.5677849548037068
+    },
+    {
+      "symbol": "QQQ",
+      "period": "A",
+      "trades": 371,
+      "total_return_pct": -8.05922654184249,
+      "net_pnl": -8059.226541842552,
+      "data_excluded_sessions": 4,
+      "regular_time_exposure_upper_pct": 1.3711549088229875
+    },
+    {
+      "symbol": "QQQ",
+      "period": "B",
+      "trades": 138,
+      "total_return_pct": 2.7805943336672856,
+      "net_pnl": 2780.594333667234,
+      "data_excluded_sessions": 0,
+      "regular_time_exposure_upper_pct": 2.235142118863049
+    }
+  ],
+  "criteria": {
+    "min100trades_ALL": true,
+    "six_references_positive": false,
+    "sans_top3_ALL_positive": false,
+    "doubled_friction_A_positive": false,
+    "block20_ALL_lower_positive": false
+  },
+  "independent_review_scope": "CSV-only accounting/statistics/report tables/seeded uncertainty, current and frozen code/dependency snapshots; no strategy rerun or market source loader",
+  "reviewer_comparison_note": "Initial annual-bucket comparison treated CSV-inferred integer years as strings; normalized by reading bucket as str and independently confirmed every annual year key. No study output changed.",
+  "coverage": [
+    {
+      "symbol": "SPY",
+      "reasons": {
+        "retest_failed": 1514,
+        "retest_expired": 621,
+        "eligible": 497,
+        "no_breakout": 61,
+        "entry_cutoff": 15,
+        "unknown_range": 3,
+        "excluded_incomplete_day": 1,
+        "unknown_signal": 1
+      },
+      "unresolved_total_all_variants": 0
+    },
+    {
+      "symbol": "QQQ",
+      "reasons": {
+        "retest_failed": 1506,
+        "retest_expired": 589,
+        "eligible": 509,
+        "no_breakout": 78,
+        "entry_cutoff": 27,
+        "unknown_range": 3,
+        "unknown_signal": 1
+      },
+      "unresolved_total_all_variants": 0
+    }
+  ],
+  "comparators": [
+    {
+      "symbol": "SPY",
+      "variant": "reference",
+      "trades": 497,
+      "net_pct": -6.155966557625314,
+      "exposure_pct": 1.227366284418898,
+      "mean_holding_minutes": 26.036217303822937,
+      "mean_leverage": 0.9971015511019692,
+      "max_risk_pct": 0.9944050626690396
+    },
+    {
+      "symbol": "SPY",
+      "variant": "long_only",
+      "trades": 279,
+      "net_pct": -4.419922599998483,
+      "exposure_pct": 0.7774900644035322,
+      "mean_holding_minutes": 29.379928315412187,
+      "mean_leverage": 0.9967441990679804,
+      "max_risk_pct": 0.995896557738682
+    },
+    {
+      "symbol": "SPY",
+      "variant": "short_only",
+      "trades": 218,
+      "net_pct": -1.8195336320517508,
+      "exposure_pct": 0.4498762200153658,
+      "mean_holding_minutes": 21.756880733944957,
+      "mean_leverage": 0.9978915050667768,
+      "max_risk_pct": 0.6906842697508109
+    },
+    {
+      "symbol": "SPY",
+      "variant": "no_retest",
+      "trades": 2644,
+      "net_pct": -29.34639662729427,
+      "exposure_pct": 11.52548160373332,
+      "mean_holding_minutes": 45.95763993948563,
+      "mean_leverage": 0.9971661238076654,
+      "max_risk_pct": 1.0002520621206787
+    },
+    {
+      "symbol": "QQQ",
+      "variant": "reference",
+      "trades": 509,
+      "net_pct": -5.5023440104892245,
+      "exposure_pct": 1.5677849548037068,
+      "mean_holding_minutes": 32.47347740667976,
+      "mean_leverage": 0.99824147954386,
+      "max_risk_pct": 0.8192507843285535
+    },
+    {
+      "symbol": "QQQ",
+      "variant": "long_only",
+      "trades": 273,
+      "net_pct": -9.642329499998723,
+      "exposure_pct": 0.9404433315311728,
+      "mean_holding_minutes": 36.31868131868132,
+      "mean_leverage": 0.9982347569801064,
+      "max_risk_pct": 0.818254797290735
+    },
+    {
+      "symbol": "QQQ",
+      "variant": "short_only",
+      "trades": 236,
+      "net_pct": 4.584572446159618,
+      "exposure_pct": 0.6273416232725341,
+      "mean_holding_minutes": 28.02542372881356,
+      "mean_leverage": 0.9984199912772684,
+      "max_risk_pct": 0.6885418914391322
+    },
+    {
+      "symbol": "QQQ",
+      "variant": "no_retest",
+      "trades": 2629,
+      "net_pct": -19.84161299474184,
+      "exposure_pct": 12.969865976154567,
+      "mean_holding_minutes": 52.01217192848992,
+      "mean_leverage": 0.9975998107189435,
+      "max_risk_pct": 1.004824422330627
+    }
+  ],
+  "figures_visually_reviewed": [
+    "equity_drawdown.png",
+    "cost_sensitivity.png",
+    "rule_sensitivity.png",
+    "annual_returns.png"
+  ],
+  "independent_array_audit": {
+    "status": "passed",
+    "scenario_count": 72,
+    "trade_rows": 30612,
+    "daily_rows": 130224,
+    "checks": 3032271,
+    "failures": [],
+    "run_id": "results/2026-10-28-v1"
+  },
+  "audit_bound_export_hashes_verified": 290
+}

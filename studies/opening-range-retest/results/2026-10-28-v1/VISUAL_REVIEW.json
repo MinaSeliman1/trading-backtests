@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-28T19:37:19.987424+00:00",
+  "reviewer": "Parent visual inspection of all four generated PNGs, plus independent reviewer",
+  "files": {
+    "annual_returns.png": "e31f1a802b39dfae4fb3f1ce07b5a5068e1e8f821b5445c1877ff76ef58afc68",
+    "cost_sensitivity.png": "d4d64e06e4e014c61c2607041ef5f92c505bf94887d75518cdf9e8d8a388706e",
+    "equity_drawdown.png": "5d473f13c76ee6ebafc8d7c93f3e3135c2f903550dd402a5a079b30c54d50a5d",
+    "rule_sensitivity.png": "f26169d64d9a8221a767e7323375fca0ac59c17278946dcfcbc17aa3a38bdb78"
+  },
+  "checks": [
+    "Numeric axes/units/zero/legends and labels legible",
+    "Equity endpoints and signed comparisons agree with exports",
+    "No clipping observed",
+    "Cost and rule panels have independent vertical ranges",
+    "Daily plotted DD is distinct from minute/event marked DD",
+    "2026 is partial through16October"
+  ]
+}

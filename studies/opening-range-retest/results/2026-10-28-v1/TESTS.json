@@ -1,0 +1,10 @@
+{
+  "recorded_utc": "2026-10-28T19:27:57.351124+00:00",
+  "exit_code": 0,
+  "passed": 42,
+  "seconds": 33.09,
+  "command": "python -m pytest studies/opening-range-retest/tests -q --basetemp studies/opening-range-retest/.test_tmp_release_28 --tb=short",
+  "synthetic_report_scenarios": 72,
+  "synthetic_figures": 4,
+  "market_pnl_observed": false
+}

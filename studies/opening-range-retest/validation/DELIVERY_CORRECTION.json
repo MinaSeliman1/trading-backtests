@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-28T19:38:47.417668+00:00",
+  "scope": "Delivery verification only, after PnL; no numerical or execution correction",
+  "original": "scripts/verify_delivery.py",
+  "original_sha256": "4ac55319e80f3c4b334078f596558b0c74877d335d4f17e0ff27b4647d97e9a3",
+  "fixed": "scripts/verify_delivery_v2.py",
+  "fixed_sha256": "2ffd5a2c648fe8e71ae4de9e78e0bb67457bcd9b7654e8fe01e1ed589822b5bd",
+  "change": "Remove function-local import sys inside --raw branch; module sys already imported. The local binding caused UnboundLocalError before matrix verification.",
+  "original_frozen_files_modified": false,
+  "new_market_execution": false,
+  "financial_results_changed": false
+}
