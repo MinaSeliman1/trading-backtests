@@ -39,7 +39,7 @@ def collect(runtime,now=None):
         realized_net_pnl=a['balance']-a['initial_equity'],closed_trades=len(trades),fully_observed_sessions=len(good),prospective_closed_trades=len(prospective),
         prospective_net_pnl=sum(t['net_pnl'] for t in prospective),closed_commission=sum(t['commission'] for t in trades),closed_friction=sum(t['friction_cost'] for t in trades),
         closed_borrow=sum(t['borrow_fee'] for t in trades),open_day=a['open_day'],observed_drawdown_pct=a['max_drawdown_pct'],coverage_gaps=gaps,
-        unresolved_days=[d['day'] for d in days if d['phase']=='unresolved'],engine_state=status.get('state'),engine_age_seconds=age,alerts=alerts,stage=stage,
+        unresolved_days=[d['day'] for d in days if d['phase']=='unresolved'],engine_state=status.get('state'),engine_error_type=status.get('error_type'),engine_network_reason=status.get('network_reason'),engine_age_seconds=age,alerts=alerts,stage=stage,
         limitation='Delayed local shadow fills, no broker orders. Historical replay does not count as prospective evidence.')
 
 

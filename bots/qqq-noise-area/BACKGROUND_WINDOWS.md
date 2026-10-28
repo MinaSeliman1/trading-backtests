@@ -90,3 +90,8 @@ Le suivi Codex est distinct de la tâche Windows : le bot fonctionne sans Codex 
 [SetThreadExecutionState et ses limites face à la veille explicite](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate), [GetSystemPowerStatus](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getsystempowerstatus). Consultés le 23 octobre 2026.
 
 [WakeToRun et sortie de veille/hibernation](https://learn.microsoft.com/en-us/windows/win32/taskschd/tasksettings-waketorun), [powercfg et réglage AC distinct du DC](https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options). Consultés le26octobre2026.
+
+
+## Contrôle commun du28octobre2026
+
+Le même réveil09:10 contrôle maintenant les **deux** tâches fixes Noise Area et ORB, indépendamment. `wake_status.json` conserve un résultat `bots.noise` et `bots.orb` ; STOP/désactivation restent propres à chacun. Le contrôle valide aussi le dossier de travail et ne redémarre pas un moteur actif. Le passage automatique du28à09:10 a réussi. [Incident, correction et limites matérielles](../../docs/operations/2026-10-28-qqq-startup-and-coverage.md).

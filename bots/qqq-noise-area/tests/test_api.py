@@ -60,3 +60,20 @@ def test_data_pagination_raw_feed_and_exclusive_end():
 def test_error_text_never_contains_provider_body_or_credentials():
     e=APIError(403,'GET','/v2/account')
     assert str(e)=='Alpaca HTTP 403 GET /v2/account'
+
+
+@pytest.mark.parametrize('reason,code',[
+    ('dns','dns'),('tls','tls'),('timeout','timeout'),('refused','connection_refused'),('opaque','network_unknown')])
+def test_network_failure_keeps_safe_reason_without_exception_text(reason,code):
+    import socket,ssl
+    from urllib.error import URLError
+    errors={'dns':socket.gaierror(11001,'DO-NOT-LOG-SECRET'),
+            'tls':ssl.SSLError('DO-NOT-LOG-SECRET'),'timeout':TimeoutError('DO-NOT-LOG-SECRET'),
+            'refused':ConnectionRefusedError('DO-NOT-LOG-SECRET'),'opaque':'DO-NOT-LOG-SECRET'}
+    class Opener:
+        def open(self,*args,**kwargs):raise URLError(errors[reason])
+    t=Transport('DO-NOT-LOG-KEY','DO-NOT-LOG-SECRET');t._opener=Opener()
+    with pytest.raises(ConnectionError) as captured:t.request(DATA,'/v2/stocks/QQQ/bars')
+    assert captured.value.reason_code==code
+    assert 'DO-NOT-LOG' not in str(captured.value)
+    assert captured.value.__suppress_context__

@@ -1,0 +1,192 @@
+{
+  "utc": "2026-10-28T13:25:12.481617+00:00",
+  "mode": "shadow",
+  "feed": "sip",
+  "data_delay_minutes": 16,
+  "observations": [
+    {
+      "local": "2026-10-26 21:07:45 America/Toronto",
+      "source": "Kernel-Power42",
+      "event": "Button or Lid sleep; bot power logs on_battery"
+    },
+    {
+      "local": "2026-10-27 00:08:17 America/Toronto",
+      "source": "Kernel-Power42",
+      "event": "Hibernate from Sleep - Fixed Timeout"
+    },
+    {
+      "local": "2026-10-28 07:57:19 America/Toronto",
+      "source": "Kernel-Power41/EventLog6008",
+      "event": "Unclean restart; no recorded market-session resume on27Oct"
+    },
+    {
+      "local": "2026-10-28 08:11:32 America/Toronto",
+      "source": "ORB background.log",
+      "event": "First startup SIP probe ConnectionError; low-level reason discarded by old transport"
+    },
+    {
+      "local": "2026-10-28 08:12:42 America/Toronto",
+      "source": "ORB background.log",
+      "event": "Existing retry recovered without intervention"
+    }
+  ],
+  "before": {
+    "utc": "2026-10-28T12:44:42.771219+00:00",
+    "bots": {
+      "qqq-noise-area": {
+        "mode": "shadow",
+        "feed": "sip",
+        "balance": 98041.42350000002,
+        "position": 0,
+        "account_sha256": "fb8fec1f7d4243b93e4231b566f5f2f5472740724c54c6eb736451322cb411e9",
+        "configuration_sha256": "2e334d7c0f4e0ab52424d7279b905b7fa36ff8444b316b596a389f4ffa3d9d11",
+        "operator_stop": false,
+        "paused": false,
+        "paused_day": null,
+        "pending": 0,
+        "stored_days": 45,
+        "trade_rows": 14,
+        "first_session": "2026-10-21",
+        "baseline_sha256": "3aaa45a665e1045a16cb1152bd2bcaeaa7304ba6e42eb58a0c54da18ee615bbc",
+        "engine_state": "waiting_for_regular_session",
+        "engine_utc": "2026-10-28T12:44:41.880603+00:00",
+        "pid": null
+      },
+      "qqq-orb": {
+        "mode": "shadow",
+        "feed": "sip",
+        "balance": 100000.0,
+        "position": null,
+        "account_sha256": "22835594ecd135778b758bfc44e145e70322f9b240a7d5d3f1038007a6c0ce1f",
+        "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2",
+        "operator_stop": false,
+        "paused": false,
+        "paused_day": null,
+        "pending": 0,
+        "stored_days": 1,
+        "trade_rows": 0,
+        "first_session": "2026-10-26",
+        "engine_state": "waiting_opening",
+        "engine_utc": "2026-10-28 12:44:42.070638+00:00",
+        "pid": 17720
+      }
+    }
+  },
+  "after": {
+    "utc": "2026-10-28T13:23:06.616566+00:00",
+    "bots": {
+      "qqq-noise-area": {
+        "mode": "shadow",
+        "feed": "sip",
+        "balance": 98041.42350000002,
+        "position": 0,
+        "account_sha256": "fb8fec1f7d4243b93e4231b566f5f2f5472740724c54c6eb736451322cb411e9",
+        "configuration_sha256": "2e334d7c0f4e0ab52424d7279b905b7fa36ff8444b316b596a389f4ffa3d9d11",
+        "operator_stop": false,
+        "paused": false,
+        "paused_day": null,
+        "pending": 0,
+        "stored_days": 45,
+        "trade_rows": 14,
+        "first_session": "2026-10-21",
+        "baseline_sha256": "3aaa45a665e1045a16cb1152bd2bcaeaa7304ba6e42eb58a0c54da18ee615bbc",
+        "engine_state": "waiting_for_regular_session",
+        "engine_utc": "2026-10-28T13:23:02.312054+00:00",
+        "pid": null
+      },
+      "qqq-orb": {
+        "mode": "shadow",
+        "feed": "sip",
+        "balance": 100000.0,
+        "position": null,
+        "account_sha256": "22835594ecd135778b758bfc44e145e70322f9b240a7d5d3f1038007a6c0ce1f",
+        "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2",
+        "operator_stop": false,
+        "paused": false,
+        "paused_day": null,
+        "pending": 0,
+        "stored_days": 1,
+        "trade_rows": 0,
+        "first_session": "2026-10-26",
+        "engine_state": "waiting_opening",
+        "engine_utc": "2026-10-28 13:23:03.949408+00:00",
+        "pid": 15468
+      }
+    }
+  },
+  "preserved": {
+    "qqq-noise-area": true,
+    "qqq-orb": true
+  },
+  "noise_baseline_preserved": true,
+  "reloads": [
+    {
+      "bot": "qqq-orb",
+      "utc": "2026-10-28T12:47:38.7270886Z",
+      "mode": "shadow",
+      "feed": "sip",
+      "pre_open": true,
+      "flat": true,
+      "graceful": true,
+      "start_requested": true,
+      "ledger_reset": false,
+      "broker_order": false
+    },
+    {
+      "bot": "qqq-noise-area",
+      "utc": "2026-10-28T12:48:02.7102572Z",
+      "mode": "shadow",
+      "feed": "sip",
+      "pre_open": true,
+      "flat": true,
+      "graceful": true,
+      "start_requested": true,
+      "ledger_reset": false,
+      "broker_order": false
+    }
+  ],
+  "wake_check_0910": {
+    "state": "already_running",
+    "mode": "shadow",
+    "feed": "sip",
+    "utc": "2026-10-28T13:10:08.1158614Z",
+    "bots": {
+      "noise": {
+        "state": "already_running",
+        "task_name": "TradingBacktests-QQQ-NoiseArea-Simulation",
+        "mode": "shadow",
+        "feed": "sip"
+      },
+      "orb": {
+        "state": "already_running",
+        "task_name": "TradingBacktests-QQQ-ORB-Simulation",
+        "mode": "shadow",
+        "feed": "sip"
+      }
+    }
+  },
+  "ac_wake_timer": 1,
+  "dc_wake_timer": 0,
+  "lid_and_battery_policy_changed": false,
+  "tests": {
+    "noise_full": 119,
+    "orb_full": 30,
+    "independent_noise_focused": 29,
+    "independent_orb_focused": 6,
+    "red_before_fix": 15
+  },
+  "independent_review": "No blockers or regressions in seven-file patch; no credentials/API/live-task/runtime mutation by reviewer.",
+  "unchanged_strategy_sha256": {
+    "bots/qqq-noise-area/qqq_paper/strategy.py": "e9c78635edfd73dccfa51bd10f64df2bda416cb0c6f44e1301d62824207fa6bc",
+    "bots/qqq-noise-area/qqq_paper/runner.py": "545b07b913e7ae1b8c82014c72fb98d58cb30297c64ce49ec53199cb07ca3320",
+    "bots/qqq-noise-area/qqq_paper/ledger.py": "5fd29078d545edb07c95756fee9c77d0157f45bd5a56ede3c3b20dddf0481e8e",
+    "bots/qqq-orb/orb_shadow/core.py": "d92a80adda5df1c34326cacef67e454cc3d8582fe9385e001de899df96ba2e5f",
+    "bots/qqq-orb/orb_shadow/ledger.py": "5d40dcf1ca579cbb4aa80f9b9062ec5c7e17d127f558c553968ed2ec05b6154e"
+  },
+  "limitations": [
+    "Historical network cause below ConnectionError cannot be recovered; no claim DNS/TLS specifically caused that incident.",
+    "Windows logs establish unavailable PC coverage; exact hardware reason for unclean restart is not established.",
+    "Successful awake09:10 task does not test physical wake from hibernation or guarantee future session coverage.",
+    "No keys or identifiers exported; no journal initialization or retrospective requalification."
+  ]
+}

@@ -41,3 +41,8 @@ python scripts/verify_parity.py
 Le monitor est en lecture seule, sans clés ni API. Il sépare le compte global, les séances entièrement observées, les trades correspondants et les lacunes. Revue opérationnelle à20séances qualifiées ; revue descriptive à60séances et50trades qualifiés fermés. Ces seuils ne prouvent pas une rentabilité et n'activent jamais le réel. Le suivi automatique Codex de Noise Area reste distinct ; ce module fournit le bilan local ORB.
 
 La parité historique vérifie l'intégration avec le moteur figé sur les journées complètes du backtest ; elle réutilise ses fonctions de sortie et n'est ni un audit indépendant supplémentaire ni une observation prospective. Les audits indépendants du moteur historique restent publiés dans l'étude ORB. Les preuves d'activation et de parité sont sous `validation/`.
+
+
+## Reprise et contrôle matinal du28octobre2026
+
+Le réveil commun09:10Eastern vérifie désormais cette tâche en plus de Noise Area, conserve les moteurs actifs et respecte chaque STOP/désactivation. Le statut du probe distingue `checking_connection` et `startup_retry`, avec code réseau sans clé ; reprise existante toutes les60secondes.119tests Noise Area et30tests ORB passent. [Diagnostic du27/28, rechargement et preuves](../../docs/operations/2026-10-28-qqq-startup-and-coverage.md). Aucun changement des règles, frais, capital ou journal ; seule la simulation shadow reste active.

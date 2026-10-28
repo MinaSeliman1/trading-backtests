@@ -24,7 +24,7 @@ function Get-ScheduledTask {
     $exe=if ('CASE' -eq 'foreign') {'C:\\fake\\foreign.exe'} else {'C:\\fake\\pythonw.exe'}
     $arg='"'+(Join-Path $PSScriptRoot 'scripts/background_bootstrap.py')+'" --runtime "'+(Join-Path $PSScriptRoot 'runtime')+'"'
     if ('CASE' -eq 'foreign_args') {$arg+=' --mode paper'}
-    [pscustomobject]@{State=$state;Actions=@([pscustomobject]@{Execute=$exe;Arguments=$arg})}
+    [pscustomobject]@{State=$state;Actions=@([pscustomobject]@{Execute=$exe;Arguments=$arg;WorkingDirectory=$PSScriptRoot})}
 }
 function Start-ScheduledTask {$global:started++;Set-Content (Join-Path $PSScriptRoot 'start_count.txt') $global:started}
 function Enable-ScheduledTask {throw 'must never override disabled task'}
@@ -73,3 +73,54 @@ Write-Output 'installer-contract-pass'
 """.replace('BOUNDARY',boundary),encoding='utf-8-sig')
     p=subprocess.run(['powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',str(tmp_path/'exercise.ps1')],capture_output=True,text=True,timeout=20)
     assert p.returncode==0 and 'installer-contract-pass' in p.stdout,p.stdout+p.stderr
+
+
+@pytest.mark.skipif(os.name!='nt',reason='Windows wake checker')
+@pytest.mark.parametrize('case,noise_state,orb_state,count',[
+    ('both_running','already_running','already_running',0),
+    ('orb_ready','already_running','start_requested',1),
+    ('both_ready','start_requested','start_requested',2),
+    ('orb_stop','already_running','operator_stop',0),
+    ('orb_disabled','already_running','operator_disabled',0),
+    ('noise_stop','operator_stop','start_requested',1),
+    ('noise_foreign','error','start_requested',1),
+    ('orb_foreign','already_running','error',0),
+    ('orb_args','already_running','error',0),
+    ('orb_workdir','already_running','error',0)])
+def test_joint_wake_checks_each_bot_independently(tmp_path,case,noise_state,orb_state,count):
+    noise=tmp_path/'qqq-noise-area';orb=tmp_path/'qqq-orb'
+    for root in [noise,orb]:(root/'scripts').mkdir(parents=True);(root/'runtime/windows').mkdir(parents=True)
+    (orb/'scripts/background_bootstrap.py').write_text('# synthetic only')
+    shutil.copyfile(BOT/'wake-before-session.ps1',noise/'wake-before-session.ps1')
+    (noise/'windows-common.ps1').write_text("$ErrorActionPreference='Stop'\n$qqqTaskName='TEST-NOISE'\nfunction Get-QqqPython { 'C:\\Python314\\pythonw.exe' }",encoding='utf-8-sig')
+    if case=='noise_stop':(noise/'runtime/STOP_SHADOW.flag').touch()
+    if case=='orb_stop':(orb/'runtime/STOP_SHADOW.flag').touch()
+    (tmp_path/'exercise.ps1').write_text(r"""
+$global:started=@()
+function Get-ScheduledTask {
+ param($TaskName,$ErrorAction)
+ $orb=$TaskName -eq 'TradingBacktests-QQQ-ORB-Simulation'
+ $root=Join-Path $PSScriptRoot $(if($orb){'qqq-orb'}else{'qqq-noise-area'})
+ $state=if($orb -and 'CASE' -eq 'orb_disabled'){'Disabled'}elseif('CASE' -eq 'both_ready' -or ($orb -and 'CASE' -in @('orb_ready','noise_stop','noise_foreign'))){'Ready'}else{'Running'}
+ $exe=if(($orb -and 'CASE' -eq 'orb_foreign') -or (-not $orb -and 'CASE' -eq 'noise_foreign')){'C:\foreign.exe'}else{'C:\Python314\pythonw.exe'}
+ $arg='"'+(Join-Path $root 'scripts/background_bootstrap.py')+'" --runtime "'+(Join-Path $root 'runtime')+'"'
+ if($orb -and 'CASE' -eq 'orb_args'){$arg+=' --paper'}
+ $wd=if($orb -and 'CASE' -eq 'orb_workdir'){'C:\wrong'}else{$root}
+ [pscustomobject]@{State=$state;Actions=@([pscustomobject]@{Execute=$exe;Arguments=$arg;WorkingDirectory=$wd})}
+}
+function Start-ScheduledTask {param($TaskName,$ErrorAction);$global:started+=,$TaskName;$global:started | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $PSScriptRoot 'starts.json')}
+function Enable-ScheduledTask {throw 'must not override disabled task'}
+& (Join-Path $PSScriptRoot 'qqq-noise-area/wake-before-session.ps1')
+$global:started | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $PSScriptRoot 'starts.json')
+""".replace('CASE',case),encoding='utf-8-sig')
+    p=subprocess.run(['powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',str(tmp_path/'exercise.ps1')],capture_output=True,text=True,timeout=20)
+    status=json.loads((noise/'runtime/windows/wake_status.json').read_text(encoding='utf-8-sig'))
+    assert status['bots']['noise']['state']==noise_state,(p.stdout,p.stderr,status)
+    assert status['bots']['orb']['state']==orb_state,(p.stdout,p.stderr,status)
+    starts_path=tmp_path/'starts.json';text=starts_path.read_text(encoding='utf-8-sig').strip() if starts_path.exists() else ''
+    started=json.loads(text) if text else []
+    if isinstance(started,str):started=[started]
+    assert len(started)==count,(p.stdout,p.stderr,started)
+    assert not list(tmp_path.rglob('*.sqlite'))
+    assert (noise/'runtime/STOP_SHADOW.flag').exists()==(case=='noise_stop')
+    assert (orb/'runtime/STOP_SHADOW.flag').exists()==(case=='orb_stop')

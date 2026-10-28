@@ -1,6 +1,7 @@
 """API HTTP restreinte au compte PAPER et aux données QQQ."""
 import json
 import re
+import socket,ssl,errno
 from urllib.error import HTTPError,URLError
 from urllib.parse import urlencode,quote,urlparse
 from urllib.request import Request,build_opener,HTTPRedirectHandler
@@ -20,8 +21,28 @@ class APIError(Exception):
         super().__init__(f'Alpaca HTTP {status} {method} {path}')
 
 
+class DataConnectionError(ConnectionError):
+    """Safe classification only: no provider text, URL, headers or credentials."""
+    CODES=frozenset(('dns','tls','timeout','connection_refused','connection_reset','network_unreachable','redirect_refused','network_unknown'))
+    def __init__(self,reason_code):
+        self.reason_code=reason_code if reason_code in self.CODES else 'network_unknown'
+        super().__init__('Alpaca request incomplete: '+self.reason_code+'; reconcile before retry')
+
+
+def network_failure_code(error):
+    if isinstance(error,DataConnectionError):return error.reason_code
+    cause=error.reason if isinstance(error,URLError) else error
+    if isinstance(cause,socket.gaierror):return 'dns'
+    if isinstance(cause,ssl.SSLError):return 'tls'
+    if isinstance(cause,TimeoutError):return 'timeout'
+    if isinstance(cause,ConnectionRefusedError):return 'connection_refused'
+    if isinstance(cause,ConnectionResetError):return 'connection_reset'
+    if isinstance(cause,OSError) and (cause.errno in (errno.ENETUNREACH,errno.EHOSTUNREACH) or getattr(cause,'winerror',None) in (10051,10065)):return 'network_unreachable'
+    return 'network_unknown'
+
+
 class NoRedirect(HTTPRedirectHandler):
-    def redirect_request(self,*args,**kwargs):raise ConnectionError('Alpaca redirect refused')
+    def redirect_request(self,*args,**kwargs):raise DataConnectionError('redirect_refused')
 
 
 class Transport:
@@ -50,7 +71,7 @@ class Transport:
             with self._opener.open(Request(url,data=payload,headers=headers,method=method),timeout=15) as response:
                 raw=response.read();return json.loads(raw) if raw else None
         except HTTPError as error:raise APIError(error.code,method,path) from None
-        except (URLError,TimeoutError,OSError):raise ConnectionError('Alpaca request incomplete; reconcile before retry') from None
+        except (URLError,TimeoutError,OSError) as error:raise DataConnectionError(network_failure_code(error)) from None
 
 
 class PaperBroker:

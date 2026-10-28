@@ -5,7 +5,7 @@ from logging.handlers import RotatingFileHandler
 import argparse,json,logging,os,time
 from contextlib import nullcontext
 import pandas as pd
-from qqq_paper.alpaca import DataClient
+from qqq_paper.alpaca import DataClient,network_failure_code
 from qqq_paper.windows_vault import WindowsVault
 from qqq_paper.runtime import ProcessLock,session_for,write_status
 from qqq_paper.power import PowerGuard
@@ -66,7 +66,9 @@ def main(argv=None):
             while not stop.exists():
                 transport=None
                 try:
-                    key,secret=WindowsVault().load();transport=ReadOnlyTransport(key,secret);del key,secret;data=DataClient(transport);connected=probe(data)
+                    key,secret=WindowsVault().load();transport=ReadOnlyTransport(key,secret);del key,secret;data=DataClient(transport)
+                    write_status(root,state='checking_connection',mode='shadow',feed='sip',pid=os.getpid(),utc=str(utcnow()))
+                    connected=probe(data)
                     (root/'connection.json').write_text(json.dumps(connected,indent=2),encoding='utf-8')
                     if a.check:print(json.dumps(connected));return 0
                     with Ledger(root/'state.sqlite') as db:
@@ -78,12 +80,12 @@ def main(argv=None):
                             try:
                                 fields=cycle(db,data);acct=db.get_account();write_status(root,**fields,mode='shadow',feed='sip',delay_minutes=16,pid=os.getpid(),utc=str(utcnow()),balance=acct['balance'],marked_equity=acct['marked_equity'],open_day=acct['open_day'])
                             except Exception as error:
-                                write_status(root,state='error_no_new_entries',error_type=type(error).__name__,api_status=getattr(error,'status',None),mode='shadow',feed='sip',pid=os.getpid(),utc=str(utcnow()))
-                                log.error('Cycle stopped: %s; credential values omitted',type(error).__name__)
+                                write_status(root,state='error_no_new_entries',error_type=type(error).__name__,api_status=getattr(error,'status',None),network_reason=network_failure_code(error) if isinstance(error,(ConnectionError,TimeoutError)) else None,mode='shadow',feed='sip',pid=os.getpid(),utc=str(utcnow()))
+                                log.error('Cycle interrupted: %s; network_reason=%s; credential values omitted',type(error).__name__,network_failure_code(error) if isinstance(error,(ConnectionError,TimeoutError)) else None)
                             pause(stop,5)
                 except Exception as error:
-                    write_status(root,state='startup_retry',error_type=type(error).__name__,api_status=getattr(error,'status',None),mode='shadow',feed='sip',pid=os.getpid(),utc=str(utcnow()))
-                    log.error('Startup retry: %s; credential values omitted',type(error).__name__)
+                    write_status(root,state='startup_retry',error_type=type(error).__name__,api_status=getattr(error,'status',None),network_reason=network_failure_code(error) if isinstance(error,(ConnectionError,TimeoutError)) else None,mode='shadow',feed='sip',pid=os.getpid(),utc=str(utcnow()))
+                    log.error('Startup retry in 60s: %s; network_reason=%s; credential values omitted',type(error).__name__,network_failure_code(error) if isinstance(error,(ConnectionError,TimeoutError)) else None)
                     if a.check:return 1
                     pause(stop,60)
                 finally:
