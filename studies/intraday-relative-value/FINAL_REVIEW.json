@@ -1,0 +1,17 @@
+{
+  "status": "passed_with_disclosed_limits",
+  "financial_issues_remaining": 0,
+  "tests_observed": 41,
+  "source_hashes_checked": 10,
+  "dependency_hashes_checked": 12,
+  "audited_exports_checked": 212,
+  "figures_reviewed": 4,
+  "report_values_match": true,
+  "paired_legs_not_independent_accounts": true,
+  "scope_excludes": [
+    "future_profitability",
+    "second_feed",
+    "actual_broker_execution",
+    "bot_runtime_health"
+  ]
+}

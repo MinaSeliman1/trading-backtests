@@ -1,0 +1,71 @@
+{
+  "accessed_date": "2026-10-31",
+  "purpose": "Broad source screening; no claim of globally best strategy. Source selection before PnL, receipt compiled afterward. No external code executed or copied.",
+  "github_sources": [
+    {
+      "url": "https://github.com/clockkaya/kalman-filter/blob/master/README.md",
+      "blob_sha": "8d0f2bde986b0da100943d7b0f01d93f2c852182",
+      "status": "read",
+      "note": "Primary README, not audited profitability."
+    },
+    {
+      "url": "https://github.com/clockkaya/kalman-filter/blob/master/strategy.py",
+      "blob_sha": "e4e3e8d1f718205644f5b9d1572adc7e8bc882e9",
+      "status": "read",
+      "note": "Terminal code inspected only; our implementation uses a different model."
+    },
+    {
+      "url": "https://github.com/Pratikbhanuse/SPY_QQQ-pair-trading/blob/master/SPY_QQQ_pairtrading_quantopian",
+      "blob_sha": "fdfaf7afb292e4672d65176185e53023a18f2a7a",
+      "status": "read",
+      "note": "Primary code with sign/state inconsistencies noted in RESEARCH."
+    },
+    {
+      "url": "https://github.com/Pratikbhanuse/SPY_QQQ-pair-trading/blob/master/README.md",
+      "blob_sha": "eb3bd8d229163bfc04ee634ed3ab488faec8e85f",
+      "status": "read"
+    }
+  ],
+  "other_sources": [
+    {
+      "url": "https://exequtionanalytics.com/wp-content/uploads/2024/12/Pairs-Trading-An-Intraday-Investigation.pdf",
+      "status": "primary_pdf_read",
+      "note": "Different universe, short sample, cost limitations."
+    },
+    {
+      "url": "https://arxiv.org/abs/1411.5062",
+      "status": "primary_abstract_read",
+      "note": "Assumes reversion, does not prove it for these ETFs."
+    },
+    {
+      "url": "https://arxiv.org/abs/1103.4934",
+      "status": "primary_abstract_read",
+      "note": "Motivates no-trade cost buffer, not our exact rule."
+    },
+    {
+      "url": "https://zenodo.org/records/22059837",
+      "status": "primary_preprint_description_read",
+      "note": "Daily ETF negative result and testing cautions, not replicated here."
+    },
+    {
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3092739",
+      "status": "search_abstract_only_fetch_403",
+      "note": "Detailed rules not reconstructed."
+    },
+    {
+      "url": "https://www.reddit.com/r/algotrading/comments/1sm6y5g/backtested_intraday_mean_reversion/",
+      "status": "original_forum_read",
+      "note": "Separate long-only futures, not pairs; results not audited."
+    },
+    {
+      "url": "https://github.com/nyyyaomi/intraday-momentum-research",
+      "status": "search_result_only",
+      "note": "Family already studied here; no code audit or execution."
+    },
+    {
+      "url": "https://getalphacharts.com/backtest/bollinger-bands-strategy",
+      "status": "search_result_only",
+      "note": "Daily method, not evidence for this paired intraday rule."
+    }
+  ]
+}

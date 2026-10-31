@@ -1,0 +1,19 @@
+{
+  "repetitions": 3000,
+  "seed": 20261031,
+  "blocks": {
+    "5": {
+      "conditional_daily_mean_ci95": [
+        -8.286445248260768e-05,
+        -4.1833016649256956e-05
+      ]
+    },
+    "20": {
+      "conditional_daily_mean_ci95": [
+        -8.34350908740414e-05,
+        -4.161682643565027e-05
+      ]
+    }
+  },
+  "caveat": "Conditional bookkeeping returns, unknown days at zero; reused history, no correction across prior hypotheses. Not a guaranteed edge."
+}

@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "descriptive_numeric_checks": 378,
+  "scenarios": 42,
+  "bootstrap_intervals": 6,
+  "reference_pair_dates": 539,
+  "scope": "Independent scalar moments/drawdown duration/calendar extremes and prefix-sum circular bootstrap; no financial/statistics helper calls. Same exported returns and same seed; not a test of statistical assumptions."
+}
