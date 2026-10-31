@@ -6,6 +6,7 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 
 | Étude | Statut | Résultats disponibles | Conclusion |
 |---|---|---|---|
+| [Réintégration Bollinger intraday](studies/bollinger-reentry/README.md) | Backtest terminé ; piste écartée pour un nouveau bot | Recherche Web, 84 comptes, 39 tests, oracle scalaire et quatre figures | ALL SPY -19.61 % / 1637 trades, QQQ -18.32 % / 1608 trades ; références A/B négatives, 28 comptes ALL négatifs |
 | [Momentum matinal normalisé](studies/morning-variation-momentum/README.md) | Backtest terminé ; piste écartée pour un nouveau bot | Recherche Web,84comptes,42tests,oracle scalaire et4figures | ALL SPY+1.74%/273trades, QQQ+11.55%/230trades ; IC95 incluant zéro sur les deux ETF, SPY fragile aux coûts et top3 |
 | [IBS de la veille, rebond intraday](studies/previous-day-ibs/README.md) | Backtest terminé SPY/QQQ ; adaptation intraday écartée pour un nouveau bot | Recherche Web élargie ; 72 scénarios figés ; 48 tests ; replay séparé et 4 figures | ALL SPY -5,70 % et QQQ 13,15 % après frais ; aucune variante promue après calcul |
 | [Cassure puis premier retest](studies/opening-range-retest/README.md) | Backtest terminé SPY/QQQ ; piste écartée | Recherche Web élargie ;72scénarios figés ;42tests ; agrégation et replay séparés ;4figures | ALL SPY−6,16% et QQQ−5,50% après frais ; QQQ B positif mais A négatif ; aucun nouveau bot |

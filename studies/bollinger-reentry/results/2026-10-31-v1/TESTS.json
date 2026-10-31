@@ -1,0 +1,17 @@
+{
+  "utc": "2026-10-31T23:13:02.095832+00:00",
+  "command": [
+    "C:\\Python314\\python.exe",
+    "-m",
+    "pytest",
+    "studies/bollinger-reentry/tests",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--tb=short"
+  ],
+  "exit_code": 0,
+  "passed": 39,
+  "stdout": ".......................................                                  [100%]\n39 passed in 1.31s\n",
+  "stderr": ""
+}

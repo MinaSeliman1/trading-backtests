@@ -1,0 +1,15 @@
+symbol,exit_reason,count
+SPY,stop_intrabar,950
+SPY,target_intrabar,608
+SPY,entry_marketable_stop,39
+SPY,entry_marketable_target,20
+SPY,eod_open,14
+SPY,target_gap,4
+SPY,stop_gap,2
+QQQ,stop_intrabar,916
+QQQ,target_intrabar,592
+QQQ,entry_marketable_stop,46
+QQQ,eod_open,26
+QQQ,entry_marketable_target,12
+QQQ,stop_gap,10
+QQQ,target_gap,6

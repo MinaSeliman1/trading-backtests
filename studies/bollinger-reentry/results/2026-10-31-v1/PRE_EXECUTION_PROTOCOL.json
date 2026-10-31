@@ -1,0 +1,396 @@
+{
+  "utc": "2026-10-31T23:11:24.005152+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "executions": 84,
+  "specifications": {
+    "reference": {
+      "lookback": 20,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.02": {
+      "lookback": 20,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.02,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.03": {
+      "lookback": 20,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.03,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.05": {
+      "lookback": 20,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.05,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "band_1.5": {
+      "lookback": 20,
+      "band": 1.5,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "band_2.5": {
+      "lookback": 20,
+      "band": 2.5,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "lookback_10": {
+      "lookback": 10,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "lookback_30": {
+      "lookback": 30,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "bars10lookback10": {
+      "lookback": 10,
+      "band": 2.0,
+      "bar_minutes": 10,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "target_1R": {
+      "lookback": 20,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "one_r",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cutoff_1230": {
+      "lookback": 20,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 180,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "outside_touch": {
+      "lookback": 20,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "outside_touch",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "delay_0": {
+      "lookback": 20,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 0,
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "resolved_prefix": {
+      "lookback": 20,
+      "band": 2.0,
+      "bar_minutes": 5,
+      "start_minute": 105,
+      "end_minute": 300,
+      "entry_rule": "reentry",
+      "target_kind": "middle",
+      "entry_delay": 1,
+      "quality": "resolved_prefix",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "protocols": {
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "5f606e683172442ff401583af66f62f86d5b1db379680371183230dbb9c1648f",
+      "text": "# Bollinger : réintégration intraday — protocole avant PnL\n\n31 octobre 2026. Nouvelle étude indépendante, deux comptes SPY/QQQ de 100000 USD, mêmes frais. Recherche et adaptation propres ; aucune performance externe importée. Bots actuels inchangés, aucun ordre ni clé/API.\n\n1. Barres RTH NYSE de 5 minutes, alignées à 09:30 New York et reconstruites depuis OHLCV 1 minute. Aucun mélange entre séances, ni minute imputée. Demi-séances exclues entièrement, inactivité connue. Bandes calculées avec les closes de la séance courante seulement : moyenne simple20 et écart-type population (ddof0), bandes ±2 écarts-types. Pas d’hypothèse de normalité.\n2. Décisions après clôture de barres entre11:15 et14:30 incluses. À chaque instant admissible, close précédent strictement sous sa propre bande basse passée ; close courant strictement au-dessus de sa propre bande basse. Tolérance absolue1e-10. Les bandes de chaque barre incluent cette barre close, jamais un prix futur. LONG uniquement. Aucun RSI, VWAP, EMA, news ni filtre appris.\n3. Tous les OHLCV entre l’ouverture et la décision doivent être connus/valides, afin de ne pas sauter silencieusement un signal antérieur inconnu. Au premier trou rencontré avant sélection : unknown_scan, aucune sélection ultérieure. Flags locaux missing_minutes/invalid_ohlcv admis seulement si fenêtre nécessaire valide ; conflits et timestamps hors grille rejettent la séance. Au premier setup dont la géométrie est valide, sélectionner puis cesser le scan ; jamais classer les setups d’après leurs résultats.\n4. Stop = plancher au cent de min(low des deux dernières barres5min) moins0.01USD. TP = moyenne simple courante, normalisée à1e-8 (arrondi décimal half-even) puis plancher au cent, pour éviter un cent perdu par représentation binaire. Exiger stop>0 et stop<close signal<TP ; comparaison décimale. Un setup de géométrie invalide est ignoré à sa décision, sans utiliser de fill futur. Risque de sizing1% et plafond notionnel1x avant frais, quantité entière floor(min(capital/close signal,capital*.01/(close signal-stop))).\n5. Décision11:15 par exemple après dernière minute11:14 ; fill principal à l’open11:16, une minute entière laissée après décision. Quantité et stop/TP fixés avant ce fill. Aucun recalcul du stop, de la cible ou de la taille après gap. Une seule tentative par séance, aucun replacement après stop, aucune nuit.\n6. Sorties stop/TP sur barres1min dès l’entrée : open<=stop => sortie à cet open, même dès l’entrée ; open>=TP => sortie à cet open, même dès l’entrée (roundtrip avec coûts, pas profit fictif au TP antérieur). À l’intérieur d’une minute, stop et TP touchés => stop d’abord, ambiguïté exportée ; stop seul au stop ; TP seul au TP. TP gap positif résolu au prix d’open observé. EOD préprogrammé à l’open15:59, après contrôle stop/TP de cet open et avant ses mèches. Pas de break-even, trailing ni sortie manuelle.\n7. Commission0.0035USD/action/côté minimum0.35, friction adverse0.01USD/action/côté incorporée une seule fois aux fills. Stress0.02/0.03/0.05. LONG donc emprunt0. Cash sans intérêt ; financement/impôts/quotes/partiels/latence broker hors modèle. Risque effectif au fill, coûts et levier exportés : un stop1% n’est pas une perte maximale garantie.\n8. Principal complete_days exige la séance courante complète seulement après sélection du setup, filtre futur explicitement conditionnel. resolved_prefix retire cette exigence, conserve les données de scan et toute minute nécessaire jusqu’à la résolution. Open valide franchissant stop/TP ou EOD peut résoudre avant une mèche manquante. Trou actif/fill inconnu : trade entier non résolu omis, coûts d’entrée connus archivés. Un zéro comptable d’exclusion n’est pas cash observé.\n9. DD observé aux coûts d’entrée, closes des minutes entièrement détenues et sortie nette ; pas pire tick certifié. MAE/MFE de prix avec les fills exécutés après friction et les extrêmes des seules minutes entièrement détenues, hors commissions. La minute de sortie intrabar n’a pas d’ordre de prix connu : ses mèches sont exclues, minute de détention comptée en borne supérieure. Tous les coûts demeurent prélevés.\n10. 14 variantes fixées : reference ; cost0.02/0.03/0.05 ; band1.5/band2.5 ; lookback10/lookback30 ; bars10lookback10 (même horizon nominal100minutes, mais grille différente) ; target1R (TP=close signal+(close signal-stop), arrondi bas) ; cutoff12:30 ; outside_touch (close courant sous sa bande, sans attendre réintégration) ; delay0 (open immédiatement suivant, optimistic timing sensitivity) ; resolved_prefix. Soit84comptes=14x2ETF x3périodes. Les sensibilités sont publiées sans promotion après observation.\n11. ALL2016-01-04–2026-10-16 ; A jusqu’au2024-04-30 ; B2024-05-01–2026-10-16 ; capitaux indépendants100000 par période, source disponible depuis2015-12-31. A/B déjà exploitées : pas nouveau OOS aveugle. Chaque séance réinitialise les bandes ; pas warmup interjour ni overnight.\n12. SourceSIP locale/hash/calendrier vérifiés, gel code/tests/oracle/protocole/dépendances avant premier PnL. Oracle indépendant scalaire des agrégations/bandes/signaux/exécutions/comptes, même chargeur et fournisseur. Bootstrap descriptif3000 seed20261031 blocs5/20 et clusters annuels. Exclusions au zéro de chaînage, pas de correction des recherches multiples. Rapport/scripts de présentation ajoutables ensuite, tous scellés au manifest final.\n13. Critères avant résultats :>=100trades ALL par ETF ; A/B/ALL référence positives pour les deux ; ALL sans3meilleurs jours positif pour les deux ; A friction doublée positive pour les deux ; borne basse IC95 moyenne quotidienne blocs20 ALL>0 pour les deux. Échec => archiver sans nouveau bot. Passage => candidat historique seulement, jamais autorisation de réel. Ablation top3 sur retours initiaux, pas nouvelles quantités.\n"
+    },
+    "RESEARCH.md": {
+      "sha256": "e72edbc55e0a5a5a2356ede6fcb0398c15fff0942e6793752a80279d17b52ae4",
+      "text": "# Recherche Web — Bollinger réintégration\n\nRecherche élargie du31octobre2026 : documentation d’auteurs, dépôts primaires, recherche académique, exemples de backtests et forums. Cela ne certifie pas la meilleure stratégie universelle. Les résultats externes ne deviennent jamais nos résultats.\n\n- [John Bollinger, règles](https://www.bollingerbands.com/bollinger-band-rules) et [StockCharts, formules](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/bollinger-bands) : SMA/écart-type et usage des bandes ; franchissement seul non suffisant et absence de garantie gaussienne. Sources primaires lues.\n- [gandermanuel, QQQ](https://github.com/gandermanuel/qqq-bollinger-backtest) : famille20/2 LONG vers moyenne sur données journalières. README primaire lu, code non exécuté. Notre version intraday réinitialisée, retour confirmé, stop et frais différents : pas réplication du rendement swing.\n- [BozcaFevzi, SPY intraday](https://github.com/BozcaFevzi/Systematic-Trading-Intraday-Mean-Reversion-on-SPY/blob/main/README.md) : version multi-indicateurs et ATR. README lu ; nous retirons RSI/VWAP et fixons une géométrie simple avant calcul, sans reprendre ses performances ni prétendre reproduire sa stratégie.\n- [AndrBene, cassureATR](https://github.com/AndrBene/Volatility-Breakouts-Trading-ETFs/blob/master/readme.md) : alternative lue, mais cassures déjà largement couvertes. Paramètres/pipeline/filtre de gaps demandent un audit avant toute réplication, code non exécuté.\n- [Zhang/Hua2024, prédiction de clôture](https://www.mdpi.com/2227-9091/12/11/180) : recherche repérée sur momentum de mi-journée. Accès texte/PDF429, présentation universitaire/abstract repérés ; règles complètes non lues, donc non sélectionnée pour réplication.\n- [Forum sur les frais et mean reversion](https://www.reddit.com/r/Trading/comments/1ubybkr/has_anyone_found_a_genuinely_profitable/) et [forum de paramètres](https://www.reddit.com/r/algotrading/comments/1iq21bf/optimizing_parameters_with_mean_reversion_strategy/) : premier fil ouvert, second résultat indexé consulté, témoignages non certifiés. Ils motivent la vigilance sur coûts et multiplicité, pas un paramètre entraîné.\n- [CE Market Solutions, re-entry](https://cemarketsolutions.com/research/strategies/bollinger-re-entry-20-2) : page publique primaire lue sur NQ/ES, pas nos ETF. Aucun rendement transféré.\n\nChoix propre : première réintégration5min20/2 admissible dans une fenêtre fixée, TP moyen figé et stop des deux barres. Aucune nuit, un seul trade, frais identiques aux études du dépôt. Les sources et alternatives décrivent une hypothèse plausible de retour à la moyenne, pas une preuve d’avantage après exécution. Les fenêtres/risque/arrondis/délais sont nos conventions explicites. Les nombreuses recherches antérieures et la corrélation SPY/QQQ réduisent la force des résultats éventuels.\n"
+    }
+  },
+  "code_sha256": {
+    "audit/independent.py": "8696950c49080f28f6a41cd1f03d718452529f6c982bfec3cbfebbe65b3f5533",
+    "bb/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "bb/analysis.py": "ea224175a754fb09ad818b87829cf090a43195a11da751f92520e10f4260d069",
+    "bb/data.py": "8efa5391693ae80499e56f5dd7b16019ee39298747362d32f03389e3f0ef45cd",
+    "bb/engine.py": "a7f14cb344901a0cbad6389b000ce9da9800b36fc451b806982247b4f9284499",
+    "requirements-lock.txt": "000ee07f22f19efaca0b666e79a92c33065b402d6814160f919b1494215a60d3",
+    "scripts/run_study.py": "785e2120438cce39c523bc6c0a827920982c2adb06514454ccbb1659c95f698a",
+    "tests/test_engine.py": "1aecadcc252e6d7a6ad391ae14c09a08eac7f0bbeea75ad2de9d7981b57f4c00",
+    "tests/test_matrix.py": "8bde6eb4b13beefb3a0c8079f8b49bd460e5bcc5f3bf435542a852cd49a6b883",
+    "tests/test_oracle.py": "3a9f895d1314965c25ca25e9cc27ef9fc16e47e0be58e7dad0048f47093415a7"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/closing_momentum/__init__.py": "d3313c9b87d9c7710f4934e59a46bb5870de7a736a5905137bdfd21372f77a07",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/closing-momentum/closing_momentum/engine.py": "8a59839154e9e1f048f053ed2e8b9f288bfc8ba0e34ab99326f2ac2f19709f49",
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/intraday-momentum-noise-area/noise_area/__init__.py": "bade9dd944a6b2d0ed267f6290bad7bcb78082f4040cb92066b29fb66bba624a",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "studies/intraday-momentum-noise-area/noise_area/engine.py": "64a49a9575d7badc8921c5c2c34bbe650d0f47e7fab0d6b45f3700f6501e1f76",
+    "studies/intraday-momentum-noise-area/noise_area/features.py": "ecab630d5f850c4def089739c9a13b7acd88de1361527483ff39f0f6a6765664",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/opening-range-5m/orb/__init__.py": "4aa1cc8c56b8834f8846ba260770cd70fe5af1f71721e746792abca89058b878",
+    "studies/opening-range-5m/orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2",
+    "studies/opening-range-5m/orb/engine.py": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810",
+    "studies/previous-day-ibs/ibs/__init__.py": "ac709b974aef0e6e913db2dd64b72213c3462387d97ceb2a22ec778bef8971b0",
+    "studies/previous-day-ibs/ibs/data.py": "8903d073c85c0bd864285449ea94f3f111412d59b0448096bbf6256d53787424",
+    "studies/previous-day-ibs/ibs/engine.py": "d524a9e1a3b70ab89a6cc56ec62b36d439977c1a3a17e00cc8abcb3ea03d08e0"
+  },
+  "python": "3.14.6",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "exchange_calendars": "4.13.2",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  },
+  "note": "Frozen before first market PnL. Reused B, conditional coverage, independent ETF accounts, no bot."
+}

@@ -1,0 +1,54 @@
+{
+  "utc": "2026-10-31T23:17:42.082159+00:00",
+  "status": "passed",
+  "base_revision": "6adf97f6641643134fe4c53e38d71d0314aad887",
+  "pre_pnl_review": {
+    "reviewer": "bb_review",
+    "tests_passed": 39,
+    "synthetic_sessions": 40,
+    "variants": 14,
+    "synthetic_trades": 307,
+    "synthetic_fields_compared": 29134,
+    "blockers": 0,
+    "note": "SMA cent-boundary regression fixed and documented before PnL; scalar replay agrees"
+  },
+  "final_review": {
+    "reviewer": "bb_final_review",
+    "fresh_context": true,
+    "tests_passed": 39,
+    "frozen_code_hashes_verified": 10,
+    "dependency_snapshots_verified": 15,
+    "protocols_verified": 2,
+    "audited_exports_verified": 463,
+    "scenario_summaries_verified": 84,
+    "report_table_fields_verified": 356,
+    "figures_inspected": 4,
+    "additional_reviewer_arithmetic_checks": 84202,
+    "intervals": "Block5/20 and annual-cluster intervals verified on six reference accounts by reviewer",
+    "blocking_findings_remaining": 0,
+    "minor_findings": [
+      {
+        "issue": "A/B negativity wording could include isolated variants",
+        "resolution": "Root index now explicitly says references A/B"
+      },
+      {
+        "issue": "Daily drawdown axis distinct from minute drawdown",
+        "resolution": "Axis now says daily closes; regenerated and root inspected"
+      }
+    ]
+  },
+  "root_validation": {
+    "scalar_checks": 9046744,
+    "additional_numeric_checks": 864,
+    "bootstrap_accounts": 6,
+    "all_four_figures_inspected": true,
+    "local_links_verified": true
+  },
+  "declined_to_judge": [
+    "Broker quotes/liquidity/partial fills/latency outside model",
+    "Unknown true intraminute ordering; stop-first convention",
+    "Future profitability or live suitability",
+    "Second independent market data provider"
+  ],
+  "scope": "New study/index/plan only; no bot, task, vault, API, broker order, runtime ledger or SQLite modified. Manifest/publication checked separately."
+}

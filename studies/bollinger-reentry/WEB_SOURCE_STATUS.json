@@ -1,0 +1,46 @@
+{
+  "utc": "2026-10-31T23:10:09.237788+00:00",
+  "sources": [
+    {
+      "name": "John Bollinger",
+      "url": "https://www.bollingerbands.com/bollinger-band-rules",
+      "access": "primary public rules read"
+    },
+    {
+      "name": "StockCharts",
+      "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-overlays/bollinger-bands",
+      "access": "primary formulas read"
+    },
+    {
+      "name": "gandermanuel",
+      "url": "https://github.com/gandermanuel/qqq-bollinger-backtest",
+      "access": "primary README read; no code execution"
+    },
+    {
+      "name": "BozcaFevzi",
+      "url": "https://github.com/BozcaFevzi/Systematic-Trading-Intraday-Mean-Reversion-on-SPY/blob/main/README.md",
+      "access": "primary README read; no code execution"
+    },
+    {
+      "name": "AndrBene",
+      "url": "https://github.com/AndrBene/Volatility-Breakouts-Trading-ETFs/blob/master/readme.md",
+      "access": "primary README read; alternative not selected"
+    },
+    {
+      "name": "ZhangHua2024",
+      "url": "https://www.mdpi.com/2227-9091/12/11/180",
+      "access": "publisher full text/PDF429; abstract and university listing only; not replicated"
+    },
+    {
+      "name": "CE Market Solutions",
+      "url": "https://cemarketsolutions.com/research/strategies/bollinger-re-entry-20-2",
+      "access": "primary public methodology read; futures/gross not our ETF results"
+    },
+    {
+      "name": "Reddit",
+      "url": "https://www.reddit.com/r/Trading/comments/1ubybkr/has_anyone_found_a_genuinely_profitable/",
+      "access": "thread opened; nonverified testimony"
+    }
+  ],
+  "note": "No external performance imported. Wide search is not exhaustive nor a certification of best strategy."
+}
