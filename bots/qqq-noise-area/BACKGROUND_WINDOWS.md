@@ -8,9 +8,9 @@ La tâche principale `TradingBacktests-QQQ-NoiseArea-Simulation` lance `pythonw.
 
 Le PC doit rester éveillé et connecté pendant les séances. Le lanceur réessaie une initialisation qui échoue toutes les 60 secondes ; les erreurs API en cours d'exécution sont réévaluées par le moteur. Une pause du journal reste une pause : aucune reconstruction de transactions manquées ni remise à zéro des protections n'est automatique.
 
-Depuis le correctif du **24 octobre 2026**, le superviseur empêche la **veille automatique sur secteur** avec une requête Windows `ES_SYSTEM_REQUIRED`. Un thread indépendant la maintient même pendant une attente API et la libère sur batterie, lors d'une demande d'arrêt ou à la sortie. La vérification d'alimentation s'effectue toutes les 15 secondes. La protection reste active la nuit lorsque le bot tourne sur secteur : sinon une mise en veille nocturne empêcherait le code de se réveiller pour protéger la séance suivante. L'écran peut s'éteindre normalement ; aucun réglage permanent du plan d'alimentation n'est changé.
+Depuis le correctif du **24 octobre 2026**, le superviseur empêche la **veille automatique sur secteur** avec une requête Windows `ES_SYSTEM_REQUIRED`. Un thread indépendant la maintient même pendant une attente API et la libère sur batterie, lors d'une demande d'arrêt ou à la sortie. La vérification d'alimentation s'effectue toutes les 15 secondes. La protection reste active la nuit lorsque le bot tourne sur secteur : sinon une mise en veille nocturne empêcherait le code de se réveiller pour protéger la séance suivante. L'écran peut s'éteindre normalement ; le garde logiciel lui-même ne modifie aucun réglage du plan. La politique persistante distincte du31octobre est décrite ci-dessous.
 
-Conformément au choix de l'utilisateur, **le couvercle et les boutons de veille ne sont pas modifiés**. Garder le PC branché et le couvercle ouvert. Une veille explicite en séance, une fermeture du couvercle, un arrêt, une panne réseau ou une perte d'alimentation peuvent encore interrompre la couverture. Le garde de veille ne peut pas réveiller son propre processus suspendu. Voir les diagnostics des [huit retards du21octobre](validation/sleep_incident_2026-10-21.md) et des [quatre retards du26octobre](validation/morning_wake_2026-10-26.md).
+Depuis le **31 octobre 2026**, le plan actif conserve aussi **veille et hibernation automatiques désactivées sur secteur**, indépendamment du garde des moteurs. Les délais sur batterie restent600s/10800s et les minuteries DC désactivées. Depuis le28octobre, le couvercle fermé sur secteur est autorisé : LIDACTION AC0 (ne rien faire), DC1 (veille). Les boutons et l'écran sont conservés. Le PC reste donc éveillé sur secteur même si un moteur s'arrête ; une veille manuelle, un arrêt, le passage sur batterie ou une panne réseau peuvent encore interrompre la couverture. [Diagnostic et correction du réveil manqué le30octobre](../../docs/operations/2026-10-31-qqq-ac-wake-availability.md).
 
 ## Réveil avant séance ajouté le26octobre2026
 
@@ -18,9 +18,9 @@ La tâche courte `TradingBacktests-QQQ-NoiseArea-Simulation-Wakeup` est distinct
 
 L'action cachée `wake-before-session.ps1` vérifie la commande exacte du simulateur. Si sa tâche tourne déjà, elle ne la duplique pas. Si elle est arrêtée, elle demande son démarrage ; si le drapeau STOP existe ou la tâche principale est désactivée, elle respecte cet arrêt. Elle ne lit ni coffre ni SQLite, ne fait aucune requête API et ne modifie aucune pause ou transaction. Une demande de démarrage n'est pas une preuve de fraîcheur du moteur : le monitor conserve ce contrôle séparé.
 
-L'installation passe les **minuteries de réveil sur secteur** du mode « important uniquement » à « activé », sinon la nouvelle tâche ordinaire ne pourrait pas réveiller Windows. Ce réglage du plan actif peut aussi autoriser les autres minuteries ordinaires déjà installées. Les minuteries sur batterie restent désactivées ; les délais de veille/hibernation, l'écran, les boutons et le couvercle sont inchangés. L'ancien réglage est conservé dans `runtime/windows/wake_policy_before.json`.
+L'installation passe les **minuteries de réveil sur secteur** du mode « important uniquement » à « activé », sinon la nouvelle tâche ordinaire ne pourrait pas réveiller Windows. Ce réglage du plan actif peut aussi autoriser les autres minuteries ordinaires déjà installées. Les minuteries sur batterie restent désactivées. L'installation du réveil seule ne change pas les délais ; le helper secteur ci-dessous fixe séparément les délais AC à zéro. Écran et boutons restent conservés, couvercle AC0/DC1 selon le choix utilisateur. L'ancien réglage est conservé dans `runtime/windows/wake_policy_before.json`.
 
-Le réveil ne met pas sous tension un PC éteint et ne garantit rien sur batterie, sans session ouverte ou sans prise en charge matérielle. Aucun sommeil artificiel n'est provoqué pour le tester : installation, paramètres et action éveillée sont vérifiés ; le premier réveil réel reste une observation future. Le démarrage manqué peut être rattrapé lorsque Windows redevient disponible, sans reclasser les décisions tardives comme prospectives.
+Le réveil ne met pas sous tension un PC éteint et ne garantit rien sur batterie, sans session ouverte ou sans prise en charge matérielle. Aucun sommeil artificiel n'est provoqué pour le tester : installation, paramètres et action éveillée sont vérifiés ; le réveil après la correction du31octobre reste à observer en conditions réelles. Le démarrage manqué peut être rattrapé lorsque Windows redevient disponible, sans reclasser les décisions tardives comme prospectives.
 
 Le dossier du dépôt, Python et ses dépendances doivent rester au même endroit. Les chemins absolus enregistrés dans la tâche sont propres à la machine ; un déplacement nécessite de réinstaller la tâche depuis le nouveau dossier. Une seule instance peut posséder le verrou du journal.
 
@@ -32,6 +32,7 @@ Depuis ce dossier sous PowerShell :
 .\configure-windows.ps1
 .\install-background.ps1
 .\install-wakeup.ps1 -EnableAcWakeTimers
+.\configure-ac-availability.ps1 -Apply
 .\start-background.ps1
 ```
 
@@ -95,3 +96,10 @@ Le suivi Codex est distinct de la tâche Windows : le bot fonctionne sans Codex 
 ## Contrôle commun du28octobre2026
 
 Le même réveil09:10 contrôle maintenant les **deux** tâches fixes Noise Area et ORB, indépendamment. `wake_status.json` conserve un résultat `bots.noise` et `bots.orb` ; STOP/désactivation restent propres à chacun. Le contrôle valide aussi le dossier de travail et ne redémarre pas un moteur actif. Le passage automatique du28à09:10 a réussi. [Incident, correction et limites matérielles](../../docs/operations/2026-10-28-qqq-startup-and-coverage.md).
+
+
+## Politique secteur durable du31octobre
+
+`./configure-ac-availability.ps1` affiche uniquement le plan et ses paramètres. Avec `-Apply`, il sauvegarde la politique initiale parGUID puis fixe AC RTCWAKE1, STANDBYIDLE0, HIBERNATEIDLE0. Il ne lit ni coffre, ni SQLite, ni tâche. Il ne modifie jamais DC ; backup et preuve courante sont sous runtime/windows, horsGit. Ce maintien actif même bots arrêtés augmente la consommation sur secteur. Pour restaurer, lire la sauvegarde correspondant au mêmeGUID et rétablir uniquement ses trois valeurs AC avec powercfg /setacvalueindex, puis /setactive ; ne pas réinitialiser le plan ou modifier les valeurs batterie.
+
+Le plan Balanced actuel a été vérifié après application. Un changement ultérieur de plan n'est pas couvert automatiquement : contrôler la politique du nouveau plan. L'action courte de09:10 et ses protections STOP/désactivation restent inchangées. Le suivi doit lire les paramètres, pas réappliquer cette politique de sa propre initiative.

@@ -15,7 +15,7 @@ Get-Content .\runtime\status.json
 Get-Content .\runtime\windows\power_status.json
 ```
 
-Tâche dédiée `TradingBacktests-QQQ-ORB-Simulation`, `pythonw.exe` sans console, ouverture de session Windows avec délai20s. La tâche ne réveille pas un PC arrêté/endormi. Sur secteur, une requête de maintien éveillé empêche la veille automatique tant que le bot tourne, y compris la nuit ; écran libre de s'éteindre, batterie/couvercle/boutons inchangés. Garder le couvercle ouvert. Les historiques, verrous, compte100000 et état sont distincts de Noise Area.
+Tâche dédiée `TradingBacktests-QQQ-ORB-Simulation`, `pythonw.exe` sans console, ouverture de session Windows avec délai20s. La tâche ne réveille pas un PC arrêté/endormi. Sur secteur, une requête de maintien éveillé empêche la veille automatique tant que le bot tourne, y compris la nuit ; écran libre de s'éteindre, batterie/couvercle/boutons inchangés. Le couvercle fermé est autorisé sur secteur (AC0), avec veille conservée sur batterie (DC1). Les historiques, verrous, compte100000 et état sont distincts de Noise Area.
 
 ```powershell
 .\stop-background.ps1
@@ -46,3 +46,6 @@ La parité historique vérifie l'intégration avec le moteur figé sur les journ
 ## Reprise et contrôle matinal du28octobre2026
 
 Le réveil commun09:10Eastern vérifie désormais cette tâche en plus de Noise Area, conserve les moteurs actifs et respecte chaque STOP/désactivation. Le statut du probe distingue `checking_connection` et `startup_retry`, avec code réseau sans clé ; reprise existante toutes les60secondes.119tests Noise Area et30tests ORB passent. [Diagnostic du27/28, rechargement et preuves](../../docs/operations/2026-10-28-qqq-startup-and-coverage.md). Aucun changement des règles, frais, capital ou journal ; seule la simulation shadow reste active.
+
+
+Disponibilité secteur renforcée le31octobre : le plan Balanced ne passe plus automatiquement en veille ou hibernation sur secteur, même sans garde logiciel actif. Couverture sur batterie et veille manuelle restent des limites ; couvercle AC0/DC1 conservé. Le réveil09:10 local contrôle toujours les deux tâches sans les dupliquer. [Diagnostic, tests et preuve du correctif](../../docs/operations/2026-10-31-qqq-ac-wake-availability.md). Aucun changement des paramètres ORB ou du journal.

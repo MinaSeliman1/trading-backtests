@@ -1,0 +1,201 @@
+{
+  "utc": "2026-10-31T18:36:29.614736+00:00",
+  "mode": "shadow",
+  "feed": "sip",
+  "delay_minutes": 16,
+  "diagnosis": {
+    "ac_disconnected": "2026-10-29T17:29:36.7469061Z",
+    "button_or_lid_sleep": "2026-10-29T17:29:49.9902860Z",
+    "hibernate": "2026-10-29T20:30:14.3425879Z",
+    "kernel_programmed_wake_ac": "2026-10-30T13:09:30.8822698Z",
+    "kernel_programmed_wake_dc": null,
+    "next_recorded_ac_online": "2026-10-31T18:00:08.6467220Z",
+    "observed_resume": "2026-10-31T18:00:01.3798906Z",
+    "task_history_enabled": false,
+    "assessment": "AC wake was correctly armed. Most consistent explanation is battery/AC availability during hibernation; exact AC connection at the deadline and firmware delivery cannot be certified retrospectively."
+  },
+  "scheme": "381b4222-f694-41f0-9685-ff5bb260df2e",
+  "applied_utc": "2026-10-31T18:32:16.7343387Z",
+  "settings_before": {
+    "RTCWAKE": {
+      "ac": 1,
+      "dc": 0
+    },
+    "STANDBYIDLE": {
+      "ac": 900,
+      "dc": 600
+    },
+    "HIBERNATEIDLE": {
+      "ac": 10800,
+      "dc": 10800
+    }
+  },
+  "settings_after": {
+    "RTCWAKE": {
+      "ac": 1,
+      "dc": 0
+    },
+    "STANDBYIDLE": {
+      "ac": 0,
+      "dc": 600
+    },
+    "HIBERNATEIDLE": {
+      "ac": 0,
+      "dc": 10800
+    }
+  },
+  "dc_preserved": true,
+  "buttons_and_lid_preserved": true,
+  "lid_action": {
+    "ac": 0,
+    "dc": 1
+  },
+  "backup": "runtime/windows/ac_availability_before-381b4222-f694-41f0-9685-ff5bb260df2e.json",
+  "awake_wake_action": {
+    "last_run_local": "2026-10-31T14:32:58-04:00",
+    "result": 0,
+    "final_state": "Ready",
+    "next_run_local": "2026-11-02T09:10:00-05:00",
+    "wake_to_run": true,
+    "disallow_start_if_on_battery": true,
+    "bot_results": {
+      "noise": "already_running",
+      "orb": "already_running"
+    },
+    "physical_wake_tested": false
+  },
+  "tests": {
+    "noise_area_passed": 124,
+    "noise_area_deselected": 1,
+    "deselected": "Native Windows Credential Manager integration; unrelated and deliberately not accessed",
+    "orb_passed": 30,
+    "new_helper_passed": 6,
+    "red_green": [
+      "helper absent",
+      "proof write failure leaves AC settings applied; corrected before deployment"
+    ],
+    "noise_seconds": 107.68,
+    "orb_seconds": 23.76
+  },
+  "ledgers_before": {
+    "qqq-noise-area": {
+      "mode": "shadow",
+      "feed": "sip",
+      "balance": 98041.42350000002,
+      "position": 0,
+      "account_sha256": "fb8fec1f7d4243b93e4231b566f5f2f5472740724c54c6eb736451322cb411e9",
+      "configuration_sha256": "2e334d7c0f4e0ab52424d7279b905b7fa36ff8444b316b596a389f4ffa3d9d11",
+      "operator_stop": false,
+      "paused": false,
+      "paused_day": null,
+      "pending": 0,
+      "stored_days": 64,
+      "trade_rows": 14,
+      "first_session": "2026-10-21",
+      "baseline_sha256": "3aaa45a665e1045a16cb1152bd2bcaeaa7304ba6e42eb58a0c54da18ee615bbc",
+      "engine_state": "waiting_for_regular_session",
+      "engine_utc": "2026-10-31T18:26:25.058791+00:00",
+      "pid": null
+    },
+    "qqq-orb": {
+      "mode": "shadow",
+      "feed": "sip",
+      "balance": 99188.18398333332,
+      "position": null,
+      "account_sha256": "78284e8ffdb24410fe5ab0b2ac0172ddcd4b2c608db6443898a2595642a4c71a",
+      "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2",
+      "operator_stop": false,
+      "paused": false,
+      "paused_day": null,
+      "pending": 0,
+      "stored_days": 3,
+      "trade_rows": 2,
+      "first_session": "2026-10-26",
+      "engine_state": "waiting_non_session",
+      "engine_utc": "2026-10-31 18:26:29.687304+00:00",
+      "pid": 15468
+    }
+  },
+  "ledgers_after": {
+    "qqq-noise-area": {
+      "mode": "shadow",
+      "feed": "sip",
+      "balance": 98041.42350000002,
+      "position": 0,
+      "account_sha256": "fb8fec1f7d4243b93e4231b566f5f2f5472740724c54c6eb736451322cb411e9",
+      "configuration_sha256": "2e334d7c0f4e0ab52424d7279b905b7fa36ff8444b316b596a389f4ffa3d9d11",
+      "operator_stop": false,
+      "paused": false,
+      "paused_day": null,
+      "pending": 0,
+      "stored_days": 64,
+      "trade_rows": 14,
+      "first_session": "2026-10-21",
+      "baseline_sha256": "3aaa45a665e1045a16cb1152bd2bcaeaa7304ba6e42eb58a0c54da18ee615bbc",
+      "engine_state": "waiting_for_regular_session",
+      "engine_utc": "2026-10-31T18:32:49.585590+00:00",
+      "pid": null
+    },
+    "qqq-orb": {
+      "mode": "shadow",
+      "feed": "sip",
+      "balance": 99188.18398333332,
+      "position": null,
+      "account_sha256": "78284e8ffdb24410fe5ab0b2ac0172ddcd4b2c608db6443898a2595642a4c71a",
+      "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2",
+      "operator_stop": false,
+      "paused": false,
+      "paused_day": null,
+      "pending": 0,
+      "stored_days": 3,
+      "trade_rows": 2,
+      "first_session": "2026-10-26",
+      "engine_state": "waiting_non_session",
+      "engine_utc": "2026-10-31 18:32:51.150641+00:00",
+      "pid": 15468
+    }
+  },
+  "ledger_configuration_and_reference_unchanged": true,
+  "main_tasks_restarted": false,
+  "main_task_last_runs": {
+    "noise": "2026-10-28T08:48:02-04:00",
+    "orb": "2026-10-28T08:47:38-04:00"
+  },
+  "no_vault_access": true,
+  "no_broker_orders": true,
+  "independent_review": {
+    "helper_tests": 6,
+    "existing_wake_contracts": 18,
+    "important_findings_remaining": 0,
+    "proof_write_transaction_fix_verified": true,
+    "documentation_links_valid": true,
+    "minor_stale_lid_wording_corrected": true
+  },
+  "limitations": [
+    "Persistent AC policy affects this active plan even if bots stop; battery/screen/lid/buttons retained.",
+    "Shutdown, manual sleep, power loss, no logged-in session or unavailable data can still interrupt decisions.",
+    "No artificial sleep/hibernate induced; next scheduled hardware wake remains a future observation.",
+    "At final health check both main tasks had exited1 without a new power event. Energy configuration applied, immediate recovery pending explicit out-of-window approval; do not claim engines currently active."
+  ],
+  "automation_updated": true,
+  "automation_schedule_and_target_preserved": true,
+  "post_validation_health": {
+    "observed_local": "2026-10-31T14:42:35-04:00",
+    "noise_task_state": "Ready",
+    "orb_task_state": "Ready",
+    "noise_last_result": 1,
+    "orb_last_result": 1,
+    "last_engine_utc": "2026-10-31T18:35:45Z",
+    "new_sleep_event_observed": false,
+    "cause_of_exit": "not_established",
+    "energy_policy_still_verified": true
+  },
+  "recovery": {
+    "state": "blocked_by_automatic_approval_review",
+    "action": "Start existing guarded wake task to request start of the two stopped shadow tasks",
+    "reason": "Saved monitoring authorization permits automatic start only before09:30; current request was after that window",
+    "attempt_executed": false,
+    "explicit_out_of_window_authorization_needed": true,
+    "ordinary_next_wake_local": "2026-11-02T09:10:00-05:00"
+  }
+}

@@ -51,6 +51,8 @@ La source comporte des interruptions, notamment après le 13 décembre 2024 : ce
 
 ## Bot QQQ Noise Area en simulation
 
+Correctif Windows du31octobre : [réveil manqué du30 et disponibilité sur secteur](docs/operations/2026-10-31-qqq-ac-wake-availability.md). Minuterie AC correctement armée, mais PC passé sur batterie puis en hibernation. Veille/hibernation automatiques maintenant désactivées sur secteur ; batterie, couvercle AC0/DC1, stratégies et journaux conservés.154tests passent, action éveillée résultat0 ; prochain réveil matériel encore à observer.
+
 [Code et lancement de la simulation QQQ](bots/qqq-noise-area/README.md), [validation](bots/qqq-noise-area/VALIDATION.md) et [preuve du replay SIP](bots/qqq-noise-area/validation/replay_2026-10-20.json). Paramètres 14/14, 30 minutes, cible 2 %, plafond 4x ; coûts conservateurs tenus dans un ledger local. 96 tests au correctif du24/10 et parité antérieure sur 618 séances / 7 380 décisions.
 
 Le [lanceur Windows sans console](bots/qqq-noise-area/BACKGROUND_WINDOWS.md) est installé avec démarrage automatique à l'ouverture de session, clés dans le coffre Windows et conservation du solde. Référence prospective à partir du 21 octobre 2026 ; suivi quotidien en jours ouvrés et bilans opérationnels définis. Les preuves de démarrage ne constituent pas des résultats de rentabilité.
@@ -63,7 +65,7 @@ Avec l'offre gratuite, le mode retenu est shadow SIP différé de 16 minutes : t
 
 [Code, commandes et limites](bots/qqq-orb/README.md), [preuve d'activation du24octobre](bots/qqq-orb/validation/activation_2026-10-24.json), [parité historique](bots/qqq-orb/validation/historical_parity_2026-10-24.json). Tâche Windows cachée `TradingBacktests-QQQ-ORB-Simulation`, au logon, runtime100000USD propre et premières observations éligibles le26octobre2026. Règles ORB figées : première plage5minutes, risque1%, plafond causal1x, objectif10R, stop prioritaire ; mêmes frais. Le transport autorise seulement GET QQQ SIP, aucun ordre broker. 29tests passent ; 2707séances et2688trades reproduisent le moteur historique gelé.
 
-Le démarrage est une preuve opérationnelle ; aucun trade prospectif n'est encore revendiqué. La parité partage le helper historique et n'est pas un nouvel audit indépendant. Sur secteur, les deux superviseurs peuvent maintenir leurs propres requêtes contre la veille automatique ; garder le couvercle ouvert. Noise Area conserve son compte, ses règles et son suivi distincts.
+La preuve de démarrage du24octobre est opérationnelle ; elle ne constitue pas à elle seule un résultat prospectif. La parité partage le helper historique et n'est pas un nouvel audit indépendant. Sur secteur, les deux superviseurs peuvent maintenir leurs propres requêtes contre la veille automatique ; couvercle fermé autorisé sur secteur (AC0), veille conservée sur batterie (DC1). Noise Area conserve son compte, ses règles et son suivi distincts.
 
 ## Nouvelle piste NR7
 
