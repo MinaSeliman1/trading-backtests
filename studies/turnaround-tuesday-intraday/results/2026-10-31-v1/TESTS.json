@@ -1,0 +1,9 @@
+{
+  "started_utc": "2026-10-31T19:33:16.495761+00:00",
+  "finished_utc": "2026-10-31T19:33:18.921160+00:00",
+  "exit_code": 0,
+  "passed": 35,
+  "stdout": "...................................                                      [100%]\n35 passed in 1.40s\n",
+  "stderr": "",
+  "scope": "New study suite; fixtures only, no APIs, vault or bot runtime. Other studies/bots unchanged."
+}

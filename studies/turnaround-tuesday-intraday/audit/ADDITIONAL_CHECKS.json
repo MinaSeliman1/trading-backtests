@@ -1,0 +1,7 @@
+{
+  "reference_trade_dates": 383,
+  "bootstrap_intervals": 12,
+  "annual_cluster_intervals": 6,
+  "status": "passed",
+  "method": "Exported returns and same RNG seed, independent prefix-sum bootstrap; no strategy/statistics helper. A+B vs ALL prices/dates, not quantities."
+}

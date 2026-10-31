@@ -1,0 +1,22 @@
+{
+  "criteria": {
+    "SPY": {
+      "trades_all_ge100": true,
+      "reference_A_B_ALL_positive": true,
+      "all_without_top3_positive": true,
+      "A_double_friction_positive": true,
+      "all_block20_ci_lower_positive": false
+    },
+    "QQQ": {
+      "trades_all_ge100": true,
+      "reference_A_B_ALL_positive": true,
+      "all_without_top3_positive": true,
+      "A_double_friction_positive": true,
+      "all_block20_ci_lower_positive": false
+    }
+  },
+  "all_passed": false,
+  "decision": "Adaptation intraday écartée pour un nouveau bot : critères prédéfinis non satisfaits.",
+  "multiple_testing_adjusted": false,
+  "blind_oos": false
+}

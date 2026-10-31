@@ -1,0 +1,373 @@
+{
+  "utc": "2026-10-31T19:32:01.867547+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "executions": 84,
+  "symbols": [
+    "SPY",
+    "QQQ"
+  ],
+  "specifications": {
+    "reference": {
+      "weekday": 1,
+      "require_down": true,
+      "require_monday": true,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.02": {
+      "weekday": 1,
+      "require_down": true,
+      "require_monday": true,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.02,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.03": {
+      "weekday": 1,
+      "require_down": true,
+      "require_monday": true,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.03,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "cost_0.05": {
+      "weekday": 1,
+      "require_down": true,
+      "require_monday": true,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.05,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "drop_0.005": {
+      "weekday": 1,
+      "require_down": true,
+      "require_monday": true,
+      "drop": 0.005,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "drop_0.01": {
+      "weekday": 1,
+      "require_down": true,
+      "require_monday": true,
+      "drop": 0.01,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "all_tuesdays": {
+      "weekday": 1,
+      "require_down": false,
+      "require_monday": false,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "all_down_days": {
+      "weekday": null,
+      "require_down": true,
+      "require_monday": false,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "weekday_0": {
+      "weekday": 0,
+      "require_down": true,
+      "require_monday": false,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "weekday_2": {
+      "weekday": 2,
+      "require_down": true,
+      "require_monday": false,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "weekday_3": {
+      "weekday": 3,
+      "require_down": true,
+      "require_monday": false,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "weekday_4": {
+      "weekday": 4,
+      "require_down": true,
+      "require_monday": false,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "entry_5": {
+      "weekday": 1,
+      "require_down": true,
+      "require_monday": true,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "complete_days",
+      "entry_slot": 5,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    },
+    "resolved_prefix": {
+      "weekday": 1,
+      "require_down": true,
+      "require_monday": true,
+      "drop": 0.0,
+      "mode": "long_only",
+      "slippage": 0.01,
+      "quality": "resolved_prefix",
+      "entry_slot": 1,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "protocols": {
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "e6652e63581879c64c4ea64b2867c323e2b7529cb971dd4c09356bcc3c528c7e",
+      "text": "# Turnaround Tuesday intraday — protocole avant résultats\n\n31 octobre 2026. L'utilisateur autorise le choix d'une nouvelle piste sur QQQ/SPY, le calcul et la publication. Python et archives locales SIP vérifiées ; aucune clé ni API, aucun changement des deux bots. Adaptation propre : les règles externes détiennent souvent la nuit, qui est retirée ici pour conserver le cadre day trading. Le choix de cette adaptation revient à l'agent, sans approbation d'un résultat ni promesse de meilleure stratégie universelle.\n\n1. Deux comptes indépendants de 100000 USD ; QQQ et SPY ; séances NYSE RTH, demi-séances incluses. Principal LONG le mardi si la séance précédente est un lundi et si son dernier close RTH est strictement inférieur à celui de la séance précédente. Si vendredi était férié, utiliser la séance réelle précédente, sans inventer de close. Un lundi férié ne devient pas un lundi baissier. Retour close/close brut, non ajusté des dividendes ; les dates ex-dividende peuvent donc contribuer au signal. Aucun prix du mardi n'entre dans la condition de baisse.\n2. ADR14 : moyenne high-low des 14 séances immédiatement précédentes, entières et valides, sans sauter un trou. Arrondi ADR à1e-8 USD puis stop au centime inférieur. Warmup avant14 séances ; trou requis => inconnu. Pas d'IBS ni RSI, filtre de tendance, news, volume ou gap.\n3. Après le close09:30, sizing au close09:30 ; entrée open09:31. Stop fixe = prix de sizing moins ADR14. Quantité entière floor(min(capital/prixSizing,0.01*capital/distanceStop)). Risque cible1%, plafond causal1x hors frais. Gap entre sizing et fill conservé sans ajuster rétroactivement la quantité ; risque brut au prix de référence et levier de référence exportés, ainsi que levier au fill et risque net modélisé au stop avec friction aller-retour et commissions (sans nouveau gap). Le risque net n'est pas une borne de perte. Stop<=0 ou risque nul => pas d'ordre.\n4. Aucun TP, break-even ou trailing. Stop au mauvais open en cas de gap, sinon au niveau si touché intrabar. Entrée au-delà du stop => achat puis sortie au même open, tous coûts payés. Sortie sinon au dernier open RTH15:59/12:59, avant les mèches de cette minute. Une entrée au plus par séance ; aucune position overnight.\n5. Mêmes coûts : commission0.0035USD/action/côté, minimum0.35 ; friction adverse0.01USD/action/côté, déduite une fois dans les fills. Stress0.02/0.03/0.05. LONG seulement donc emprunt nul ; modèle commun SHORT1% annuel/360 non sollicité. Pas de dividende crédité à un compte flat overnight. Ne pas confondre coût simulé et garantie de tarif broker.\n6. Principal complete_days : qualité de toute la journée connue après coup exigée lorsque le signal est éligible, biais de couverture futur explicite. resolved_prefix retire ce filtre. Minute d'entrée inconnue ou trou avant résolution => trade entier non résolu omis, coûts d'entrée connus archivés ; zéro de chaînage n'est pas un cash observé. Un trou après sortie ou la mèche de la minute EOD n'annule pas un fill déjà résolu.\n7. DD aux frais d'entrée, closes minute entièrement détenus et sortie nette ; pas DD tick exact. MAE/MFE de prix hors commissions, sur les extrêmes des minutes entièrement détenues et les deux fills effectifs, hors open de référence EOD non détenu et mèches ambiguës après sortie. Les marqueurs n'incluent pas les frais de sortie avant celle-ci. Horaires et durée décrits par le calendrier local, y compris DST et demi-séances.\n8. 14 variantes x2 ETF x3 périodes =84 comptes : reference ; cost_0.02/0.03/0.05 ; drop_0.005/0.01 (baisse au moins0.5%/1%, seuil inclusif) ; all_tuesdays ; all_down_days ; weekday_0/2/3/4 après baisse de la séance précédente, sans condition lundi ; entry_5 (sizing09:34, entrée09:35) ; resolved_prefix. Toutes publiées, sans promouvoir la meilleure. all_tuesdays inclut les mardis suivant un lundi férié ; all_down_days inclut les mardis et les autres jours. Comparaisons descriptives, pas effets causaux.\n9. ALL2016-01-04–2026-10-16 ; A jusqu'au2024-04-30 ; B2024-05-01–2026-10-16. Comptes remis à100000 au début de chaque période ; features toujours antérieures. B et A déjà examinées par de nombreuses études : aucun OOS aveugle. Pas d'optimisation après résultats. Aucun téléchargement plus récent ni nouvel échantillon prospectif.\n10. Source complète, préparations, code, dépendances, protocole et tests gelés parSHA avant première boucle PnL. Audit des signaux, stops, quantités, fills, frais et comptes par replay scalaire indépendant, même source/chargeur. Réutilisation déclarée du helper d'exécution stop/EOD de previous-day-ibs ; sa parité n'est pas un audit indépendant.\n11. Bootstrap descriptif3000 tirages seed20261031, blocs circulaires5/20séances et clusters annuels. Les jours inconnus sont des zéros comptables dans les comptes conditionnels, pas des observations de cash ; les IC ne corrigent ni la sélection historique ni les essais multiples de toutes les études. Statistiques annuelles, frais, concentration et retrait des3 meilleurs jours publiés.\n12. Critères de présélection fixés avant résultats : >=100trades ALL par ETF ; reference A/B/ALL toutes positives ; ALL sans3 meilleurs jours positif sur les deux ; reference A à friction doublée positive sur les deux ; borne basse IC95 moyenne quotidienne blocs20 ALL>0 sur les deux. Échec => adaptation archivée sans nouveau bot. Passage => candidat historique à discuter seulement. Les deux simulations QQQ restent actives et inchangées ; aucun passage automatique en réel.\n"
+    },
+    "RESEARCH.md": {
+      "sha256": "fdd93b68760098127ba34a69121e637dd85528404ace592d629ed07a94bb7192",
+      "text": "# Recherche élargie avant PnL — 31 octobre 2026\n\nSources consultées par recherche Web : publications, sites d'auteurs, forums, code public et plateformes. Aucun rendement externe n'est réutilisé comme résultat local. Sources primaires de règles distinctes, pas réplications certifiées. Une recherche large ne permet pas de garantir la meilleure stratégie existante.\n\n## Choix et alternatives\n\n- [Quantified Strategies, 15juillet2024, partie publique](https://quantifiedstrategies.substack.com/p/the-turnaround-tuesday-trading-strategy-c7f) : décrit un effet du close lundi au close mardi ; règles détaillées payantes non lues, non reconstituées. Motivation de calendrier seulement. Notre mardi09:31–15:59 ne reproduit pas leur stratégie.\n- [Discussion originale SPY, octobre2026](https://www.reddit.com/r/StockTradingIdeas/comments/1x9u2de/turnaround_tuesday_on_spy_made_73_after_costs/) : règle publique lundi down, entrée mardi open, sortie mercredi open ; inclut une nuit supplémentaire. Nous reprenons uniquement la condition observable lundi down et retirons la nuit. Les chiffres avancés ne sont pas audités.\n- [Auteur Algomatic, discussion2025](https://www.reddit.com/r/algorithmictrading/comments/1j9p8hi/turnaround_tuesday_strategy_for_nasdaq_100_dax_40/) : Nasdaq100/DAX, lundi soir à mercredi, filtreMA70, stop1.6%, pas nos ETF ni horaires. Le texte dit tendance haussière alors que le critère écrit est Close<MA70 ; ambiguïté non importée dans le protocole.\n- [MarketInOut, règle publiée SPY](https://www.marketinout.com/stock-screener/backtest/backtest_strategy.php?strategy=turnaround-tuesday) : entrée au close lundi, détention1jour, frais/stop distincts. Pas une preuve d'un effet intraday mardi.\n- [ProRealAlgos, code/règles de l'auteur](https://strategies.prorealalgos.com/turnaround-tuesday/) : variante swing mardi faible à mercredi, IBS/SMA/ATR et sélection best-run, coûts non enregistrés ; écartée car IBS déjà étudié et sélection non comparable. Aucun code externe exécuté.\n- [Hansen/Lunde/Nason, Fed Atlanta WP2005-2](https://fraser.stlouisfed.org/title/working-papers-federal-reserve-bank-atlanta-8586/testing-significance-calendar-effects-656859/fulltext) : importance du data mining et tests de calendrier multiples ; ne démontre pas notre règle. L'étude présente nos IC comme descriptifs, pas correction universelle des essais antérieurs.\n- [CXO, recherche propre2017](https://www.cxoadvisory.com/calendar-effects/spy-by-day-of-week-and-overnight/) : distingue close/open, open/close et close/close ; importance de ne pas attribuer l'effet overnight à notre fenêtre RTH.\n- [Heston/Korajczyk/Sadka,2010](https://arxiv.org/abs/1005.3535) et [Gao et al.,2018](https://profiles.wustl.edu/en/publications/market-intraday-momentum/) : saisonnalité transversale/demi-heure et momentum de clôture ; la première nécessite un univers transversal, la seconde déjà étudiée ici.\n- [GitHub/QuantConnect, Dual Thrust](https://github.com/QuantConnect/Tutorials/tree/master/04%20Strategy%20Library/05%20Dual%20Thrust%20Trading%20Algorithm) : autre cassure, proche des familles déjà testées. Pas retenue comme nouvelle piste.\n- [GitHub russs123/reversal_strategy](https://github.com/russs123/reversal_strategy), repéré dans un témoignage Reddit2024 :404 au31octobre2026 ; aucun code ni résultat prétendument inspecté. Les recherches exactes TurnaroundTuesday sur GitHub n'ont pas fourni de dépôt primaire vérifiable ; absence de résultat ne prouve pas absence de code public.\n- Pairs SPY/QQQ : corrélation ne garantit pas spread stationnaire ; nouvelle calibration et deux jambes ajouteraient des choix et frais. Overnight/Londres nécessitent une autre couverture que le cache RTH. Ni ces contraintes ni une affirmation marketing ne prouvent leur infériorité financière.\n\nL'hypothèse retenue est une adaptation day trading simple avec témoins all_tuesdays, all_down_days et autres jours. Arrêter au premier échec n'autorise pas à promouvoir un seuil isolé positif. Date source et état d'accès conservés ; article Stocksoft repéré mais fetch en échec, non utilisé pour des règles détaillées.\n"
+    }
+  },
+  "code_sha256": {
+    "audit/bars.py": "4efe91d6d85b86c056dd8bbd61a54f27a623427cc8d94f09547e449603a794b6",
+    "audit/independent.py": "0225608f5074e4910fad3d1b1f392062b1777263f34341ef179429cfd5c757e3",
+    "audit/matrix.py": "19b4e267cad748497cd9645a03f5eaf45a7d66028e2b5e42e7fd0f4bed77e968",
+    "requirements-lock.txt": "000ee07f22f19efaca0b666e79a92c33065b402d6814160f919b1494215a60d3",
+    "scripts/report.py": "8f26d0fa232edbf84514c7f8927b199a83b434d847c4e1b36888027cc7a5ed21",
+    "scripts/run_study.py": "258ee017f8e3c5f0e1fdd28067b44b2a2ac68855d4f790d53679e1db372e3733",
+    "scripts/verify_delivery.py": "b9e5d334734de5362604dabd1922159b83eb052f745445a320dafa538928d5f0",
+    "tests/test_engine.py": "1a8ffdafe272f3ad95dbb74d4541b44c916391c4e4beaf7fbd84a8bc92029aa1",
+    "tuesday/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tuesday/data.py": "c61925a72ba61fb030efbcc9460860fb9c4b3a7915a324c45ffead5f709630b2",
+    "tuesday/engine.py": "168dce3294aacdfd95b849cbe2aebdd5fc593b186d0de8ca42d2592d1757a4da"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/closing_momentum/__init__.py": "d3313c9b87d9c7710f4934e59a46bb5870de7a736a5905137bdfd21372f77a07",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/closing-momentum/closing_momentum/engine.py": "8a59839154e9e1f048f053ed2e8b9f288bfc8ba0e34ab99326f2ac2f19709f49",
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/intraday-momentum-noise-area/noise_area/__init__.py": "bade9dd944a6b2d0ed267f6290bad7bcb78082f4040cb92066b29fb66bba624a",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "studies/intraday-momentum-noise-area/noise_area/engine.py": "64a49a9575d7badc8921c5c2c34bbe650d0f47e7fab0d6b45f3700f6501e1f76",
+    "studies/intraday-momentum-noise-area/noise_area/features.py": "ecab630d5f850c4def089739c9a13b7acd88de1361527483ff39f0f6a6765664",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/opening-range-5m/orb/__init__.py": "4aa1cc8c56b8834f8846ba260770cd70fe5af1f71721e746792abca89058b878",
+    "studies/opening-range-5m/orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2",
+    "studies/opening-range-5m/orb/engine.py": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810",
+    "studies/previous-day-ibs/ibs/__init__.py": "ac709b974aef0e6e913db2dd64b72213c3462387d97ceb2a22ec778bef8971b0",
+    "studies/previous-day-ibs/ibs/data.py": "8903d073c85c0bd864285449ea94f3f111412d59b0448096bbf6256d53787424",
+    "studies/previous-day-ibs/ibs/engine.py": "d524a9e1a3b70ab89a6cc56ec62b36d439977c1a3a17e00cc8abcb3ea03d08e0"
+  },
+  "python": "3.14.6",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "exchange_calendars": "4.13.2",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  },
+  "note": "Frozen before first market PnL; conditional coverage, reused B, original intraday adaptation, no bot."
+}

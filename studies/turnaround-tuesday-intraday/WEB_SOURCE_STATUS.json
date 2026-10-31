@@ -1,0 +1,66 @@
+{
+  "accessed_date": "2026-10-31",
+  "scope": "Broader web screening, no proof of globally best strategy. No external code executed. Research/source selection predates PnL; this availability receipt compiled afterward.",
+  "sources": [
+    {
+      "url": "https://quantifiedstrategies.substack.com/p/the-turnaround-tuesday-trading-strategy-c7f",
+      "status": "primary_author_public_intro",
+      "note": "Detailed rules paywalled, not reconstructed."
+    },
+    {
+      "url": "https://www.reddit.com/r/StockTradingIdeas/comments/1x9u2de/turnaround_tuesday_on_spy_made_73_after_costs/",
+      "status": "original_forum_post",
+      "note": "Rules read; return claim not verified, includes overnight."
+    },
+    {
+      "url": "https://www.reddit.com/r/algorithmictrading/comments/1j9p8hi/turnaround_tuesday_strategy_for_nasdaq_100_dax_40/",
+      "status": "original_forum_post",
+      "note": "Rules read; text/filter trend ambiguity, different instruments and holding period."
+    },
+    {
+      "url": "https://www.marketinout.com/stock-screener/backtest/backtest_strategy.php?strategy=turnaround-tuesday",
+      "status": "primary_platform_rule",
+      "note": "Rules read; Monday close entry, no local-result attribution."
+    },
+    {
+      "url": "https://strategies.prorealalgos.com/turnaround-tuesday/",
+      "status": "primary_author_public_rule",
+      "note": "Different swing/IBS rule and best-run presentation; costs not recorded."
+    },
+    {
+      "url": "https://fraser.stlouisfed.org/title/working-papers-federal-reserve-bank-atlanta-8586/testing-significance-calendar-effects-656859/fulltext",
+      "status": "primary_paper_abstract_and_text",
+      "note": "Data-mining/calendar risk; not proof of this rule."
+    },
+    {
+      "url": "https://www.cxoadvisory.com/calendar-effects/spy-by-day-of-week-and-overnight/",
+      "status": "primary_author_public_intro",
+      "note": "Windows distinguished; detailed conclusions paywalled."
+    },
+    {
+      "url": "https://arxiv.org/abs/1005.3535",
+      "status": "primary_paper_abstract",
+      "note": "Cross-sectional seasonality, not replicated here."
+    },
+    {
+      "url": "https://profiles.wustl.edu/en/publications/market-intraday-momentum/",
+      "status": "primary_author_abstract",
+      "note": "Last-half-hour momentum already tested in another study."
+    },
+    {
+      "url": "https://github.com/QuantConnect/Tutorials/blob/master/04%20Strategy%20Library/05%20Dual%20Thrust%20Trading%20Algorithm/03%20Conclusion.html",
+      "status": "github_primary_code_document",
+      "note": "Read with connected GitHub; different breakout family, negative SPY baseline published by author."
+    },
+    {
+      "url": "https://github.com/russs123/reversal_strategy",
+      "status": "unavailable_404",
+      "note": "No code inspected or executed."
+    },
+    {
+      "url": "https://stocksoftresearch.com/testing-turnaround-tuesday/",
+      "status": "search_result_fetch_failed",
+      "note": "No detailed rule inferred from inaccessible page."
+    }
+  ]
+}
