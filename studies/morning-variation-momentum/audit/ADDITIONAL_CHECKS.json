@@ -1,0 +1,7 @@
+{
+  "utc": "2026-10-31T21:05:06.783239+00:00",
+  "passed": true,
+  "numeric_checks": 864,
+  "bootstrap_accounts": 6,
+  "note": "Independent daily aggregation, cost concentration, PF/WR/CAGR and block5/20 CI. ALL/A/B dates/features/fills reconcile, quantities compound in separate accounts."
+}

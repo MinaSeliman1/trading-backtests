@@ -1,0 +1,40 @@
+{
+  "utc": "2026-10-31T21:13:08.695619+00:00",
+  "status": "passed",
+  "base_revision": "153357f01cb2129542b9fb0d10687be65663c1d9",
+  "pre_pnl_review": {
+    "reviewer": "variation_review",
+    "finding": "future afternoon invalid_ohlcv erased a valid morning from calibration",
+    "resolution": "corrected before market PnL; two red regressions then green; conflicts/off-grid globally rejected"
+  },
+  "final_review": {
+    "reviewer": "variation_final_review",
+    "fresh_context": true,
+    "tests_passed": 42,
+    "financial_files_verified": 10,
+    "dependency_snapshots_verified": 15,
+    "audited_exports_verified": 463,
+    "scenario_summaries_verified": 84,
+    "figures_inspected": 4,
+    "material_financial_or_report_issues": 0,
+    "documentation_findings": [
+      {
+        "issue": "Windows default cp1252 decoding",
+        "resolution": "README activates PYTHONUTF8=1 before both command blocks; verified decoding"
+      },
+      {
+        "issue": "frozen research mojibake",
+        "resolution": "strict readable transcription added; original frozen bytes unchanged; reviewer confirmed"
+      }
+    ],
+    "blocking_findings_remaining": 0
+  },
+  "root_checks": {
+    "scalar_checks": 5437956,
+    "additional_numeric_checks": 864,
+    "bootstrap_accounts": 6,
+    "all_four_figures_inspected": true,
+    "local_markdown_links_verified": true
+  },
+  "scope": "New study and index/plan only. No existing bot, vault, broker order, task or SQLite modified. Does not certify profitability."
+}

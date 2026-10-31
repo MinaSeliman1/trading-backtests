@@ -1,0 +1,21 @@
+{
+  "predeclared": true,
+  "checks": {
+    "SPY": {
+      "trades_all_ge100": true,
+      "reference_A_B_ALL_positive": true,
+      "all_without_top3_positive": false,
+      "A_double_friction_positive": false,
+      "all_block20_ci_lower_positive": false
+    },
+    "QQQ": {
+      "trades_all_ge100": true,
+      "reference_A_B_ALL_positive": true,
+      "all_without_top3_positive": true,
+      "A_double_friction_positive": true,
+      "all_block20_ci_lower_positive": false
+    }
+  },
+  "all_passed": false,
+  "decision": "Piste écartée pour un nouveau bot : au moins un critère fixé avant les résultats échoue."
+}

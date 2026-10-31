@@ -1,0 +1,368 @@
+{
+  "utc": "2026-10-31T21:01:21.355782+00:00",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "executions": 84,
+  "specifications": {
+    "reference": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "cost_0.02": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.02,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "cost_0.03": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.03,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "cost_0.05": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.05,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "quantile_0.8": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.8,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "quantile_0.95": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.95,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "sampling_1": {
+      "observation_minutes": 60,
+      "sampling_minutes": 1,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "sampling_5": {
+      "observation_minutes": 60,
+      "sampling_minutes": 5,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "raw_momentum": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "return",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "always_long": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "always",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "noon": {
+      "observation_minutes": 150,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "exit_close": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "close",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "resolved_prefix": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "expanding",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "resolved_prefix",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    },
+    "rolling252": {
+      "observation_minutes": 60,
+      "sampling_minutes": 2,
+      "min_history": 252,
+      "quantile": 0.9,
+      "history_mode": "rolling",
+      "metric": "variation",
+      "exit_kind": "open",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "leverage_cap": 1.0
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "protocols": {
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "5a85b7c38c9fec78e62fd966bf1a7395fadb500b35df437db46ba2791a260244",
+      "text": "# Momentum matinal normalisé par la variation — protocole avant PnL\n\n31 octobre 2026. Mandat utilisateur autonome : nouvelle piste QQQ/SPY, mêmes frais, calcul et publication ; les deux bots restent inchangés. Deux comptes indépendants100000USD. Adaptation propre du signal public de SharpeTwo, pas réplication de son panier164ETF ni de ses rendements bruts aux quote-midpoints.\n\n1. NYSE RTH, dates/horaires/calendrier vérifiés. Demi-séances entièrement exclues (inactivité connue, jamais données manquantes). Principal : observer la première heure jusqu'au close10:29 (information disponible10:30NewYork). Les60minutes de la fenêtre doivent toutes avoir OHLCV valides, même si seules des fins d'intervalles sont échantillonnées ; invalide => unknown_morning, sans remplir les trous. Une source signalée avec conflit/décalage de timestamps est rejetée, pas silencieusement nettoyée.\n2. Prix initiaux open09:30 puis closes des barres09:31,09:33,...10:29 (pas2min). Retours logarithmiques adjacents sur cette grille. L=log(close10:29/open09:30), V=sqrt(somme des retours2min au carré), score=L/V. Pas d'overnight ni d'annualisation ; ce ratio n'est ni Sharpe ni nombre de sigmas prévisionnels. V<=1e-12 => zéro_variation, inactivité connue, pas de score de calibration.\n3. Seuil = quantile0.90 avec interpolation linéaire de TOUS les scores antérieurs éligibles du même ETF et du même créneau, avant le jour courant. Minimum252observations antérieures valides et full-session. Les matinées invalides, sans variation et demi-séances passées ne sont pas imputées ; elles sont exclues explicitement du pool éligible. Une lacune dans l'après-midi n'empêche pas la calibration d'une matinée réellement valide, car le score était observable avant cette lacune. Le jour courant est ajouté APRÈS le calcul de son seuil ; aucune calibration au rendement futur.\n4. LONG seulement si score>seuil+1e-12 ; pas de condition de signe additionnelle, pas RSI/IBS/EMA, news, volume, gap ni réglage entraîné sur A/B. Les252premiers scores valides sont warmup connu, sans trade. Une matinée courante inconnue reste unknown même pendant le warmup. Un seuil éventuellement négatif n'ajoute pas après coup un filtre haussier.\n5. Quantité entière floor(capital/prixClose10:29), plafond causal1x hors frais ; fill à l'open10:31 (slot61), une minute entière après la décision. Pas d'utilisation de l'open futur pour le sizing ni de réduction rétroactive en cas de gap. Exposition au fill et dépassements du plafond exportés. Source choisie hold-to-close sans stop : pas de cible de perte1%, TP, break-even ou SL inventé. Le risque est celui d'une position longue de notionnel1x pendant l'après-midi, distinct d'un compte avec stop.\n6. Sortie principale à l'open15:59, préprogrammée et décidée avant son prix. Aucune nuit, une entrée/jour. Différence matérielle avec la source16:00 : conserver l'open final commun aux autres études. Variante exit_close : sortie au dernier close15:59, ordre de fin de séance prédéfini ; prix SIP final proxy, pas preuve de fill à l'enchère officielle. Pas de stop intrabar ; toutes les minutes détenues sont nécessaires aux marks/excursions.\n7. Mêmes coûts : commission0.0035USD/action/côté, minimum0.35 ; friction adverse0.01USD/action/côté, incorporée aux fills une seule fois, stress0.02/0.03/0.05. LONG uniquement, donc aucun emprunt ; modèle commun1%annuel/360 SHORT non sollicité. Pas de dividende encaissé overnight. Cash non investi sans intérêt, pas promesse de tarif/fill broker.\n8. Principal complete_days exige la validité de toute la séance courante APRÈS un signal éligible, filtre futur explicitement conditionnel. resolved_prefix retire ce filtre ; les60minutes du signal, l'open d'entrée, les minutes entièrement détenues et la référence de sortie restent nécessaires. Minute non détenue10:30 seule inconnue ne gêne pas ce prefix. Trou actif ou fill inconnu => trade entier non résolu omis, coûts d'entrée connus archivés. Zéro de chaînage inconnu n'est pas rendement de cash observé. Gap après une sortie résolue n'efface pas le fill.\n9. DD observé aux frais d'entrée, closes minute détenus et sortie nette ; pas pire tick certifié. MAE/MFE de prix sur les extrêmes des minutes entièrement détenues et les deux fills, hors commissions. En exit_close, dernière minute entièrement détenue jusqu'au close ; en exit_open, aucune mèche de cette minute n'est détenue.\n10. 14variantes x2ETF x3périodes =84comptes : reference ; cost0.02/0.03/0.05 ; quantile0.80/0.95 ; sampling1/sampling5 ; raw_momentum (L seul, topdécile sur le même panel éligible, pas score normalisé) ; always_long (même warmup/panel, achat sans seuil) ; noon (150minutes, décision12:00, fill12:01) ; exit_close ; resolved_prefix ; rolling252 (seuil sur252derniers scores éligibles). Toutes publiées sans sélectionner la meilleure après PnL.\n11. ALL2016-01-04–2026-10-16 ; A jusqu'au2024-04-30 ; B2024-05-01–2026-10-16, comptes100000indépendants par période. Features préparées avec le passé disponible depuis2015-12-31, pas d'historique inventé pour le warmup. A/B déjà réutilisées : pas nouveau OOS aveugle. Les témoins ont une exposition/fréquence/capitalisation différentes, pas un effet causal établi du filtre.\n12. SourceSIP locale et hashes vérifiés, aucune clé ni API. Gel financier/tests/oracle/protocole/dépendances avant premier PnL ; scripts de présentation/contrôles supplémentaires possibles ensuite, scellés au manifest final. Oracle scalaire distinct des grilles/logs/quantiles/signaux/fills/coûts/comptes, même source/chargeur. Bootstrap descriptif3000tirages seed20261031 blocs5/20, exclusions au zéro comptable, sans correction des nombreux essais antérieurs. Concentration top3 et annuel publiés.\n13. Présélection avant résultats :>=100trades ALL sur chaque ETF ; références A/B/ALL positives sur les deux ; ALL sans3meilleurs jours positif sur les deux ; A à friction doublée positive sur les deux ; borne basse IC95 moyenne quotidienne blocs20 ALL>0 sur les deux. Échec => adaptation archivée sans nouveau bot. Passage => candidat historique à discuter seulement. Aucun changement des deux simulations existantes, aucun passage automatique en réel.\n"
+    },
+    "RESEARCH.md": {
+      "sha256": "b6ea51f5b7c6c909de207b42517593d2b982597dbf6f915a391080eae863fa2c",
+      "text": "# Recherche Web et choix â€” 31 octobre 2026\n\nHypothÃ¨se nouvelle ici : qualitÃ© du parcours matinal relativement Ã  sa variation rÃ©alisÃ©e, puis dÃ©tention de la suite de sÃ©ance. Ni paire relative ni nouveau rÃ©glage du calendrier. Recherche large ne certifie pas une meilleure stratÃ©gie universelle ; aucune performance externe copiÃ©e dans nos rÃ©sultats.\n\n- [SharpeTwo, recherche primaire2026](https://sharpetwo.com/research/spys-quiet-rally-what-happens-after-a-big-move-with-little-volatility) : matinÃ©e normalisÃ©e, seuil empirique passÃ© et entrÃ©e dÃ©calÃ©e. Sourcequote-midpoints2min, panierETF et sorties diffÃ©rentes ; certains rÃ©sultats gross et sous-pÃ©riodes fragiles. Nous utilisons SPY/QQQ sÃ©parÃ©s, tradebarsSIP et tous nos coÃ»ts. Pas de donnÃ©es de flux pour attribuer une cause institutionnelle. Le ratio n'est pas une statistique de Sharpe ou une prÃ©vision normale.\n- [Gao et al., primaire2018](https://profiles.wustl.edu/en/publications/market-intraday-momentum/) : premiÃ¨re demi-heure/prÃ©diction de derniÃ¨re demi-heure, famille dÃ©jÃ  Ã©tudiÃ©e dans closing-momentum. Le nouveau test porte sur l'Ã©tat Ã 10:30 et la dÃ©tention de l'aprÃ¨s-midi ; pas rÃ©plication du papier ni de ses rÃ©sultats.\n- [QuantSeeker2026, introduction publique](https://www.quantseeker.com/p/revisiting-intraday-momentum) : question de robustesse/rÃ©gimes ; rÃ¨gles dÃ©taillÃ©es payantes non lues ni reconstruites.\n- [StockCharts TTM Squeeze, documentation primaire](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ttm-squeeze) : compression de bandes et momentum, alternative examinÃ©e. DiffÃ©rences de formule Keltner selon plateformes ; famille cassure proche des Ã©tudes dÃ©jÃ  nombreuses, non retenue cette fois.\n- [AndrBene, README GitHub primaire](https://github.com/AndrBene/Volatility-Breakouts-Trading-ETFs/blob/master/readme.md) : stratÃ©gieATR de cassure ETF, capitalisation et pipeline de filtres Ã  auditer ; code non exÃ©cutÃ©, aucune clÃ© demandÃ©e. Alternative non sÃ©lectionnÃ©e, pas rÃ©sultat certifiÃ© importÃ©.\n- [Forum sur les lookbacks intraday](https://www.reddit.com/r/algotrading/comments/1df4c1o/) : repéré dans la recherche ; ouverture complète refusée par cache miss, contexte de choix d'horizon et bruit, pas preuve de rendement. Notre minimum252 et quantile sont fixÃ©s avant PnL, non optimisÃ©s sur ce tÃ©moignage.\n- [Variance rÃ©alisÃ©e, document primaire d'auteurs](https://public.econ.duke.edu/~boller/Published_Papers/rfs_18.pdf) : somme des retours intraday au carrÃ© ; ne dÃ©montre pas cette rÃ¨gle de trading. Les tradebars ne remplacent pas les quotes de la source.\n\nLes pistes dÃ©jÃ  testÃ©es (ORB/retest/volume, VWAP, RSI, IBS, EMA, gaps, NR7, fin de mois, mardi, spread) restent archivÃ©es. Les contrÃ´les raw_momentum et always_long testeront les comparaisons de rendement, sans affirmer une expÃ©rience causale isolÃ©e. Lâ€™absence de nuit dÃ©tenue, les fills et le risque sans stop sont dÃ©crits prÃ©cisÃ©ment dans le protocole, sans prÃ©tendre reproduire un portefeuille164ETF brut.\n"
+    }
+  },
+  "code_sha256": {
+    "audit/independent.py": "db1169a2ab61f71f0e235e05b12dbec3189c1d5e83da10ec6a629f86de935b9b",
+    "requirements-lock.txt": "000ee07f22f19efaca0b666e79a92c33065b402d6814160f919b1494215a60d3",
+    "scripts/run_study.py": "3a66bdb0d91eee336a3888d2f07ba8062dcdb60180d70241231725734678523f",
+    "tests/test_engine.py": "801f53af49bf191f117ff8612453f4162ea3d8b2615f2150ce4dee842028aedb",
+    "tests/test_matrix.py": "8b689def22bc4081c83843cd0c0ce218a3528aa1c33f9be9f52a16773202d117",
+    "tests/test_oracle.py": "81643e101dd15f457b287181b7b03ebc7614b4a97d0f8e2988b217dca2120fca",
+    "variation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "variation/analysis.py": "ea224175a754fb09ad818b87829cf090a43195a11da751f92520e10f4260d069",
+    "variation/data.py": "8efa5391693ae80499e56f5dd7b16019ee39298747362d32f03389e3f0ef45cd",
+    "variation/engine.py": "b267762e1153bf19d2406b9aed0b3d305fbc0d96bb2734b22b876debe5664d0a"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/closing_momentum/__init__.py": "d3313c9b87d9c7710f4934e59a46bb5870de7a736a5905137bdfd21372f77a07",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/closing-momentum/closing_momentum/engine.py": "8a59839154e9e1f048f053ed2e8b9f288bfc8ba0e34ab99326f2ac2f19709f49",
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/intraday-momentum-noise-area/noise_area/__init__.py": "bade9dd944a6b2d0ed267f6290bad7bcb78082f4040cb92066b29fb66bba624a",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "studies/intraday-momentum-noise-area/noise_area/engine.py": "64a49a9575d7badc8921c5c2c34bbe650d0f47e7fab0d6b45f3700f6501e1f76",
+    "studies/intraday-momentum-noise-area/noise_area/features.py": "ecab630d5f850c4def089739c9a13b7acd88de1361527483ff39f0f6a6765664",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/opening-range-5m/orb/__init__.py": "4aa1cc8c56b8834f8846ba260770cd70fe5af1f71721e746792abca89058b878",
+    "studies/opening-range-5m/orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2",
+    "studies/opening-range-5m/orb/engine.py": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810",
+    "studies/previous-day-ibs/ibs/__init__.py": "ac709b974aef0e6e913db2dd64b72213c3462387d97ceb2a22ec778bef8971b0",
+    "studies/previous-day-ibs/ibs/data.py": "8903d073c85c0bd864285449ea94f3f111412d59b0448096bbf6256d53787424",
+    "studies/previous-day-ibs/ibs/engine.py": "d524a9e1a3b70ab89a6cc56ec62b36d439977c1a3a17e00cc8abcb3ea03d08e0"
+  },
+  "python": "3.14.6",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "exchange_calendars": "4.13.2",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  },
+  "note": "Frozen before first market PnL. Reused B, conditional coverage, independent ETF accounts, no bot."
+}

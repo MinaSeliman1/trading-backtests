@@ -1,0 +1,41 @@
+{
+  "utc": "2026-10-31T21:03:55.089722+00:00",
+  "sources": [
+    {
+      "name": "SharpeTwo",
+      "url": "https://sharpetwo.com/research/spys-quiet-rally-what-happens-after-a-big-move-with-little-volatility",
+      "access": "full public article read; selected methodological inspiration"
+    },
+    {
+      "name": "Gao2018",
+      "url": "https://profiles.wustl.edu/en/publications/market-intraday-momentum/",
+      "access": "primary abstract; family comparison only"
+    },
+    {
+      "name": "QuantSeeker",
+      "url": "https://www.quantseeker.com/p/revisiting-intraday-momentum",
+      "access": "public introduction only; paywall respected"
+    },
+    {
+      "name": "StockCharts",
+      "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/ttm-squeeze",
+      "access": "primary methodology read; alternative not selected"
+    },
+    {
+      "name": "AndrBene",
+      "url": "https://github.com/AndrBene/Volatility-Breakouts-Trading-ETFs/blob/master/readme.md",
+      "access": "primary README read; code not executed"
+    },
+    {
+      "name": "Reddit",
+      "url": "https://www.reddit.com/r/algotrading/comments/1df4c1o/",
+      "access": "search result only; full open cache miss; no performance inference"
+    },
+    {
+      "name": "Bollerslev2018",
+      "url": "https://public.econ.duke.edu/~boller/Published_Papers/rfs_18.pdf",
+      "access": "primary PDF accessible45pages; abstract and realized-variation equation1 methodology read; not strategy replication"
+    }
+  ],
+  "note": "No external performance imported; no claim to best universal strategy or exhaustive internet coverage."
+}
