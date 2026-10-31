@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-31",
+  "base_commit": "5c2be7ce1174bacd47062f922af1196ec7edd657",
+  "authorization": "User explicitly requested restart now, even after09:30; simulation only.",
+  "historical_exit": {
+    "local_approx": "2026-10-31T14:35:45-04:00",
+    "both_task_results": 1,
+    "cause": "not_established",
+    "fatal_exception_record_available": false,
+    "task_scheduler_operational_log_enabled": false,
+    "no_new_power_or_application_crash_event_in_checked_window": true,
+    "no_inference_of_onedrive_or_memory_cause": true
+  },
+  "confirmed_observability_defect": "pythonw had no console and no outer fatal recorder; Noise main returned1 silently for RuntimeError.",
+  "initial_recovery_local": {
+    "noise": "2026-10-31T14:53:42-04:00",
+    "orb": "2026-10-31T14:53:44-04:00"
+  },
+  "diagnostic_activation": {
+    "qqq-noise-area": {
+      "bot": "qqq-noise-area",
+      "utc": "2026-10-31T19:07:15.3177565Z",
+      "mode": "shadow",
+      "feed": "sip",
+      "authorization": "Explicit user restart now, even after09:30, October31",
+      "non_session": true,
+      "flat": true,
+      "graceful": true,
+      "prior_exit_code": 0,
+      "start_requested": true,
+      "ledger_reset": false,
+      "broker_order": false
+    },
+    "qqq-orb": {
+      "bot": "qqq-orb",
+      "utc": "2026-10-31T19:06:50.1712610Z",
+      "mode": "shadow",
+      "feed": "sip",
+      "authorization": "Explicit user restart now, even after09:30, October31",
+      "non_session": true,
+      "flat": true,
+      "graceful": true,
+      "prior_exit_code": 0,
+      "start_requested": true,
+      "ledger_reset": false,
+      "broker_order": false
+    }
+  },
+  "native_tasks": [
+    {
+      "task": "TradingBacktests-QQQ-NoiseArea-Simulation",
+      "state": "Running",
+      "last_run": "2026-10-31T15:07:15.0000000-04:00",
+      "last_result": 267009,
+      "next_run": null,
+      "wake": false
+    },
+    {
+      "task": "TradingBacktests-QQQ-ORB-Simulation",
+      "state": "Running",
+      "last_run": "2026-10-31T15:06:50.0000000-04:00",
+      "last_result": 267009,
+      "next_run": null,
+      "wake": false
+    },
+    {
+      "task": "TradingBacktests-QQQ-NoiseArea-Simulation-Wakeup",
+      "state": "Ready",
+      "last_run": "2026-10-31T14:32:58.0000000-04:00",
+      "last_result": 0,
+      "next_run": "2026-11-02T09:10:00.0000000-05:00",
+      "wake": true
+    }
+  ],
+  "native_action_executable_arguments_workdir_verified": true,
+  "running_task_result_note": "267009 = 0x41301, task currently running, not an exit failure.",
+  "last_health_monitors_utc": {
+    "noise": "2026-10-31T19:11:15.076687+00:00",
+    "orb": "2026-10-31T19:11:19.861328+00:00"
+  },
+  "health": {
+    "noise": {
+      "state": "waiting_for_regular_session",
+      "age_seconds": 0.225728,
+      "pid": 27992,
+      "protected_on_ac": true,
+      "qualified_sessions": 0
+    },
+    "orb": {
+      "state": "waiting_non_session",
+      "age_seconds": 1.820199,
+      "pid": 19944,
+      "protected_on_ac": true,
+      "qualified_sessions": 1
+    }
+  },
+  "orb_transient": {
+    "local": "2026-10-31T15:06:51-04:00",
+    "type": "PermissionError",
+    "automatic_retry_seconds": 60,
+    "recovered_local": "2026-10-31T15:07:51-04:00",
+    "historical_exit_cause_demonstrated": false
+  },
+  "before": {
+    "utc": "2026-10-31T18:53:00.045636+00:00",
+    "bots": {
+      "qqq-noise-area": {
+        "mode": "shadow",
+        "feed": "sip",
+        "balance": 98041.42350000002,
+        "position": 0,
+        "account_sha256": "fb8fec1f7d4243b93e4231b566f5f2f5472740724c54c6eb736451322cb411e9",
+        "configuration_sha256": "2e334d7c0f4e0ab52424d7279b905b7fa36ff8444b316b596a389f4ffa3d9d11",
+        "operator_stop": false,
+        "paused": false,
+        "paused_day": null,
+        "pending": 0,
+        "stored_days": 64,
+        "trade_rows": 14,
+        "first_session": "2026-10-21",
+        "baseline_sha256": "3aaa45a665e1045a16cb1152bd2bcaeaa7304ba6e42eb58a0c54da18ee615bbc",
+        "engine_state": "waiting_for_regular_session",
+        "engine_utc": "2026-10-31T18:35:44.892461+00:00",
+        "pid": null
+      },
+      "qqq-orb": {
+        "mode": "shadow",
+        "feed": "sip",
+        "balance": 99188.18398333332,
+        "position": null,
+        "account_sha256": "78284e8ffdb24410fe5ab0b2ac0172ddcd4b2c608db6443898a2595642a4c71a",
+        "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2",
+        "operator_stop": false,
+        "paused": false,
+        "paused_day": null,
+        "pending": 0,
+        "stored_days": 3,
+        "trade_rows": 2,
+        "first_session": "2026-10-26",
+        "engine_state": "waiting_non_session",
+        "engine_utc": "2026-10-31 18:35:45.245011+00:00",
+        "pid": 15468
+      }
+    }
+  },
+  "after": {
+    "utc": "2026-10-31T19:08:37.972592+00:00",
+    "bots": {
+      "qqq-noise-area": {
+        "mode": "shadow",
+        "feed": "sip",
+        "balance": 98041.42350000002,
+        "position": 0,
+        "account_sha256": "fb8fec1f7d4243b93e4231b566f5f2f5472740724c54c6eb736451322cb411e9",
+        "configuration_sha256": "2e334d7c0f4e0ab52424d7279b905b7fa36ff8444b316b596a389f4ffa3d9d11",
+        "operator_stop": false,
+        "paused": false,
+        "paused_day": null,
+        "pending": 0,
+        "stored_days": 64,
+        "trade_rows": 14,
+        "first_session": "2026-10-21",
+        "baseline_sha256": "3aaa45a665e1045a16cb1152bd2bcaeaa7304ba6e42eb58a0c54da18ee615bbc",
+        "engine_state": "waiting_for_regular_session",
+        "engine_utc": "2026-10-31T19:08:34.041691+00:00",
+        "pid": null
+      },
+      "qqq-orb": {
+        "mode": "shadow",
+        "feed": "sip",
+        "balance": 99188.18398333332,
+        "position": null,
+        "account_sha256": "78284e8ffdb24410fe5ab0b2ac0172ddcd4b2c608db6443898a2595642a4c71a",
+        "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2",
+        "operator_stop": false,
+        "paused": false,
+        "paused_day": null,
+        "pending": 0,
+        "stored_days": 3,
+        "trade_rows": 2,
+        "first_session": "2026-10-26",
+        "engine_state": "waiting_non_session",
+        "engine_utc": "2026-10-31 19:08:38.064962+00:00",
+        "pid": 19944
+      }
+    }
+  },
+  "financial_configuration_reference_and_counts_unchanged": true,
+  "diagnostics": {
+    "primary": "runtime/windows/last_fatal.json",
+    "fallback": "%LOCALAPPDATA%/TradingBacktests/Diagnostics/{noise,orb}/last_fatal.json",
+    "fields": [
+      "utc",
+      "pid",
+      "component",
+      "exit_code",
+      "error_type",
+      "errno",
+      "winerror",
+      "frames[file,line,function]",
+      "messages_and_locals_omitted"
+    ],
+    "exception_messages_source_locals_environment_or_secrets_serialized": false,
+    "fallback_tested": true,
+    "simultaneous_write_failure_preserves_exit_code": true,
+    "live_crash_not_injected": true
+  },
+  "tests": {
+    "noise_passed": 136,
+    "orb_passed": 30,
+    "total_passed": 166,
+    "native_vault_integration_deselected": 1,
+    "diagnostic_cases": 12,
+    "reviewer_diagnostics_and_background_passed": 20,
+    "runtime_argument_cases_failed_before_fix": 2,
+    "runtime_argument_cases_passed_after_fix": 3
+  },
+  "no_assistant_vault_access": true,
+  "no_broker_orders": true,
+  "no_ledger_reset": true,
+  "operator_stops_not_bypassed": true,
+  "only_owned_maintenance_stop_flags_removed": true,
+  "automation_updated_and_saved_prompt_verified": true,
+  "automation_schedule_and_target_preserved": true,
+  "joint_review_after20_each_preserved": true,
+  "source_sha256": {
+    "bots/qqq-noise-area/qqq_paper/diagnostics.py": "fbc7999275a6042c492689b635e34db807e7f0f4a4fe81452ba93a22ec08b352",
+    "bots/qqq-noise-area/qqq_paper/background.py": "ccf1d64c17e845d85e1cdf9ffe56b778474bfcd6bf3f9dd45fe1fb01e9b992e2",
+    "bots/qqq-noise-area/scripts/background_bootstrap.py": "d151217038a2f54d3a4f98a3c630d8678756f8b8e557bcd73c7c346b93be11d5",
+    "bots/qqq-orb/scripts/background_bootstrap.py": "85e60f24b4675d8fdbe8bd4ff47b8338cf3d1c50a1874f66add664d5aac2656e"
+  },
+  "limitations": [
+    "Historical exit1 root cause remains unknown; this repairs missing fatal evidence, not an unproven trading/runtime cause.",
+    "A forced kill, native crash, failure before importing diagnostics or both storage targets unavailable may still leave no record.",
+    "Healthy Saturday processes and awake wake action do not prove next session timing or physical hardware wake.",
+    "No skipped session reclassified, no strategy/fee/equity/reference reset."
+  ],
+  "independent_review": {
+    "important_findings_remaining": 0,
+    "source_hashes_verified": 4,
+    "diagnostics_background_cases_passed": 20,
+    "report_and_evidence_consistent": true,
+    "relative_document_links_verified": 94,
+    "historical_cause_not_claimed": true
+  }
+}

@@ -103,3 +103,8 @@ Le même réveil09:10 contrôle maintenant les **deux** tâches fixes Noise Area
 `./configure-ac-availability.ps1` affiche uniquement le plan et ses paramètres. Avec `-Apply`, il sauvegarde la politique initiale parGUID puis fixe AC RTCWAKE1, STANDBYIDLE0, HIBERNATEIDLE0. Il ne lit ni coffre, ni SQLite, ni tâche. Il ne modifie jamais DC ; backup et preuve courante sont sous runtime/windows, horsGit. Ce maintien actif même bots arrêtés augmente la consommation sur secteur. Pour restaurer, lire la sauvegarde correspondant au mêmeGUID et rétablir uniquement ses trois valeurs AC avec powercfg /setacvalueindex, puis /setactive ; ne pas réinitialiser le plan ou modifier les valeurs batterie.
 
 Le plan Balanced actuel a été vérifié après application. Un changement ultérieur de plan n'est pas couvert automatiquement : contrôler la politique du nouveau plan. L'action courte de09:10 et ses protections STOP/désactivation restent inchangées. Le suivi doit lire les paramètres, pas réappliquer cette politique de sa propre initiative.
+
+
+## Diagnostic des sorties sans console
+
+Depuis le 31 octobre, le bootstrap conserve les métadonnées d'une exception fatale dans `runtime/windows/last_fatal.json`, avec repli hors OneDrive dans `%LOCALAPPDATA%/TradingBacktests/Diagnostics/noise/last_fatal.json`. Type/errno/winerror et positions fichier/fonction/ligne seulement : aucun message d'exception, source ou variable locale. Comparer date et PID avant d'attribuer un fichier à une nouvelle panne. Une terminaison forcée ou native peut rester sans trace. [Reprise autorisée et validation](../../docs/operations/2026-10-31-qqq-exit-diagnostics.md).

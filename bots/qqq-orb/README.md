@@ -49,3 +49,8 @@ Le réveil commun09:10Eastern vérifie désormais cette tâche en plus de Noise 
 
 
 Disponibilité secteur renforcée le31octobre : le plan Balanced ne passe plus automatiquement en veille ou hibernation sur secteur, même sans garde logiciel actif. Couverture sur batterie et veille manuelle restent des limites ; couvercle AC0/DC1 conservé. Le réveil09:10 local contrôle toujours les deux tâches sans les dupliquer. [Diagnostic, tests et preuve du correctif](../../docs/operations/2026-10-31-qqq-ac-wake-availability.md). Aucun changement des paramètres ORB ou du journal.
+
+
+## Diagnostic des sorties sans console
+
+Depuis le 31 octobre, le bootstrap conserve les métadonnées d'une exception fatale dans `runtime/windows/last_fatal.json`, avec repli hors OneDrive dans `%LOCALAPPDATA%/TradingBacktests/Diagnostics/orb/last_fatal.json`. Type/errno/winerror et positions fichier/fonction/ligne seulement : aucun message d'exception, source ou variable locale. Comparer date et PID avant d'attribuer un fichier à une nouvelle panne. Une terminaison forcée ou native peut rester sans trace. [Reprise autorisée et validation](../../docs/operations/2026-10-31-qqq-exit-diagnostics.md).

@@ -12,6 +12,7 @@ import time
 from . import __main__ as app
 from .runtime import ProcessLock,write_status
 from .power import PowerGuard
+from .diagnostics import record_failure
 from .windows_vault import WindowsVault
 
 
@@ -66,7 +67,9 @@ def serve(runtime):
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--runtime',type=Path,default=Path('runtime'));a=p.parse_args(argv)
     try:return serve(a.runtime)
-    except RuntimeError:return 1
+    except RuntimeError as error:
+        record_failure(a.runtime,'noise',error)
+        return 1
 
 
 if __name__=='__main__':sys.exit(main())

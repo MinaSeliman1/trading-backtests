@@ -42,13 +42,17 @@ Les snapshots SQLite en mode lecture seule confirment soldes, empreintes de comp
 
 [Preuve chiffrée et périmètre](../../bots/qqq-noise-area/validation/ac_availability_2026-10-31.json). Les historiques d'études et résultats précédents restent inchangés.
 
-## État final et relance en attente
+## Incident constaté avant autorisation de relance
 
 Un contrôle ultérieur à14:40–14:42 a constaté que les deux tâches principales étaient passées `Ready`, résultat1, avec des statuts moteur arrêtés vers14:35:45. Aucun nouvel événement de veille ni crash applicatif1000/1001 n'a été trouvé dans la fenêtre contrôlée. Les réglages secteur sont toujours AC1/0/0 ; la cause de ces sorties de processus n'est pas établie. Les tests de scripts consultés simulent le planificateur et n'appellent pas les tâches réelles. Le succès du test éveillé à14:33 reste une preuve passée, pas une affirmation que les moteurs tournent encore.
 
 La revue automatique d'approbation a rejeté la demande de démarrer le vérificateur de réveil pour relancer maintenant les deux tâches : la consigne conservée du suivi limite ce démarrage automatique à avant09:30. L'action rejetée n'a pas été exécutée. Une autorisation explicite de relance hors de ce créneau est demandée à l'utilisateur ; aucun autre chemin n'est utilisé pour contourner ce refus. Le réveil ordinaire déjà installé reste prévu le2novembre09:10, dans le créneau autorisé.
 
 Les comptes sont à plat et les STOP/pauses/références ont été contrôlés sans les modifier. Une éventuelle reprise utilisera seulement les deux commandes shadow/SIP déjà installées, sans remise à zéro et sans ordre broker. **La politique secteur est corrigée et vérifiée ; la remise en marche immédiate des moteurs reste en attente d'autorisation.**
+
+## Relance autorisée et effectuée ensuite
+
+Après l'autorisation explicite de l'utilisateur de relancer même après09:30, les deux tâches ont repris le31octobre vers14:54 puis ont chargé les diagnostics lors d'un arrêt gracieux/rechargement vers15:07. Les contrôles suivants confirment des statuts frais et une protection secteur active, avec soldes, configurations et références conservés. Le blocage décrit ci-dessus est donc historique, résolu par cette nouvelle autorisation. La cause précise des codes1 reste indéterminée. [Rapport de reprise, tests et preuve](2026-10-31-qqq-exit-diagnostics.md).
 
 ## Prochaine observation
 

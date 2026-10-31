@@ -135,3 +135,5 @@ python tools/verify_snapshot.py
 Les historiques minute complets et les clés API restent locaux. Le dépôt conserve les résultats dérivés, les extraits d'audit, la provenance et les scripts d'acquisition. Voir [les instructions pour les données](studies/first-candle-fvg/data/README.md).
 
 Pour ajouter un prochain test, suivre [CONTRIBUTING.md](CONTRIBUTING.md) et [le modèle d'étude](templates/STUDY.md). Ajouter les nouvelles exécutions dans un dossier daté, avec leurs paramètres et leur statut, puis mettre à jour le registre ci-dessus.
+
+Reprise du 31 octobre après autorisation explicite : [deux simulations relancées et diagnostic des sorties code 1](docs/operations/2026-10-31-qqq-exit-diagnostics.md). Comptes et frais conservés ; 166 tests passent. La cause historique des arrêts reste indéterminée, le garde de diagnostic fatal est désormais actif.
