@@ -74,3 +74,35 @@ def activate_sources(folder,lock):
  paths=['bots/qqq-noise-area','bots/qqq-orb','studies/intraday-momentum-noise-area','studies/opening-range-5m']
  for path in reversed(paths):sys.path.insert(0,str(root/path))
  return root
+
+
+def capture_pack(folder,frames,metadata):
+ if any(re.search(r'key|secret|token|authorization|password',str(k),re.I) for k in metadata):raise ValueError('sensitive capture metadata refused')
+ root=Path(folder);blobs=root/'blobs';blobs.mkdir(parents=True,exist_ok=True);roles={}
+ for role,frame in frames.items():
+  f=canonical_frame(frame);parts=[]
+  for day,part in f.groupby(f.index.tz_convert('America/New_York').date):
+   raw=part.to_csv(index_label='timestamp',lineterminator='\n',float_format='%.17g').encode('utf-8');digest=hashlib.sha256(raw).hexdigest();path=blobs/(digest+'.csv')
+   if path.exists():
+    if sha(path)!=digest:raise ValueError('corrupt immutable source blob')
+   else:
+    with path.open('xb') as stream:stream.write(raw)
+   parts.append(dict(day=str(day),sha256=digest,rows=len(part)))
+  roles[role]=parts
+ now=datetime.now(timezone.utc);name='capture-'+now.strftime('%Y%m%dT%H%M%S%fZ')+'-'+uuid.uuid4().hex[:12];directory=root/'captures'/name;directory.mkdir(parents=True,exist_ok=False)
+ content_sha=hashlib.sha256(json.dumps(roles,sort_keys=True).encode()).hexdigest();receipt=dict(schema=1,captured_utc=now.isoformat(),metadata=metadata,roles=roles,content_sha256=content_sha)
+ with (directory/'receipt.json').open('x',encoding='utf-8') as stream:json.dump(receipt,stream,sort_keys=True,indent=2,allow_nan=False)
+ return dict(receipt,directory=str(directory.resolve()),receipt_path='captures/'+name+'/receipt.json')
+
+def load_pack(folder,receipt,role):
+ expected=hashlib.sha256(json.dumps(receipt['roles'],sort_keys=True).encode()).hexdigest()
+ if expected!=receipt['content_sha256']:raise ValueError('capture manifest mismatch')
+ frames=[]
+ for part in receipt['roles'][role]:
+  digest=part['sha256']
+  if not re.fullmatch('[0-9a-f]{64}',digest):raise ValueError('unsafe blob reference')
+  path=Path(folder)/'blobs'/(digest+'.csv')
+  if sha(path)!=digest:raise ValueError('source blob hash mismatch')
+  f=pd.read_csv(path,float_precision='round_trip');f.index=pd.to_datetime(f.pop('timestamp'),utc=True,format='mixed');frames.append(f)
+ if not frames:return pd.DataFrame(columns=FIELDS,index=pd.DatetimeIndex([],tz='UTC',name='timestamp'))
+ return canonical_frame(pd.concat(frames))

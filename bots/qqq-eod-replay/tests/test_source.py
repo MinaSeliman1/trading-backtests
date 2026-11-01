@@ -46,3 +46,11 @@ def test_source_snapshot_is_pinned_to_commit_not_workspace(tmp_path):
  assert (target/relative).read_bytes()==b'OLD = True\n'
  (target/relative).write_bytes(b'CORRUPTED\n')
  with pytest.raises(ValueError):s.freeze_sources(repo,lock,target)
+
+
+def test_pack_deduplicates_warmup_but_keeps_capture_receipts(tmp_path):
+ f=frame();a=s.capture_pack(tmp_path,{'current':f,'history':f},{'kind':'test'});b=s.capture_pack(tmp_path,{'current':f,'history':f},{'kind':'test'})
+ assert a['directory']!=b['directory'] and len(list((tmp_path/'blobs').glob('*.csv')))==1
+ current=s.load_pack(tmp_path,a,'current');assert current.equals(s.canonical_frame(f))
+ blob=next((tmp_path/'blobs').glob('*.csv'));blob.write_bytes(b'bad')
+ with pytest.raises(ValueError):s.load_pack(tmp_path,a,'current')

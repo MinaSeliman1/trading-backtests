@@ -1,0 +1,8 @@
+{
+  "enabled": false,
+  "reason": "Task 0 review and committed stop rule 7 required before activation",
+  "generation": null,
+  "rule_path": null,
+  "replay_release_commit": null,
+  "first_statistical_session": null
+}
