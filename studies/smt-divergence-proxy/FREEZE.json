@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-11-01T02:36:41.518479+00:00",
+  "seed": 20261031,
+  "input_hashes": {
+    "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\free_sources\\BARS\\ES_1m_raw.csv.gz": "2079039e0043401f2a4abb283ecb8ac1f1faf6c03c6aaf22a0b6f38d87d94279",
+    "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\free_sources\\BARS\\NQ_1m_raw.csv.gz": "a6fdb229a7ed91be82a381d5bddc73fb8e0b49526ed19a1f3b4865dc68d19527",
+    "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\free_sources\\BARS\\ES_1m_raw.csv.gz.provenance.json": "c2c4bc29de1549ec130e5ae7482d38187d4a6ff7f3b14984fd87e977d52edc09",
+    "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\free_sources\\BARS\\NQ_1m_raw.csv.gz.provenance.json": "683f45910aa6263bd68f228d142c41bf32ff241c5892aa180d6c316212695621",
+    "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\free_sources\\BARS\\README.md": "cc5e1f10a2020573da49f8846d978623a8ad6dfeb6f795c40b1f95d57c3a35a1",
+    "C:\\Users\\minas\\OneDrive - Collège de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\data\\free_sources\\BARS\\catalog.json": "ee0f57f28cc3761724dcf8a9204bb3882e213f68d1d0641584c6ae93cff3f48b"
+  },
+  "files": {
+    "DESIGN.md": "192f6a9cc59dd4c3a77ef222283a962d438d68081ba39f8bcf30ae51a816631d",
+    "PROTOCOL_EXECUTION.md": "a0606bda7c42f3dadc432e7176ef7f6bb96190c6e1d1f67d3b9f842f378c6d86",
+    "scripts/run.py": "6272c0dca45a7ae349cce38665046b3c21a49b25a25bd553ad9ed0820689a567",
+    "smt/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "smt/context.py": "3f18696e47df7ad17fabfcfafb1cd11a93b98e0da003ec78595649d3d3a496df",
+    "smt/data.py": "bcb22a126bebae6c9ebdbc8984ce5afc6585da16746305d595866e375160e01c",
+    "smt/engine.py": "aaa2a9135c6f63aa57be6fec65fbc58605f1f349dfefb4e7dbba3225ae126efb",
+    "smt/stats.py": "8451392cfdcd4e37fe5e513e278ddcf674bfcbca4bfe3928a764ec1c174cc3ac",
+    "sources/bls_calendar_rows.json": "98b0d4c75bb7a9130c6feaae7d35db7a5f2460f486c05a9fd7ae996d0ac467ea",
+    "sources/DATA_PROFILE_PREPNL.json": "734b365c716b8ce757e2eeee30e07a3d1ce439254ba87574bce5e4383973e04c",
+    "sources/fed_calendar.html": "e64199b36b0545536a116ef2e7f73ac79ebbc26df57a0fb26d85e5f17e41750e",
+    "sources/news_calendar.csv": "5164e38e0edc949c4dc56515c95f84a50ffe43f7aac5d25f920f0ddad0aa7906",
+    "tests/test_context.py": "bfb59cb3f8cd9b10a311a727a120077be1cb4b80d62ff3ee0245f2fdd6325642",
+    "tests/test_data.py": "dbf964e19c2b596977b689491c5d0cbbd233cdaab2649cb3bf1f9179355eea1e",
+    "tests/test_engine.py": "192399ee5753351a1059a578343872bf56f8a7b054f82cbb34c997c5d987166e",
+    "tests/test_runner.py": "853fc560abd8a524d88b2eb90c34d3fe9be9fbd100642be011ab7ec4265d81af",
+    "tests/test_stats.py": "d8cdc848c676c42756c6bc096a9f444ba8fac1b10cc0f2d4ddbe0e7ae740a0be"
+  },
+  "python": "3.14.6",
+  "numpy": "2.5.4",
+  "pandas": "3.0.6",
+  "split_A_end": "2026-02-27",
+  "split_B_start": "2026-03-02",
+  "principal_variants": 6
+}

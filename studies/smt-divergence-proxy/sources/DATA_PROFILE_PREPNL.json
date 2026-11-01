@@ -1,0 +1,66 @@
+{
+  "inputs": {
+    "ES": {
+      "file": "ES_1m_raw.csv.gz",
+      "sha256": "2079039e0043401f2a4abb283ecb8ac1f1faf6c03c6aaf22a0b6f38d87d94279",
+      "acquisition_provenance_sha256": "c2c4bc29de1549ec130e5ae7482d38187d4a6ff7f3b14984fd87e977d52edc09",
+      "url": "https://raw.githubusercontent.com/kfccolonel1/BARS/main/raw/ES/1min/ES_1min_2025-06-20_2026-10-09_alfordlabs-gh.csv.gz",
+      "header": "# alfordlabs symbol=ES kind=future pv=50 tick=0.25 bars=1min tz=America/New_York",
+      "rows": 464160,
+      "duplicates_removed": 0,
+      "start": "2025-06-20 00:00:00-04:00",
+      "end": "2026-10-09 16:59:00-04:00",
+      "source_timezone": "America/New_York",
+      "storage_timezone": "UTC",
+      "offset_counts": {
+        "-0400": 343890,
+        "-0500": 120270
+      },
+      "london_bars": 61020,
+      "premarket_bars": 50835,
+      "price_invalid_rows": 0,
+      "instrument_type": "unadjusted front-month continuous proxy; per-minute expiry unavailable",
+      "volume_used_for_signal": false
+    },
+    "NQ": {
+      "file": "NQ_1m_raw.csv.gz",
+      "sha256": "a6fdb229a7ed91be82a381d5bddc73fb8e0b49526ed19a1f3b4865dc68d19527",
+      "acquisition_provenance_sha256": "683f45910aa6263bd68f228d142c41bf32ff241c5892aa180d6c316212695621",
+      "url": "https://raw.githubusercontent.com/kfccolonel1/BARS/main/raw/NQ/1min/NQ_1min_2024-08-04_2026-10-08_alfordlabs-gh.csv.gz",
+      "header": "# alfordlabs symbol=NQ kind=future pv=20 tick=0.25 bars=1min tz=America/New_York",
+      "rows": 772780,
+      "duplicates_removed": 0,
+      "start": "2024-08-04 18:00:00-04:00",
+      "end": "2026-10-08 19:41:00-04:00",
+      "source_timezone": "America/New_York",
+      "storage_timezone": "UTC",
+      "offset_counts": {
+        "-0400": 532690,
+        "-0500": 240090
+      },
+      "london_bars": 101520,
+      "premarket_bars": 84585,
+      "price_invalid_rows": 0,
+      "instrument_type": "unadjusted front-month continuous proxy; per-minute expiry unavailable",
+      "volume_used_for_signal": false
+    }
+  },
+  "calendar": "XNYS cash-session anchor; closed days excluded, half-day previous RTH ends13:00",
+  "evaluation_start": "2025-06-20",
+  "evaluation_end": "2026-10-08",
+  "sessions": 328,
+  "calendar_eligible_dates": 547,
+  "roll_policy": "calendar precaution: quartermonth day1 through firstNYSEsession after thirdFriday; exact changes unknown",
+  "actual_roll_dates_identified": null,
+  "roll_guard_sessions": 78,
+  "source_readme_sha256": "cc5e1f10a2020573da49f8846d978623a8ad6dfeb6f795c40b1f95d57c3a35a1",
+  "source_catalog_sha256": "ee0f57f28cc3761724dcf8a9204bb3882e213f68d1d0641584c6ae93cff3f48b",
+  "proxy_authorized": true,
+  "actual_micro_data": false,
+  "limitations": [
+    "ES/NQ prints not guaranteed equal to MES/MNQ",
+    "No per-minute contract identity or verified roll ledger",
+    "Calendar guard is conditional protection, not certification",
+    "No volume signal/selection or broker calls"
+  ]
+}

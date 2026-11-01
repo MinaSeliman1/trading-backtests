@@ -6,6 +6,7 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 
 | Étude | Statut | Résultats disponibles | Conclusion |
 |---|---|---|---|
+| [Divergence SMT ES/NQ, coûts micro](studies/smt-divergence-proxy/README.md) | Test proxy terminé ; avantage non établi, aucun nouveau bot | 6 variantes figées, 32 tests, 1 000 témoins aléatoires et H3 | 0/6 passent ; H2-C 101 trades, +74 USD nets mais −0,248 R/trade ; contrats continus, raccords exacts inconnus |
 | [Compression de midi, cassure après 13 h](studies/lunch-compression-breakout/README.md) | Backtest terminé ; preuves insuffisantes pour un nouveau bot | Recherche Web, 84 comptes, 51 tests, oracle scalaire et quatre figures | ALL SPY +1.59 % / 78 trades, QQQ +0.47 % / 97 trades ; moins de 100 chacun, SPY A et QQQ B négatives |
 | [Repli estimé sur les séances rouges](studies/adaptive-red-day-dip/README.md) | Backtest terminé ; référence écartée pour un nouveau bot | Recherche Web, 84 comptes, 46 tests, oracle scalaire et quatre figures | ALL SPY -19.21 % / 1520 trades, QQQ -38.15 % / 1513 trades ; A/B négatives, variantes toutes publiées |
 | [Cassure ATR autour de l’ouverture](studies/atr-opening-breakout/README.md) | Backtest terminé ; candidat historique, sans nouveau bot automatique | Recherche Web,84comptes,40tests,oracle séparé et quatre figures | ALL SPY+34.51 %/1222trades, QQQ+46.38 %/1277trades ; SPY B fragile aux coûts, aucun nouveau bot |
@@ -31,6 +32,8 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
 
 ## Pistes actuellement suivies
+
+Le [test SMT ES/NQ aux coûts MNQ](studies/smt-divergence-proxy/RAPPORT_COMPLET.md) ne démontre pas d’avantage net face au biais seul et au hasard : **aucune des six variantes** ne franchit le [protocole figé](studies/smt-divergence-proxy/PROTOCOL_EXECUTION.md). H2-C atteint 101 trades, +74 USD sur un lot, mais −0,248 R/trade et une découverte négative. [Décision et limites](studies/smt-divergence-proxy/INTERPRETATION.md) : pas de nouveau bot ni de confirmation micros engagée ; les deux simulations QQQ existantes restent inchangées.
 
 Recherche du 28 octobre : [IBS de la veille puis rebond intraday](studies/previous-day-ibs/results/2026-10-28-v1/RAPPORT_FINAL.md), après comparaison de publications, GitHub, auteurs et forums. ALL 2016–16/10/2026, mêmes coûts : **SPY -5,70 % / 463 trades ; QQQ 13,15 % / 463 trades**. [Interprétation](studies/previous-day-ibs/INTERPRETATION.md) : adaptation intraday écartée pour un nouveau bot, règles fixées avant PnL et variantes toutes publiées ; adaptation sans overnight distincte des systèmes IBS swing. 48 tests, 72 scénarios et audit séparé ; les deux simulations QQQ restent inchangées par cette étude.
 

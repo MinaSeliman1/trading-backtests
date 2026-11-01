@@ -1,0 +1,14 @@
+{
+  "completed_utc": "2026-11-01T02:51:05.655600+00:00",
+  "candidate_rows": 173728,
+  "field_checks": 4180564,
+  "signal_days": 2500,
+  "summary_checks": 288,
+  "h3_checks": 1000,
+  "oracle_sha256": "ed9be068680851f0ef2ece34ce1ec26ad37136bcaaa60f9113ebac03b7e656c7",
+  "freeze_sha256": "3bb6a23c86b859762b5920d7cda6227d337b13cb04d197e54816e3638fb5f891",
+  "run_receipt_sha256": "312486269b38573935970841cf8960b7e72ac9235c6be13ca93e9befa18ba067",
+  "engine_imported": false,
+  "context_imported": false,
+  "stats_imported": false
+}

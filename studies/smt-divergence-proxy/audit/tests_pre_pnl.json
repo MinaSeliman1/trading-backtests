@@ -1,0 +1,7 @@
+{
+  "command": "C:/Python314/python.exe -m pytest studies/smt-divergence-proxy/tests -q -p no:cacheprovider",
+  "result": "32 passed in 22.22s",
+  "historical_pnl_run_started_after_this_suite": true,
+  "includes_synthetic_full_pipeline": true,
+  "no_active_bot_files_modified": true
+}

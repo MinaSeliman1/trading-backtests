@@ -1,0 +1,20 @@
+[
+  {
+    "name": "bls_2025",
+    "url": "https://www.bls.gov/schedule/2025/home.htm",
+    "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "name": "bls_2026",
+    "url": "https://www.bls.gov/schedule/2026/home.htm",
+    "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "name": "fed_calendar",
+    "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "status": 200,
+    "bytes": 166350,
+    "sha256": "e64199b36b0545536a116ef2e7f73ac79ebbc26df57a0fb26d85e5f17e41750e",
+    "utc": "2026-11-01T02:11:15.003144+00:00"
+  }
+]

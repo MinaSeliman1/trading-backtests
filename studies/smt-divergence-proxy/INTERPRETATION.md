@@ -1,0 +1,13 @@
+# Décision : avantage SMT non établi, aucun nouveau bot
+
+Aucune des six variantes ne franchit les conditions fixées avant résultats. **Cela ne prouve pas que toute SMT est impossible ; cette formalisation et cet échantillon ne justifient pas la phase micros ni un bot.**
+
+- H1 : 7 / 29 / 48 trades pour les biais A / B / C. Tous les nets de phase 2 sont négatifs. Le +314,50 USD global de C masque −397 USD sur la seconde période.
+- H2 : 24 / 45 / 101 trades. B donne le plus grand net global (+526 USD), mais perd en découverte, n’améliore pas les deux témoins et son R moyen est négatif (−0,203 R/trade). Ce n’est pas une variante validée.
+- H2-C est la seule cellule avec au moins 100 trades : **101, net +74 USD**, soit **−0,248 R/trade**, profit factor 1,018 et drawdown clôturé 937,50 USD. Découverte −265 USD, phase 2 +339 USD ; la comparaison avec les témoins ne démontre pas d’avantage. Le gain USD et le R moyen de signes différents viennent du risque réel variable d’un lot fixe : les trades gagnants et perdants n’engagent pas le même risque en dollars. Ne pas transformer ce résultat en rendement à risque fixe de 1 % sans un autre test.
+- Les six p joints après Holm valent 1. Les intervalles phase 2 du contraste avec les témoins comprennent zéro ; aucun avantage net robuste ne se dégage. Un témoin aléatoire perdant peut être battu en tradant moins, ce qui ne démontre pas une prévision rentable.
+- H3 : 236 séances avec balayage Londres contre seulement 14 sans balayage. Range moyen 92,23 contre 86,50 points de base ; différence +5,73 bps, IC95 blocs20 [−14,90 ; +25,59]. Le total ne montre pas une association stable. Nuance à conserver : la phase 2 seule donne +25,66 bps, IC95 blocs20 [+8,16 ; +42,20], également positif hors calendrier retenu. Elle compare cependant **103 balayages à seulement six séances sans balayage** ; la découverte donne −9,44 bps avec IC englobant zéro. C’est un signal descriptif de seconde période, fragile et non confirmé sur l’ensemble, qui ne fournit ni direction ni espérance de trading.
+
+Les fichiers sont des continus ES/NQ non ajustés, sans échéance authentifiée par minute. Sur 328 dates communes, les protections préventives laissent 244 séances B/C et 137 A. Les véritables prints MNQ/MES ne sont pas vérifiés. Les exclusions réduisent la puissance et peuvent conditionner les résultats ; elles ne prouvent pas les dates exactes de changement.
+
+Les règles, objectifs, coûts et graines ne sont pas retouchés après ce résultat. Les variantes par niveau et le sens futur SMT demandé pour C restent des diagnostics étiquetés, hors décision. Les deux bots QQQ préexistants ne sont pas modifiés par cette étude.
