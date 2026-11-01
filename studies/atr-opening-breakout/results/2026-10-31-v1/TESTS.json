@@ -1,0 +1,17 @@
+{
+  "utc": "2026-10-31T23:44:29.853249+00:00",
+  "command": [
+    "C:\\Python314\\python.exe",
+    "-m",
+    "pytest",
+    "studies/atr-opening-breakout/tests",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--tb=short"
+  ],
+  "exit_code": 0,
+  "passed": 40,
+  "stdout": "........................................                                 [100%]\n40 passed in 6.02s\n",
+  "stderr": ""
+}

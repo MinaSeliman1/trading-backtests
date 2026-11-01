@@ -1,0 +1,47 @@
+{
+  "utc": "2026-11-01T00:13:43.313825+00:00",
+  "status": "passed",
+  "base_revision": "c90bca9bcc1213f0f64e830a01fd3a23dced7358",
+  "pre_pnl_review": {
+    "reviewer": "atr_review",
+    "tests_passed": 40,
+    "blockers": 0,
+    "scope": "Strict-past TR/gaps, calendars, scan, timing, size, stop/EOD, fees, DD/MAE and runner/oracle; dependency closure",
+    "minor_limit": "Oracle caches immutable market objects by id; audited main keeps objects alive and immutable"
+  },
+  "final_review": {
+    "reviewer": "atr_final_review",
+    "fresh_context": true,
+    "tests_passed": 40,
+    "frozen_code_files_verified": 10,
+    "dependency_files_verified": 15,
+    "protocol_files_verified": 2,
+    "audited_exports_verified": 463,
+    "figures_inspected": 4,
+    "local_links_verified": 24,
+    "blocking_findings_remaining": 0,
+    "caveat": "Historical criteria pass, not prospective profitability; recent B weakness explicitly foregrounded",
+    "resolved_minor_findings": [
+      "Fill leverage displayed at four decimals",
+      "Reproduction documented in separate checkout, under-study out path; archived fixed audit receipt protected",
+      "Inherited source dividend note clarified; ATR raw prices"
+    ]
+  },
+  "root_validation": {
+    "scalar_checks": 8509072,
+    "overlapping_trade_rows": 63582,
+    "daily_rows": 151928,
+    "aggregate_numeric_checks": 864,
+    "bootstrap_accounts": 6,
+    "all_four_figures_inspected": true,
+    "financial_hashes_intact": true
+  },
+  "scope": "New study/index/plan only; no API, vault, broker orders, bot/task/runtime/SQLite changes.",
+  "limits": [
+    "Same provider and loader; no second price source",
+    "No real fills, quotes/depth/partials/latency",
+    "A/B reused; repeated research not multiplicity corrected",
+    "Conditional coverage; excluded bookkeeping zero not observed cash",
+    "No new bot automatically authorized by historical screen"
+  ]
+}

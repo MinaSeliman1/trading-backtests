@@ -1,0 +1,13 @@
+# Recherche Web : cassure ATR autour de l’ouverture
+
+Recherche du31octobre2026 élargie aux dépôts primaires, études d’auteurs/plateformes et littérature académique. Ne certifie pas la meilleure stratégie universelle ; aucune performance externe copiée dans nos comptes.
+
+- [AndrBene, règles ETF](https://github.com/AndrBene/Volatility-Breakouts-Trading-ETFs/blob/master/readme.md) : README lu. Base ATR5 et ouverture±0.33ATR avec retour à l’ouverture, côtés et tentatives multiples. Paramètres du sizing/pipeline diffèrent selon sections ; filtre de gap ambigu. Code externe non exécuté. Notre version LONG unique, confirmation/délai et taille1x diffèrent ; formule/SMA fixés avant calcul, pas réplication.
+- [Albert, étude publique](https://mistakesoninvesting.substack.com/p/intraday-volatility-breakouts-an) : texte lu, notamment dépendance aux régimes et filtres fragiles. Version0.4ATR/panier/sizing différent ; rendements publiés non certifiés ni transférés.
+- [JamesRPowell, Donchian](https://github.com/JamesRPowell/Donchain-Breakout) : README primaire lu. Alternative de cassure de canal, limites de l’historique intraday et de la comparaison d’exposition. Pas retenue cette fois.
+- [Heston/Korajczyk/Sadka2010](https://arxiv.org/abs/1005.3535) : abstract primaire lu, continuation à même créneau entre séances et réversion courte en coupe transversale. Ce n’est ni un backtest univarié SPY/QQQ ni preuve d’ATR ; alternative de saisonnalité, pas stratégie répliquée.
+- [QuantConnect, premier/dernier créneau](https://www.quantconnect.com/research/15348/intraday-etf-momentum/) : page primaire lue, famille déjà étudiée dans closing-momentum ; aucune nouvelle optimisation de celle-ci.
+- [Forum, stratégies intraday et OOS](https://www.reddit.com/r/algotrading/comments/1xg8blg/intraday_strategy_looked_promising_in_backtests/) : résultat indexé consulté, témoignage non certifié sur frais/contrôles et périodes.
+- [StockCharts ATR](https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-true-range-atr-and-average-true-range-percent-atrp) : définition primaire lue ; notre choix arithmétique5TR, distinct de Wilder, est explicite au protocole.
+
+Hypothèse propre : expansion de prix relativement à la volatilité quotidienne passée, sans filtre de compression NR7 ni range intraday observée. L’ouverture sert de point de référence et de stop ; aucune moyenne mobile intraday ou seuil appris sur les résultats.14variantes fixées pour dévoiler coûts, dépendance au niveau/grille/horaire, effet du gap et risque de supprimer le stop. Multiples essais antérieurs et A/B réutilisées réduisent la force de toute apparence positive.

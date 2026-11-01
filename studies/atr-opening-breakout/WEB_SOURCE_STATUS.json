@@ -1,0 +1,41 @@
+{
+  "utc": "2026-10-31T23:40:47.723501+00:00",
+  "sources": [
+    {
+      "name": "AndrBene",
+      "url": "https://github.com/AndrBene/Volatility-Breakouts-Trading-ETFs/blob/master/readme.md",
+      "access": "primary README read; code not executed; conventions differ"
+    },
+    {
+      "name": "Albert",
+      "url": "https://mistakesoninvesting.substack.com/p/intraday-volatility-breakouts-an",
+      "access": "public article read; external results unverified"
+    },
+    {
+      "name": "StockCharts",
+      "url": "https://chartschool.stockcharts.com/table-of-contents/technical-indicators-and-overlays/technical-indicators/average-true-range-atr.md",
+      "access": "primary TR definition and Wilder smoothing read; our arithmetic alternative explicit"
+    },
+    {
+      "name": "JamesRPowell",
+      "url": "https://github.com/JamesRPowell/Donchain-Breakout",
+      "access": "primary README read; alternative not selected"
+    },
+    {
+      "name": "Heston et al.",
+      "url": "https://arxiv.org/abs/1005.3535",
+      "access": "primary abstract read; no cross-sectional replication"
+    },
+    {
+      "name": "QuantConnect",
+      "url": "https://www.quantconnect.com/research/15348/intraday-etf-momentum/",
+      "access": "public research read; already-tested first/last family not selected"
+    },
+    {
+      "name": "Reddit",
+      "url": "https://www.reddit.com/r/algotrading/comments/1xg8blg/intraday_strategy_looked_promising_in_backtests/",
+      "access": "search-indexed testimony only"
+    }
+  ],
+  "note": "No external return copied; broad search not exhaustive or universal-best guarantee."
+}

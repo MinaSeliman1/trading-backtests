@@ -1,0 +1,21 @@
+{
+  "predeclared": true,
+  "checks": {
+    "SPY": {
+      "trades_all_ge100": true,
+      "reference_A_B_ALL_positive": true,
+      "all_without_top3_positive": true,
+      "A_double_friction_positive": true,
+      "all_block20_ci_lower_positive": true
+    },
+    "QQQ": {
+      "trades_all_ge100": true,
+      "reference_A_B_ALL_positive": true,
+      "all_without_top3_positive": true,
+      "A_double_friction_positive": true,
+      "all_block20_ci_lower_positive": true
+    }
+  },
+  "all_passed": true,
+  "decision": "Candidat historique seulement, aucun lancement automatique."
+}
