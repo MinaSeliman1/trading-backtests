@@ -2,7 +2,7 @@
   "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
   "registered_utc": "2026-11-01T03:17:13.253172+00:00",
   "registered_date_ny": "2026-10-31",
-  "first_prospective_session": "2026-11-02",
+  "first_prospective_session": null,
   "source_files": {
     "bots/qqq-noise-area/qqq_paper/__init__.py": "6e8857f72754d37e80f8d8ae8002dc03646ecec514cc7f6ad6d5acef40b765dd",
     "bots/qqq-noise-area/qqq_paper/__main__.py": "0a1585bf49b9459c01d77596ab29bdffc8d38c47e49ada2fa7cd2d0c1a575bae",
@@ -38,5 +38,8 @@
   "activation_required": true,
   "enabled": false,
   "statistical_all_registered_sessions": true,
-  "platform_choice_pending": true
+  "platform_choice_pending": false,
+  "minimum_prospective_session": "2026-11-02",
+  "start_policy": "first XNYS session strictly after committed stop rule, same strategy SHA and costs",
+  "platform": "github_actions"
 }

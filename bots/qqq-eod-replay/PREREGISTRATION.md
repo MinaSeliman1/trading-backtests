@@ -1,6 +1,6 @@
 # Pré-enregistrement : replay QQQ de fin de journée, tâche 0
 
-Date locale : **31 octobre 2026, America/New_York**. Ce document, la demande REQUEST.md et les empreintes ENGINE_LOCK.json sont committés et publiés avant tout nouveau P&L de ce projet. Première séance future : **2 novembre 2026**. Les anciens résultats ne sont ni effacés ni réévalués.
+Date locale : **31 octobre 2026, America/New_York**. Ce document, la demande REQUEST.md et les empreintes ENGINE_LOCK.json sont committés et publiés avant tout nouveau P&L de ce projet. Première séance statistique : **première séance XNYS strictement après la date locale du commit de la règle d’arrêt validée**, au plus tôt le2novembre2026. Activation désactivée jusque-là. Les anciens résultats ne sont ni effacés ni réévalués.
 
 ## Règles et population
 
@@ -28,10 +28,18 @@ Journaux live lus en SQLite modelectureseule. Comparaison supplémentaire avec l
 
 ## Planification et revue
 
-Exécuteur séparé : choix GitHub Actions ou job Windows en attente de la précision demandée après ajout de la tâche8. Échéances calculées par calendrierNewYork : après clôture+17minutes, rattrapage de toutes les séances nontraitées, verrou et relances. GitHubActions standard dans dépôtpublic est l’option gratuite demandée pour la cible finale ; retards de cron possibles. Un job local dépend du PC/session/réseau. Aucun arrêt/redémarrage ou modification des deux tâches live. Le paquet final et son calendrier seront committés avant activation, sans modifier les règles de trading.
+Exécuteur confirmé : **GitHub Actions**, dépôt public et runner standard gratuit. Déclenchements lundi-vendredi à **17:23 et18:23 America/New_York** (second passage idempotent pour reprise), timezoneIANA. Le programme recalcule les échéances réelles par calendrier après clôture+17minutes et rattrape toutes les séances manquantes. Le cron peut être retardé ou désactivé après60jours sans activité ; ce n’est pas une promesse d’exécution intraday. Secrets uniquement GitHubSecrets ; routes GETdonnées seulement. Aucun jobWindows supplémentaire, arrêt/redémarrage ou changement des deux tâches live.
+
+Les états persistants contenant les barres et journaux seront chiffrés avant tout artefact public, avec clé distincte dans GitHubSecrets. Pas de publication d’archives brutes ni de secrets. Les rapports de synthèse ne contiennent que métriques de simulation et empreintes. Aucun transfert de clés versGitHub tant que le workflow concret n’a pas été vérifié.
+
+La règle d’arrêt7 est calibrée sur le **backtest actuel verrouillé, même SHA et mêmes coûts**. Une calibration de coûts en tâche1 créera une nouvelle version et sa propre règle ; aucune modification de cette version. Les séances déjà vues depuis le21octobre restent hors de ce nouveau ledger statistique, rapportées à part.
 
 Journal statistique : toutes les séances enregistrées après activation, même si rejouées tard, avec leur SHA publié avant la date de séance ; issue inconnue conservée comme telle. Journal opérationnel distinct : mesures live, sous-ensemble qualifié, sans effacer ses autres événements. Hors-échantillon pour la politique figée, pas preuve d’exploitation intraday. Premier bilan commun après20séances futures résolues parbot, avec captures ponctuelles, rattrapages et lacunes séparés. Seuil de revue, pas preuve de rentabilité ni passage au réel ; aucune sélection/retouche à partir de ces20jours.
 
 Tests avant activation : préfixescausaux, parité moteurs/coûts, gaps/inconnus, capital, idempotence, week-end/demi-séance/DST, refus datesfutures, captures immuables, refusPOST/broker. Une séance historique peut valider techniquement l'intégration après publication de ce protocole, hors compteprospectif. Vérifier installation et prochaine échéance sans prétendre le premier lundi déjà observé.
 
-Ajout utilisateur : **aucune activation du nouveau suivi avant résolution de la priorité et validation du pré-enregistrement d’arrêt de tâche7**. Les anciens bots continuent en simulation opérationnelle. Le 2novembre est la première date possible, pas une promesse d’activation ; une activation plus tardive commence à une séance future fixée avant son ouverture, sans requalifier le passé. Publier le rapport de tâche0, attendre le feu vert avant tâche2 ou tâche7 selon la priorité confirmée. Les tâches1–5 et7–11 restent distinctes, chacune avec rapport et feuvert.
+Ajout utilisateur : **aucune activation du nouveau suivi avant résolution de la priorité et validation du pré-enregistrement d’arrêt de tâche7**. Les anciens bots continuent en simulation opérationnelle. Le début est dérivé du commit de la règle d’arrêt, pas d’une date choisie après performances. Aucun résultat antérieur à ce début n’est requalifié prospectif. Le code exécuté et ses SHA doivent être publiés avant la date de la séance. Publier le rapport de tâche0, attendre le feu vert avant tâche2 ou tâche7 selon la priorité confirmée. Les tâches1–5 et7–11 restent distinctes, chacune avec rapport et feuvert.
+
+## Révision utilisateur avant tout P&L
+
+GitHubActions confirmé pour tâche0 ; règle7 sur modèle/frais actuels ; première séance après son commit. La publication initiale47cf1bf n’a été suivie d’aucun calcul de P&L : seulement neuf tests de calendrier, validation de données, transport et immutabilité. Cette précision est donc intégrée avant résultats.
