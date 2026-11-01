@@ -1,0 +1,16 @@
+{
+  "utc": "2026-11-01T01:07:48.253273+00:00",
+  "command": [
+    "C:\\Python314\\python.exe",
+    "-m",
+    "pytest",
+    "C:\\Users\\minas\\OneDrive - Coll\u00e8ge de Bois-de-Boulogne\\Documents\\ChatGPT\\Trading\\trading-backtests\\studies\\adaptive-red-day-dip\\tests",
+    "-q",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "exit_code": 0,
+  "passed": 46,
+  "stdout": "..............................................                           [100%]\n46 passed in 4.85s\n",
+  "stderr": ""
+}

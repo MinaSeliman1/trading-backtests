@@ -1,0 +1,49 @@
+{
+  "consulted_local_date": "2026-10-31",
+  "access": "web browser search/open, source text only",
+  "sources": [
+    {
+      "kind": "GitHub source",
+      "url": "https://github.com/daniel100peer/stocks_master",
+      "status": "read",
+      "note": "README used only as hypothesis, no source performance imported"
+    },
+    {
+      "kind": "Exact estimator",
+      "url": "https://raw.githubusercontent.com/daniel100peer/stocks_master/main/strategies/dip_buying_clean/quick_dip_check.py",
+      "status": "read",
+      "note": "mean positive open-close over all21 prior sessions; daily limit assumed filled"
+    },
+    {
+      "kind": "Full external engine",
+      "url": "https://raw.githubusercontent.com/daniel100peer/stocks_master/main/strategies/dip_buying_clean/dip_analysis_engine.py",
+      "status": "read",
+      "note": "same estimator and daily execution; external code never executed"
+    },
+    {
+      "kind": "Alternative streak",
+      "url": "https://sigmo.us/research/alphaweekly-2/sunday-september-20-3/",
+      "status": "read",
+      "note": "close-to-close horizons, different overnight exposure"
+    },
+    {
+      "kind": "Fast alpha paper",
+      "url": "https://concretumgroup.com/wp-content/uploads/2026/02/Improving-Performance-with-Fast-Alphas-A-Tactical-Overlay-for-Intraday-Trend-Trading.pdf",
+      "status": "read",
+      "note": "authors paper; execution-cost limitation relevant"
+    },
+    {
+      "kind": "Forum",
+      "url": "https://www.reddit.com/r/algotrading/comments/1l5gil3/looking_for_ideas_for_qqq_and_spy_for_a_backtest/",
+      "status": "read",
+      "note": "discussion only"
+    },
+    {
+      "kind": "Microstructure",
+      "url": "https://arxiv.org/abs/2511.06177",
+      "status": "abstract read",
+      "note": "needs event-time quotes, not selected"
+    }
+  ],
+  "note": "A broad non-exhaustive search cannot identify the globally best strategy. Unverified external performance not treated as evidence."
+}

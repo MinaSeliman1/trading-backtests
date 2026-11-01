@@ -1,0 +1,6 @@
+symbol,exit_reason,count
+SPY,eod_open,1276
+SPY,stop_intrabar,244
+QQQ,eod_open,1261
+QQQ,stop_intrabar,251
+QQQ,stop_gap,1

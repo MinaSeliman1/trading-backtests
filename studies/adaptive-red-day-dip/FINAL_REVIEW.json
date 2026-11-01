@@ -1,0 +1,51 @@
+{
+  "utc": "2026-11-01T01:24:48.898737+00:00",
+  "status": "passed",
+  "base_revision": "5e7973cbb7f8838d16a525e25d0d0453b00d3f80",
+  "pre_pnl_review": {
+    "reviewer": "dip_pre_review",
+    "tests_passed": 42,
+    "blocking_findings": 0,
+    "resolved_minor": "red2 now checks only two preceding sessions; capped2 field, regression and extra boundary/gap/unknown tests added before any historical PnL; then46tests passed"
+  },
+  "final_review": {
+    "reviewer": "dip_final_review",
+    "fresh_context": true,
+    "tests_passed": 46,
+    "frozen_code_files": 10,
+    "dependencies": 15,
+    "protocols": 2,
+    "audited_exports": 463,
+    "raw_prepared_profile_verified": true,
+    "independent_numeric_checks": 5656,
+    "report_tables_verified": 8,
+    "report_cells_verified": 343,
+    "bootstrap_accounts": 6,
+    "bootstrap_interval_endpoints": 36,
+    "bootstrap_scope": "block5/20 and annual cluster",
+    "local_links_verified": 116,
+    "figures_inspected": 4,
+    "blocking_findings_remaining": 0,
+    "resolved_minor": "Renamed exposure column to Temps RTH comptabilise; shared X scale for comparison; additional root script bootstrap scope clarified",
+    "limits": "Reviewer checked scalar audit evidence and frozen exports without rerunning the full scalar replay. Git/diff/chronology and final seal belong to root."
+  },
+  "root_validation": {
+    "full_scalar_replay_passed": true,
+    "scalar_checks": 9175504,
+    "overlapping_trade_rows": 79080,
+    "daily_rows": 151928,
+    "aggregate_numeric_checks": 864,
+    "all_four_figures_inspected": true,
+    "frozen_financial_bytes_preserved": true,
+    "git_diff_scope": "New study, plan and one README row only; exact staging checked at publication"
+  },
+  "scope": "No broker API, keys/vault, bot/task/runtime/SQLite changes. Bots observed fresh in shadow SIP waiting states.",
+  "limits": [
+    "Same provider and loader, no second price source",
+    "No real fills, quotes/depth/partials/latency evidence",
+    "A/B reused, repeated research not multiplicity corrected",
+    "Conditional coverage; excluded bookkeeping zero not observed cash",
+    "Adaptation with confirmed delayed market entry, not original assumed limit fills",
+    "No new bot or live-trading authorization"
+  ]
+}
