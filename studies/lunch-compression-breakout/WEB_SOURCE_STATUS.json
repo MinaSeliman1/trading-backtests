@@ -1,0 +1,51 @@
+{
+  "consulted_local_date": "2026-10-31",
+  "sources": [
+    {
+      "name": "TOSIndicators setup2",
+      "url": "https://tosindicators.com/research/lunch-trading",
+      "status": "read; primary hypothesis, unaudited claims not imported"
+    },
+    {
+      "name": "TOSIndicators lunch cautions",
+      "url": "https://tosindicators.com/research/should-you-trade-during-the-lunch-time-hour",
+      "status": "read"
+    },
+    {
+      "name": "Donchian alternative primary GitHub",
+      "url": "https://github.com/tawasthii/Donchian-Breakout-Strategy",
+      "status": "read; daily20/10 not intraday"
+    },
+    {
+      "name": "GitHub ORB counterpoint",
+      "url": "https://github.com/CarsonPociask/algo_trading_strategies",
+      "status": "read; different rules"
+    },
+    {
+      "name": "TradingView author Lunchbox",
+      "url": "https://www.tradingview.com/script/ew3ADRL6-Lunchbox/",
+      "status": "public description read, invite-only code not accessed, not selected"
+    },
+    {
+      "name": "Primary execution study",
+      "url": "https://www.oyamori.com/learning/breakout-options-execution-m1/",
+      "status": "read; different universe/costs, no returns imported"
+    },
+    {
+      "name": "Forum discussion",
+      "url": "https://www.reddit.com/r/Daytrading/comments/1q82vnt/do_you_actually_trade_the_first_1530_minutes_or/",
+      "status": "public excerpts read, unverified anecdotes"
+    },
+    {
+      "name": "Academic primary abstract",
+      "url": "https://arxiv.org/abs/1005.3535",
+      "status": "abstract read; not a test of this strategy"
+    },
+    {
+      "name": "Raschke indexed excerpt",
+      "url": "https://lindaraschke.net/wp-content/uploads/EBook_Updated.pdf",
+      "status": "direct open404; not treated as read evidence"
+    }
+  ],
+  "note": "Broad non-exhaustive search; no external code executed or results certified."
+}

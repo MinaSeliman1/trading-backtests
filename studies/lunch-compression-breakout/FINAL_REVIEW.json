@@ -1,0 +1,55 @@
+{
+  "utc": "2026-11-01T01:49:54.310527+00:00",
+  "status": "passed",
+  "base_revision": "333d74325bf9f5e45c65154655b5b218f7c34a5e",
+  "pre_pnl_review": {
+    "reviewer": "lunch_pre_review",
+    "tests_passed": 51,
+    "synthetic_variant_accounts": 112,
+    "synthetic_field_comparisons": 20850,
+    "blocking_findings_remaining": 0,
+    "resolved": [
+      "Removed Config-only stop_enabled property condition from scalar/engine; stops always active",
+      "Guarded undefined WR/PF/Sharpe and missing-only comparisons; four new RED/GREEN regression cases"
+    ],
+    "scope_note": "112 synthetic scenario comparisons were before the final four aggregate guards; final51tests independently passed afterwards"
+  },
+  "final_review": {
+    "reviewer": "lunch_final_review",
+    "fresh_context": true,
+    "tests_passed": 51,
+    "frozen_code_files": 10,
+    "dependency_files": 15,
+    "protocol_files": 2,
+    "audited_exports": 463,
+    "raw_cache_calendar_profile_verified": true,
+    "matrix_summary_accounts_verified": 84,
+    "screening_recomputed": true,
+    "local_links_verified": 25,
+    "figures_inspected": 4,
+    "blocking_findings_remaining": 0,
+    "resolved_minor": "Stress table/text now explicitly says friction doubled; commissions unchanged",
+    "scope_note": "Reviewer checked recorded scalar audit and immutable inputs/outputs without a full historical rerun; Git scope and runtime evidence are root-owned"
+  },
+  "root_validation": {
+    "full_scalar_replay_passed": true,
+    "scalar_checks": 7177660,
+    "overlapping_trade_rows": 5474,
+    "daily_rows": 151928,
+    "aggregate_numeric_checks": 864,
+    "bootstrap_accounts": 6,
+    "four_figures_inspected": true,
+    "financial_hashes_intact": true,
+    "minor_wording_fix_verified": true,
+    "git_scope": "New study, plan and one rootREADME row only; exact staged set verified at publication",
+    "bots_observed": "Fresh shadow/SIP weekend waiting states, no mutation"
+  },
+  "limits": [
+    "Same source/loader, no second price provider",
+    "Reused A/B and repeated research, no multiplicity correction",
+    "Reference counts78/97 below predeclared100; no posthocloosening",
+    "Conditional coverage, excluded bookkeeping zero not observed cash",
+    "No real fill/quote/depth/partial/latency evidence",
+    "No new bot or live-trading authorization"
+  ]
+}

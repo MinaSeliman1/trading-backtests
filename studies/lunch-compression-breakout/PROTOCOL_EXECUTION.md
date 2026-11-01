@@ -1,0 +1,26 @@
+# Protocole avant PnL : compression de midi, cassure après13h
+
+Hypothèse choisie avant tout résultat : un range de midi très étroit relativement au matin, puis une cassure fraîche avec volume après13h, peut laisser une continuation jusqu’à la clôture. Adaptation mécanique d’une description publique, pas réplication d’un système certifié.
+
+## Données et périodes
+SIP local SPY/QQQ en minutes, acquisitions/caches/calendrier XNYS vérifiés ; 2016-01-04 au2026-10-16. Comptes indépendants100000USD par ETF et période. A se termine2024-04-30 ; B2024-05-01/2026-10-16. A/B déjà réutilisées par de nombreuses études : aucun nouveau OOS aveugle. Prix bruts ; pas d’overnight ni d’ajustement dividende ajouté. Aucun API/ordre/clé ni changement des bots existants.
+
+## Règles de référence, toutes en heure NewYork
+- Matin09:30–11:30 exclue : minutes0:120, range max(high)−min(low). Midi11:30–12:30 exclue : minutes120:180, high/low et volume moyen par minute. Ce choix suit le setup2 de la source ; sa discussion générale mentionne aussi13h, publié comme sensibilité.
+- Tous les OHLCV de0 à fin du midi doivent être valides ; aucune réparation. Ranges quantifiés au1e−8 décimal. Matin/midi de range nul : aucun trade. Compression = rangeMidi/rangeMatin strictement <0.30. Frontière égale insuffisante. Filtre matin haussier désactivé en référence.
+- Niveau d’achat = highMidi au cent supérieur ; stop = milieu(highMidi,lowMidi) au cent inférieur. Niveaux non positifs ignorés. Pas d’usage de highs/lows postérieurs à la fenêtre fixe pour établir ces niveaux.
+- Bougies5min alignées09:30. Chercher la PREMIÈRE nouvelle traversée après13:00 jusqu’à14:30 incluse : close terminée>niveau et close de la bougie précédente<=niveau. Première décision possible13:05, entrée13:06. Si déjà au-dessus à13h sans nouveau croisement, aucun achat jusqu’à un éventuel vrai recroisement. Tous les OHLCV depuis l’ouverture jusqu’au signal doivent être valides, y compris12:30–13h.
+- Volume de la bougie candidate par minute strictement supérieur au volume moyen du midi (ratio>1). Cette PREMIÈRE candidate est consommée même si elle échoue au filtre volume : pas de second essai. Baseline volume zéro => aucune entrée quand filtre actif ; filtre off autorise la candidate avec ratio manquant.
+- LONG seulement, une tentative par séance. Ordre au marché à l’open une minute après décision ; aucun resize au fill futur. Quantité entière=floor(min(capital/closeSignal,1%capital/(closeSignal−stop))). Objectifs1× et1% AVANT fill/frais ; un gap peut les dépasser, publier les maxima. Aucun TP, trailing ou break-even.
+- Stop actif immédiatement : si open<=stop, sortie à cet open, y compris entrée déjà sous le stop avec tous les coûts. Sinon low<=stop => sortie au niveau ; ordre des ticks et durée exacte intraminute inconnus. Sortie sinon à open15:59 (minute389) ; ne pas détenir ses mèches. Journées actuelles210minutes sans entrée.
+- Coûts identiques : commission par côté max(0.35USD,0.0035USD/action), friction adverse0.01USD/action/côté ajoutée à entrée/retirée à sortie, stress0.02/0.03/0.05. Exactement une fois. Long seul : emprunt0 ; cash sans intérêt. Fiscalité, financement, carnet/partiels/rejets et latence variable hors modèle.
+
+## Couverture et risque
+complete_days en référence : après sélection d’un signal éligible, imposer la complétude de toute la journée actuelle. Filtre FUTUR de disponibilité explicitement conditionnel, pas un portefeuille continu observé. La lacune future ne doit jamais modifier le premier signal en amont.
+resolved_prefix retire ce filtre : scan et toute trajectoire détenue doivent être résolus ; une minute de délai non détenue peut manquer. Issue inconnue => trade entier omis, observed_return manquant, frais d’entrée connus conservés dans unresolved.csv. Zéro comptable de chaînage des exclusions ≠ journée de cash observée. Source globale avec doublons contradictoires/hors minute : inconnue sans trade.
+Drawdown observé : frais d’entrée, closes des minutes entièrement détenues, sortie nette. Pas pire tick. MAE/MFE prix incluent fills effectifs et seuls extrêmes entièrement détenus ; pas commissions ni mèches terminales. Minute du stop intrabar : durée en borne supérieure.
+
+## Matrice figée :14variantes×2ETF×3périodes=84comptes
+reference ; cost_0.02/0.03/0.05 ; compression_0.2/compression_0.5 ; lunch_end_1300 ; volume_off/volume_1.5 ; bars_1/bars_15 ; morning_up ; stop_low ; resolved_prefix. Une dimension à la fois ; stops_low au cent inférieur du lowMidi ; morning_up exige close11:29>open09:30. Grilles1/15min : premières décisions13:01/13:15, même cutoff14:30. L’extension midi13h garde le même début11:30 et début du scan.
+
+Cinq critères tous exigés pour chaque ETF : >=100trades ALL ; références A/B/ALL positives ; ALL sans trois meilleurs jours positive ; A friction doublée positive ; borne basse IC95 moyenne quotidienne ALL blocs20>0. Bootstrap descriptif3000tirages, seed20261031, blocs circulaires5/20 et clustersannuels. Exclusions au zéro comptable ; aucune correction des nombreux essais du dépôt ou de la source. Tous les comptes publiés, aucun gagnant substitué après observation. Succès éventuel=candidat historique, pas preuve prospective ni autorisation d’un nouveau bot.

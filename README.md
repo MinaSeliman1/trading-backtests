@@ -6,6 +6,7 @@ Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automa
 
 | Étude | Statut | Résultats disponibles | Conclusion |
 |---|---|---|---|
+| [Compression de midi, cassure après 13 h](studies/lunch-compression-breakout/README.md) | Backtest terminé ; preuves insuffisantes pour un nouveau bot | Recherche Web, 84 comptes, 51 tests, oracle scalaire et quatre figures | ALL SPY +1.59 % / 78 trades, QQQ +0.47 % / 97 trades ; moins de 100 chacun, SPY A et QQQ B négatives |
 | [Repli estimé sur les séances rouges](studies/adaptive-red-day-dip/README.md) | Backtest terminé ; référence écartée pour un nouveau bot | Recherche Web, 84 comptes, 46 tests, oracle scalaire et quatre figures | ALL SPY -19.21 % / 1520 trades, QQQ -38.15 % / 1513 trades ; A/B négatives, variantes toutes publiées |
 | [Cassure ATR autour de l’ouverture](studies/atr-opening-breakout/README.md) | Backtest terminé ; candidat historique, sans nouveau bot automatique | Recherche Web,84comptes,40tests,oracle séparé et quatre figures | ALL SPY+34.51 %/1222trades, QQQ+46.38 %/1277trades ; SPY B fragile aux coûts, aucun nouveau bot |
 | [Réintégration Bollinger intraday](studies/bollinger-reentry/README.md) | Backtest terminé ; piste écartée pour un nouveau bot | Recherche Web, 84 comptes, 39 tests, oracle scalaire et quatre figures | ALL SPY -19.61 % / 1637 trades, QQQ -18.32 % / 1608 trades ; références A/B négatives, 28 comptes ALL négatifs |
