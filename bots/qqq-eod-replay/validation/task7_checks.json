@@ -7,7 +7,16 @@
     "seconds": 114.345,
     "python": "3.14.6"
   },
-  "cloud_run": null,
+  "cloud_run": {
+    "id": 41373059258,
+    "head_sha": "6e5e36c5ab91caf964523d9f6a52a996aae5f7c2",
+    "conclusion": "success",
+    "tests": 71,
+    "seconds": 18.09,
+    "python": "3.14.9",
+    "synthetic_artifact_roundtrip": "passed",
+    "statistical_job": "skipped_as_required"
+  },
   "recipe_commit": "d21b3e6976ed4d7318d237e9f9998f22cfe25417",
   "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
   "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f",
@@ -49,5 +58,12 @@
     "scripts/collect_live.py": "ac789e9ea31d433b114e72467847205b39d64ca3cef95a1cbe6976d92b3b0c37",
     "scripts/offline_check.py": "7dbbf86ac8a6cbd9d570c0fa58391fb2115d5c12c8ff27a07cecc10335a6dd2a",
     "scripts/run_replay.py": "056c37525a88113c0b04a3bca739ee2aca27133067d4a1d600a8dca86ed017b5"
+  },
+  "registration_verified": {
+    "first_session": "2026-11-02",
+    "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f",
+    "publication_before_first_date": true,
+    "frozen_worker_sha256": "03d7fd3b8c62c035232981217d68c55d92de248be422c0e01991d69f10891374",
+    "provider_credentials_loaded": false
   }
 }

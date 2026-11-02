@@ -1,8 +1,10 @@
 {
   "enabled": false,
-  "reason": "Task 0 review and committed stop rule 7 required before activation",
-  "generation": null,
-  "rule_path": null,
-  "replay_release_commit": null,
-  "first_statistical_session": null
+  "reason": "Task7 rules registered; task8 cloud setup and explicit activation pending",
+  "generation": "qqq-f7-stop-v1",
+  "rule_path": "bots/qqq-eod-replay/rules/v1/RULE.json",
+  "replay_release_commit": "6e5e36c5ab91caf964523d9f6a52a996aae5f7c2",
+  "first_statistical_session": "2026-11-02",
+  "rule_commit": "6e5e36c5ab91caf964523d9f6a52a996aae5f7c2",
+  "rule_publication_run_id": 41373059258
 }

@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
+  "recipe_commit": "d21b3e6976ed4d7318d237e9f9998f22cfe25417",
+  "numeric_rule_commit": "6e5e36c5ab91caf964523d9f6a52a996aae5f7c2",
+  "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f",
+  "rule_commit_datetime": "2026-11-01T20:33:00-05:00",
+  "publication": {
+    "id": 41373059258,
+    "head_sha": "6e5e36c5ab91caf964523d9f6a52a996aae5f7c2",
+    "head_branch": "main",
+    "event": "push",
+    "created_at": "2026-11-02T01:33:04Z",
+    "conclusion": "success",
+    "html_url": "https://github.com/MinaSeliman1/trading-backtests/actions/runs/41373059258"
+  },
+  "first_statistical_session": "2026-11-02",
+  "activation": false,
+  "initial_state_commitment": {
+    "kind": "preregistered empty state, not an initialized runtime",
+    "accounts": {
+      "noise": 100000.0,
+      "orb": 100000.0
+    },
+    "positions": {
+      "noise": 0,
+      "orb": 0
+    },
+    "processed_sessions": [],
+    "legacy_included": false
+  }
+}

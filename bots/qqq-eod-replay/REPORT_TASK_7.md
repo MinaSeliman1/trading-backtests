@@ -1,6 +1,6 @@
 # Tâche 7 — Règles d’arrêt préenregistrées
 
-**1er novembre 2026, America/New_York.** Règles numériques figées pour QQQ Noise Area et QQQ ORB, exclusivement en simulation. Code stratégique inchangé : `f7ed9515b97644102ef674315c6af46e6fce8988`. La première date de la nouvelle population statistique est dérivée du commit de la règle, dans [REGISTRATION.json](rules/v1/REGISTRATION.json). Les séances déjà vues depuis le 21 octobre restent séparées. L’activation, les clés et l’amorçage GitHub Actions relèvent de la tâche 8 ; aucun accès aux clés ni changement des tâches live n’a eu lieu ici.
+**1er novembre 2026, America/New_York.** Règles numériques figées pour QQQ Noise Area et QQQ ORB, exclusivement en simulation. Code stratégique inchangé : `f7ed9515b97644102ef674315c6af46e6fce8988`. La règle numérique est publiée au commit **`6e5e36c5ab91caf964523d9f6a52a996aae5f7c2`**, le **1er novembre à 20:33:04 New York** selon GitHub. La première date de la nouvelle population statistique est donc **le 2 novembre 2026**, enregistrée dans [REGISTRATION.json](rules/v1/REGISTRATION.json). Les séances déjà vues depuis le 21 octobre restent séparées. L’activation, les clés et l’amorçage GitHub Actions relèvent de la tâche 8 ; aucun accès aux clés ni changement des tâches live n’a eu lieu ici.
 
 ## Seuils de P&L
 
@@ -38,7 +38,7 @@ Le rapprochement utilise le diagnostic à capital comparable lorsqu’il existe.
 
 ## Méthode figée avant les résultats
 
-Le [plan de calibration](rules/v1/CALIBRATION_PLAN.json) a été committé et poussé dans **`d21b3e6976ed4d7318d237e9f9998f22cfe25417` avant le calcul numérique**. Il fixe 50 000 chemins, générateur NumPy PCG64, graine 20261101, blocs mobiles non circulaires de cinq séances XNYS consécutives et horizons 20/60 sur les mêmes chemins. Aucun bloc ne franchit une journée exclue ou absente. Les rendements nets journaliers sont composés, sans appliquer les nouvelles règles d’arrêt aux chemins de calibration. Aucune longueur de bloc ou variante n’est choisie après comparaison des résultats.
+Le [plan de calibration](rules/v1/CALIBRATION_PLAN.json) a été committé et poussé dans **`d21b3e6976ed4d7318d237e9f9998f22cfe25417` avant le calcul numérique**. Il fixe 50 000 chemins, générateur NumPy PCG64, graine 20261101, blocs mobiles non circulaires de cinq séances XNYS consécutives et horizons 20/60 sur les mêmes chemins. Aucun bloc ne franchit une journée exclue ou absente. Les rendements nets journaliers sont composés, sans appliquer les nouvelles règles d’arrêt aux chemins de calibration. Le bootstrap ne recalcule ni les quantités entières ni la volatilité sur chaque chemin synthétique : les frais et le sizing sont déjà présents dans les rendements sources, dont il rééchantillonne la distribution. Aucune longueur de bloc ou variante n’est choisie après comparaison des résultats.
 
 Les deux moteurs historiques au SHA figé sont réexécutés depuis 100 000 USD sur **2016-01-04 à 2026-10-16**. Noise n’avait pas de fichier ALL publié à ces frais : cette base continue est dérivée du code existant, sans reset entre A et B et sans nouvelle hypothèse d’alpha. Elle ne remplace aucun ancien résultat publié. La partie A de Noise, 2 080 lignes, et l’intégralité ALL d’ORB, 2 713 lignes, ont été rapprochées des fichiers publiés avec un écart maximal inférieur à 6e-11 sur les montants et aucun écart de quantité.
 
@@ -61,7 +61,7 @@ Avec deux contrôles p5, la fréquence bootstrap de franchir au moins l’un des
 - [Second algorithme de calcul](validation/task7_second_algorithm.json) : erreur maximale sur tous les quantiles inférieure à 6e-12 USD, seuils de drawdown identiques.
 - Recalcul indépendant par un autre agent : mêmes blocs et quantiles, écart nul, aucune anomalie importante trouvée.
 - [Contrôle SIP réel rétrospectif](validation/task7_offline_check.json) : P&L, prix, frais et métriques de risque reproduits sans écart sur la séance contrôlée. Aucun résultat de cette séance passée ne devient prospectif.
-- [Preuves finales](validation/task7_checks.json) : tests locaux, CI, empreintes et publication GitHub avant la première date.
+- [Preuves finales](validation/task7_checks.json) : **71 tests locaux et 71 tests Linux réussis**, empreintes et publication GitHub avant la première date. [Run GitHub 41373059258](https://github.com/MinaSeliman1/trading-backtests/actions/runs/41373059258), chiffrement vérifié, job statistique désactivé comme prévu.
 
 Le chargeur vérifie le contenu Git immuable de la règle, le commit de la recette, les frais/paramètres des moteurs figés et la date de départ. Avant une future exécution active, il vérifiera aussi auprès de GitHub qu’un run sur main portant ce SHA a réellement été créé avant la première date ; un commit simplement antidaté ne suffit pas.
 
