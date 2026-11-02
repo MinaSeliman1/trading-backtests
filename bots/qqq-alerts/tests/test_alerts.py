@@ -117,3 +117,49 @@ def test_cloud_trigger_rejects_foreign_branch_fork_or_workflow():
  assert m.trusted_run(good)
  for change in ({'head_branch':'evil'},{'head_repository':{'full_name':'other/fork'}},{'path':'.github/workflows/untrusted.yml'}):
   assert not m.trusted_run(dict(good,**change))
+
+
+def test_dead_bot_does_not_recover_when_observation_window_closes():
+ p=module('policy');now=pd.Timestamp('2026-11-02T21:21:00Z')
+ assert 'process_stopped' in p.evaluate(snapshot(alive=False,stamp=str(now)),now)
+ assert 'engine_stale' in p.evaluate(snapshot(stamp='2026-11-02T21:17:59Z'),now)
+
+
+def test_calendar_diagnostic_expiry_is_not_announced_as_recovery(tmp_path):
+ m=module('outbox');box=m.Outbox(tmp_path/'state.json')
+ box.observe({'noise':{'decision_late'}},'2026-11-02T21:18:00Z');box.flush(lambda *a:None,'2026-11-02T21:18:00Z')
+ box.observe({'noise':set()},'2026-11-02T21:21:00Z');assert not box.pending
+
+
+def test_cloud_state_persists_stop_deduplication_and_real_recovery(tmp_path):
+ m=module('cloud_state');o=module('outbox');path=tmp_path/'outbox.json'
+ box=o.Outbox(path);box.observe({'noise':{'risk_stop'},'orb':set(),'cloud':set()},'2026-11-02T22:23:00Z')
+ sent=[];box.flush(lambda *a:sent.append(a),'2026-11-02T22:23:00Z');raw=path.read_bytes()
+ # A later independent Actions job restores the prior artifact, not an in-memory singleton.
+ m.restore_bytes(raw,tmp_path/'later.json');later=o.Outbox(tmp_path/'later.json')
+ later.observe({'noise':{'risk_stop'},'orb':set(),'cloud':set()},'2026-11-02T23:23:00Z');assert not later.pending
+ later.observe({'noise':set(),'orb':set(),'cloud':set()},'2026-11-03T22:23:00Z');assert len(later.pending)==1
+ later.flush(lambda *a:sent.append(a),'2026-11-03T22:23:00Z');assert len(sent)==2
+
+
+def test_subscription_window_can_render_text_without_qr_dependencies(monkeypatch):
+ import importlib.util,builtins,types
+ path=BASE/'scripts/show_subscription.py';spec=importlib.util.spec_from_file_location('subscription_test',path);mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
+ setup=module('setup');monkeypatch.setattr(setup.TopicStore,'load',lambda self:{'alert':'qsim_'+'a'*48,'health':'qsim_'+'b'*48});monkeypatch.setattr(setup.TopicStore,'__init__',lambda self:None)
+ rendered=[]
+ class Widget:
+  def __init__(self,*a,**kw):rendered.append(kw.get('text',''))
+  def pack(self,*a,**kw):pass
+ class App(Widget):
+  def title(self,*a):pass
+  def geometry(self,*a):pass
+  def resizable(self,*a):pass
+  def mainloop(self):rendered.append('rendered')
+ fake=types.SimpleNamespace(Tk=App,Label=Widget,Button=Widget,Entry=Widget,StringVar=lambda **kw:object(),messagebox=types.SimpleNamespace(showerror=lambda *a:None))
+ original=builtins.__import__
+ def imported(name,*a,**kw):
+  if name=='tkinter':return fake
+  if name=='qrcode' or name.startswith('PIL'):raise ImportError('optional dependency absent')
+  return original(name,*a,**kw)
+ monkeypatch.setattr(builtins,'__import__',imported);out=module('outbox');monkeypatch.setattr(out,'atomic',lambda *a:None)
+ mod.main();assert 'rendered' in rendered

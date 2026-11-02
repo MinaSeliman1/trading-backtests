@@ -62,3 +62,31 @@ def test_secret_publish_uses_stdin_and_does_not_return_child_output():
  assert topic not in ' '.join(seen[0][0]);assert seen[0][1]['input']==topic.encode()
  assert seen[0][1]['capture_output']
  with pytest.raises(m.SetupError):m.publish_secret('ALPACA_PAPER_KEY_ID',topic,run=run)
+
+
+def test_standalone_watchdog_check_needs_no_inherited_pythonpath_or_vault():
+ import subprocess,os
+ env={k:v for k,v in os.environ.items() if k not in ('PYTHONPATH','ALPACA_PAPER_KEY_ID','ALPACA_PAPER_SECRET_KEY','QQQ_EOD_STATE_KEY')};env['PYTHONDONTWRITEBYTECODE']='1'
+ r=subprocess.run([sys.executable,str(BASE/'scripts/watch.py'),'--check'],env=env,capture_output=True,text=True,timeout=90)
+ assert r.returncode==0, 'standalone diagnostic entrypoint must run without reading the notification vault'
+ data=json.loads(r.stdout);assert data['read_only_live'] and data['credentials_read'] is False
+
+
+def test_notification_state_rejects_invalid_artifact_payload_without_writing(tmp_path):
+ m=module('cloud_state');target=tmp_path/'outbox.json'
+ with pytest.raises(ValueError):m.restore_bytes(json.dumps({'observed':{'noise':['PRIVATE_TEXT']},'pending':[],'sent_dates':{}}).encode(),target)
+ assert not target.exists()
+
+
+@pytest.mark.skipif(sys.platform!='win32',reason='Windows credential manager only; isolated synthetic slot')
+def test_native_notification_slot_roundtrips_and_refuses_rotation():
+ import ctypes,uuid
+ from ctypes import wintypes
+ m=module('setup');store=m.TopicStore('TradingBacktests.Tests/QQQAlerts/'+uuid.uuid4().hex)
+ value={'alert':'qsim_'+'a'*48,'health':'qsim_'+'b'*48}
+ try:
+  assert store.load() is None;store.save(value);assert store.load()==value;store.save(value)
+  with pytest.raises(m.SetupError):store.save({'alert':'qsim_'+'c'*48,'health':'qsim_'+'d'*48})
+ finally:
+  store.api.CredDeleteW.argtypes=[wintypes.LPCWSTR,wintypes.DWORD,wintypes.DWORD];store.api.CredDeleteW.restype=wintypes.BOOL
+  store.api.CredDeleteW(store.target,1,0)

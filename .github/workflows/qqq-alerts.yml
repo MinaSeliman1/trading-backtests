@@ -23,7 +23,8 @@ env:
   PYTHONDONTWRITEBYTECODE: '1'
   PYTHONTZPATH: ''
 concurrency:
-  group: qqq-simulation-alerts-${{ github.event_name }}-${{ github.event.workflow_run.id || github.run_id }}
+  group: qqq-simulation-alerts-main
+  queue: max
   cancel-in-progress: false
 jobs:
   verify:
@@ -61,3 +62,11 @@ jobs:
           QQQ_HEALTH_TOPIC: ${{ secrets.QQQ_HEALTH_TOPIC }}
           QQQ_SEND_TEST: ${{ inputs.send_test }}
         run: python bots/qqq-alerts/scripts/cloud_notify.py
+      - name: Persist generic notification transitions
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: qqq-alert-delivery-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qqq-alert-state/outbox.json
+          retention-days: 30
+          if-no-files-found: warn

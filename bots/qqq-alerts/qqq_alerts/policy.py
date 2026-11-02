@@ -34,7 +34,7 @@ def evaluate(s,now):
   position_day=s.get('open_day');position_session=session(position_day) if position_day else None
   if position_session is None or now>=position_session['close']+pd.Timedelta(minutes=18):result.add('position_unresolved')
  if s.get('phase')=='unresolved':result.add('position_unresolved')
- if not observation_window(now):return result
+ if s.get('stop'):return result
  if not s.get('alive'):result.add('process_stopped')
  try:
   age=(now-pd.Timestamp(s['stamp'])).total_seconds()
@@ -43,6 +43,7 @@ def evaluate(s,now):
  if s.get('state') in ('error_no_new_entries','startup_failed','startup_retry','retrying_shadow_startup','stopped','ALERT_position_open'):
   result.add('engine_error')
  if result.intersection({'operator_stop','process_stopped','journal_unavailable'}):return result
+ if not observation_window(now):return result
  logical=now-pd.Timedelta(minutes=16)
  if row is None:return result
  if s['bot']=='noise':

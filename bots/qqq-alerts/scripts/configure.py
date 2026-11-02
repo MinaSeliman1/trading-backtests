@@ -1,6 +1,6 @@
 from pathlib import Path
 import sys,os,json,subprocess,argparse
-ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'runtime/vendor'),str(ROOT.parents[1]/'.python_packages')]
+ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'runtime/vendor'),str(ROOT.parents[2]/'.python_packages')]
 from qqq_alerts.setup import TopicStore,configuration,publish_secret
 from qqq_alerts.outbox import atomic
 

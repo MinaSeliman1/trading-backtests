@@ -33,29 +33,37 @@ def summary_for(run):
 def main():
  if os.environ.get('GITHUB_REPOSITORY')!=REPO or os.environ.get('GITHUB_REF')!='refs/heads/main':raise ValueError('trusted main required')
  if os.environ.get('GITHUB_RUN_ATTEMPT')!='1':raise ValueError('use new dispatch instead of rerunning old notification')
- client=Ntfy(os.environ['QQQ_ALERT_TOPIC'],os.environ['QQQ_HEALTH_TOPIC']);now=pd.Timestamp.now(tz='UTC');stamp=now.isoformat();event=os.environ['GITHUB_EVENT_NAME'];messages=0
- if event=='workflow_run':
-  trigger=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text(encoding='utf-8'))['workflow_run'];run=api('/repos/'+REPO+'/actions/runs/'+str(int(trigger['id'])))
-  if not trusted_run(run):raise ValueError('untrusted replay event refused')
-  if run['status']!='completed':raise ValueError('incomplete replay event')
-  if run['conclusion']!='success':client.notice('cloud',{'cloud_failed'},stamp,'cloud-failed-'+str(run['id']));messages+=1
-  try:issues=assess_summary(summary_for(run))
-  except Exception:
-   client.notice('cloud',{'cloud_summary_unavailable'},stamp,'cloud-summary-'+str(run['id']));return 1
-  for bot,codes in issues.items():
-   if codes:client.notice(bot,codes,stamp,'cloud-'+bot+'-'+str(run['id']));messages+=1
- elif event in ('schedule','workflow_dispatch'):
-  test=os.environ.get('QQQ_SEND_TEST')=='true'
-  if test:client.test();messages+=1
-  else:
-   today=str(now.tz_convert(NY).date());is_session=session(today) is not None
-   try:events=client.read_health()
-   except Exception:events=[]
-   labels=health_labels(events,now,is_session);client.life(stamp,labels,is_session);messages+=1
-   if is_session and any(v=='non verifie' for v in labels.values()):client.notice('watchdog',{'watchdog_unavailable'},stamp,'daily-absent-'+today);messages+=1
- else:return 0
- print(json.dumps(dict(state='notifications_accepted',generic_messages=messages,simulation_only=True,credential_values_output=False)))
- return 0
+ from qqq_alerts.cloud_state import restore_latest
+ from qqq_alerts.outbox import Outbox,atomic
+ folder=Path(os.environ['RUNNER_TEMP'])/'qqq-alert-state';folder.mkdir(parents=True,exist_ok=True);path=folder/'outbox.json'
+ restored=restore_latest(api,int(os.environ['GITHUB_RUN_ID']),path);box=Outbox(path)
+ client=Ntfy(os.environ['QQQ_ALERT_TOPIC'],os.environ['QQQ_HEALTH_TOPIC']);now=pd.Timestamp.now(tz='UTC');stamp=now.isoformat();event=os.environ['GITHUB_EVENT_NAME'];messages=0;failed=False
+ try:
+  if event=='workflow_run':
+   trigger=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text(encoding='utf-8'))['workflow_run'];run=api('/repos/'+REPO+'/actions/runs/'+str(int(trigger['id'])))
+   if not trusted_run(run):raise ValueError('untrusted replay event refused')
+   if run['status']!='completed':raise ValueError('incomplete replay event')
+   changes={'cloud':set() if run['conclusion']=='success' else {'cloud_failed'}}
+   try:changes.update(assess_summary(summary_for(run)))
+   except Exception:changes['cloud'].add('cloud_summary_unavailable');failed=True
+   box.observe(changes,stamp)
+  elif event in ('schedule','workflow_dispatch'):
+   if os.environ.get('QQQ_SEND_TEST')=='true':client.test();messages+=1
+   else:
+    from qqq_alerts.policy import observation_window
+    today=str(now.tz_convert(NY).date());is_session=session(today) is not None;expected=observation_window(now)
+    if box.data.get('last_life_day')!=today:
+     try:events=client.read_health()
+     except Exception:events=[]
+     labels=health_labels(events,now,is_session and expected);client.life(stamp,labels,is_session);messages+=1;box.data['last_life_day']=today
+     # A missing PC before trading is an incident; outside the observation window is expected.
+     box.observe({'watchdog':{'watchdog_unavailable'} if expected and any(v=='non verifie' for v in labels.values()) else set()},stamp)
+  else:return 0
+  messages+=box.flush(client.notice,stamp)
+  if box.pending:failed=True
+ finally:atomic(path,box.data)
+ print(json.dumps(dict(state='notification_attention' if failed else 'notifications_accepted',generic_messages=messages,pending=len(box.pending),restored_notification_state_from=restored,simulation_only=True,credential_values_output=False)))
+ return 1 if failed else 0
 if __name__=='__main__':
  try:raise SystemExit(main())
  except Exception as e:print(json.dumps(dict(state='notification_failed',error_type=type(e).__name__,details_omitted=True)));raise SystemExit(1)

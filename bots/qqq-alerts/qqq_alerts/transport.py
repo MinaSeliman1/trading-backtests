@@ -37,7 +37,7 @@ class Ntfy:
  def notice(self,bot,codes,stamp,key):
   if bot not in ('noise','orb','cloud','watchdog'):raise ValueError('unknown notification source')
   if not set(codes)<=CODES.keys():raise ValueError('unknown diagnostic code')
-  text=', '.join(CODES[c] for c in sorted(codes)) if codes else 'retablissement observe'
+  text=', '.join(CODES[c] for c in sorted(codes)) if codes else 'controle positif : plus aucune anomalie active (les lacunes historiques restent conservees)'
   name={'noise':'QQQ Noise Area','orb':'QQQ ORB','cloud':'QQQ cloud','watchdog':'QQQ surveillance'}[bot]
   self.request('alert',name+' : '+text+'. Simulation uniquement. '+stamp,{'Title':'QQQ SIMULATION','Priority':'4' if codes else '3','Tags':'warning' if codes else 'white_check_mark'},key)
  def guard(self,stamp):

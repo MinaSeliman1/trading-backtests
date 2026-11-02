@@ -1,13 +1,11 @@
 """Interactive local subscription only: the topic never goes to stdout/files."""
 from pathlib import Path
 import sys
-ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'runtime/vendor'),str(ROOT.parents[1]/'.python_packages')]
+ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'runtime/vendor'),str(ROOT.parents[2]/'.python_packages')]
 
 def main():
  import tkinter as tk
  from tkinter import messagebox
- import qrcode
- from PIL import ImageTk
  from qqq_alerts.setup import TopicStore
  from qqq_alerts.transport import Ntfy
  from qqq_alerts.outbox import atomic
@@ -20,8 +18,13 @@ def main():
  var=tk.StringVar(value=topics['alert']);field=tk.Entry(app,textvariable=var,width=64,state='readonly');field.pack(pady=4)
  def copy():app.clipboard_clear();app.clipboard_append(topics['alert']);app.update()
  tk.Button(app,text='Copier le sujet (garder cette adresse hors du chat/GitHub)',command=copy).pack(pady=4)
- photo=ImageTk.PhotoImage(qrcode.make('https://ntfy.sh/'+topics['alert']).get_image().resize((330,330)))
- label=tk.Label(app,image=photo);label.image=photo;label.pack(pady=8)
+ try:
+  import qrcode
+  from PIL import ImageTk
+  photo=ImageTk.PhotoImage(qrcode.make('https://ntfy.sh/'+topics['alert']).get_image().resize((330,330)))
+  label=tk.Label(app,image=photo);label.image=photo;label.pack(pady=8)
+ except ImportError:
+  tk.Label(app,text='QR facultatif indisponible : utilise le sujet copiable ci-dessus.',wraplength=640,pady=40).pack()
  result=tk.StringVar(value='Reception sur telephone : non confirmee.')
  def test():
   try:

@@ -14,8 +14,9 @@ class Outbox:
  def observe(self,issues,stamp):
   for bot,codes in issues.items():
    current=sorted(codes);previous=self.data['observed'].get(bot,[])
+   nonrecovering={'decision_missing','decision_late','data_delayed','orb_missed_entry','orb_observation_gap','ledger_paused'}
    if current!=previous:
-    self.pending.append(dict(bot=bot,codes=current,stamp=stamp,key='incident-'+uuid.uuid4().hex))
+    if current or not set(previous)<=nonrecovering:self.pending.append(dict(bot=bot,codes=current,stamp=stamp,key='incident-'+uuid.uuid4().hex))
     self.data['observed'][bot]=current
   atomic(self.path,self.data)
  def flush(self,send,stamp):
