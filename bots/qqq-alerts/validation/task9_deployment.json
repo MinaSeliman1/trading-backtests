@@ -1,0 +1,117 @@
+{
+  "checked_utc": "2026-11-02T05:29:58.368598+00:00",
+  "source_commit": "f78a980800b5a49377d55c4087d0288f6eaeb4a9",
+  "base_commit": "72233dd20e5635a5fe9cb72294457e74118bfbd8",
+  "simulation_only": true,
+  "provider": "ntfy.sh",
+  "setup": {
+    "state": "notification_topics_configured",
+    "provider": "ntfy.sh",
+    "topic_values_output": false,
+    "secret_names": [
+      "QQQ_ALERT_TOPIC",
+      "QQQ_HEALTH_TOPIC"
+    ],
+    "protected_windows_copy": true,
+    "paper_credentials_accessed": false
+  },
+  "real_ntfy_probe": {
+    "utc": "2026-11-02T05:18:44.235449+00:00",
+    "provider": "ntfy.sh",
+    "topic_values_output": false,
+    "paper_credentials_accessed": false,
+    "broker_orders": 0,
+    "test_server_accepted": true,
+    "scheduled_replacement_verified": true,
+    "scheduled_cancel_accepted": true,
+    "state": "passed",
+    "first_immediate_health_read": "not_yet_in_async_cache",
+    "technical_health_roundtrip_verified": true,
+    "health_roundtrip_seconds": 0.71,
+    "phone_reception": "not_confirmed",
+    "checked_utc": "2026-11-02T05:20:49.357569+00:00"
+  },
+  "windows_watchdog": {
+    "state": "watching",
+    "utc": "2026-11-02T05:29:48.528657+00:00",
+    "simulation_only": true,
+    "read_only_live": true,
+    "issues": {
+      "noise": [],
+      "orb": []
+    },
+    "sent": 0,
+    "pending_notifications": 0,
+    "delivery": "current",
+    "errors": [],
+    "guard_deadline": "2026-11-02T14:20:00+00:00"
+  },
+  "subscription_ui": {
+    "window_opened": true,
+    "values_output": false
+  },
+  "phone_reception": {
+    "user_confirmed_received": false
+  },
+  "local_tests": {
+    "tests": "108",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "92.097"
+  },
+  "review": {
+    "important_findings": 3,
+    "all_reproduced_red_then_fixed": true,
+    "findings": [
+      "false close-boundary recovery",
+      "repeated persistent cloud STOP",
+      "unconditional QR dependencies"
+    ],
+    "further_standalone_startup_regression": "passed"
+  },
+  "cloud": {
+    "validation": "passed",
+    "source_ci": {
+      "run_id": 41393672249,
+      "conclusion": "success",
+      "passed": 24,
+      "skipped": 1,
+      "seconds": 1.97,
+      "python": "3.14.9"
+    },
+    "normal_eod_run": 41393817769,
+    "installation_test": {
+      "run_id": 41393814871,
+      "conclusion": "success",
+      "head_sha": "f78a980800b5a49377d55c4087d0288f6eaeb4a9",
+      "url": "https://github.com/MinaSeliman1/trading-backtests/actions/runs/41393814871",
+      "receipt": {
+        "state": "notifications_accepted",
+        "generic_messages": 1,
+        "pending": 0,
+        "restored_notification_state_from": null,
+        "simulation_only": true,
+        "credential_values_output": false
+      }
+    },
+    "eod_event": {
+      "run_id": 41393961301,
+      "conclusion": "success",
+      "head_sha": "f78a980800b5a49377d55c4087d0288f6eaeb4a9",
+      "url": "https://github.com/MinaSeliman1/trading-backtests/actions/runs/41393961301",
+      "receipt": {
+        "state": "notifications_accepted",
+        "generic_messages": 0,
+        "pending": 0,
+        "restored_notification_state_from": 41393814871,
+        "simulation_only": true,
+        "credential_values_output": false
+      }
+    }
+  },
+  "unchanged_economic_sources": true,
+  "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f",
+  "financial_keys_read_by_notifier": false,
+  "broker_orders": 0
+}
