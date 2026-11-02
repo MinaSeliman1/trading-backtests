@@ -1,0 +1,63 @@
+name: QQQ simulation alerts
+on:
+  push:
+    branches: [main]
+    paths: ['bots/qqq-alerts/**', '.github/workflows/qqq-alerts.yml']
+  workflow_run:
+    workflows: ['QQQ EOD replay']
+    types: [completed]
+    branches: [main]
+  schedule:
+    - cron: '20 9 * * *'
+      timezone: America/New_York
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: 'Send one explicitly labelled installation test'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+  actions: read
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONTZPATH: ''
+concurrency:
+  group: qqq-simulation-alerts-${{ github.event_name }}-${{ github.event.workflow_run.id || github.run_id }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.14.9'
+          cache: pip
+          cache-dependency-path: bots/qqq-alerts/requirements.txt
+      - run: python -m pip install --disable-pip-version-check -r bots/qqq-alerts/requirements.txt
+      - run: python -m pytest bots/qqq-alerts/tests -q -p no:cacheprovider
+  notify:
+    needs: verify
+    if: github.ref == 'refs/heads/main' && github.event_name != 'push' && github.run_attempt == 1 && (github.event_name != 'workflow_run' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == 'MinaSeliman1/trading-backtests'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.14.9'
+      - run: python -m pip install --disable-pip-version-check -r bots/qqq-alerts/requirements.txt
+      - name: Send generic simulation notification
+        env:
+          GH_TOKEN: ${{ github.token }}
+          QQQ_ALERT_TOPIC: ${{ secrets.QQQ_ALERT_TOPIC }}
+          QQQ_HEALTH_TOPIC: ${{ secrets.QQQ_HEALTH_TOPIC }}
+          QQQ_SEND_TEST: ${{ inputs.send_test }}
+        run: python bots/qqq-alerts/scripts/cloud_notify.py
