@@ -16,7 +16,18 @@
     "head_sha": "a70df6fb9b7048c194f6b8007caeba83fbbc3258",
     "synthetic_artifact_roundtrip": "passed"
   },
-  "final_cloud_run": null,
+  "final_cloud_run": {
+    "id": 41369260668,
+    "url": "https://github.com/MinaSeliman1/trading-backtests/actions/runs/41369260668",
+    "head_sha": "a5e9ebb01d370156ee2ffb987e4f9c25bbee23a3",
+    "conclusion": "success",
+    "tests": 55,
+    "seconds": 11.96,
+    "python": "3.14.9",
+    "verify_job_id": 125036005125,
+    "synthetic_artifact_roundtrip": "passed",
+    "statistical_job": "skipped_as_required"
+  },
   "statistical_sessions": 0,
   "activation": false,
   "credentials_transferred": false,
@@ -49,5 +60,20 @@
     "tests/test_schedule.py": "d17c4f7b31155047940d9bb8de3645230f3c40c3a67711fb79c2c2df9a243649",
     "tests/test_source.py": "a87c5490111f60c6efcbdc0f1ad0ffdcddd84bbc2e0aebe4633c7bb8538dc0dd",
     "tests/test_state.py": "53322159000a1a6764e795a1bc2c1d33cd05a555351963f785206dc273bdd29e"
-  }
+  },
+  "delivery_verified_utc": "2026-11-02T00:51:54.737827+00:00",
+  "legacy_collection": {
+    "observations": 13,
+    "qualified_sessions": {
+      "noise": 0,
+      "orb": 1
+    },
+    "comparison_count": 0,
+    "errors": 0,
+    "new_statistical_sessions": 0
+  },
+  "live_scheduled_tasks": "both Running; read-only check, no modifications",
+  "live_source_diff_against_strategy_commit": [],
+  "local_comparison_auto_activation": "deferred to approved task7; companion CLI delivered",
+  "monitor_extension_observed": false
 }
