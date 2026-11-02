@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
+  "registered_utc": "2026-11-02T01:04:44.715735+00:00",
+  "baseline": {
+    "period": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "kind": "unchanged engines continuous from 100000 each; derived baseline, no new alpha",
+    "noise": {
+      "execution": "next_open",
+      "slippage": 0.01,
+      "leverage_cap": 4.0,
+      "frequency": 30,
+      "stop": "combined",
+      "borrow_rate": 0.01,
+      "lookback": 14
+    },
+    "orb": {
+      "mode": "both",
+      "slippage": 0.01,
+      "priority": "stop_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    }
+  },
+  "costs": {
+    "commission_per_share_per_side": 0.0035,
+    "minimum_per_order": 0.35,
+    "slippage_per_share_per_side": 0.01,
+    "borrow_annual": 0.01,
+    "borrow_days_base": 360,
+    "borrow_min_days": 1
+  },
+  "bootstrap": {
+    "method": "moving noncircular blocks, uniform valid start",
+    "block_sessions": 5,
+    "replications": 50000,
+    "seed": 20261101,
+    "rng": "numpy PCG64",
+    "horizons": [
+      20,
+      60
+    ],
+    "initial_capital": 100000.0,
+    "quantiles": [
+      0.025,
+      0.05,
+      0.5,
+      0.95,
+      0.975
+    ],
+    "quantile_method": "linear",
+    "compounding": "product(1+daily_net_return)",
+    "eligible": "noise eligibility=eligible; orb conditionally_excluded=false; keep legitimate no-trade days",
+    "gaps": "all five dates must be consecutive actual XNYS sessions; no block across missing or excluded day",
+    "stopped_paths": false
+  },
+  "stops": {
+    "pnl": "strictly below unrounded p5 at first20 and first60 sessions, once each; irreversible",
+    "drawdown_multiplier": 1.5,
+    "drawdown_metric": "ordered one-minute close and fill marks, percent of running peak; same metric historical and EOD telemetry",
+    "timing": "EOD detection suspends next session entries; no change to that day frozen-model exits",
+    "roundoff_usd": 1e-06,
+    "roundoff_dd_fraction": 1e-10,
+    "unknown": "unresolved blocks subsequent sessions; never zero",
+    "live": "legacy operational bots not reconfigured in task7; no threshold on old account"
+  },
+  "parity": {
+    "pnl_or_cost_usd": 0.01,
+    "price_or_feature_absolute": 1e-06,
+    "quantity": 0,
+    "direction": 0,
+    "economic_time_seconds": 0,
+    "action": "investigate and withhold validation; no automatic strategy rewrite",
+    "comparison": "prefer conditional capital-matched diagnostic; disclose missing input/code provenance",
+    "legacy": "no task7 threshold applied before registration first session"
+  },
+  "first_session": "first XNYS session strictly after numeric rule commit NewYork date",
+  "activation": "disabled; task8 setup is separate",
+  "input_sha256": {
+    "studies/intraday-momentum-noise-area/data/prepared/QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+    "studies/intraday-momentum-noise-area/data/prepared/QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+    "bots/qqq-eod-replay/ENGINE_LOCK.json": "306f9e2f68e4bef843787dcae407d0ef40438990cd11df697835b4b668401d56"
+  }
+}
