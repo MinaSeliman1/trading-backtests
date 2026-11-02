@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-02T04:02:31.149033+00:00",
+  "checked_utc": "2026-11-02T04:06:23.536027+00:00",
   "local_tests": {
     "tests": "83",
     "failures": "0",
@@ -15,7 +15,25 @@
     "skipped": 1,
     "python": "3.14.9"
   },
-  "final_publication_ci": "pending final commit",
+  "final_publication_ci": {
+    "run_id": 41386367570,
+    "url": "https://github.com/MinaSeliman1/trading-backtests/actions/runs/41386367570",
+    "verified_commit": "1b9b5e5a820fb351029b4ad1041860e26f4c9037",
+    "conclusion": "success",
+    "passed": 82,
+    "skipped": 1,
+    "seconds": 21.01,
+    "python": "3.14.9",
+    "skip_reason": "Windows-only synthetic Credential Manager test; passed locally",
+    "normal_restore": "success_without_initialization",
+    "accounts": {
+      "noise": 100000.0,
+      "orb": 100000.0
+    },
+    "sessions": 0,
+    "first_day": "2026-11-02",
+    "broker_orders": 0
+  },
   "independent_reviews": {
     "source_before_secret_transfer": "no important findings",
     "operational_heads_and_cohort": "no important findings",
