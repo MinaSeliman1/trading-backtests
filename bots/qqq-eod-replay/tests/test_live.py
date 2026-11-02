@@ -46,3 +46,28 @@ def test_equal_prices_at_different_minutes_are_a_discrepancy():
  op=dict(stat,qualified=True,trades=[dict(stat['trades'][0],entry_time='2026-10-30T13:36:00Z')])
  assert live.compare(stat,op)['differences'][0]['field']=='trades.entry_time'
  op['trades'][0]['entry_time']='2026-10-30T13:35:00Z';assert not live.compare(stat,op)['differences']
+
+def test_canonical_operational_view_contains_only_latest_qualified_sessions(tmp_path):
+ with live.OperationalJournal(tmp_path/'op.sqlite') as db:
+  db.record(dict(bot='orb',day='2026-11-02',qualified=True,net_pnl=10))
+  db.record(dict(bot='noise',day='2026-11-02',qualified=False,net_pnl=20))
+  assert db.db.execute('SELECT count(*) FROM qualified_sessions').fetchone()[0]==1
+  db.record(dict(bot='orb',day='2026-11-02',qualified=False,net_pnl=10))
+  assert db.db.execute('SELECT count(*) FROM qualified_sessions').fetchone()[0]==0
+
+def test_operational_cohort_is_immutable_and_legacy_is_separate(tmp_path):
+ path=tmp_path/'op.sqlite'
+ with live.OperationalJournal(path,first_day='2026-11-02') as db:
+  db.record(dict(bot='orb',day='2026-10-28',qualified=True,net_pnl=100))
+  db.record(dict(bot='noise',day='2026-11-02',qualified=True,net_pnl=-5))
+  db.record(dict(bot='orb',day='2026-11-02',qualified=False,net_pnl=10))
+  assert [r['net_pnl'] for r in db.latest(qualified_only=True)]==[-5]
+  assert len(db.latest())==3
+ with pytest.raises(ValueError):live.OperationalJournal(path,first_day='2026-11-03')
+
+def test_returning_to_an_older_snapshot_restores_the_actual_latest_state(tmp_path):
+ with live.OperationalJournal(tmp_path/'op.sqlite',first_day='2026-11-02') as db:
+  a=dict(bot='orb',day='2026-11-02',qualified=True,net_pnl=10);b=dict(a,qualified=False)
+  db.record(a);db.record(b);assert not db.latest(qualified_only=True)
+  assert not db.record(a)
+  assert db.latest(qualified_only=True)==[a] and db.db.execute('SELECT count(*) FROM observations').fetchone()[0]==2

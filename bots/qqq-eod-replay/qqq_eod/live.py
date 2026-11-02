@@ -82,17 +82,32 @@ def compare(statistical,operational,tolerance=1e-6):
  return dict(classification='needs_investigation' if differences else 'comparison_limited' if context else 'observed_agreement',context=context,differences=differences,proven_engine_bug=bool(confirmed and differences),parity_confirmed=bool(confirmed and not differences))
 
 class OperationalJournal:
- def __init__(self,path):
+ def __init__(self,path,first_day=None):
   p=Path(path);p.parent.mkdir(parents=True,exist_ok=True);self.db=sqlite3.connect(p)
   self.db.execute('CREATE TABLE IF NOT EXISTS observations(id INTEGER PRIMARY KEY,bot TEXT,day TEXT,snapshot_sha TEXT,payload TEXT,captured_utc TEXT,UNIQUE(bot,day,snapshot_sha))');self.db.commit()
+  self.db.execute('CREATE TABLE IF NOT EXISTS ledger_config(key TEXT PRIMARY KEY,value TEXT NOT NULL)')
+  self.db.execute('CREATE TABLE IF NOT EXISTS observation_heads(bot TEXT,day TEXT,observation_id INTEGER,last_seen_utc TEXT,PRIMARY KEY(bot,day))')
+  try:
+   with self.db:
+    self.db.execute('BEGIN IMMEDIATE');old=self.db.execute("SELECT value FROM ledger_config WHERE key='first_session'").fetchone()
+    self.db.execute('INSERT OR IGNORE INTO observation_heads SELECT bot,day,max(id),max(captured_utc) FROM observations GROUP BY bot,day')
+    if first_day is not None:
+     date.fromisoformat(first_day)
+     if old and old[0]!=first_day:raise ValueError('operational cohort date changed')
+     self.db.execute('INSERT OR IGNORE INTO ledger_config VALUES(?,?)',('first_session',first_day))
+    self.db.execute('DROP VIEW IF EXISTS qualified_sessions')
+    self.db.execute("CREATE VIEW qualified_sessions AS SELECT o.* FROM observations o JOIN observation_heads x ON o.id=x.observation_id WHERE json_extract(o.payload,'$.qualified')=1 AND o.day>=coalesce((SELECT value FROM ledger_config WHERE key='first_session'),'0001-01-01')")
+  except Exception:self.db.close();raise
  def record(self,record):
   payload=dump(record);h=hashlib.sha256(payload.encode()).hexdigest()
   with self.db:
    cursor=self.db.execute('INSERT OR IGNORE INTO observations(bot,day,snapshot_sha,payload,captured_utc) VALUES(?,?,?,?,?)',(record['bot'],record['day'],h,payload,datetime.now(timezone.utc).isoformat()))
-  return cursor.rowcount==1
+   changed=cursor.rowcount==1;row=self.db.execute('SELECT id FROM observations WHERE bot=? AND day=? AND snapshot_sha=?',(record['bot'],record['day'],h)).fetchone()
+   self.db.execute('INSERT INTO observation_heads VALUES(?,?,?,?) ON CONFLICT(bot,day) DO UPDATE SET observation_id=excluded.observation_id,last_seen_utc=excluded.last_seen_utc',(record['bot'],record['day'],row[0],datetime.now(timezone.utc).isoformat()))
+  return changed
  def latest(self,qualified_only=False):
-  rows=[json.loads(r[0]) for r in self.db.execute('SELECT o.payload FROM observations o JOIN (SELECT bot,day,max(id) AS i FROM observations GROUP BY bot,day) x ON o.id=x.i ORDER BY o.day,o.bot')]
-  return [r for r in rows if r.get('qualified')] if qualified_only else rows
+  sql='SELECT payload FROM qualified_sessions ORDER BY day,bot' if qualified_only else 'SELECT o.payload FROM observations o JOIN observation_heads x ON o.id=x.observation_id ORDER BY o.day,o.bot'
+  return [json.loads(r[0]) for r in self.db.execute(sql)]
  def close(self):self.db.close()
  def __enter__(self):return self
  def __exit__(self,*args):self.close()

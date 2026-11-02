@@ -64,7 +64,7 @@ jobs:
   replay:
     name: Replay statistical ledger
     needs: verify
-    if: github.ref == 'refs/heads/main' && vars.QQQ_EOD_ENABLED == 'true'
+    if: github.ref == 'refs/heads/main' && (vars.QQQ_EOD_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && inputs.initialize == true))
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -80,7 +80,7 @@ jobs:
       - name: Read committed activation gate
         id: gate
         env:
-          QQQ_EOD_ENABLED: ${{ vars.QQQ_EOD_ENABLED }}
+          QQQ_EOD_ENABLED: ${{ (github.event_name == 'workflow_dispatch' && inputs.initialize == true) && 'true' || vars.QQQ_EOD_ENABLED }}
         run: python bots/qqq-eod-replay/scripts/run_replay.py --mode status --github-output
       - name: Active generation checkpoint
         if: steps.gate.outputs.active == 'true'
@@ -89,7 +89,7 @@ jobs:
         if: steps.gate.outputs.active == 'true'
         id: engine
         env:
-          QQQ_EOD_ENABLED: ${{ vars.QQQ_EOD_ENABLED }}
+          QQQ_EOD_ENABLED: ${{ (github.event_name == 'workflow_dispatch' && inputs.initialize == true) && 'true' || vars.QQQ_EOD_ENABLED }}
           QQQ_INITIALIZE: ${{ inputs.initialize }}
           GH_TOKEN: ${{ github.token }}
           ALPACA_PAPER_KEY_ID: ${{ secrets.ALPACA_PAPER_KEY_ID }}
@@ -112,5 +112,19 @@ jobs:
         with:
           name: qqq-eod-summary-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/qqq-eod-output/summary.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Verify historical SIP authorization after initialization
+        if: steps.engine.outputs.state_ready == 'true' && github.event_name == 'workflow_dispatch' && inputs.initialize == true
+        env:
+          ALPACA_PAPER_KEY_ID: ${{ secrets.ALPACA_PAPER_KEY_ID }}
+          ALPACA_PAPER_SECRET_KEY: ${{ secrets.ALPACA_PAPER_SECRET_KEY }}
+        run: python bots/qqq-eod-replay/scripts/probe_data.py --output '${{ runner.temp }}/qqq-eod-output/sip_probe.json'
+      - name: Persist sanitized SIP probe receipt
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.initialize == true && steps.engine.outputs.state_ready == 'true'
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: qqq-eod-probe-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qqq-eod-output/sip_probe.json
           retention-days: 30
           if-no-files-found: warn
