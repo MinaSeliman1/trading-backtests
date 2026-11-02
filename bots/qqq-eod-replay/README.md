@@ -1,6 +1,6 @@
 # Replay QQQ de fin de journée
 
-**Tâche 0 : infrastructure livrée pour revue, activation statistique désactivée jusqu’à la règle d’arrêt de tâche 7 et au feu vert utilisateur.** Aucun résultat ancien ne devient prospectif. Les deux processus Windows existants restent des simulations opérationnelles shadow/SIP différé de 16 minutes.
+**Tâche 7 : règles d’arrêt calculées et publiées, activation statistique désactivée en attente de la tâche 8.** Voir le [rapport et les seuils](REPORT_TASK_7.md). Aucun résultat ancien ne devient prospectif. Les deux processus Windows existants restent des simulations opérationnelles shadow/SIP différé de 16 minutes.
 
 Voir [le rapport](REPORT_TASK_0.md), [le pré-enregistrement](PREREGISTRATION.md), [le protocole](PROTOCOL.md) et [les empreintes](ENGINE_LOCK.json). Le code stratégique est celui de `f7ed9515b97644102ef674315c6af46e6fce8988`, extrait depuis Git et vérifié avant import. Les adaptateurs ne modifient aucun ancien moteur, coût, signal ou journal.
 

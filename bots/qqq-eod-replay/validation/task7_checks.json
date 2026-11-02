@@ -1,0 +1,53 @@
+{
+  "checked_utc": "2026-11-02T01:31:20.972587+00:00",
+  "local_tests": {
+    "tests": 71,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 114.345,
+    "python": "3.14.6"
+  },
+  "cloud_run": null,
+  "recipe_commit": "d21b3e6976ed4d7318d237e9f9998f22cfe25417",
+  "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
+  "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f",
+  "independent_review": {
+    "important_findings": 0,
+    "bootstrap_quantile_max_difference": 0.0,
+    "blocks": {
+      "noise": 2634,
+      "orb": 2687
+    },
+    "either_checkpoint_rate": {
+      "noise": 0.08464,
+      "orb": 0.08692
+    }
+  },
+  "activation": false,
+  "statistical_sessions": 0,
+  "legacy_bot_sources_changed": false,
+  "legacy_runtime_or_tasks_modified": false,
+  "credentials_accessed_or_transferred": false,
+  "executable_sha256": {
+    "qqq_eod/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qqq_eod/activation.py": "d8d0607188e36b5718535f8c0e29272127d87191ddd66c5e076aa21e1d0088a2",
+    "qqq_eod/calibration.py": "89555987cedd8771e680fcbf48074eaba1a5b0261c38babd5cd639862dd785ac",
+    "qqq_eod/cloud.py": "2134c3bbdc9ac56db4f123702cdf37acf82526d2eb7862ff300e5649a740511f",
+    "qqq_eod/journal.py": "2c942d857ac364cbd90b5af5c65b710cff82353d6f02fb28981896f0d24c0e44",
+    "qqq_eod/live.py": "ae93611a257d9d161ee148042a33e742b82f358a19a488742fc166bdba7d7757",
+    "qqq_eod/market.py": "7e8355d8a78daa363542cb635490fad1b67fe12a78bda84f535b83e5027bb279",
+    "qqq_eod/parity.py": "d9af0d8a16e608af7ad059f0fdfee6746606d43ac12d3d376f1d65f6704ec988",
+    "qqq_eod/replay.py": "7fea9ccc5b515e9ae4ea7db3670b67495c1ab76f5fa246f0e7e46a7126aaff48",
+    "qqq_eod/risk_marks.py": "8816310b4e56ed3d6615d2e7f5dde82db3ca854d6eb246685f61ede612c30c70",
+    "qqq_eod/risk_policy.py": "1f6c81bb2e27151abea5595fa49ad65e461c71446f56b914be3ead6509378725",
+    "qqq_eod/runner.py": "6212286ab8919113a4f88e1395076b38169a2ac59892dec6958cc20bae081317",
+    "qqq_eod/schedule.py": "0f6ac82a3520f2c9f18366593d63f49ecb2c9ff26fac04f642a7ea050b778bf7",
+    "qqq_eod/source.py": "247b438c3f994334afdded45ad3e47b504b3ed85857ac92fbec8aad443e2db68",
+    "qqq_eod/state.py": "2a760faa66de8f4c41e3de1a76906948e6ff53c3fa7bcadb15be4a596710a75a",
+    "scripts/calibrate_rule.py": "4531c5e53ca628c92f8a2d5cb752ee3d572107b3865b135e6b98f455e406e504",
+    "scripts/cloud_smoke.py": "17f9f3e9452277d02e4cadb8ba6f6fded8b4f79be9282e62e1a73a6a02715191",
+    "scripts/collect_live.py": "ac789e9ea31d433b114e72467847205b39d64ca3cef95a1cbe6976d92b3b0c37",
+    "scripts/offline_check.py": "7dbbf86ac8a6cbd9d570c0fa58391fb2115d5c12c8ff27a07cecc10335a6dd2a",
+    "scripts/run_replay.py": "056c37525a88113c0b04a3bca739ee2aca27133067d4a1d600a8dca86ed017b5"
+  }
+}

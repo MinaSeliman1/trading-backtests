@@ -1,0 +1,41 @@
+{
+  "calculated_utc": "2026-11-02T01:10:57.226423+00:00",
+  "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
+  "recipe_commit": "d21b3e6976ed4d7318d237e9f9998f22cfe25417",
+  "input_sha256": {
+    "studies/intraday-momentum-noise-area/data/prepared/QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+    "studies/intraday-momentum-noise-area/data/prepared/QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+    "bots/qqq-eod-replay/ENGINE_LOCK.json": "306f9e2f68e4bef843787dcae407d0ef40438990cd11df697835b4b668401d56"
+  },
+  "script_sha256": "4531c5e53ca628c92f8a2d5cb752ee3d572107b3865b135e6b98f455e406e504",
+  "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f",
+  "published_output_parity": {
+    "noise": {
+      "reference": "studies/intraday-momentum-noise-area/results/2026-10-19/QQQ/A_next_open_L4_s0.01_principal/daily.csv",
+      "sha256": "664690d757531db240a127a2277a96176f769c981934d6b365c27172e647d560",
+      "rows": 2080,
+      "max_absolute_errors": {
+        "net_pnl": 1.8189894035458565e-12,
+        "equity": 5.820766091346741e-11,
+        "quantity": 0.0,
+        "commission": 7.105427357601002e-15,
+        "borrow_fee": 7.105427357601002e-15
+      }
+    },
+    "orb": {
+      "reference": "studies/opening-range-5m/results/2026-10-20/QQQ_ALL_both_complete_days_stop_first_s0.01/daily.csv",
+      "sha256": "e75c1ae1d4e5f063d4e48b7ad1f9f60d5a2f357b47a5c9267c902b7703965c56",
+      "rows": 2713,
+      "max_absolute_errors": {
+        "net_pnl": 9.094947017729282e-13,
+        "equity": 2.9103830456733704e-11,
+        "quantity": 0.0,
+        "commission": 8.881784197001252e-16,
+        "borrow_fee": 8.881784197001252e-16
+      }
+    }
+  },
+  "provider_requests": 0,
+  "broker_orders": 0,
+  "legacy_live_read": false
+}

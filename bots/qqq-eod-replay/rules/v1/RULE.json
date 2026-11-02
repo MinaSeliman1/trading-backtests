@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "name": "qqq-frozen-stop-v1",
+  "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
+  "calibration_recipe_commit": "d21b3e6976ed4d7318d237e9f9998f22cfe25417",
+  "calibration_recipe_sha256": "76d84d0259949c347b3f89f0aa139730fee728c2dfa078b79278773ec4728cab",
+  "costs": {
+    "commission_per_share_per_side": 0.0035,
+    "minimum_per_order": 0.35,
+    "slippage_per_share_per_side": 0.01,
+    "borrow_annual": 0.01,
+    "borrow_days_base": 360,
+    "borrow_min_days": 1
+  },
+  "model_parameters": {
+    "period": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "kind": "unchanged engines continuous from 100000 each; derived baseline, no new alpha",
+    "noise": {
+      "execution": "next_open",
+      "slippage": 0.01,
+      "leverage_cap": 4.0,
+      "frequency": 30,
+      "stop": "combined",
+      "borrow_rate": 0.01,
+      "lookback": 14
+    },
+    "orb": {
+      "mode": "both",
+      "slippage": 0.01,
+      "priority": "stop_first",
+      "quality": "complete_days",
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "target_r": 10.0,
+      "commission": 0.0035,
+      "minimum_commission": 0.35,
+      "borrow_rate": 0.01
+    }
+  },
+  "bootstrap": {
+    "method": "moving noncircular blocks, uniform valid start",
+    "block_sessions": 5,
+    "replications": 50000,
+    "seed": 20261101,
+    "rng": "numpy PCG64",
+    "horizons": [
+      20,
+      60
+    ],
+    "initial_capital": 100000.0,
+    "quantiles": [
+      0.025,
+      0.05,
+      0.5,
+      0.95,
+      0.975
+    ],
+    "quantile_method": "linear",
+    "compounding": "product(1+daily_net_return)",
+    "eligible": "noise eligibility=eligible; orb conditionally_excluded=false; keep legitimate no-trade days",
+    "gaps": "all five dates must be consecutive actual XNYS sessions; no block across missing or excluded day",
+    "stopped_paths": false
+  },
+  "stops": {
+    "pnl": "strictly below unrounded p5 at first20 and first60 sessions, once each; irreversible",
+    "drawdown_multiplier": 1.5,
+    "drawdown_metric": "ordered one-minute close and fill marks, percent of running peak; same metric historical and EOD telemetry",
+    "timing": "EOD detection suspends next session entries; no change to that day frozen-model exits",
+    "roundoff_usd": 1e-06,
+    "roundoff_dd_fraction": 1e-10,
+    "unknown": "unresolved blocks subsequent sessions; never zero",
+    "live": "legacy operational bots not reconfigured in task7; no threshold on old account"
+  },
+  "parity": {
+    "pnl_or_cost_usd": 0.01,
+    "price_or_feature_absolute": 1e-06,
+    "quantity": 0,
+    "direction": 0,
+    "economic_time_seconds": 0,
+    "action": "investigate and withhold validation; no automatic strategy rewrite",
+    "comparison": "prefer conditional capital-matched diagnostic; disclose missing input/code provenance",
+    "legacy": "no task7 threshold applied before registration first session"
+  },
+  "initial_capital": 100000.0,
+  "bots": {
+    "noise": {
+      "bands": {
+        "20": {
+          "p025": -5506.147998423114,
+          "p05": -4439.173194654147,
+          "p50": 960.5170598720433,
+          "p95": 7947.5525965879815,
+          "p975": 9872.18693956203
+        },
+        "60": {
+          "p025": -8092.534975874932,
+          "p05": -6415.066108749393,
+          "p50": 3297.3598732928003,
+          "p95": 15687.092470657453,
+          "p975": 18796.77862447508
+        }
+      },
+      "eligible_sessions": 2646,
+      "valid_blocks": 2634,
+      "replications": 50000,
+      "seed": 20261101,
+      "block_sessions": 5,
+      "either_checkpoint_p5_rate": 0.08464,
+      "baseline_rows": 2713,
+      "excluded_or_unavailable": 67,
+      "first_session": "2016-01-04",
+      "first_eligible_session": "2016-01-26",
+      "last_session": "2026-10-16",
+      "historical_max_drawdown_fraction": 0.28485401669839977,
+      "stop_drawdown_fraction": 0.4272810250475997,
+      "baseline_csv_sha256": "2bd882ececf6fbe805bd63ddfd275fd048787b42916807bf6f04fb2d5dc94bf6",
+      "historical_net_pnl": 398371.85662649316,
+      "historical_trades": 2259
+    },
+    "orb": {
+      "bands": {
+        "20": {
+          "p025": -3888.071073806493,
+          "p05": -3248.334930315581,
+          "p50": 91.93349977223261,
+          "p95": 4622.379267115424,
+          "p975": 5820.76385652388
+        },
+        "60": {
+          "p025": -6483.42891491396,
+          "p05": -5376.713381971841,
+          "p50": 654.2121835616781,
+          "p95": 8493.65634838275,
+          "p975": 10380.677721956681
+        }
+      },
+      "eligible_sessions": 2707,
+      "valid_blocks": 2687,
+      "replications": 50000,
+      "seed": 20261101,
+      "block_sessions": 5,
+      "either_checkpoint_p5_rate": 0.08692,
+      "baseline_rows": 2713,
+      "excluded_or_unavailable": 6,
+      "first_session": "2016-01-04",
+      "first_eligible_session": "2016-01-04",
+      "last_session": "2026-10-16",
+      "historical_max_drawdown_fraction": 0.1422868350111687,
+      "stop_drawdown_fraction": 0.21343025251675307,
+      "baseline_csv_sha256": "b20a36d5ea8b20d10ba1c4306645c5415084eb40c16b799cf7e4cb5bd0fd7861",
+      "historical_net_pnl": 50933.257418693174,
+      "historical_trades": 2688
+    }
+  }
+}

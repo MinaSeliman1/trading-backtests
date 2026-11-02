@@ -9,7 +9,7 @@ Les assertions de l'avis externe sont à vérifier ; leur archivage n'est pas un
 - 4 : nouvelles études journalières et nuit, protocoles et témoins figés.
 - 5 : classement comparable des candidats, sans promotion rétrospective.
 - 6 optionnelle : faisabilité StocksinPlay sans lancement de backtest avant rapport ; biais de survie.
-- 7 : préenregistrer les bandesP&L20/60 par bootstrapblocs, arrêt sous5epercentile, drawdown>1,5x historique et seuil de parité pour enquête. Priorité confirmée après livraison/validation de0 et avant activation du nouveau suivi ; modèle/SHA et frais actuels, première séance strictement après commit de la règle, anciennes dates séparées. Aucun changement des pauses ou positions existantes.
+- 7 (livrée, règles numériques publiées, activation désactivée) : préenregistrer les bandesP&L20/60 par bootstrapblocs, arrêt sous5epercentile, drawdown>1,5x historique et seuil de parité pour enquête. Priorité confirmée après livraison/validation de0 et avant activation du nouveau suivi ; modèle/SHA et frais actuels, première séance strictement après commit de la règle, anciennes dates séparées. Aucun changement des pauses ou positions existantes.
 - 8 : ledgers statistique (toutes séances, SHA poussé avant date) et opérationnel (live qualifié), PROTOCOL.md expliquant OOSstratégie vs exploitation. Cible GitHubActions gratuit, rattrapages, GitHubSecrets et GETdonnées uniquement ; jamais de clés dans chat/dépôt.
 - 9 : pushgratuitTelegram/ntfy, viequotidienne et alertes crash/retard/nonrésolu/STOP, après choix et validation ; aucun message envoyé maintenant.
 - 10 : vue agrégée exposition/P&L/DD/corrélation et proposition limiteglobale pour éventuelréel, sans activationréelle.

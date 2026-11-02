@@ -12,3 +12,8 @@ def test_current_entrypoint_does_not_read_or_print_provider_credentials(monkeypa
  p=subprocess.run([sys.executable,str(bot/'scripts/run_replay.py'),'--mode','run'],capture_output=True,text=True)
  assert p.returncode==0 and 'DUMMY' not in p.stdout+p.stderr
  obj=json.loads(p.stdout);assert obj['credentials_loaded'] is False and obj['active'] is False
+
+def test_registered_rule_is_distinct_from_activated_runtime(tmp_path,monkeypatch):
+ (tmp_path/'ENGINE_LOCK.json').write_text(json.dumps({'strategy_commit':'fixed'}));(tmp_path/'activation.json').write_text(json.dumps({'enabled':False,'rule_commit':'a'*40,'rule_path':'rules/v1/RULE.json','first_statistical_session':'2026-11-02'}))
+ monkeypatch.delenv('QQQ_EOD_ENABLED',raising=False)
+ out=status(tmp_path);assert not out['active'] and out['state']=='registered_awaiting_task8_activation'

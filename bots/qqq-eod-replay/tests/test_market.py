@@ -50,3 +50,16 @@ def test_input_failure_preserves_prior_known_economics():
  out=market.unavailable('orb',100000,ConnectionError('DO NOT PUBLISH'),prior)
  for field in ('known_balance','open_position','known_commission','known_friction','fills'):assert out[field]==prior[field]
  assert out['net_pnl'] is None and 'DO NOT PUBLISH' not in str(out)
+
+@pytest.mark.parametrize('missing_risk',[False,True])
+def test_registered_policy_stops_or_blocks_one_bot_without_blocking_the_other(tmp_path,missing_risk):
+ from qqq_eod.risk_policy import Policy
+ import json
+ rule=json.loads((Path(__file__).resolve().parents[1]/'rules/v1/RULE.json').read_text());policy=Policy(rule,'2024-04-30',{})
+ with Journal(tmp_path/'x.sqlite',{'fixture':True},'2024-04-30') as db:
+  first=dict(status='complete',capital_before=100000.,capital_after=100000.,net_pnl=0.,open_position=0,known_commission=0.,known_borrow=0.,known_friction=0.,decisions=[],trades=[],fills=[])
+  if not missing_risk:first['risk']=dict(minimum=50000.,maximum=100000.,ending=100000.,within_drawdown_fraction=.5,metric='ordered_minute_close_and_fill_marks')
+  db.record('noise','2024-04-30',first,{'sha':'fixture'});data=Data();market.run_due(db,data,tmp_path/'inputs','2024-05-01',policy=policy)
+  if missing_risk:assert db.session('noise','2024-05-01') is None and policy.blocked('noise',db)
+  else:assert db.session('noise','2024-05-01')['result']['reason']=='registered_risk_stop' and policy.stopped('noise',db)
+  assert db.session('orb','2024-05-01')['status']=='complete' and all(end-start<pd.Timedelta(days=1) for start,end,_ in data.calls)

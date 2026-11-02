@@ -62,6 +62,17 @@ def main():
       try:
        matched=capital_matched(row,record['capital_before']);entry['capital_matched']=dict(net_pnl=matched['net_pnl'],assumption=matched['assumption'],comparison=compare(matched,record))
       except (ValueError,KeyError) as e:entry['capital_match_unavailable']=type(e).__name__
+     if day>=stats['first_day']:
+      from qqq_eod.risk_policy import assess_parity
+      import hashlib
+      activation=json.loads((bot/'activation.json').read_text());relative=activation.get('rule_path')
+      if relative:
+       rule_file=bot.parents[1]/relative;raw=rule_file.read_bytes();expected=stats.get('identity',{}).get('rule',{}).get('rule_sha256')
+       if hashlib.sha256(raw).hexdigest()!=expected:entry['rule_assessment_unavailable']='rule_version_mismatch'
+       else:
+        comparison=entry.get('capital_matched',{}).get('comparison',entry['original_comparison'])
+        if row.get('source_conflict'):comparison['context'].append('source_conflict')
+        entry['registered_parity_assessment']=assess_parity(comparison,json.loads(raw))
      comparisons.append(entry)
   latest=journal.latest();qualified=journal.latest(qualified_only=True)
  report=dict(generated_utc=pd.Timestamp.now(tz='UTC').isoformat(),mode='read_only_live_journals',statistical_first=stats.get('first_day') if stats else None,legacy_observations=[r for r in latest if not stats or r['day']<stats['first_day']],qualified_sessions={b:sum(r['bot']==b for r in qualified) for b in ('noise','orb')},observations=latest,comparisons=comparisons,errors=errors)

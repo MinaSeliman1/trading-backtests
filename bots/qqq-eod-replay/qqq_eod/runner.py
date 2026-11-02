@@ -41,10 +41,10 @@ def public_summary(data,identity):
  rows=[]
  for row in data['sessions']:
   result=row.get('result') or {};inputs=row.get('inputs') or {}
-  fields=('status','reason','capital_before','capital_after','net_pnl','known_balance','open_position','known_commission','known_borrow','known_friction','decisions','trades','fills','price_prefix_sha256','operationally_observed')
+  fields=('status','reason','capital_before','capital_after','net_pnl','known_balance','open_position','known_commission','known_borrow','known_friction','decisions','trades','fills','risk','price_prefix_sha256','operationally_observed')
   result=dict(result);result.setdefault('status',row['status'])
   rows.append(dict(bot=row['bot'],day=row['day'],**{k:result[k] for k in fields if k in result},input_sha=inputs.get('sha'),captured_utc=inputs.get('captured_utc'),capture_kind=inputs.get('capture_kind'),source_conflict=row.get('source_conflict',False)))
- return dict(identity=identity,first_day=data['first_day'],accounts=data['accounts'],sessions=rows,observation_kind='pre_registered_archived_bar_replay',operationally_observed=False,generated_utc=datetime.now(timezone.utc).isoformat())
+ return dict(identity=identity,first_day=data['first_day'],accounts=data['accounts'],sessions=rows,risk_status=data.get('risk_status',{}),observation_kind='pre_registered_archived_bar_replay',operationally_observed=False,generated_utc=datetime.now(timezone.utc).isoformat())
 
 def run_registered(bot):
  bot=Path(bot).resolve();repo=bot.parents[1]
@@ -65,6 +65,7 @@ def run_registered(bot):
  root=temp/'qqq-eod-state';out=temp/'qqq-eod-output';out.mkdir(exist_ok=True)
  reader=GitHubReadOnly(os.environ['GH_TOKEN']);client=None;ready=False;fatal=None
  try:
+  policy.verify_publication(reader)
   previous,_=reader.prior_state(run_id,generation)
   if previous and not sequence_is_newer(os.environ['GITHUB_RUN_NUMBER'],previous['run']['run_number']):raise ValueError('out-of-order state writer refused; dispatch a new run')
   state_key=os.environ['QQQ_EOD_STATE_KEY']
@@ -85,6 +86,7 @@ def run_registered(bot):
    dates=due_sessions(first,pd.Timestamp.now(tz='UTC'))
    if dates:run_due(journal,client,root/'inputs',dates[-1],policy=policy)
    data=journal.export()
+   data['risk_status']={b:policy.decision(b,journal) for b in ('noise','orb')}
   (out/'summary.json').write_text(json.dumps(public_summary(data,identity),indent=2,allow_nan=False),encoding='utf-8')
  except Exception as error:
   fatal=error

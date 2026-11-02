@@ -5,4 +5,5 @@ import json,os
 def status(bot_folder):
  root=Path(bot_folder);lock=json.loads((root/'ENGINE_LOCK.json').read_text(encoding='utf-8'));a=json.loads((root/'activation.json').read_text(encoding='utf-8'))
  allowed=a.get('enabled') is True and os.environ.get('QQQ_EOD_ENABLED','').lower()=='true' and int(os.environ.get('GITHUB_RUN_ATTEMPT','1'))==1
- return dict(state='configured' if allowed else 'awaiting_approved_stop_rule',active=allowed,strategy_commit=lock['strategy_commit'],statistical_start=a.get('first_statistical_session'),credentials_loaded=False,operationally_observed=False)
+ waiting='registered_awaiting_task8_activation' if a.get('rule_commit') and a.get('rule_path') else 'awaiting_approved_stop_rule'
+ return dict(state='configured' if allowed else waiting,active=allowed,strategy_commit=lock['strategy_commit'],statistical_start=a.get('first_statistical_session'),credentials_loaded=False,operationally_observed=False)

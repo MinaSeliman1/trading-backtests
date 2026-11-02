@@ -4,6 +4,7 @@ from contextlib import closing
 from datetime import datetime,timezone
 import json,math,tempfile
 import pandas as pd
+from .risk_marks import noise_path,path_summary
 
 def base(capital):
  if not math.isfinite(capital) or capital<=0:raise ValueError('positive finite virtual capital required')
@@ -39,6 +40,8 @@ def noise(history,bars,session,capital,dividend=0.,workdir=None):
   complete=(len(decisions)==len(decision_times(session)) and all(d.get('status')=='processed' for d in decisions) and store.position==0 and not store.get('paused') and store.get('paused_day')!=str(session.open.date()))
   out.update(bot='noise',status='complete' if complete else 'unresolved',capital_after=store.balance if complete else None,net_pnl=store.balance-capital if complete else None,known_balance=store.balance,open_position=store.position,
    known_commission=sum(f['commission'] for f in fills),known_borrow=sum(f['borrow'] for f in fills),known_friction=sum(f['qty']*.01 for f in fills),decisions=decisions,fills=fills,trades=trades)
+  out['risk']=noise_path(bars,fills,capital) if complete else None
+  if complete and abs(out['risk']['ending']-store.balance)>1e-6:raise ValueError('risk path accounting mismatch')
  return out
 
 def orb(bars,session,capital):
@@ -57,6 +60,15 @@ def orb(bars,session,capital):
  borrow=sum(t['borrow_fee'] for t in trades)
  friction=sum(t['quantity']*.02 for t in trades) if complete else abs(position)*.01
  from .source import rows_sha
+ risk=None
+ if complete:
+  if trades:
+   from orb_shadow.core import market,PARAMETERS
+   from orb.engine import trade_path
+   offsets=trade_path(market(day['bars'],session),0,int(intent['sign']),int(intent['quantity']),PARAMETERS)['equity_offsets']
+   risk=path_summary([capital+v for v in offsets])
+  else:risk=path_summary([capital])
+  if abs(risk['ending']-a['balance'])>1e-6 or abs(risk['within_drawdown_fraction']-a['max_drawdown_pct']/100)>1e-10:raise ValueError('ORB risk path mismatch')
  out.update(bot='orb',price_prefix_sha256=rows_sha((day or {}).get('bars',{})),status='complete' if complete else 'unresolved',capital_after=a['balance'] if complete else None,net_pnl=a['balance']-capital if complete else None,known_balance=a['balance'],open_position=position,
-  known_commission=commission,known_borrow=borrow,known_friction=friction,decisions=decisions,trades=trades,fills=[],engine_phase=(day or {}).get('phase'),engine_notes=(day or {}).get('notes',[]))
+  known_commission=commission,known_borrow=borrow,known_friction=friction,decisions=decisions,trades=trades,fills=[],risk=risk,engine_phase=(day or {}).get('phase'),engine_notes=(day or {}).get('notes',[]))
  return out

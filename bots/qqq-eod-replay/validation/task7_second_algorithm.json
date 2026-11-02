@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "method": "separate start-index implementation, product reduction, saved CSVs; no calibration helper imported",
+  "checks": {
+    "noise": {
+      "valid_blocks": 2634,
+      "max_quantile_error_usd": 4.547473508864641e-12,
+      "drawdown_threshold_error": 0.0
+    },
+    "orb": {
+      "valid_blocks": 2687,
+      "max_quantile_error_usd": 5.4569682106375694e-12,
+      "drawdown_threshold_error": 0.0
+    }
+  },
+  "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f"
+}

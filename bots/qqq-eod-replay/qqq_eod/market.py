@@ -34,6 +34,8 @@ def run_due(journal,client,input_folder,through,max_days=20,policy=None):
    day=journal.next_due(bot,through)
    if day is None:break
    capital=journal.balance(bot);previous=journal.session(bot,day);prior=(previous or {}).get('result')
+   if policy is not None and hasattr(policy,'blocked') and policy.blocked(bot,journal):
+    processed.append(dict(bot=bot,day=day,status='risk_data_blocked',changed=False));break
    if policy is not None and policy.stopped(bot,journal):
     if journal.session(bot,day) is not None:
      processed.append(dict(bot=bot,day=day,status='unresolved',changed=False));break

@@ -11,3 +11,5 @@ Le ledger **opérationnel** décrit le processus intraday existant. Ses séances
 Comparer les deux nécessite même capital initial de séance, code et prix ; toute différence est documentée et classée, non effacée. Les archives/live sont lus en lecture seule. GitHubActions est la cible d’exécution indépendante du laptop ; les barres et états dans les artefacts publics sont chiffrés et les clés restent dans GitHubSecrets.
 
 **Activation actuellement désactivée**, en attente de la livraison/validation de tâche0 puis de la règle7. Une nouvelle version des coûts imposera un nouveau préenregistrement et sa propre règle d’arrêt.
+
+La tâche7 a publié [les règles d’arrêt](REPORT_TASK_7.md), figées dans rules/v1/RULE.json. La première date suit strictement le commit numérique et figure dans rules/v1/REGISTRATION.json. Les états prospectifs incluent désormais les marques de risque compatibles avec l’historique. Activation/secrets/amorçage restent réservés à la tâche8 ; aucun seuil de cette nouvelle cohorte ne s’applique aux comptes opérationnels anciens.
