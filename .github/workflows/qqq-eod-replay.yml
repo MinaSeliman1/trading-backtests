@@ -14,6 +14,9 @@ on:
   schedule:
     - cron: '23 17,18 * * 1-5'
       timezone: America/New_York
+env:
+  PYTHONTZPATH: ''
+  PYTHONDONTWRITEBYTECODE: '1'
 permissions:
   contents: read
   actions: read
@@ -33,7 +36,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
-          python-version: '3.14'
+          python-version: '3.14.9'
           cache: pip
           cache-dependency-path: bots/qqq-eod-replay/requirements.txt
       - name: Install pinned dependencies
@@ -71,14 +74,19 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
-          python-version: '3.14'
+          python-version: '3.14.9'
       - name: Install pinned dependencies
         run: python -m pip install --disable-pip-version-check -r bots/qqq-eod-replay/requirements.txt
-      - name: Active generation checkpoint
+      - name: Read committed activation gate
+        id: gate
         env:
           QQQ_EOD_ENABLED: ${{ vars.QQQ_EOD_ENABLED }}
-        run: python bots/qqq-eod-replay/scripts/run_replay.py --mode status
+        run: python bots/qqq-eod-replay/scripts/run_replay.py --mode status --github-output
+      - name: Active generation checkpoint
+        if: steps.gate.outputs.active == 'true'
+        run: echo 'Reserved active generation checkpoint'
       - name: Evaluate registered sessions
+        if: steps.gate.outputs.active == 'true'
         id: engine
         env:
           QQQ_EOD_ENABLED: ${{ vars.QQQ_EOD_ENABLED }}
@@ -96,4 +104,13 @@ jobs:
           name: ${{ steps.engine.outputs.state_artifact }}
           path: ${{ runner.temp }}/qqq-eod-output/state.enc
           retention-days: 30
+          if-no-files-found: error
           compression-level: 0
+      - name: Publish derived simulation summary
+        if: always() && steps.engine.outputs.state_ready == 'true'
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: qqq-eod-summary-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/qqq-eod-output/summary.json
+          retention-days: 30
+          if-no-files-found: warn

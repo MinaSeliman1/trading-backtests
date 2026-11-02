@@ -29,6 +29,7 @@ def noise(history,bars,session,capital,dividend=0.,workdir=None):
   for row in store.db.execute('SELECT data FROM decisions ORDER BY key'):
    value=json.loads(row[0]);value['engine_asof']=value.pop('observed_at',None);decisions.append(value)
   fills=store.fills();orders={r['cid']:dict(r) for r in store.db.execute('SELECT * FROM orders')};trades=[];opened=None
+  for f in fills:f['action']=orders[f['cid']]['action']
   for f in fills:
    order=orders[f['cid']]
    if order['action']=='open':opened=f
@@ -55,6 +56,7 @@ def orb(bars,session,capital):
  commission=sum(t['commission'] for t in trades) if complete else float((day or {}).get('entry_fee',0.))
  borrow=sum(t['borrow_fee'] for t in trades)
  friction=sum(t['quantity']*.02 for t in trades) if complete else abs(position)*.01
- out.update(bot='orb',status='complete' if complete else 'unresolved',capital_after=a['balance'] if complete else None,net_pnl=a['balance']-capital if complete else None,known_balance=a['balance'],open_position=position,
+ from .source import rows_sha
+ out.update(bot='orb',price_prefix_sha256=rows_sha((day or {}).get('bars',{})),status='complete' if complete else 'unresolved',capital_after=a['balance'] if complete else None,net_pnl=a['balance']-capital if complete else None,known_balance=a['balance'],open_position=position,
   known_commission=commission,known_borrow=borrow,known_friction=friction,decisions=decisions,trades=trades,fills=[],engine_phase=(day or {}).get('phase'),engine_notes=(day or {}).get('notes',[]))
  return out

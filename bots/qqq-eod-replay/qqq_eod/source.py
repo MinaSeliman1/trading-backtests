@@ -8,6 +8,9 @@ FIELDS=('open','high','low','close','volume')
 DATA='https://data.alpaca.markets'
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def rows_sha(rows):
+ normalized={str(k):[float(v) if v is not None else None for v in values] for k,values in rows.items()}
+ return hashlib.sha256(json.dumps(normalized,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
 
 def canonical_frame(frame):
  if not isinstance(frame.index,pd.DatetimeIndex) or frame.index.tz is None:raise ValueError('aware minute index required')

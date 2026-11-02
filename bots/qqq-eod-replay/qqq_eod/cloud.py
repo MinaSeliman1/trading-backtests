@@ -22,6 +22,9 @@ def select_head(runs,artifacts,identity):
  if a.get('expired') or a.get('head_sha')!=run['head_sha'] or a.get('branch')!=identity['branch']:raise ValueError('latest checkpoint provenance mismatch')
  return dict(a,run=run)
 
+def writable_attempt(attempt):return int(attempt)==1
+def sequence_is_newer(current,previous):return int(current)>int(previous)
+
 def may_initialize(first_day,now,previously_active):
  t=pd.Timestamp(now)
  if t.tz is None:raise ValueError('timezone required')
@@ -59,13 +62,16 @@ class GitHubReadOnly:
     if str(r['id'])==str(current_run_id) or r['head_branch']!='main' or r['event'] not in ('schedule','workflow_dispatch','push'):continue
     config=self.activation(r['head_sha'])
     if not config.get('enabled') or config.get('generation')!=generation:continue
-    jobs=self.get_json(root+'/runs/'+str(r['id'])+'/jobs',{'filter':'latest','per_page':100})['jobs']
-    active=any(st['name']=='Active generation checkpoint' and st['conclusion']=='success' for job in jobs for st in job.get('steps',[]))
-    if not active:continue
-    run=dict(id=r['id'],run_number=r['run_number'],run_attempt=r['run_attempt'],head_sha=r['head_sha'],repository=self.repository,workflow_id=wid,branch='main',generation=generation,active=True,status=r['status'],conclusion=r['conclusion']);runs.append(run)
+    listing=self.get_json(root+'/runs/'+str(r['id'])+'/jobs',{'filter':'all','per_page':100});jobs=listing['jobs']
+    if listing['total_count']>len(jobs):raise ValueError('incomplete checkpoint job history; fallback refused')
+    active_jobs=[job for job in jobs if any(st['name']=='Active generation checkpoint' and st['conclusion']=='success' for st in job.get('steps',[]))]
+    if not active_jobs:continue
+    job=max(active_jobs,key=lambda j:j.get('run_attempt',1))
+    attempt=job.get('run_attempt',1)
+    run=dict(id=r['id'],run_number=r['run_number'],run_attempt=attempt,head_sha=r['head_sha'],repository=self.repository,workflow_id=wid,branch='main',generation=generation,active=True,status=job['status'],conclusion=job['conclusion']);runs.append(run)
     rows=self.get_json(root+'/runs/'+str(r['id'])+'/artifacts',{'per_page':100})['artifacts']
     for a in rows:
-     arts.append(dict(id=a['id'],name=a['name'],run_id=r['id'],run_attempt=r['run_attempt'],head_sha=a.get('workflow_run',{}).get('head_sha'),branch=a.get('workflow_run',{}).get('head_branch'),expired=a['expired'],digest=a.get('digest')))
+     arts.append(dict(id=a['id'],name=a['name'],run_id=r['id'],run_attempt=attempt,head_sha=a.get('workflow_run',{}).get('head_sha'),branch=a.get('workflow_run',{}).get('head_branch'),expired=a['expired'],digest=a.get('digest')))
     identity=dict(repository=self.repository,workflow_id=wid,generation=generation,branch='main')
     return select_head(runs,arts,identity),identity
    if len(batch)<100:break

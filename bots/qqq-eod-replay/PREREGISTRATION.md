@@ -12,7 +12,7 @@ Coûts inchangés : commission0,0035USD/action/côté minimum0,35USD/ordre ; fri
 
 ## Sources et qualité
 
-Alpaca QQQ SIP 1Min raw uniquement, dividendeex-date. Transport GET de données seulement : aucun compte/broker/ordre/POST. CoffreWindows via mécanisme existant, clés en mémoire seulement, jamais dans chat/log/Git. Métadonnées d'erreur type/code seulement, aucun texte API sensible.
+Alpaca QQQ SIP 1Min raw uniquement, dividendeex-date. Transport GET de données seulement : aucun compte/broker/ordre/POST. Choix confirmé : GitHubSecrets pour le replay cloud, sans accès au coffreWindows par ce nouveau suivi ; clés en mémoire seulement, jamais dans chat/log/Git. Métadonnées d'erreur type/code seulement, aucun texte API sensible.
 
 UTC stocké, America/New_York et calendrierXNYS pour les fenêtres, demi-séances et DST. WarmupNoise100jours calendaires maximum, strictement avant la séance ; pas de prix du lendemain. Après clôture+17minutes, conserver première capture datée, SHA, warmup et dividende. Captures numérotées append-only ; un retry/révision ne remplace jamais un fichier ancien.
 
@@ -43,3 +43,7 @@ Ajout utilisateur : **aucune activation du nouveau suivi avant résolution de la
 ## Révision utilisateur avant tout P&L
 
 GitHubActions confirmé pour tâche0 ; règle7 sur modèle/frais actuels ; première séance après son commit. La publication initiale47cf1bf n’a été suivie d’aucun calcul de P&L : seulement neuf tests de calendrier, validation de données, transport et immutabilité. Cette précision est donc intégrée avant résultats.
+
+## Précisions techniques de livraison (sans changement des règles de trading)
+
+Le rapprochement au capital live est un diagnostic économique conditionnel aux signaux et aux références de fills du replay, utilisant sizing/arrondis/frais figés. Il ne certifie pas une reconstruction des indicateurs sur les anciennes entrées Noise non archivées. ORB compare en plus l’empreinte du préfixe de barres archivé. Les observed_at des deux processus live appartiennent à l’horloge logique différée16minutes ; le replay conserve séparément engine_asof et le vrai instant de calcul. Une révision encore nonrésolue qui effacerait des frais/fills/position connus reste dans les tentatives et signale source_conflict ; le dernier état connu et sa provenance restent conservés.

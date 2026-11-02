@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "kind": "retrospective_technical_only",
+  "statistical_sessions": 0,
+  "day": "2026-10-16",
+  "source": "existing Alpaca SIP raw prepared archive",
+  "market_sha256": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+  "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
+  "noise": {
+    "status": "complete",
+    "decisions": 12,
+    "fills": 2,
+    "max_pnl_error_usd": 0.0
+  },
+  "orb": {
+    "status": "complete",
+    "trades": 1,
+    "direct_path_differences": {
+      "net_pnl": 0.0,
+      "entry_price": 0.0,
+      "exit_price": 0.0,
+      "commission": 0.0,
+      "borrow_fee": 0.0
+    }
+  },
+  "operationally_observed": false,
+  "provider_requests": 0,
+  "broker_orders": 0
+}

@@ -34,3 +34,19 @@ def test_history_failure_does_not_stop_orb_and_no_secret_message(tmp_path):
   market.run_due(db,data,tmp_path/'inputs','2024-04-30')
   assert db.session('noise','2024-04-30')['status']=='unresolved' and db.session('orb','2024-04-30')['status']=='complete'
   assert 'sensitive-provider-message' not in str(db.export())
+
+
+def test_risk_stop_cannot_turn_an_existing_unknown_position_into_zero(tmp_path):
+ class Stop:
+  def stopped(self,bot,journal):return True
+ with Journal(tmp_path/'x.sqlite',{'fixture':True},'2024-04-30') as db:
+  record=dict(status='unresolved',capital_before=100000,capital_after=None,net_pnl=None,known_balance=99999.65,open_position=10,known_commission=.35)
+  db.record('noise','2024-04-30',record,{'sha':'a'});data=Data()
+  market.run_due(db,data,tmp_path/'inputs','2024-04-30',policy=Stop())
+  assert db.session('noise','2024-04-30')['status']=='unresolved' and db.balance('noise')==100000
+
+def test_input_failure_preserves_prior_known_economics():
+ prior=dict(status='unresolved',capital_before=100000,capital_after=None,net_pnl=None,known_balance=99999.65,open_position=10,known_commission=.35,known_borrow=0.,known_friction=.1,fills=[{'qty':10}])
+ out=market.unavailable('orb',100000,ConnectionError('DO NOT PUBLISH'),prior)
+ for field in ('known_balance','open_position','known_commission','known_friction','fills'):assert out[field]==prior[field]
+ assert out['net_pnl'] is None and 'DO NOT PUBLISH' not in str(out)

@@ -36,3 +36,21 @@ def test_sqlite_backup_is_coherent(tmp_path):
   db.record('orb','2026-11-02',result(),{'sha':'a'});db.snapshot(tmp_path/'backup.sqlite')
  con=sqlite3.connect('file:'+str(tmp_path/'backup.sqlite')+'?mode=ro',uri=True)
  assert con.execute('select count(*) from sessions').fetchone()[0]==1;con.close()
+
+
+def test_expected_calendar_is_exported_even_when_one_account_is_blocked(tmp_path):
+ with j.Journal(tmp_path/'x.sqlite',V,'2026-11-02') as db:
+  db.record('noise','2026-11-02',result(net=-.35,status='unresolved'),{'sha':'a'})
+  db.declare_due('2026-11-03');rows=db.export()['sessions']
+  pending=[r for r in rows if r['bot']=='noise' and r['day']=='2026-11-03'][0]
+  assert pending['status']=='pending' and pending['result'] is None
+
+def test_incomplete_revised_input_cannot_erase_prior_known_state(tmp_path):
+ with j.Journal(tmp_path/'x.sqlite',V,'2026-11-02') as db:
+  old=result(net=-.35,status='unresolved');old.update(open_position=10,known_commission=.35)
+  db.record('orb','2026-11-02',old,{'sha':'first'})
+  retry=result(net=0,status='unresolved');retry.update(open_position=None,known_commission=0)
+  db.record('orb','2026-11-02',retry,{'sha':'revised_incomplete'})
+  primary=db.session('orb','2026-11-02')
+  assert primary['inputs']['sha']=='first' and primary['result']['known_commission']==.35 and primary['result']['open_position']==10
+  assert db.attempt_count()==2

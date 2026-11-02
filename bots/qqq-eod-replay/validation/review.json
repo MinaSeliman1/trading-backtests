@@ -1,0 +1,22 @@
+{
+  "scope": "new EOD replay infrastructure; no private runtime/key access",
+  "reviewer": "independent code-review agent",
+  "completed_utc": "2026-11-02T00:46:08.272829+00:00",
+  "remaining_important_findings": [],
+  "corrections": [
+    "categorical ORB direction",
+    "unknown retry fee/position and source provenance preservation",
+    "timely/catchup capture tags",
+    "monotonic cloud writer sequence",
+    "missing head/no stale fallback",
+    "complete job attempt evidence or fail closed",
+    "delayed logical live timestamps",
+    "economic fill timestamps and reasons",
+    "conditional capital matching and ORB price prefix hash",
+    "unresolved revised source conflict retained with original evidence"
+  ],
+  "excluded": [
+    "task7 numeric risk bands and activation",
+    "full historical Noise live-input parity unavailable"
+  ]
+}

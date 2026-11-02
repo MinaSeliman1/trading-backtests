@@ -58,6 +58,10 @@ class Journal:
     self.db.execute('UPDATE accounts SET balance=? WHERE bot=?',(after,bot))
    elif result.get('net_pnl') is not None or result.get('capital_after') is not None:raise ValueError('unresolved cannot be closed cash')
    payload=dump(value);self.db.execute('INSERT INTO attempts(bot,day,fingerprint,payload) VALUES(?,?,?,?)',(bot,day,signature,payload))
+   if old and result['status']=='unresolved' and old['inputs'].get('sha')!=inputs.get('sha'):
+    prior=old['result'];regresses=any(result.get(k,0)<prior.get(k,0)-1e-6 for k in ('known_commission','known_borrow','known_friction')) or (prior.get('open_position') not in (None,0) and result.get('open_position') is None) or len(result.get('fills',[]))<len(prior.get('fills',[]))
+    if regresses:
+     old['source_conflict']=True;payload=dump(old)
    self.db.execute('INSERT INTO sessions VALUES(?,?,?,?) ON CONFLICT(bot,day) DO UPDATE SET status=excluded.status,payload=excluded.payload',(bot,day,result['status'],payload))
   return True
  def snapshot(self,target):
@@ -67,8 +71,21 @@ class Journal:
   backup=sqlite3.connect(target)
   try:self.db.backup(backup)
   finally:backup.close()
+ def declare_due(self,through):
+  through=str(through)
+  if through<self.first_day:return
+  with self.db:
+   old=self.db.execute('SELECT value FROM meta WHERE key=?',('expected_through',)).fetchone()
+   if old and old[0]>=through:return
+   self.db.execute('INSERT INTO meta VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value',('expected_through',through))
  def export(self):
-  return dict(accounts={b:self.balance(b) for b in ('noise','orb')},sessions=[dict(bot=r['bot'],day=r['day'],**json.loads(r['payload'])) for r in self.db.execute('SELECT * FROM sessions ORDER BY day,bot')],attempts=self.attempt_count(),first_day=self.first_day)
+  rows={(r['bot'],r['day']):dict(bot=r['bot'],day=r['day'],**json.loads(r['payload'])) for r in self.db.execute('SELECT * FROM sessions ORDER BY day,bot')}
+  last=self.db.execute('SELECT value FROM meta WHERE key=?',('expected_through',)).fetchone()
+  if last:
+   for day in calendar(self.first_day,last[0]).sessions_in_range(self.first_day,last[0]):
+    for bot in ('noise','orb'):
+     name=str(day.date());rows.setdefault((bot,name),dict(bot=bot,day=name,status='pending',result=None,inputs=None))
+  return dict(accounts={b:self.balance(b) for b in ('noise','orb')},sessions=sorted(rows.values(),key=lambda r:(r['day'],r['bot'])),attempts=self.attempt_count(),first_day=self.first_day)
  def close(self):
   self.db.execute('PRAGMA wal_checkpoint(TRUNCATE)');self.db.close()
  def __enter__(self):return self
