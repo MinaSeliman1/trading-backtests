@@ -1,16 +1,39 @@
 """Read-only local companion. Writes only the separate operational ledger."""
 from pathlib import Path
-import sys,json,argparse,subprocess,zipfile,io,os,uuid,hashlib
+import sys,json,argparse,subprocess,zipfile,io,os,uuid,hashlib,re,time
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from qqq_eod.live import read_noise,read_orb,OperationalJournal,compare
 from qqq_eod.schedule import due_sessions
 import pandas as pd
 
 REPO='MinaSeliman1/trading-backtests'
+
+def coverage_errors(stats,now):
+ rows={(r['bot'],r['day']):r for r in stats['sessions']};errors=[]
+ for day in due_sessions(stats['first_day'],now):
+  for bot in ('noise','orb'):
+   row=rows.get((bot,day))
+   if row is None:errors.append(dict(component='statistical_session_missing',bot=bot,day=day))
+   elif row['status']!='complete':errors.append(dict(component='statistical_session_unresolved',bot=bot,day=day,status=row['status']))
+ return errors
+class SummaryReadError(RuntimeError):
+ def __init__(self,phase,return_code=None,http_status=None):
+  self.phase=phase;self.return_code=return_code;self.http_status=http_status;super().__init__('GitHub summary read failed; response omitted')
+
 def gh(*args,binary=False):
- executable=os.environ.get('QQQ_EOD_GH_EXE','gh');r=subprocess.run([executable,*args,'--repo',REPO] if args and args[0]=='run' else [executable,*args],capture_output=True,check=False,timeout=60)
- if r.returncode:raise RuntimeError('GitHub summary read failed')
- return r.stdout if binary else json.loads(r.stdout)
+ executable=os.environ.get('QQQ_EOD_GH_EXE','gh');command=[executable,*args,'--repo',REPO] if args and args[0]=='run' else [executable,*args]
+ path=args[1] if len(args)>1 else '';phase='run_list' if args[0]=='run' else 'artifact_download' if path.endswith('/zip') else 'job_metadata' if '/jobs' in path else 'artifact_metadata'
+ env=dict(os.environ,GH_HOST='github.com');env.pop('GH_DEBUG',None)
+ for attempt in range(2):
+  try:r=subprocess.run(command,capture_output=True,check=False,timeout=60,env=env)
+  except subprocess.TimeoutExpired:
+   if attempt==0:time.sleep(1);continue
+   raise SummaryReadError(phase) from None
+  if not r.returncode:return r.stdout if binary else json.loads(r.stdout)
+  match=re.search(rb'HTTP (\d{3})',r.stderr);status=int(match.group(1)) if match else None
+  transient=status in (429,500,502,503,504) or any(s in r.stderr.lower() for s in (b'timed out',b'timeout',b'connection reset',b'unexpected eof',b'dial tcp'))
+  if attempt==0 and transient:time.sleep(1);continue
+  raise SummaryReadError(phase,r.returncode,status)
 
 def cloud_summary(bot):
  activation=json.loads((bot/'activation.json').read_text(encoding='utf-8'))
@@ -46,9 +69,10 @@ def main():
  if args.github and args.summary:raise ValueError('choose one summary source')
  errors=[];activation=json.loads((bot/'activation.json').read_text())
  try:stats=json.loads(args.summary.read_text(encoding='utf-8')) if args.summary else cloud_summary(bot) if args.github else None
- except Exception as e:stats=None;errors.append(dict(component='cloud_summary',error_type=type(e).__name__))
+ except Exception as e:stats=None;errors.append(dict(component='cloud_summary',error_type=type(e).__name__,phase=getattr(e,'phase',None),return_code=getattr(e,'return_code',None),http_status=getattr(e,'http_status',None)))
  first=activation.get('first_statistical_session')
  if stats and stats['first_day']!=first:stats=None;errors.append(dict(component='cloud_summary',error_type='CohortMismatch'))
+ if stats is not None:errors.extend(coverage_errors(stats,pd.Timestamp.now(tz='UTC')))
  statrows={(r['bot'],r['day']):r for r in stats.get('sessions',[])} if stats else {};comparisons=[]
  with OperationalJournal(output/'operational.sqlite',first_day=first) as journal:
   for day in dates:

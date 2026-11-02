@@ -17,7 +17,7 @@ $retry=New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday,Tuesday,Wednesday,Thu
 $user=[System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 $login=New-ScheduledTaskTrigger -AtLogOn -User $user
 $login.Delay='PT2M'
-$settings=New-ScheduledTaskSettingsSet -Hidden -StartWhenAvailable -MultipleInstances IgnoreNew -ExecutionTimeLimit ([TimeSpan]::FromMinutes(15)) -RunOnlyIfNetworkAvailable
+$settings=New-ScheduledTaskSettingsSet -Hidden -StartWhenAvailable -MultipleInstances IgnoreNew -ExecutionTimeLimit ([TimeSpan]::FromMinutes(15)) -RunOnlyIfNetworkAvailable -RestartCount 2 -RestartInterval ([TimeSpan]::FromMinutes(5))
 $principal=New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive -RunLevel Limited
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger @($evening,$retry,$login) -Settings $settings -Principal $principal -Description 'Read-only QQQ operational ledger collector; no Alpaca key or trading engine' -Force | Out-Null
 if($StartNow){Start-ScheduledTask -TaskName $taskName}

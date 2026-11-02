@@ -1,6 +1,6 @@
 {
   "enabled": true,
-  "reason": "Task8 approved; explicit initialization before enabling recurring switch",
+  "reason": "Task8 active in simulation; initialization and subsequent restore verified",
   "generation": "qqq-f7-stop-v1",
   "rule_path": "bots/qqq-eod-replay/rules/v1/RULE.json",
   "replay_release_commit": "2286aca61f4bf3636cada8e1234709cb8beafb77",

@@ -2,7 +2,7 @@
 
 Dépôt de recherche pour regrouper nos stratégies, leur code, les tests automatisés et les résultats réellement calculés. Chaque étude possède son propre dossier et son statut. Les conclusions restent propres aux instruments, dates et hypothèses testés.
 
-Le [rapport de tâche 0 : replay QQQ de fin de journée](bots/qqq-eod-replay/REPORT_TASK_0.md) décrit le nouveau suivi GitHub Actions à code figé. La [règle d’arrêt de tâche 7](bots/qqq-eod-replay/REPORT_TASK_7.md) est publiée ; le suivi reste désactivé en attente de la tâche 8 ; les anciens résultats et les deux processus live en simulation restent séparés. [Feuille de route de l’audit](docs/research/2026-10-31-methodology-roadmap.md).
+Le [rapport de tâche 0 : replay QQQ de fin de journée](bots/qqq-eod-replay/REPORT_TASK_0.md) décrit le nouveau suivi GitHub Actions à code figé. La [règle d’arrêt de tâche 7](bots/qqq-eod-replay/REPORT_TASK_7.md) est publiée ; le [suivi GitHub Actions de tâche8](bots/qqq-eod-replay/REPORT_TASK_8.md) est actif en simulation ; les anciens résultats et les deux processus live en simulation restent séparés. [Feuille de route de l’audit](docs/research/2026-10-31-methodology-roadmap.md).
 
 ## Registre des études
 

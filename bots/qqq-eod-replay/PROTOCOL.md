@@ -10,6 +10,10 @@ Le ledger **opérationnel** décrit le processus intraday existant. Ses séances
 
 Comparer les deux nécessite même capital initial de séance, code et prix ; toute différence est documentée et classée, non effacée. Les archives/live sont lus en lecture seule. GitHubActions est la cible d’exécution indépendante du laptop ; les barres et états dans les artefacts publics sont chiffrés et les clés restent dans GitHubSecrets.
 
-**Activation actuellement désactivée**, en attente de la livraison/validation de tâche0 puis de la règle7. Une nouvelle version des coûts imposera un nouveau préenregistrement et sa propre règle d’arrêt.
+**Activation de tâche 8 effectuée**, cohorte du 2 novembre 2026. Une nouvelle version des coûts imposera un nouveau préenregistrement et sa propre règle d’arrêt.
 
-La tâche7 a publié [les règles d’arrêt](REPORT_TASK_7.md), figées dans rules/v1/RULE.json. La première date suit strictement le commit numérique et figure dans rules/v1/REGISTRATION.json. Les états prospectifs incluent désormais les marques de risque compatibles avec l’historique. Activation/secrets/amorçage restent réservés à la tâche8 ; aucun seuil de cette nouvelle cohorte ne s’applique aux comptes opérationnels anciens.
+La tâche7 a publié [les règles d’arrêt](REPORT_TASK_7.md), figées dans rules/v1/RULE.json. La première date suit strictement le commit numérique et figure dans rules/v1/REGISTRATION.json. Les états prospectifs incluent désormais les marques de risque compatibles avec l’historique. Activation, secrets et amorçage ont été vérifiés en tâche 8 ; aucun seuil de cette nouvelle cohorte ne s’applique rétroactivement aux comptes opérationnels anciens.
+
+## Activation de tâche8
+
+Le suivi statistique est actif à partir de la cohorte du 2 novembre 2026, indépendant du laptop. Voir DEPLOYMENT.md et REPORT_TASK_8.md. Les SHA stratégiques et la règle7 restent inchangés ; le worker validé de déploiement est `2286aca61f4bf3636cada8e1234709cb8beafb77`, publié avant cette date. Le ledger opérationnel canonique est une vue des dernières observations qualifiées, filtrée sur cette même cohorte ; rejets et anciennes observations restent archivés à part. Il ne constitue pas un portefeuille continu observé lorsque la couverture est lacunaire. Le replay est hors-échantillon pour la politique figée car les prix futurs n’étaient pas disponibles lors de sa publication ; il ne teste pas la disponibilité réseau intraday, la file d’ordres ni les fills du courtier.

@@ -1,0 +1,128 @@
+{
+  "checked_utc": "2026-11-02T04:02:30.631757+00:00",
+  "repository": "MinaSeliman1/trading-backtests",
+  "public": true,
+  "simulation_only": true,
+  "recurring_variable": true,
+  "cloud_schedule": {
+    "timezone": "America/New_York",
+    "weekdays": true,
+    "times": [
+      "17:23",
+      "18:23"
+    ]
+  },
+  "configured_secret_names": [
+    "ALPACA_PAPER_KEY_ID",
+    "ALPACA_PAPER_SECRET_KEY",
+    "QQQ_EOD_STATE_KEY"
+  ],
+  "credential_values_output": false,
+  "provider_native_readonly_credentials": false,
+  "transport_restriction": "QQQ market data GET only; no broker/account/order endpoints",
+  "independent_state_key_protected_backup": true,
+  "source_release": "2286aca61f4bf3636cada8e1234709cb8beafb77",
+  "initialization": {
+    "run_id": 41382235448,
+    "head_sha": "47f9e658afa357814986c604342ec58600e674fb",
+    "state_decryption": "passed",
+    "accounts": {
+      "noise": 100000.0,
+      "orb": 100000.0
+    },
+    "sessions": 0,
+    "attempts": 0,
+    "previous_run_id": null,
+    "checkpoint_utc": "2026-11-02T03:19:34.939405+00:00",
+    "first_day": "2026-11-02",
+    "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
+    "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f",
+    "worker_release": "2286aca61f4bf3636cada8e1234709cb8beafb77",
+    "probe": {
+      "probe": "passed",
+      "feed": "sip",
+      "adjustment": "raw",
+      "rows": 5,
+      "source_day": "2026-10-30",
+      "requests_kind": "QQQ market data GET only",
+      "broker_orders": 0,
+      "pnl_calculated": false
+    },
+    "broker_orders": 0
+  },
+  "restoration": {
+    "run_id": 41382868100,
+    "head_sha": "47f9e658afa357814986c604342ec58600e674fb",
+    "state_decryption": "passed",
+    "restored_from": 41382235448,
+    "accounts": {
+      "noise": 100000.0,
+      "orb": 100000.0
+    },
+    "sessions": 0,
+    "attempts": 0,
+    "checkpoint_utc": "2026-11-02T03:25:11.665150+00:00",
+    "first_day": "2026-11-02",
+    "worker_release": "2286aca61f4bf3636cada8e1234709cb8beafb77",
+    "broker_orders": 0
+  },
+  "operational": {
+    "task_name": "TradingBacktests-QQQ-EOD-Operational-Ledger",
+    "state": "Ready",
+    "last_result": 0,
+    "AC_only": true,
+    "stop_on_battery": true,
+    "restart_count": 2,
+    "restart_interval": "PT5M",
+    "schedule_times": [
+      "18:35",
+      "19:35"
+    ],
+    "timezone": "Eastern local",
+    "logon_delay": "PT2M",
+    "next_run": "2026-11-02T18:35:00-05:00",
+    "worker": {
+      "state": "collected",
+      "started_utc": "2026-11-02T03:48:18.198670+00:00",
+      "completed_utc": "2026-11-02T03:51:23.920593+00:00",
+      "read_only_live": true,
+      "exit_code": 0,
+      "observations": 13,
+      "qualified": {
+        "noise": 0,
+        "orb": 0
+      },
+      "comparisons": 0,
+      "errors": 0
+    },
+    "cloud_summary_available": true,
+    "legacy_observations": 13,
+    "legacy_qualified": {
+      "noise": 0,
+      "orb": 1
+    },
+    "qualified": {
+      "noise": 0,
+      "orb": 0
+    },
+    "errors": []
+  },
+  "legacy_trading_tasks": {
+    "noise": "Running",
+    "orb": "Running",
+    "modified_by_task8": false
+  },
+  "broker_orders": 0,
+  "known_deployment_incident": {
+    "component": "operational cloud summary read",
+    "original_error_type": "RuntimeError",
+    "precise_http_cause": "not established",
+    "local_observations_preserved": true,
+    "latest_native_pass": "success",
+    "mitigation": [
+      "sanitized diagnostics",
+      "one retry of recognized transient GET failures",
+      "two scheduled restarts at 5 minutes"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "checked_utc": "2026-11-02T04:02:31.149033+00:00",
+  "local_tests": {
+    "tests": "83",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "174.700"
+  },
+  "local_python": "3.14.6",
+  "source_release_ci": {
+    "run_id": 41381787764,
+    "conclusion": "success",
+    "passed": 78,
+    "skipped": 1,
+    "python": "3.14.9"
+  },
+  "final_publication_ci": "pending final commit",
+  "independent_reviews": {
+    "source_before_secret_transfer": "no important findings",
+    "operational_heads_and_cohort": "no important findings",
+    "final_collection_coverage_transport_and_restarts": "no important findings"
+  },
+  "strategy_commit": "f7ed9515b97644102ef674315c6af46e6fce8988",
+  "rule_commit": "6e5e36c5ab91caf964523d9f6a52a996aae5f7c2",
+  "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f",
+  "economic_worker_changed_since_release": [],
+  "legacy_source_changes": [],
+  "regressions": {
+    "secret_stdin_and_no_output": "passed",
+    "state_key_no_rotation": "passed",
+    "qualified_latest_SQL_view": "passed",
+    "immutable_cohort_and_legacy_separation": "passed",
+    "return_to_old_snapshot": "passed",
+    "missing_cloud_sessions_and_halfdays": "passed",
+    "bounded_transient_retry_and_safe_permanent_error": "passed"
+  }
+}
