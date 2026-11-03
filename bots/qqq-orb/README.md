@@ -54,3 +54,8 @@ Disponibilité secteur renforcée le31octobre : le plan Balanced ne passe plus a
 ## Diagnostic des sorties sans console
 
 Depuis le 31 octobre, le bootstrap conserve les métadonnées d'une exception fatale dans `runtime/windows/last_fatal.json`, avec repli hors OneDrive dans `%LOCALAPPDATA%/TradingBacktests/Diagnostics/orb/last_fatal.json`. Type/errno/winerror et positions fichier/fonction/ligne seulement : aucun message d'exception, source ou variable locale. Comparer date et PID avant d'attribuer un fichier à une nouvelle panne. Une terminaison forcée ou native peut rester sans trace. [Reprise autorisée et validation](../../docs/operations/2026-10-31-qqq-exit-diagnostics.md).
+
+
+## Statut Windows et recuperation auditee du 3 novembre 2026
+
+Le remplacement du fichier de statut dispose de tentatives bornees et une erreur de telemetrie ne termine plus le moteur ORB. Une position `unresolved` peut faire l'objet d'une recuperation manuelle avec capture SIP, sauvegarde SQLite et empreinte de l'etat, en conservant l'entree, les frais et le journal. Le rattrapage ne compte jamais comme seance pleinement observee. [Incident, reprise effective, limites et 90 tests selectionnes](../../docs/operations/2026-11-03-orb-status-and-position-recovery.md).

@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-03",
+  "scope": "ORB operational repair only; shadow SIP delayed 16 minutes",
+  "tests": {
+    "orb": 49,
+    "alerts": 25,
+    "eod_source_replay_parity": 16,
+    "total_selected": 90
+  },
+  "review": {
+    "independent": true,
+    "residual_recent_gap_guard": true,
+    "hash_and_parse_same_bytes": true
+  },
+  "model_sha256": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810",
+  "rule_sha256": "3d19e338d9e0c3aea0df68f230d3386d1dc5b97161f1e3120cfa4aa2f10fa19f",
+  "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2",
+  "source_sha256": "9c4d8976bedfd56083d00c32165479d5149f607b49f5c555cd7b41042f941caa",
+  "backup_sha256": "a3532f89de03f45622ac81f2e634fc0724dbef64a508e23fbab6f7e1824fbd81",
+  "journal_preservation": {
+    "meta_previous_rows_preserved": true,
+    "days_previous_rows_preserved": true,
+    "events_previous_rows_preserved": true,
+    "trades_previous_rows_preserved": true,
+    "integrity": "ok",
+    "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2",
+    "entry_events": 1,
+    "recovery_events": 1,
+    "balance_unchanged": true,
+    "phase": "active",
+    "fully_observed": false,
+    "last_processed": 78,
+    "stage": "immediately after recovery, before restart"
+  },
+  "broker_orders": false,
+  "post_restart_checks": [
+    {
+      "utc": "2026-11-03 16:10:58.538770+00:00",
+      "mode": "shadow",
+      "feed": "sip",
+      "delay_minutes": 16,
+      "engine_state": "active",
+      "engine_age_seconds": 2.771403,
+      "open_day": "2026-11-03",
+      "closed_trades": 2,
+      "fully_observed_sessions": 1,
+      "alerts": [
+        "coverage_gaps"
+      ],
+      "status_utc": "2026-11-03T16:10:55.767367+00:00",
+      "pid": 28656,
+      "last_processed": 83,
+      "last_bar_ny": "2026-11-03 10:53:00-05:00",
+      "qualified_today": false,
+      "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2",
+      "entry_events": 1,
+      "recovery_events": 1
+    },
+    {
+      "checked_utc": "2026-11-03 16:13:58.056482+00:00",
+      "status_utc": "2026-11-03T16:13:52.568669+00:00",
+      "engine_state": "active",
+      "engine_age_seconds": 5.487813,
+      "last_processed": 86,
+      "last_bar_ny": "2026-11-03 10:56:00-05:00",
+      "fully_observed_today": false,
+      "alerts": [
+        "coverage_gaps"
+      ],
+      "mode": "shadow",
+      "feed": "sip",
+      "delay_minutes": 16
+    }
+  ]
+}

@@ -80,3 +80,35 @@ def test_startup_retries_network_failure_then_recovers_without_reset_or_secret_l
         assert db.get_account()['balance']==100000 and db.get('first_session')=='2026-10-26'
         assert db.db.execute('SELECT COUNT(*) FROM trades').fetchone()[0]==0
     assert 'DO-NOT-LOG' not in json.dumps(snapshots)+(tmp_path/'background.log').read_text(encoding='utf-8')
+
+
+def test_locked_telemetry_cannot_escape_startup_or_cycle_error_handlers(tmp_path,monkeypatch):
+    import orb_shadow.service as svc
+    from contextlib import nullcontext
+    from qqq_paper.alpaca import DataConnectionError
+    monkeypatch.setattr(svc,'PowerGuard',lambda root:nullcontext())
+    monkeypatch.setattr(svc.WindowsVault,'load',lambda self:('FAKE-KEY-DO-NOT-LOG','FAKE-SECRET-DO-NOT-LOG'))
+    class Transport:
+        def __init__(self,*args):pass
+        def clear(self):pass
+    monkeypatch.setattr(svc,'ReadOnlyTransport',Transport)
+    attempts=[];cycles=[];pauses=[]
+    def probe(data):
+        attempts.append(True)
+        if len(attempts)==1:raise DataConnectionError('dns')
+        return dict(state='read_only_sip_connected',broker_orders=False)
+    def cycle(*args):
+        cycles.append(True)
+        if len(cycles)==1:raise DataConnectionError('timeout')
+        return dict(state='active')
+    def deny(*args):raise PermissionError(13,'DO-NOT-LOG-PRIVATE-ERROR')
+    def pause(stop,seconds):
+        pauses.append(seconds)
+        if len(cycles)==2:stop.touch()
+    monkeypatch.setattr(svc,'probe',probe);monkeypatch.setattr(svc,'cycle',cycle)
+    monkeypatch.setattr(Path,'replace',deny);monkeypatch.setattr(svc,'pause',pause)
+    monkeypatch.setattr('orb_shadow.status.time.sleep',lambda seconds:None)
+    assert svc.main(['--runtime',str(tmp_path)])==0
+    assert len(attempts)==2 and len(cycles)==2 and pauses==[60,5,5]
+    log=(tmp_path/'background.log').read_text(encoding='utf-8')
+    assert 'Telemetry write deferred' in log and 'DO-NOT-LOG' not in log

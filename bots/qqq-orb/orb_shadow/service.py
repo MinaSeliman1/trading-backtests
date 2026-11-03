@@ -7,7 +7,8 @@ from contextlib import nullcontext
 import pandas as pd
 from qqq_paper.alpaca import DataClient,network_failure_code
 from qqq_paper.windows_vault import WindowsVault
-from qqq_paper.runtime import ProcessLock,session_for,write_status
+from qqq_paper.runtime import ProcessLock,session_for
+from .status import write_status,write_json
 from qqq_paper.power import PowerGuard
 from .core import verify_model
 from .ledger import Ledger
@@ -69,7 +70,7 @@ def main(argv=None):
                     key,secret=WindowsVault().load();transport=ReadOnlyTransport(key,secret);del key,secret;data=DataClient(transport)
                     write_status(root,state='checking_connection',mode='shadow',feed='sip',pid=os.getpid(),utc=str(utcnow()))
                     connected=probe(data)
-                    (root/'connection.json').write_text(json.dumps(connected,indent=2),encoding='utf-8')
+                    write_json(root/'connection.json',connected)
                     if a.check:print(json.dumps(connected));return 0
                     with Ledger(root/'state.sqlite') as db:
                         db.record_restart()
