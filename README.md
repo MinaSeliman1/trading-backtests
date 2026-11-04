@@ -6,6 +6,8 @@ Le [rapport de tâche 0 : replay QQQ de fin de journée](bots/qqq-eod-replay/REP
 
 Le [suivi push de tâche 9](bots/qqq-alerts/REPORT_TASK_9.md) est actif côté Windows et GitHub : message de vie quotidien, incidents techniques et rappel externe ntfy ; réception sur téléphone à confirmer dans la fenêtre locale.
 
+Bilan opérationnel final du **3 novembre 2026** : [Noise Area −292,60 USD, séance complète ; ORB +10,51 USD, rattrapage](docs/operations/2026-11-03-qqq-final-balance.md). Résultats après frais, comptes et sous-ensembles séparés ; une séance qualifiée par bot à cette date, simulations poursuivies jusqu’au bilan commun des 20 séances complètes chacun.
+
 ## Registre des études
 
 | Étude | Statut | Résultats disponibles | Conclusion |

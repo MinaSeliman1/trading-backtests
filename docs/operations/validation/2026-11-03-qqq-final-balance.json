@@ -1,0 +1,345 @@
+{
+  "report_date_ny": "2026-11-03",
+  "captured_utc": "2026-11-04T05:00:28.088070+00:00",
+  "scope": "Operational local shadow ledgers only; excludes independent statistical EOD ledger",
+  "currency": "USD",
+  "mode": "shadow",
+  "feed": "sip",
+  "delay_minutes": 16,
+  "source_commit": "4c045a0dc227caae0459d4f4f91483c42bec4741",
+  "source_snapshots": [
+    {
+      "file": "noise.sqlite",
+      "sha256": "1c3d7788c775ae4225fd03f8ca4aebb68938dbcfa44eefbcb0958b0edcb38730",
+      "integrity": "ok"
+    },
+    {
+      "file": "orb.sqlite",
+      "sha256": "2fb58098bfa87ddc5eec769bfe50a693d2715c0e0caa9eb628193fa3b726a505",
+      "integrity": "ok"
+    }
+  ],
+  "noise": {
+    "first_session": "2026-10-21",
+    "baseline_equity": 99237.19600000001,
+    "ending_equity": 97640.42082333336,
+    "qualified_days": [
+      "2026-11-03"
+    ],
+    "today": {
+      "day": "2026-11-03",
+      "qualification": "complete",
+      "net": -292.59999999999366,
+      "commission": 1.225,
+      "friction": 3.5,
+      "borrow": 0.0,
+      "closed_trades": 1,
+      "costs": 4.725
+    },
+    "qualified": {
+      "net": -292.59999999999366,
+      "commission": 1.225,
+      "friction": 3.5,
+      "borrow": 0.0,
+      "closed_trades": 1,
+      "costs": 4.725
+    },
+    "catchup_or_incomplete": {
+      "net": -1304.1751766666778,
+      "commission": 12.215,
+      "friction": 34.9,
+      "borrow": 3.306676666666667,
+      "closed_trades": 8,
+      "costs": 50.42167666666666
+    },
+    "total": {
+      "net": -1596.7751766666715,
+      "commission": 13.440000000000001,
+      "friction": 38.4,
+      "borrow": 3.306676666666667,
+      "closed_trades": 9,
+      "costs": 55.14667666666667
+    },
+    "decisions": [
+      {
+        "time": "10:00",
+        "status": "processed",
+        "delay_seconds": 63.472717
+      },
+      {
+        "time": "10:30",
+        "status": "processed",
+        "delay_seconds": 64.952482
+      },
+      {
+        "time": "11:00",
+        "status": "processed",
+        "delay_seconds": 60.792045
+      },
+      {
+        "time": "11:30",
+        "status": "processed",
+        "delay_seconds": 61.537109
+      },
+      {
+        "time": "12:00",
+        "status": "processed",
+        "delay_seconds": 62.498401
+      },
+      {
+        "time": "12:30",
+        "status": "processed",
+        "delay_seconds": 61.701635
+      },
+      {
+        "time": "13:00",
+        "status": "processed",
+        "delay_seconds": 66.129554
+      },
+      {
+        "time": "13:30",
+        "status": "processed",
+        "delay_seconds": 66.819255
+      },
+      {
+        "time": "14:00",
+        "status": "processed",
+        "delay_seconds": 64.180857
+      },
+      {
+        "time": "14:30",
+        "status": "processed",
+        "delay_seconds": 65.376844
+      },
+      {
+        "time": "15:00",
+        "status": "processed",
+        "delay_seconds": 62.387861
+      },
+      {
+        "time": "15:30",
+        "status": "processed",
+        "delay_seconds": 63.389704
+      }
+    ],
+    "completion": {
+      "day": "2026-11-03",
+      "processed_decisions": 12,
+      "on_time_decisions": 12,
+      "closure_observed_on_time": true,
+      "fully_prospective": true,
+      "closing_equity": 97640.42082333336,
+      "asof": "2026-11-03 16:00:00-05:00",
+      "observed_at": "2026-11-03 21:00:06.917141+00:00"
+    },
+    "daily": [
+      {
+        "day": "2026-10-21",
+        "qualification": "catchup_or_incomplete",
+        "net": -1078.4190000000146,
+        "commission": 5.229,
+        "friction": 14.940000000000001,
+        "borrow": 0.0,
+        "closed_trades": 3,
+        "costs": 20.169
+      },
+      {
+        "day": "2026-10-23",
+        "qualification": "catchup_or_incomplete",
+        "net": -591.0134999999839,
+        "commission": 3.0100000000000002,
+        "friction": 8.6,
+        "borrow": 0.0,
+        "closed_trades": 2,
+        "costs": 11.61
+      },
+      {
+        "day": "2026-10-26",
+        "qualification": "catchup_or_incomplete",
+        "net": 473.65999999999303,
+        "commission": 1.54,
+        "friction": 4.4,
+        "borrow": 0.0,
+        "closed_trades": 1,
+        "costs": 5.94
+      },
+      {
+        "day": "2026-11-02",
+        "qualification": "catchup_or_incomplete",
+        "net": -108.40267666667232,
+        "commission": 2.436,
+        "friction": 6.96,
+        "borrow": 3.306676666666667,
+        "closed_trades": 2,
+        "costs": 12.702676666666669
+      },
+      {
+        "day": "2026-11-03",
+        "qualification": "complete",
+        "net": -292.59999999999366,
+        "commission": 1.225,
+        "friction": 3.5,
+        "borrow": 0.0,
+        "closed_trades": 1,
+        "costs": 4.725
+      }
+    ],
+    "configuration_sha256": "2e334d7c0f4e0ab52424d7279b905b7fa36ff8444b316b596a389f4ffa3d9d11",
+    "today_fills": [
+      {
+        "action": "open",
+        "qty": 175,
+        "commission": 0.6125,
+        "borrow": 0.0,
+        "realized": 0.0,
+        "reference_price": 688.105,
+        "simulated_fill_price": 688.115,
+        "decision_hhmm": "1100"
+      },
+      {
+        "action": "close",
+        "qty": 175,
+        "commission": 0.6125,
+        "borrow": 0.0,
+        "realized": -291.37499999999363,
+        "reference_price": 686.46,
+        "simulated_fill_price": 686.45,
+        "decision_hhmm": "1130"
+      }
+    ],
+    "baseline_fill_seq": 2
+  },
+  "orb": {
+    "first_session": "2026-10-26",
+    "baseline_equity": 100000.0,
+    "ending_equity": 99198.69598333332,
+    "qualified_days": [
+      "2026-10-28"
+    ],
+    "today": {
+      "day": "2026-11-03",
+      "qualification": "catchup_or_incomplete",
+      "net": 10.512000000005894,
+      "commission": 1.008,
+      "friction": 2.88,
+      "borrow": 0.0,
+      "closed_trades": 1,
+      "costs": 3.888
+    },
+    "qualified": {
+      "net": -145.86600000000942,
+      "commission": 0.966,
+      "friction": 2.7600000000000002,
+      "borrow": 0.0,
+      "closed_trades": 1,
+      "costs": 3.726
+    },
+    "catchup_or_incomplete": {
+      "net": -655.4380166666634,
+      "commission": 1.988,
+      "friction": 5.68,
+      "borrow": 2.7700166666666663,
+      "closed_trades": 2,
+      "costs": 10.438016666666666
+    },
+    "total": {
+      "net": -801.3040166666729,
+      "commission": 2.9539999999999997,
+      "friction": 8.440000000000001,
+      "borrow": 2.7700166666666663,
+      "closed_trades": 3,
+      "costs": 14.164016666666669
+    },
+    "daily": [
+      {
+        "day": "2026-10-28",
+        "qualification": "complete",
+        "net": -145.86600000000942,
+        "commission": 0.966,
+        "friction": 2.7600000000000002,
+        "borrow": 0.0,
+        "closed_trades": 1,
+        "costs": 3.726
+      },
+      {
+        "day": "2026-10-29",
+        "qualification": "catchup_or_incomplete",
+        "net": -665.9500166666693,
+        "commission": 0.98,
+        "friction": 2.8000000000000003,
+        "borrow": 2.7700166666666663,
+        "closed_trades": 1,
+        "costs": 6.550016666666666
+      },
+      {
+        "day": "2026-11-03",
+        "qualification": "catchup_or_incomplete",
+        "net": 10.512000000005894,
+        "commission": 1.008,
+        "friction": 2.88,
+        "borrow": 0.0,
+        "closed_trades": 1,
+        "costs": 3.888
+      }
+    ],
+    "today_trade": {
+      "ambiguous_bar": false,
+      "borrow_fee": 0.0,
+      "capital_after": 99198.69598333332,
+      "capital_before": 99188.18398333332,
+      "commission": 1.008,
+      "day": "2026-11-03",
+      "direction": "LONG",
+      "entry_price": 685.55,
+      "entry_reference": 685.54,
+      "entry_risk_unit": 2.36,
+      "entry_time": "2026-11-03 09:35:00-05:00",
+      "exit_price": 685.63,
+      "exit_reason": "eod_open",
+      "exit_reference": 685.64,
+      "exit_resolution": "bar_open",
+      "exit_slot": 389,
+      "exit_time": "2026-11-03 15:59:00-05:00",
+      "friction_cost": 2.88,
+      "gross_pnl": 11.520000000005894,
+      "holding_minutes_upper": 384,
+      "mae_observed_usd": -267.8399999999856,
+      "mfe_observed_usd": 452.1600000000144,
+      "net_bps": 1.0648384508794535,
+      "net_pnl": 10.512000000005894,
+      "price_move_pnl": 14.400000000003274,
+      "quantity": 144,
+      "sign": 1,
+      "stop_price": 683.18,
+      "target_price": 709.14
+    },
+    "notes": [
+      "data_gap",
+      "historical_recovery",
+      "late_observation",
+      "process_restart"
+    ],
+    "fully_observed_today": false,
+    "configuration_sha256": "1b20a825838929e755ffee97641ecef61ad60b95742ae999bcc6d10f24d853c2"
+  },
+  "checks": {
+    "snapshots_integrity": true,
+    "all_positions_closed": true,
+    "no_pending_recovery": true,
+    "net_reconciles_with_accounts": true,
+    "noise_12_decisions_on_time": true,
+    "noise_today_qualified": true,
+    "orb_today_excluded_from_qualified": true,
+    "no_active_journal_mutation": true
+  },
+  "methodology": {
+    "noise_filter": "orders.day from 2026-10-21 through 2026-11-03 inclusive, fills.seq > baseline_fill_seq=2",
+    "noise_net": "sum(fills.realized - fills.commission - fills.borrow); friction already embedded in modeled entry/exit prices",
+    "orb_net": "sum(closed trade net_pnl); friction, commission and borrow already included",
+    "qualification": "completed_session.fully_prospective for Noise Area; day.fully_observed and closed/flat for ORB",
+    "missing_sessions": "Retained as coverage gaps; never interpreted as observed no-trade sessions",
+    "daily_csv": "Only sessions containing recorded fills/trades; coverage gaps and no-fill sessions are not rows",
+    "snapshot_policy": "Read-only source URI, coherent SQLite backup, integrity check, all calculations on copies; no credentials or API",
+    "pricing": "All fills are local shadow simulations on archived SIP bars, no broker execution"
+  }
+}
