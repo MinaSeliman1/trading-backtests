@@ -1,0 +1,12 @@
+{
+  "market_pnl_seen": false,
+  "independent_review": true,
+  "findings_resolved": [
+    "missing-aware calendar bootstrap instead of unknown-day cash zeros",
+    "strict both-trading paired sample and separate either-trading count",
+    "current and frozen code/dependency/source-profile binding",
+    "protocol hash binding and real results/ delivery boundary",
+    "modeled exit friction included in MAE"
+  ],
+  "status": "fixed before market execution"
+}

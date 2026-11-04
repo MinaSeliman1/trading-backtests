@@ -1,0 +1,51 @@
+{
+  "consulted_utc": "2026-11-04T12:52:06.302404+00:00",
+  "policy": "Primary sources for technical claims; forums contextual only; no external code executed or external performance imported",
+  "sources": [
+    {
+      "url": "https://arxiv.org/pdf/1005.3535",
+      "access": "PDF primary paper read",
+      "role": "motivation; cross-sectional stocks, not a demonstrated ETF strategy"
+    },
+    {
+      "url": "https://github.com/ankitjha67/TradingView-MCP/blob/main/STRATEGY_CATALOG.md",
+      "access": "public author catalog read",
+      "role": "idea taxonomy only"
+    },
+    {
+      "url": "https://www.quantconnect.com/research/15258/dual-thrust-trading-algorithm/",
+      "access": "primary tutorial read",
+      "role": "alternative not selected; conflicting performance prose noted"
+    },
+    {
+      "url": "https://github.com/je-suis-tm/quant-trading/blob/master/Dual%20Thrust%20backtest.py",
+      "access": "public source page opened",
+      "role": "alternative only; not executed"
+    },
+    {
+      "url": "https://research.library.fordham.edu/gabelli_thesis/182/",
+      "access": "institutional thesis notice opened",
+      "role": "macro alternative only"
+    },
+    {
+      "url": "https://www.kais99.org/jkais/journal/Vol23No07/vol23no07p41.pdf",
+      "access": "indexed primary abstract reviewed",
+      "role": "different market; not a return forecast for SPY/QQQ"
+    },
+    {
+      "url": "https://www.reddit.com/r/algotrading/comments/1xg8blg/intraday_strategy_looked_promising_in_backtests/",
+      "access": "original discussion text reviewed",
+      "role": "non-audited contextual warnings about controls/costs"
+    },
+    {
+      "url": "https://www.reddit.com/r/algotrading/comments/1ml7caa/",
+      "access": "original discussion text reviewed",
+      "role": "non-audited seasonality/overfitting context"
+    },
+    {
+      "url": "https://www.reddit.com/r/algotrading/comments/1spd5nf/6_months_full_time_on_algo_17_strategies_dead_on/",
+      "access": "indexed original discussion reviewed",
+      "role": "non-audited search/multiplicity context"
+    }
+  ]
+}
