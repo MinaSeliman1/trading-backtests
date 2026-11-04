@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "bootstrap_comparisons": 24,
+  "holm_verified": true,
+  "random_panels": [
+    {
+      "symbol": "SPY",
+      "dates": 1470,
+      "draws": 1000
+    },
+    {
+      "symbol": "QQQ",
+      "dates": 1499,
+      "draws": 1000
+    }
+  ],
+  "method": "Independent calendar-block summation, observed masks, both-trading counts, paired arithmetic, Holm and deterministic random-clock draw reconstruction; no decision changes."
+}

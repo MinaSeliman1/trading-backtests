@@ -1,0 +1,19 @@
+{
+  "utc": "2026-11-04T13:13:34.577306+00:00",
+  "reviewer": "Independent read-only final reviewer",
+  "financial_freeze_commit": "28a4a77f45102319ae8a38b45065b2d081c72933",
+  "scope": [
+    "96 accounts",
+    "115016 trade rows",
+    "173632 daily rows",
+    "all18 paired controls",
+    "source freeze current and snapshots",
+    "report and four figures"
+  ],
+  "financial_sources_unchanged": true,
+  "findings_resolved": [
+    "Report modeled fill leverage now sourced from trade.entry_fill_leverage; original summary unchanged",
+    "Explicitly distinguish constant-capital random panels from compounded control_random_clock accounts"
+  ],
+  "assessment": "No remaining material financial or delivery issue identified; no adjustment of model rules after results."
+}

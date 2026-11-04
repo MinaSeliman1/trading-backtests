@@ -1,0 +1,683 @@
+{
+  "utc": "2026-11-04T13:10:10.027962+00:00",
+  "accounts": 96,
+  "features_checked": 86848,
+  "daily_rows_checked": 173632,
+  "trades_checked": 115016,
+  "all_matched": true,
+  "method": "Scalar independent history moments, chronological candidate, paths, quantity, fees, borrow, compounding and close-mark drawdown; no strategy-engine imports in oracle",
+  "details": [
+    {
+      "label": "SPY_ALL_reference",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 76795.52381079756
+    },
+    {
+      "label": "SPY_A_reference",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 79436.01915614642
+    },
+    {
+      "label": "SPY_B_reference",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 96673.38559332355
+    },
+    {
+      "label": "SPY_ALL_cost_0.02",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 69210.28845724194
+    },
+    {
+      "label": "SPY_A_cost_0.02",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 72591.6311639847
+    },
+    {
+      "label": "SPY_B_cost_0.02",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 95344.17872400537
+    },
+    {
+      "label": "SPY_ALL_cost_0.03",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 62388.79825035132
+    },
+    {
+      "label": "SPY_A_cost_0.03",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 66347.57462230718
+    },
+    {
+      "label": "SPY_B_cost_0.03",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 94046.5116266066
+    },
+    {
+      "label": "SPY_ALL_cost_0.05",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 50656.18908492621
+    },
+    {
+      "label": "SPY_A_cost_0.05",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 55408.799729828424
+    },
+    {
+      "label": "SPY_B_cost_0.05",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 91491.94459895324
+    },
+    {
+      "label": "SPY_ALL_lookback_20",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 2090,
+      "final_equity": 86665.65529105152
+    },
+    {
+      "label": "SPY_A_lookback_20",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1594,
+      "final_equity": 88832.79427761942
+    },
+    {
+      "label": "SPY_B_lookback_20",
+      "features": 2714,
+      "daily": 618,
+      "trades": 496,
+      "final_equity": 97586.39547296283
+    },
+    {
+      "label": "SPY_ALL_lookback_60",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1654,
+      "final_equity": 76553.44965823537
+    },
+    {
+      "label": "SPY_A_lookback_60",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1296,
+      "final_equity": 82793.41981974027
+    },
+    {
+      "label": "SPY_B_lookback_60",
+      "features": 2714,
+      "daily": 618,
+      "trades": 358,
+      "final_equity": 92450.47786685095
+    },
+    {
+      "label": "SPY_ALL_threshold_1",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 2437,
+      "final_equity": 73546.74432808331
+    },
+    {
+      "label": "SPY_A_threshold_1",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1870,
+      "final_equity": 78068.01532745732
+    },
+    {
+      "label": "SPY_B_threshold_1",
+      "features": 2714,
+      "daily": 618,
+      "trades": 567,
+      "final_equity": 94201.07131089015
+    },
+    {
+      "label": "SPY_ALL_threshold_2",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 965,
+      "final_equity": 89583.00101557461
+    },
+    {
+      "label": "SPY_A_threshold_2",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 754,
+      "final_equity": 90042.871683535
+    },
+    {
+      "label": "SPY_B_threshold_2",
+      "features": 2714,
+      "daily": 618,
+      "trades": 211,
+      "final_equity": 99483.84907476195
+    },
+    {
+      "label": "SPY_ALL_stop_1",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 77497.04569326187
+    },
+    {
+      "label": "SPY_A_stop_1",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 78809.37729996348
+    },
+    {
+      "label": "SPY_B_stop_1",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 98332.1426539321
+    },
+    {
+      "label": "SPY_ALL_stop_3",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 75195.41514950854
+    },
+    {
+      "label": "SPY_A_stop_3",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 78067.58681367696
+    },
+    {
+      "label": "SPY_B_stop_3",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 96323.35333422091
+    },
+    {
+      "label": "SPY_ALL_long_only",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1198,
+      "final_equity": 89785.54840000621
+    },
+    {
+      "label": "SPY_A_long_only",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 929,
+      "final_equity": 89050.76150000538
+    },
+    {
+      "label": "SPY_B_long_only",
+      "features": 2714,
+      "daily": 618,
+      "trades": 269,
+      "final_equity": 100836.71210000104
+    },
+    {
+      "label": "SPY_ALL_inverse",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 94770.36026489464
+    },
+    {
+      "label": "SPY_A_inverse",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 97430.60359177698
+    },
+    {
+      "label": "SPY_B_inverse",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 97264.35634774281
+    },
+    {
+      "label": "SPY_ALL_control_same_clock_long",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 95729.89390000945
+    },
+    {
+      "label": "SPY_A_control_same_clock_long",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 92278.32110000792
+    },
+    {
+      "label": "SPY_B_control_same_clock_long",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 103747.90400000157
+    },
+    {
+      "label": "SPY_ALL_control_fixed_clock",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 79853.87112422808
+    },
+    {
+      "label": "SPY_A_control_fixed_clock",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 80041.37515764082
+    },
+    {
+      "label": "SPY_B_control_fixed_clock",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 99769.54977867367
+    },
+    {
+      "label": "SPY_ALL_control_random_clock",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1659,
+      "final_equity": 89422.93084223574
+    },
+    {
+      "label": "SPY_A_control_random_clock",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1277,
+      "final_equity": 86730.52087644303
+    },
+    {
+      "label": "SPY_B_control_random_clock",
+      "features": 2714,
+      "daily": 618,
+      "trades": 382,
+      "final_equity": 103097.89424568173
+    },
+    {
+      "label": "SPY_ALL_resolved_prefix",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1857,
+      "final_equity": 76795.52381079756
+    },
+    {
+      "label": "SPY_A_resolved_prefix",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1423,
+      "final_equity": 79436.01915614642
+    },
+    {
+      "label": "SPY_B_resolved_prefix",
+      "features": 2714,
+      "daily": 618,
+      "trades": 434,
+      "final_equity": 96673.38559332355
+    },
+    {
+      "label": "QQQ_ALL_reference",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 79981.35211857724
+    },
+    {
+      "label": "QQQ_A_reference",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 84228.9895923511
+    },
+    {
+      "label": "QQQ_B_reference",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 94944.61077042342
+    },
+    {
+      "label": "QQQ_ALL_cost_0.02",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 68642.51833625058
+    },
+    {
+      "label": "QQQ_A_cost_0.02",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 73389.83179502087
+    },
+    {
+      "label": "QQQ_B_cost_0.02",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 93513.44545576355
+    },
+    {
+      "label": "QQQ_ALL_cost_0.03",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 58866.994808964875
+    },
+    {
+      "label": "QQQ_A_cost_0.03",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 63932.11652134851
+    },
+    {
+      "label": "QQQ_B_cost_0.03",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 92112.45026911232
+    },
+    {
+      "label": "QQQ_ALL_cost_0.05",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 43308.60509945271
+    },
+    {
+      "label": "QQQ_A_cost_0.05",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 48520.33049336492
+    },
+    {
+      "label": "QQQ_B_cost_0.05",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 89337.02180506465
+    },
+    {
+      "label": "QQQ_ALL_lookback_20",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 2053,
+      "final_equity": 80679.47846349518
+    },
+    {
+      "label": "QQQ_A_lookback_20",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1558,
+      "final_equity": 85413.29761807999
+    },
+    {
+      "label": "QQQ_B_lookback_20",
+      "features": 2714,
+      "daily": 618,
+      "trades": 495,
+      "final_equity": 94450.63703087096
+    },
+    {
+      "label": "QQQ_ALL_lookback_60",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1677,
+      "final_equity": 74387.25703152611
+    },
+    {
+      "label": "QQQ_A_lookback_60",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1298,
+      "final_equity": 76724.09794526693
+    },
+    {
+      "label": "QQQ_B_lookback_60",
+      "features": 2714,
+      "daily": 618,
+      "trades": 379,
+      "final_equity": 96974.5536288261
+    },
+    {
+      "label": "QQQ_ALL_threshold_1",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 2480,
+      "final_equity": 68126.32926033005
+    },
+    {
+      "label": "QQQ_A_threshold_1",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1895,
+      "final_equity": 72855.61847694524
+    },
+    {
+      "label": "QQQ_B_threshold_1",
+      "features": 2714,
+      "daily": 618,
+      "trades": 585,
+      "final_equity": 93508.85296250749
+    },
+    {
+      "label": "QQQ_ALL_threshold_2",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1005,
+      "final_equity": 84230.11454027929
+    },
+    {
+      "label": "QQQ_A_threshold_2",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 783,
+      "final_equity": 84478.26405293148
+    },
+    {
+      "label": "QQQ_B_threshold_2",
+      "features": 2714,
+      "daily": 618,
+      "trades": 222,
+      "final_equity": 99698.28962092579
+    },
+    {
+      "label": "QQQ_ALL_stop_1",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 82952.74713471906
+    },
+    {
+      "label": "QQQ_A_stop_1",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 84195.38281326796
+    },
+    {
+      "label": "QQQ_B_stop_1",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 98535.20970510955
+    },
+    {
+      "label": "QQQ_ALL_stop_3",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 77820.54195854322
+    },
+    {
+      "label": "QQQ_A_stop_3",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 83488.69604676455
+    },
+    {
+      "label": "QQQ_B_stop_3",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 93194.10255389287
+    },
+    {
+      "label": "QQQ_ALL_long_only",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1151,
+      "final_equity": 90403.31680000495
+    },
+    {
+      "label": "QQQ_A_long_only",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 903,
+      "final_equity": 91364.86040000433
+    },
+    {
+      "label": "QQQ_B_long_only",
+      "features": 2714,
+      "daily": 618,
+      "trades": 248,
+      "final_equity": 98953.56090000075
+    },
+    {
+      "label": "QQQ_ALL_inverse",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 82288.48235279431
+    },
+    {
+      "label": "QQQ_A_inverse",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 80963.97449133199
+    },
+    {
+      "label": "QQQ_B_inverse",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 101640.71541670983
+    },
+    {
+      "label": "QQQ_ALL_control_same_clock_long",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 87498.80480000816
+    },
+    {
+      "label": "QQQ_A_control_same_clock_long",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 85827.00210000672
+    },
+    {
+      "label": "QQQ_B_control_same_clock_long",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 101932.51620000153
+    },
+    {
+      "label": "QQQ_ALL_control_fixed_clock",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 72788.6653895466
+    },
+    {
+      "label": "QQQ_A_control_fixed_clock",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 72444.70766350372
+    },
+    {
+      "label": "QQQ_B_control_fixed_clock",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 100498.90127896835
+    },
+    {
+      "label": "QQQ_ALL_control_random_clock",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1699,
+      "final_equity": 81511.68041266839
+    },
+    {
+      "label": "QQQ_A_control_random_clock",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1310,
+      "final_equity": 90527.04708775633
+    },
+    {
+      "label": "QQQ_B_control_random_clock",
+      "features": 2714,
+      "daily": 618,
+      "trades": 389,
+      "final_equity": 90049.35859584574
+    },
+    {
+      "label": "QQQ_ALL_resolved_prefix",
+      "features": 2714,
+      "daily": 2713,
+      "trades": 1887,
+      "final_equity": 79981.35211857724
+    },
+    {
+      "label": "QQQ_A_resolved_prefix",
+      "features": 2714,
+      "daily": 2095,
+      "trades": 1451,
+      "final_equity": 84228.9895923511
+    },
+    {
+      "label": "QQQ_B_resolved_prefix",
+      "features": 2714,
+      "daily": 618,
+      "trades": 436,
+      "final_equity": 94944.61077042342
+    }
+  ]
+}

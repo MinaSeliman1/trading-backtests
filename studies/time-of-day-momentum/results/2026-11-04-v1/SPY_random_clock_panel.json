@@ -1,0 +1,18 @@
+{
+  "repetitions": 1000,
+  "seed": 20261104,
+  "paired_signal_dates": 1470,
+  "excluded_signal_dates": 387,
+  "capital_policy": "constant 100000 USD each day; not compounded accounts",
+  "normalized_reference_total_usd": -22815.630127561806,
+  "random_total_usd_ci95": [
+    -27612.462101821315,
+    225.4028363289848
+  ],
+  "random_total_usd_median": -13315.690721526234,
+  "reference_percentile_rank_pct": 9.8,
+  "random_upper_tail_probability": 0.9020979020979021,
+  "normalized_reference_mean_bps": -1.5520836821470616,
+  "conditional_common_coverage": true,
+  "selection": "Every eligible reference candidate, only dates where all calendar-compatible clocks have resolved history and paths"
+}

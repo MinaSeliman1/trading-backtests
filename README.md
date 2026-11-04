@@ -12,6 +12,7 @@ Bilan opérationnel final du **3 novembre 2026** : [Noise Area −292,60 USD, s�
 
 | Étude | Statut | Résultats disponibles | Conclusion |
 |---|---|---|---|
+| [Saisonnalité au même créneau](studies/time-of-day-momentum/README.md) | Backtest terminé ; référence écartée pour un nouveau bot | Recherche Web, 96 comptes, 47 tests, oracle scalaire et quatre figures | ALL SPY −23,20 % / 1 857 trades, QQQ −20,02 % / 1 887 trades ; A/B négatives, Holm 1,0 chacun |
 | [Divergence SMT ES/NQ, coûts micro](studies/smt-divergence-proxy/README.md) | Test proxy terminé ; avantage non établi, aucun nouveau bot | 6 variantes figées, 32 tests, 1 000 témoins aléatoires et H3 | 0/6 passent ; H2-C 101 trades, +74 USD nets mais −0,248 R/trade ; contrats continus, raccords exacts inconnus |
 | [Compression de midi, cassure après 13 h](studies/lunch-compression-breakout/README.md) | Backtest terminé ; preuves insuffisantes pour un nouveau bot | Recherche Web, 84 comptes, 51 tests, oracle scalaire et quatre figures | ALL SPY +1.59 % / 78 trades, QQQ +0.47 % / 97 trades ; moins de 100 chacun, SPY A et QQQ B négatives |
 | [Repli estimé sur les séances rouges](studies/adaptive-red-day-dip/README.md) | Backtest terminé ; référence écartée pour un nouveau bot | Recherche Web, 84 comptes, 46 tests, oracle scalaire et quatre figures | ALL SPY -19.21 % / 1520 trades, QQQ -38.15 % / 1513 trades ; A/B négatives, variantes toutes publiées |
@@ -38,6 +39,9 @@ Bilan opérationnel final du **3 novembre 2026** : [Noise Area −292,60 USD, s�
 L'étude FVG contient aussi l'exploration Yahoo récente (72 scénarios), clairement archivée, et l'audit des sources gratuites de futures. ES/NQ ne disposent pas d'une validation longue sur des contrats datés vérifiables.
 
 ## Pistes actuellement suivies
+
+Recherche du **4 novembre 2026** : [saisonnalité au même créneau sur QQQ et SPY](studies/time-of-day-momentum/results/2026-11-04-v1/RAPPORT_FINAL.md), adaptation de publications sur la persistance horaire. Sur 2016–16 octobre 2026 après les mêmes frais : **SPY −23,20 % / 1 857 trades ; QQQ −20,02 % / 1 887 trades**. Références A et B également négatives ; code et critères publiés avant calcul, trois témoins causaux, bootstrap avec couverture inconnue et correction Holm. [Décision](studies/time-of-day-momentum/INTERPRETATION.md) : piste écartée dans cette formalisation, aucun nouveau bot ; simulations Noise Area et ORB conservées.
+
 
 Le [test SMT ES/NQ aux coûts MNQ](studies/smt-divergence-proxy/RAPPORT_COMPLET.md) ne démontre pas d’avantage net face au biais seul et au hasard : **aucune des six variantes** ne franchit le [protocole figé](studies/smt-divergence-proxy/PROTOCOL_EXECUTION.md). H2-C atteint 101 trades, +74 USD sur un lot, mais −0,248 R/trade et une découverte négative. [Décision et limites](studies/smt-divergence-proxy/INTERPRETATION.md) : pas de nouveau bot ni de confirmation micros engagée ; les deux simulations QQQ existantes restent inchangées.
 

@@ -1,0 +1,383 @@
+{
+  "utc": "2026-11-04T12:55:32.701877+00:00",
+  "git_commit": "28a4a77f45102319ae8a38b45065b2d081c72933",
+  "periods": {
+    "ALL": [
+      "2016-01-04",
+      "2026-10-16"
+    ],
+    "A": [
+      "2016-01-04",
+      "2024-04-30"
+    ],
+    "B": [
+      "2024-05-01",
+      "2026-10-16"
+    ]
+  },
+  "executions": 96,
+  "specifications": {
+    "reference": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "cost_0.02": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.02,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "cost_0.03": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.03,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "cost_0.05": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.05,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "lookback_20": {
+      "lookback": 20,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "lookback_60": {
+      "lookback": 60,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "threshold_1": {
+      "lookback": 40,
+      "threshold": 1.0,
+      "stop_multiple": 2.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "threshold_2": {
+      "lookback": 40,
+      "threshold": 2.0,
+      "stop_multiple": 2.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "stop_1": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 1.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "stop_3": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 3.0,
+      "mode": "both",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "long_only": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "long_only",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "inverse": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "inverse",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "control_same_clock_long": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "control_same_clock_long",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "control_fixed_clock": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "control_fixed_clock",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "control_random_clock": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "control_random_clock",
+      "quality": "complete_days",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    },
+    "resolved_prefix": {
+      "lookback": 40,
+      "threshold": 1.5,
+      "stop_multiple": 2.0,
+      "mode": "both",
+      "quality": "resolved_prefix",
+      "slippage": 0.01,
+      "initial_capital": 100000.0,
+      "risk_budget": 0.01,
+      "leverage_cap": 1.0,
+      "seed": 20261104
+    }
+  },
+  "source": {
+    "prepared_files_sha256": {
+      "QQQ_dividends.json": "10b008557a30a41659e18f4e749059d7e82a90ac018b5bd810aee28cd195cd14",
+      "QQQ_market.pkl": "67e5ae72288b8878777683c67343174491895b6069c41f331b13aff422e06711",
+      "QQQ_quality.csv": "58c01f8578e0add850a83a96d01da4debc60f040008af56095b9516b90f262f3",
+      "SPY_dividends.json": "37c40573a0c8bb3e6078f81b9d8b07193005819d264e4bcf1b5b77ea0ede92f1",
+      "SPY_market.pkl": "b903e9b373e70ccaa9c78a3c648bb7dc2f9faaed155fea3dee37aa7e45e50558",
+      "SPY_quality.csv": "93ea58e87cb7988877d4c05122769dedcb44371ede34139cf2ebc9741265a5df"
+    },
+    "validation_sha256": "f41437161a010365dd95b8319cfd9d63b24d06870c99c657753c465555b10343",
+    "raw_acquisitions": [
+      {
+        "path": "data/noise_area_extension/2016_2022/SPY_1m.csv",
+        "sha256": "74f509ec5609c85bcaefb81e7415c6e221ba38fb8eb8d58c9767e70a30df79f0",
+        "rows": 1374698,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/SPY_1m.csv",
+        "sha256": "35e3290e3c4cec117302194f437fd5f8f977d25b983759978eafafdca84390fc",
+        "rows": 773977,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/SPY_1m.csv",
+        "sha256": "0c75f0b622d7876e24bfc3c5e0b2f4687252820f8cadeaf19061a932eaf4ad43",
+        "rows": 17612,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/2016_2022/QQQ_1m.csv",
+        "sha256": "b46e4c3ad1f1f32123accaab84976cbc96b6e0b18d06d2182ae64f24f409f636",
+        "rows": 1266570,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/alpaca_sip_2023_2026/QQQ_1m.csv",
+        "sha256": "ec954dcbdc0380dc5eaac1a7e06f3f855d21a535972ff5f5609fe3fc773a6f97",
+        "rows": 807421,
+        "raw_pages_reconciled": true
+      },
+      {
+        "path": "data/noise_area_extension/recent/QQQ_1m.csv",
+        "sha256": "b99abd6da4d1edba207d3026a6e4d14ecb294ccc9b9f74f14aed3b834aa56633",
+        "rows": 18400,
+        "raw_pages_reconciled": true
+      }
+    ],
+    "profiles": [
+      {
+        "symbol": "SPY",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2705,
+        "incomplete_sessions": 9,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2705,
+          "missing_minutes": 9
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      },
+      {
+        "symbol": "QQQ",
+        "first": "2015-12-31",
+        "last": "2026-10-16",
+        "calendar_sessions": 2714,
+        "complete_sessions": 2707,
+        "incomplete_sessions": 7,
+        "dtypes": {
+          "open": "float64",
+          "high": "float64",
+          "low": "float64",
+          "close": "float64",
+          "volume": "float64"
+        },
+        "quality_reasons": {
+          "": 2707,
+          "missing_minutes": 7
+        },
+        "calendar_continuous": true,
+        "duplicate_dates": 0
+      }
+    ],
+    "corporate_action_sha256": "59090f165a8fde58042ac43a073961cd3cd405087db2f71d37a688941ff6aade",
+    "corporate_action_counts": {
+      "cash_dividends": 85
+    },
+    "split_check": "Original all-type request for SPY/QQQ, 2016-01-01 through2026-10-19 returned no split records; provider completeness not independently established.",
+    "dividend_reconciliation": {
+      "SPY": {
+        "source": "SSGA official historical distributions XLSX",
+        "sha256": "6b65cbf956b5d25705d08470006a0e97e6a7d2a0d5cfd08b63f6f79783b06320",
+        "count": 43
+      },
+      "QQQ": {
+        "source": "Alpaca corporate actions; exact equal duplicate removed",
+        "count": 44,
+        "duplicates_removed": [
+          "2022-09-19"
+        ]
+      },
+      "notes": [
+        "Alpaca SPY misses 2016-03-18, 2018-06-15, 2026-09-18; issuer data used for all SPY cash amounts.",
+        "Yahoo independently provides 43 SPY dates and rounded cash amounts.",
+        "Yahoo QQQ misses 2020-09-21; retained Alpaca event. 2018-06-18 cash differs by about 0.00162 USD; Alpaca value retained.",
+        "No minute OHLC adjustment; ex-dividend cash adjusts previous-close band reference only."
+      ]
+    }
+  },
+  "protocols": {
+    "PROTOCOL_EXECUTION.md": {
+      "sha256": "14ef6a42b1d1084a9a838bb37ab5c8812cd4f8b5dd862a41f653ba26a448905a",
+      "text": "# Protocole figé avant P&L : Time-of-Day Momentum QQQ/SPY\n\n## But et données\n\nTester si l'heure apprise sur les séances passées produit un avantage net par rapport à une heure fixe ou aléatoire, et si la direction apprise apporte quelque chose par rapport à toujours acheter au même créneau sélectionné. Adaptation exploratoire de la périodicité documentée par Heston/Korajczyk/Sadka ; aucune réplication exacte revendiquée.\n\nSIP1minute local SPY et QQQ, 2016-01-04 au2026-10-16. Prix bruts, calendrier XNYS et conversion America/New_York, jamais offset UTC fixe. Sources/caches/archives vérifiés par SHA et le chargeur existant closing-momentum. A=2016-01-04/2024-04-30, B=2024-05-01/2026-10-16, ALL=ensemble. Comptes distincts100000USD par ETF, période et variante. A/B ont déjà été utilisés dans de nombreuses recherches : B n'est PAS un nouvel OOS aveugle. Rien n'est téléchargé ni demandé au coffre ; aucun bot existant ou ordre ne change.\n\n## Signal et exécution\n\n1. Créneaux de décision k=30,60,...,330 minutes après l'open, soit10:00,...,15:00 en séance normale. Entrée à l'open k+1, sortie programmée à l'open k+31 : trente minutes détenues. Les premières/dernières demi-heures ne sont pas directement négociées. En demi-séance, seuls les créneaux dont la sortie précède ou égale l'open de la dernière minute existent ; leur calendrier est connu d'avance.\n2. Pour chaque k, le rendement d'apprentissage d'une séance passée d est open[d,k+31]/open[d,k+1]−1. Exiger OHLCV valides sur toutes les31barres de k+1 à k+31 incluses, et une provenance structurelle exploitable. La mèche de la barre de sortie n'est jamais détenue ; sa validité historique est seulement un choix de qualité de l'estimation. Aucun ajustement dividende ne traverse ces fenêtres intraday.\n3. Moyenne mu et écart-type échantillonnal sigma(ddof1) des40séances XNYS immédiatement précédentes, sans la séance actuelle ; aucune séance manquante sautée pour en chercher une plus ancienne. T=mu/(sigma/sqrt40). Choisir le premier créneau autorisé avec |T|>=1,5 et sigma>0. Direction LONG si mu>0, SHORT si mu<0. À la première fenêtre dont l'historique requis manque, abstention unknown_history : ne pas prétendre connaître l'absence d'un signal plus précoce. Pendant les40premières séances, warmup sans trade. Sigma <=1e−12 est traité comme nul pour éliminer les résidus flottants : pas de candidat à cette heure. Aucune sélection de la meilleure heure après observation de la séance.\n4. Ce calendrier/sens est connu avant l'ouverture puisqu'il n'utilise que les jours passés. À la décision actuelle k, prix de taille P=close[k−1], dernier close terminé. Le préfixe de séance 0..k−1 doit être valide ; sinon unknown_current_context, aucune entrée reportée. Pas d'autre filtre de tendance, volume ou actualité.\n5. Distance de stop connue=max(0,02USD,2*sigma*P). Stop fixé à P−distance en LONG (cent inférieur), P+distance en SHORT (cent supérieur). Quantité entière floor(min(capital/P,capital*1%/distanceEffective)). Plafond cible1x et risque1% avant fill ; ni prix d'ouverture futur ni frais futurs ne resizent la quantité. Une entrée gappée peut dépasser ces objectifs ; publier les maxima.\n6. Une tentative/jour ; la première candidate est consommée même si la quantité est nulle, un filtre long_only l'écarte ou le contexte est inconnu. Ni réentrée, ni trailing, ni break-even, ni objectif de gain. À k+1 : fill référence open plus friction adverse. Si cet open est déjà au-delà du stop : sortie immédiate au même open, deux ordres et deux côtés de friction comptés. Ensuite, open au-delà du stop donne une sortie gappée ; sinon une mèche qui touche le stop sort à ce niveau. Stop prioritaire à l'open de la sortie programmée, avec prix identique si les deux conventions coïncident. À la sortie programmée, n'utiliser aucune mèche/close de cette minute.\n7. Commission par côté max(0,35USD,0,0035USD/action) ; friction adverse0,01USD/action/côté ; emprunt SHORT=quantité*prixEntréeSimulé*1%/360, minimum un jour. Exactement les mêmes coûts que les études et les deux bots. Pas d'overnight ni intérêt de cash ; fiscalité, impact variable, carnet, rejets, partiels et emprunt garanti hors modèle.\n\n## Couverture et comptabilité\n\ncomplete_days en référence : sélectionner d'abord le signal causal, puis exclure une journée actuelle incomplète. C'est un filtre de disponibilité connu après coup, explicitement conditionnel ; il ne doit pas déplacer le premier signal. resolved_prefix retire ce filtre mais conserve contexte et trajectoire détenue observés. Une minute de délai non détenue peut manquer. Si trajectoire non résolue, omettre le trade ENTIER du P&L résolu, conserver intention/quantité/frais d'entrée connus dans unresolved.csv ; observed_return manquant et zéro de chaînage ne signifient jamais cash observé. L'incertitude sur un historique pouvant cacher une première candidate est également une exclusion, sans trade inventé.\n\nDrawdown observé : capital initial, commission/friction d'entrée, closes des minutes entièrement détenues, sortie nette avec commission/emprunt. Les mèches de la minute de sortie ne sont pas détenues ; MAE/MFE ne prétendent pas mesurer le pire tick. Publier exclusions, jours sans signal, warmup, demi-séances et concentration. Aucun reset d'un compte en cas de perte.\n\n## Matrice, témoins et incertitude\n\n16variantes x2ETF x3périodes=96comptes, figées : reference ; cost_0.02/0.03/0.05 ; lookback_20/60 ; threshold_1/2 ; stop_1/3 ; long_only ; inverse ; control_same_clock_long ; control_fixed_clock ; control_random_clock ; resolved_prefix. Une dimension à la fois ; toutes les variantes sont publiées, aucune substitution à la référence après résultats.\n\n- control_same_clock_long : même date et premier créneau HISTORIQUE que la référence, achat systématique, stop symétrique sigma de ce créneau. Mesure l'apport du sens appris.\n- control_fixed_clock : même candidature historique et sens connus avant ouverture, décision10:00, sigma de ce créneau ; même stop et sortie30minutes. Si historique de10:00 manque : abstention connue avant séance.\n- control_random_clock : même candidature historique et sens, créneau tiré uniformément parmi ceux compatibles avec la durée de séance. Tirage SHA256(seed20261104|symbole|date), déterministe, sans état global partagé. Sigma de l'heure tirée ; historique absent => abstention. Aucun oracle prenant l'heure de référence à partir du futur courant.\n- Diagnostic1000tirages horaires : capital CONSTANT100000USD par jour, mêmes règles de quantité/frais/stop, sens historique de référence et un seul créneau uniforme. Comparer à une référence elle aussi normalisée au même capital ; ce panneau n'est pas1000comptes composés ni1000réglages sélectionnés. Sous-ensemble apparié où toutes les heures sont résolues, explicitement conditionnel à cette couverture ; publier les dates exclues et le rang de la référence. Pas de sélection du meilleur seed.\n\nCinq critères économiques nécessaires par ETF : >=100trades ALL ; référence A/B/ALL nette positive ; ALL sans ses3meilleurs jours positive ; A à friction doublée positive ; borne basse IC95 de moyenne quotidienne ALL(blocs20)>0. Ajouter le critère d'apport : au moins100dates appariées où stratégie ET témoin ont chacun un trade dans chaque comparaison ALL, puis différences quotidiennes appariées nettes avec CHACUN des3témoins de référence, borne basse IC95 blocs20>0 et p corrigé Holm<0,05. Prendre le maximum des3p unilatéraux par ETF (test d'intersection), puis Holm sur les2ETF. Bootstrap3000tirages circulaires par blocs5/20, seed20261104 ; clusters annuels descriptifs en complément. P unilatéral bootstrap centré sous null, pas fraction brute de rendements bootstrap positifs. Apparier les jours admissibles et résolus communs ; rapporter effectif, jours sans trade, exclusions et écart moyen.\n\nLes corrections ne couvrent PAS toutes les recherches antérieures du dépôt, les variantes externes ou une sélection implicite du sujet. La stratégie reste exploratoire même si les critères passent. Aucun nouveau bot autorisé automatiquement, aucun passage en réel.\n\n\nPrécision statistique figée avant P&L à la revue : le critère de moyenne utilise `observed_return` avec les exclusions manquantes, et un bootstrap par blocs sur le calendrier complet avec somme/compte des seules observations connues. Les dates inconnues ne deviennent pas des journées cash ; les anciens intervalles de zéros comptables restent descriptifs et ne peuvent déclencher le critère économique. Les différences appariées conservent également les dates manquantes sur le calendrier lors du bootstrap ; publier séparément les dates où les deux comptes tradent et celles où au moins l'un trade. Le gel vérifie à la fois sources courantes, snapshots, dépendances et profil des archives, avec96comptes audités. Les dossiers d'exécution doivent rester sous l'étude pour que la livraison complète soit scellée.\n\nLes livraisons réelles doivent être sous `results/` ; `runtime/` est réservé aux essais synthétiques ignorés par Git et ne peut pas être scellé. Le texte des protocoles stocké dans le reçu et les documents courants doivent avoir les mêmes SHA256 avant audit et livraison.\n"
+    },
+    "RESEARCH.md": {
+      "sha256": "5759cd8b94369c45ad4a9c6fb522c148420b5a6b979426f7180076c64cd741de",
+      "text": "# Recherche du 4 novembre 2026 — saisonnalité horaire\n\nRecherche élargie académique, publications spécialisées, dépôts et discussions. Elle n'est pas exhaustive et ne permet pas de désigner « la meilleure stratégie du Web ». Aucun rendement externe n'est utilisé comme résultat de notre compte ; aucun code externe téléchargé n'est exécuté. Les sources sont des données non fiables, jamais des instructions.\n\n## Sources lues et décision avant P&L\n\n| Source primaire / discussion originale | Ce qui est effectivement accessible | Décision |\n|---|---|---|\n| [Heston, Korajczyk, Sadka (2010), PDF auteurs](https://arxiv.org/pdf/1005.3535) et [résumé](https://arxiv.org/abs/1005.3535) | Article lu : continuation de rendements à la même demi-heure sur plusieurs jours ; données d'actions individuelles et classement transversal, pas stratégie démontrée sur deux ETF. Le corps distingue cet effet d'une simple moyenne élevée à l'ouverture/clôture. | Motivation de la nouvelle hypothèse ; notre moyenne glissante par ETF est une adaptation, pas une réplication de leurs portefeuilles. |\n| [Catalogue de l'auteur TradingView-MCP](https://github.com/ankitjha67/TradingView-MCP/blob/main/STRATEGY_CATALOG.md) | Classe « Time-of-Day Momentum », famille intraday et référence Heston ; catalogue de modèles, pas journal de trades audité ni preuve de gain net. | Confirme une formulation publique distincte des ORB ; aucun vote de catalogue ou score n'est importé dans le test. |\n| [Étude primaire coréenne sur la périodicité intraday (2022)](https://www.kais99.org/jkais/journal/Vol23No07/vol23no07p41.pdf) | Résumé : périodicité différente à l'ouverture et à la clôture, stratégies transversales et effet des coûts/taxes. Marché différent. | Contexte contradictoire ; aucune extrapolation de rendement aux ETF américains. |\n| [QuantConnect, Dual Thrust](https://www.quantconnect.com/research/15258/dual-thrust-trading-algorithm/) | Formule max(HH−LC,HC−LL), quatre jours et seuil0,5 autour de l'open. L'introduction et la conclusion ont des messages contradictoires sur la performance SPY. | Alternative examinée et non retenue : famille de cassure proche de l'ATR d'ouverture déjà testé, preuve de rentabilité insuffisante. |\n| [Auteur je-suis-tm, Dual Thrust](https://github.com/je-suis-tm/quant-trading/blob/master/Dual%20Thrust%20backtest.py) | Dépôt public lié à la même famille de cassure. | Pas de code exécuté ou de chiffres importés ; pas une nouvelle preuve indépendante de Dual Thrust. |\n| [Fordham, mémoire sur les annonces monétaires (2026)](https://research.library.fordham.edu/gabelli_thesis/182/) | Notice institutionnelle ; hypothèse intraday liée aux annonces FOMC. | Alternative macro examinée, non choisie : calendrier et petit nombre d'événements, périmètre différent du signal de prix récurrent retenu. |\n| [Discussion originale : stratégie intraday faible en OOS](https://www.reddit.com/r/algotrading/comments/1xg8blg/intraday_strategy_looked_promising_in_backtests/) | Déclarations de l'auteur et critiques sur coûts, témoins simples et réemploi des périodes ; non auditées. | Sert à poser des contrôles et un stress d'exécution, pas à estimer notre edge. |\n| [Discussion originale : filtre de jour de semaine](https://www.reddit.com/r/algotrading/comments/1ml7caa/) | Échanges contradictoires sur les filtres calendaires après drawdown. | Aucun filtre de jour/semaine ajouté après les résultats. |\n| [Discussion originale : accumulation de stratégies rejetées](https://www.reddit.com/r/algotrading/comments/1spd5nf/6_months_full_time_on_algo_17_strategies_dead_on/) | Témoignages sur lookahead, frais, concentration et surajustement. | Documenter la multiplicité des recherches et ne pas transformer B réutilisée en validation aveugle. |\n\n## Choix propres à cette étude\n\nApprentissage sur les40dernières séances programmées, statistique moyenne/erreur-type, seuil1,5, premier créneau chronologique, stop2écarts-types, durée30minutes et une tentative/jour sont NOS conventions fixées avant P&L. Les créneaux10:00–15:00 et les fills une minute après décision décalent la fenêtre étudiée par rapport aux demi-heures du papier. L'article académique ne prescrit ni ces stops ni ces coûts ni un t-seuil par ETF. Cette transposition peut parfaitement échouer alors que l'effet transversal de l'article existe.\n\nLes sources indiquent une hypothèse testable, pas une promesse. Les anciens ORB, Noise Area, gaps, RSI, VWAP, Bollinger, NR7, compression de midi, valeur relative et calendriers déjà présents ne sont ni optimisés ni relancés pour sélectionner un gagnant ici.\n"
+    }
+  },
+  "code_sha256": {
+    "audit/independent.py": "4de4eda279a8a4e9f095f886775d8c9477ebf3fa3c9cd30b11891eb4fff7d1f8",
+    "audit/oracle.py": "cc43704d794faac02934f7ea8516f5304b6032669b4a09b24c17b4f6684173fb",
+    "requirements-lock.txt": "000ee07f22f19efaca0b666e79a92c33065b402d6814160f919b1494215a60d3",
+    "scripts/run_study.py": "60aa142946231a56d92c789252e2383118e7878912e45a692ba43921b5e36801",
+    "scripts/verify_delivery.py": "e62ddaadd050761d693ea2e795752893c87f2180c63af5a6493f5e19ee625a55",
+    "seasonal/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "seasonal/analysis.py": "8cdeb9711677fc0423f7607a64b14e82c5095ed1ffeaef14f2e8995944768b53",
+    "seasonal/data.py": "8efa5391693ae80499e56f5dd7b16019ee39298747362d32f03389e3f0ef45cd",
+    "seasonal/engine.py": "f11aae7d2af82b1939b383c526711f1305fe95bdd6d92c1ef7f283e0568b7acd",
+    "tests/test_audit.py": "da2d6d84f0c994ee726f27bde516d7015648c6202fb5cc70445c554acd063392",
+    "tests/test_delivery.py": "eff43f8c4ef86fcd6be48cec982af959428fbb4ad733b4b3731249b171eda52c",
+    "tests/test_engine.py": "71c0d5e5190a2babe850a7842dc7a37906fd406883f0b9533487c1d3fe248d13",
+    "tests/test_runner.py": "7d1fd7902f512d01b0eefda5ad309b1ac1246066b9a7c61fc358ea5b33651ee8",
+    "tests/test_statistics.py": "5c5a8f1ea55a25761ace1a4f233e1f10fcbd8ae5a4a47356baebe036e57e1220"
+  },
+  "dependencies_sha256": {
+    "studies/closing-momentum/closing_momentum/__init__.py": "d3313c9b87d9c7710f4934e59a46bb5870de7a736a5905137bdfd21372f77a07",
+    "studies/closing-momentum/closing_momentum/analysis.py": "5c85a03fbabde09a203c735822114d072da4572bc312ffe5021680fd9918655c",
+    "studies/closing-momentum/closing_momentum/engine.py": "8a59839154e9e1f048f053ed2e8b9f288bfc8ba0e34ab99326f2ac2f19709f49",
+    "studies/closing-momentum/scripts/run_study.py": "543fefa19de3f7e2fe864a075370f9e1a97f88fdf262d5789369ed4165713b3e",
+    "studies/intraday-momentum-noise-area/noise_area/__init__.py": "bade9dd944a6b2d0ed267f6290bad7bcb78082f4040cb92066b29fb66bba624a",
+    "studies/intraday-momentum-noise-area/noise_area/data.py": "d47b48b70d7f4f6b05c761ebe2053b9ee9b7c0838f46f05cb718641f9543276c",
+    "studies/intraday-momentum-noise-area/noise_area/engine.py": "64a49a9575d7badc8921c5c2c34bbe650d0f47e7fab0d6b45f3700f6501e1f76",
+    "studies/intraday-momentum-noise-area/noise_area/features.py": "ecab630d5f850c4def089739c9a13b7acd88de1361527483ff39f0f6a6765664",
+    "studies/intraday-momentum-noise-area/noise_area/statistics.py": "595da476d19b0e680538e4860584f9dce8100e098b27d4115fb1302a830b9818",
+    "studies/opening-range-5m/orb/__init__.py": "4aa1cc8c56b8834f8846ba260770cd70fe5af1f71721e746792abca89058b878",
+    "studies/opening-range-5m/orb/analysis.py": "c690447ccc632d1d7a2d1a9491bca5dabafa2a388a502175a7c96162445c78d2",
+    "studies/opening-range-5m/orb/engine.py": "0ee6f0f9e7b7f1080d444e90a055aeb4ed2dc63349cfc7ab05f66d1d4f5f1810",
+    "studies/previous-day-ibs/ibs/__init__.py": "ac709b974aef0e6e913db2dd64b72213c3462387d97ceb2a22ec778bef8971b0",
+    "studies/previous-day-ibs/ibs/data.py": "8903d073c85c0bd864285449ea94f3f111412d59b0448096bbf6256d53787424",
+    "studies/previous-day-ibs/ibs/engine.py": "d524a9e1a3b70ab89a6cc56ec62b36d439977c1a3a17e00cc8abcb3ea03d08e0"
+  },
+  "python": "3.14.6",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "exchange_calendars": "4.13.2",
+    "matplotlib": "3.11.2",
+    "pytest": "9.1.1"
+  },
+  "note": "Frozen before first MARKET PnL; reused A/B, no live bot changes."
+}

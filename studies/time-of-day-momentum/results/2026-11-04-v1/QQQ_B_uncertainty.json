@@ -1,0 +1,62 @@
+{
+  "repetitions": 3000,
+  "seed": 20261104,
+  "blocks": {
+    "5": {
+      "conditional_daily_mean_ci95": [
+        -0.00024946100143310404,
+        9.088802286063071e-05
+      ]
+    },
+    "20": {
+      "conditional_daily_mean_ci95": [
+        -0.00024264505953454455,
+        9.435647312377295e-05
+      ]
+    }
+  },
+  "annual_cluster": {
+    "years": [
+      2024,
+      2025,
+      2026
+    ],
+    "events_by_year": [
+      99,
+      197,
+      140
+    ],
+    "valid_repetitions": 3000,
+    "mean_trade_bps_ci95": [
+      -3.713128160594737,
+      0.33044744715443714
+    ]
+  },
+  "caveat": "Conditional observed sample. Legacy blocks include bookkeeping zeros for excluded sessions and are descriptive only. Reused B and earlier research selection remain uncorrected.",
+  "observed_calendar_blocks": {
+    "calendar_sessions": 618,
+    "observed_sessions": 526,
+    "repetitions": 3000,
+    "seed": 20261104,
+    "mean": -9.608055208058794e-05,
+    "blocks": {
+      "5": {
+        "mean_ci95": [
+          -0.00029309512341280726,
+          0.00010555797878806658
+        ],
+        "p_one_sided": 0.8273908697100967,
+        "valid_repetitions": 3000
+      },
+      "20": {
+        "mean_ci95": [
+          -0.00029005928538297144,
+          0.00010628302683872596
+        ],
+        "p_one_sided": 0.8190603132289237,
+        "valid_repetitions": 3000
+      }
+    }
+  },
+  "economic_gate": "observed_calendar_blocks only; excluded dates stay missing while calendar blocks are preserved"
+}

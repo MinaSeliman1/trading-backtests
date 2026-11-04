@@ -1,0 +1,34 @@
+{
+  "results": {
+    "SPY": {
+      "criteria": {
+        "at_least_100_trades_all": true,
+        "positive_A_B_ALL": false,
+        "positive_without_top3": false,
+        "positive_A_double_friction": false,
+        "positive_daily_ci20": false,
+        "beats_all_three_controls_with_100_paired_trade_dates": false,
+        "holm_p_below_005": false
+      },
+      "passes_all": false,
+      "intersection_raw_p": 0.9613462179273575,
+      "holm_p": 1.0
+    },
+    "QQQ": {
+      "criteria": {
+        "at_least_100_trades_all": true,
+        "positive_A_B_ALL": false,
+        "positive_without_top3": false,
+        "positive_A_double_friction": false,
+        "positive_daily_ci20": false,
+        "beats_all_three_controls_with_100_paired_trade_dates": false,
+        "holm_p_below_005": false
+      },
+      "passes_all": false,
+      "intersection_raw_p": 0.7107630789736754,
+      "holm_p": 1.0
+    }
+  },
+  "multiplicity": "Intersection max-p over three controls within ETF, Holm over the two ETF; does not correct earlier studies or the choice of this hypothesis.",
+  "not_blind_oos": true
+}
